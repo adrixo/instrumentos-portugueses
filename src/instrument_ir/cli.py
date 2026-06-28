@@ -85,7 +85,6 @@ def build_qrels_cmd(
 
 def _build_retriever(model: str, split: str, processed: Path, raw: Path, seed: int):
     from .data.prepare_dataset import load_mapping
-    from .retrieval.cache import CorpusEmbeddingCache
     from .retrieval.factory import build_retriever, resolve_model
     from .utils.io import ImageProvider
 
@@ -96,8 +95,7 @@ def _build_retriever(model: str, split: str, processed: Path, raw: Path, seed: i
 
     mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
     provider = ImageProvider(mapping, raw)
-    cache = CorpusEmbeddingCache()
-    return build_retriever(cfg, provider=provider, cache=cache, split=split)
+    return build_retriever(cfg, provider=provider, split=split)
 
 
 @app.command("retrieve")

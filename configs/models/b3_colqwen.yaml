@@ -1,0 +1,6 @@
+# B3 — Late-interaction multivector (ColQwen2). Requiere extra [colpali] + GPU.
+retriever:
+  type: colqwen
+  model_name: vidore/colqwen2-v1.0
+  batch_size: 8
+  top_k: 100

@@ -12,7 +12,7 @@ import yaml
 
 from ..utils.io import ImageProvider
 from .base import BaseRetriever, DummyRetriever
-from .cache import CorpusEmbeddingCache
+from .cache import CorpusEmbeddingCache, MultiVectorCache
 
 # Atajos -> config de modelo, para usar `--model nombre` sin un YAML.
 SHORTHANDS: dict[str, dict] = {
@@ -20,6 +20,7 @@ SHORTHANDS: dict[str, dict] = {
     "openclip-vitb32": {"type": "openclip", "model_name": "ViT-B-32", "pretrained": "laion2b_s34b_b79k"},
     "openclip-vitl14": {"type": "openclip", "model_name": "ViT-L-14", "pretrained": "laion2b_s34b_b79k"},
     "jinaclip": {"type": "jinaclip", "model_name": "jinaai/jina-clip-v2"},
+    "colqwen": {"type": "colqwen", "model_name": "vidore/colqwen2-v1.0"},
 }
 
 
@@ -31,9 +32,10 @@ def load_model_config(path: Path) -> dict:
 def build_retriever(
     cfg: dict,
     provider: ImageProvider | None = None,
-    cache: CorpusEmbeddingCache | None = None,
     split: str | None = None,
+    use_cache: bool = True,
 ) -> BaseRetriever:
+    """Construye el retriever y su caché adecuada (dense vs multivector) según el tipo."""
     rtype = cfg["type"]
 
     if rtype == "dummy":
@@ -50,7 +52,7 @@ def build_retriever(
             model_name=cfg.get("model_name", "ViT-B-32"),
             pretrained=cfg.get("pretrained", "laion2b_s34b_b79k"),
             batch_size=cfg.get("batch_size", 64),
-            cache=cache,
+            cache=CorpusEmbeddingCache() if use_cache else None,
             split=split,
         )
 
@@ -62,7 +64,18 @@ def build_retriever(
             model_name=cfg.get("model_name", "jinaai/jina-clip-v2"),
             batch_size=cfg.get("batch_size", 32),
             truncate_dim=cfg.get("truncate_dim"),
-            cache=cache,
+            cache=CorpusEmbeddingCache() if use_cache else None,
+            split=split,
+        )
+
+    if rtype == "colqwen":
+        from .colpali_retriever import ColQwenRetriever
+
+        return ColQwenRetriever(
+            provider,
+            model_name=cfg.get("model_name", "vidore/colqwen2-v1.0"),
+            batch_size=cfg.get("batch_size", 8),
+            cache=MultiVectorCache() if use_cache else None,
             split=split,
         )
 

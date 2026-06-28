@@ -52,8 +52,10 @@ b1-all: ## [Fase 2] B1 con los 3 modelos dense (SPLIT=valid)
 	$(MAKE) b1 B1_MODEL=openclip-vitl14 SPLIT=$(SPLIT)
 	$(MAKE) b1 B1_MODEL=jinaclip SPLIT=$(SPLIT)
 
-b3: ## [Fase 3] Late-interaction
-	@echo "Fase 3 — pendiente"
+b3: ## [Fase 3] Late-interaction ColQwen (requiere GPU + extra [colpali], SPLIT=valid)
+	instrument-ir embed --split $(SPLIT) --model colqwen
+	instrument-ir retrieve --split $(SPLIT) --model colqwen --run-name B3_colqwen_$(SPLIT)
+	instrument-ir evaluate --run outputs/runs/B3_colqwen_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
 b4: ## [Fase 4] VLM reranker
 	@echo "Fase 4 — pendiente"
 b5: ## [Fase 5] Agente reranker
