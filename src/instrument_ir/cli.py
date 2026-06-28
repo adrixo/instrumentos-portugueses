@@ -251,9 +251,48 @@ def build_index():
 
 
 @app.command("rerank-vlm")
-def rerank_vlm():
-    """[stub] Reranker VLM pointwise B4 (Fase 4)."""
-    _not_implemented("rerank-vlm")
+def rerank_vlm(
+    dense_run: Path = typer.Option(..., help="Runfile dense (B1/B3) con los candidatos"),
+    split: str = typer.Option(..., help="train|valid|test (para resolver imágenes)"),
+    backend: str = typer.Option("mock", help="mock | openai"),
+    vlm_model: str = typer.Option("qwen2.5-vl", help="Modelo VLM servido"),
+    base_url: str = typer.Option("http://localhost:8001/v1", help="Endpoint OpenAI-compatible"),
+    top_n: int = typer.Option(200, help="Candidatos del dense a rerankear"),
+    final_top_k: int = typer.Option(100, help="Top-K final"),
+    processed: Path = typer.Option(PROCESSED_DEFAULT),
+    raw: Path = typer.Option(RAW_DEFAULT),
+    queries: Path = typer.Option(QUERIES_YAML),
+    instruments: Path = typer.Option(INSTRUMENTS_YAML),
+    run_name: str = typer.Option(None),
+    seed: int = typer.Option(42),
+):
+    """B4 — Reranker VLM pointwise sobre el top-N de un runfile dense."""
+    from .data.prepare_dataset import load_mapping
+    from .data.queries import load_instruments, load_queries
+    from .reranking.base import load_candidates_from_run
+    from .reranking.runner import run_pointwise_rerank
+    from .reranking.vlm_backend import MockVLMBackend, OpenAICompatVLMBackend
+    from .reranking.vlm_pointwise import VLMPointwiseReranker
+    from .utils.io import ImageProvider
+
+    set_global_determinism(seed)
+    mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
+    provider = ImageProvider(mapping, raw)
+    qs = load_queries(queries)
+    instr = load_instruments(instruments)
+    cands = load_candidates_from_run(dense_run, top_n)
+
+    if backend == "openai":
+        vlm = OpenAICompatVLMBackend(model=vlm_model, base_url=base_url)
+    else:
+        vlm = MockVLMBackend()
+    reranker = VLMPointwiseReranker(vlm, provider, seed=seed)
+
+    name = run_name or f"B4_{Path(dense_run).stem}_{vlm.model_id}_{split}".replace("/", "-")
+    run_path = run_pointwise_rerank(reranker, qs, instr, cands, name, final_top_k=final_top_k)
+    typer.echo(f"B4 runfile: {run_path}")
+    typer.echo(f"  traces: outputs/rerank_traces/{name}.jsonl")
+    typer.echo(f"  candidates: outputs/candidates/{name}.parquet")
 
 
 @app.command("rerank-agent")

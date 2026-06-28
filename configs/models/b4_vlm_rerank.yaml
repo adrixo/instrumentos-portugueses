@@ -1,0 +1,13 @@
+# B4 — Dense + VLM pointwise reranker (ADR §4). Requiere servidor VLM (vLLM) + GPU.
+reranker:
+  type: vlm_pointwise
+  backend: openai                 # cliente OpenAI-compatible
+  vlm_model: qwen2.5-vl
+  base_url: http://localhost:8001/v1
+  temperature: 0.0
+  seed: 42
+  max_new_tokens: 512
+  top_n: 200                      # candidatos del dense
+  final_top_k: 100
+  output_schema: schemas/vlm_rerank.schema.json
+dense_run: outputs/runs/B1_openclip-vitb32_valid.trec   # mejor dense validado (configurable)

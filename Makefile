@@ -4,6 +4,7 @@
 COMPOSE = docker compose -f docker/docker-compose.gpu.yml
 SPLIT ?= valid
 B1_MODEL ?= openclip-vitb32
+BACKEND ?= mock
 
 # En macOS, forzar el camino numpy para evitar el deadlock OpenMP faiss+torch.
 ifeq ($(shell uname),Darwin)
@@ -56,8 +57,11 @@ b3: ## [Fase 3] Late-interaction ColQwen (requiere GPU + extra [colpali], SPLIT=
 	instrument-ir embed --split $(SPLIT) --model colqwen
 	instrument-ir retrieve --split $(SPLIT) --model colqwen --run-name B3_colqwen_$(SPLIT)
 	instrument-ir evaluate --run outputs/runs/B3_colqwen_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
-b4: ## [Fase 4] VLM reranker
-	@echo "Fase 4 — pendiente"
+DENSE_RUN ?= outputs/runs/B1_openclip-vitb32_$(SPLIT).trec
+b4: ## [Fase 4] VLM reranker B4 (BACKEND=openai|mock, requiere VLM+GPU si openai)
+	instrument-ir rerank-vlm --dense-run $(DENSE_RUN) --split $(SPLIT) --backend $(BACKEND) \
+		--run-name B4_$(B1_MODEL)_$(SPLIT)
+	instrument-ir evaluate --run outputs/runs/B4_$(B1_MODEL)_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
 b5: ## [Fase 5] Agente reranker
 	@echo "Fase 5 — pendiente"
 report: ## [Fase 6] Informe
