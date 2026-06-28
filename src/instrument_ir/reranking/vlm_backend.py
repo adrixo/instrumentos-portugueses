@@ -53,6 +53,47 @@ class OpenAICompatVLMBackend:
         return resp.choices[0].message.content or ""
 
 
+class HFVLMBackend:
+    """VLM in-process con transformers (sirve en MPS/CUDA/CPU; alternativa a vLLM en Mac).
+
+    Para B4/B5 cuando no hay servidor OpenAI-compatible (p.ej. macOS sin CUDA). Greedy (determinista).
+    """
+
+    def __init__(self, model: str = "Qwen/Qwen2.5-VL-3B-Instruct", device: str | None = None):
+        import torch
+        from transformers import AutoModelForImageTextToText, AutoProcessor
+
+        self.model_id = model
+        self._torch = torch
+        if device:
+            self.device = device
+        elif torch.cuda.is_available():
+            self.device = "cuda"
+        elif torch.backends.mps.is_available():
+            self.device = "mps"
+        else:
+            self.device = "cpu"
+        dtype = torch.float16 if self.device != "cpu" else torch.float32
+        self.model = AutoModelForImageTextToText.from_pretrained(
+            model, torch_dtype=dtype
+        ).to(self.device).eval()
+        self.processor = AutoProcessor.from_pretrained(model)
+
+    def generate(self, prompt: str, images: list, *, temperature: float, seed: int,
+                 max_new_tokens: int) -> str:
+        torch = self._torch
+        content = [{"type": "image"} for _ in images] + [{"type": "text", "text": prompt}]
+        messages = [{"role": "user", "content": content}]
+        text = self.processor.apply_chat_template(messages, add_generation_prompt=True)
+        inputs = self.processor(
+            text=[text], images=list(images), return_tensors="pt"
+        ).to(self.device)
+        with torch.no_grad():
+            out = self.model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)
+        gen = out[:, inputs["input_ids"].shape[1]:]
+        return self.processor.batch_decode(gen, skip_special_tokens=True)[0]
+
+
 class MockVLMBackend:
     """Backend determinista para tests. Devuelve respuestas JSON de un guion (en orden) o por callable."""
 

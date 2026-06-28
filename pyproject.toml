@@ -37,9 +37,11 @@ dense = [
 colpali = [
     "colpali-engine>=0.3.5",
 ]
-# Reranking VLM (B4/B5): cliente OpenAI-compatible contra vLLM local.
+# Reranking VLM (B4/B5): cliente OpenAI-compatible (vLLM) y backend HF in-process (MPS/CUDA).
 rerank = [
     "openai>=1.30",
+    "transformers>=4.49",
+    "accelerate>=0.30",
 ]
 # Tracking, demo y reporting.
 extras = [

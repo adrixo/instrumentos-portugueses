@@ -78,3 +78,13 @@ def load_mapping(mapping_path: Path, split: str | None = None) -> pd.DataFrame:
     if split is not None:
         df = df[df["split"] == split].reset_index(drop=True)
     return df
+
+
+def resolve_mapping(processed: Path, split: str) -> pd.DataFrame:
+    """Mapping del split: usa el per-split (data/processed/{split}/image_id_mapping.parquet) si existe
+    (p.ej. subconjuntos 'mini'); si no, filtra el global por split."""
+    processed = Path(processed)
+    per_split = processed / split / "image_id_mapping.parquet"
+    if per_split.exists():
+        return pd.read_parquet(per_split)
+    return load_mapping(processed / "image_id_mapping.parquet", split=split)

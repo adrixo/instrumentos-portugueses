@@ -63,6 +63,40 @@ def prepare_data(
         gen_queries(instruments=INSTRUMENTS_YAML, out=QUERIES_YAML, force=False)
 
 
+@app.command("prepare-mini")
+def prepare_mini(
+    instruments_sel: str = typer.Option("adufe,concertina,cavaquinho", help="Instrumentos del subset"),
+    n_images: int = typer.Option(60, help="Tamaño del corpus mini"),
+    source_split: str = typer.Option("valid"),
+    processed: Path = typer.Option(PROCESSED_DEFAULT),
+    queries: Path = typer.Option(QUERIES_YAML),
+):
+    """Crea un split 'mini' (subconjunto pequeño) para un end-to-end completo en GPU modesta/MPS."""
+    import pandas as pd
+
+    from .data.prepare_dataset import load_mapping
+    from .data.qrels import build_qrels, write_qrels_trec
+    from .data.queries import load_queries
+
+    targets = [s.strip() for s in instruments_sel.split(",") if s.strip()]
+    full = load_mapping(processed / "image_id_mapping.parquet", split=source_split)
+    is_pos = full["gt_instruments"].apply(lambda g: any(t in g for t in targets))
+    subset = pd.concat(
+        [full[is_pos], full[~is_pos].head(max(0, n_images - int(is_pos.sum())))]
+    ).head(n_images).reset_index(drop=True)
+
+    mini_dir = processed / "mini"
+    mini_dir.mkdir(parents=True, exist_ok=True)
+    subset.to_parquet(mini_dir / "image_id_mapping.parquet", index=False)  # conserva split/file_name reales
+    subset[["image_id", "split", "width", "height"]].to_parquet(mini_dir / "corpus.parquet", index=False)
+
+    qs = load_queries(queries)
+    rows = build_qrels(subset, qs)
+    write_qrels_trec(rows, processed / "qrels" / "mini.qrels")
+    typer.echo(f"split mini: {len(subset)} imágenes ({int(is_pos.sum())} positivas de {targets})")
+    typer.echo(f"  corpus: {mini_dir}/corpus.parquet  qrels: {processed}/qrels/mini.qrels")
+
+
 @app.command("build-qrels")
 def build_qrels_cmd(
     split: str = typer.Option(..., help="train|valid|test"),
@@ -84,7 +118,7 @@ def build_qrels_cmd(
 
 
 def _build_retriever(model: str, split: str, processed: Path, raw: Path, seed: int):
-    from .data.prepare_dataset import load_mapping
+    from .data.prepare_dataset import resolve_mapping
     from .retrieval.factory import build_retriever, resolve_model
     from .utils.io import ImageProvider
 
@@ -93,7 +127,7 @@ def _build_retriever(model: str, split: str, processed: Path, raw: Path, seed: i
     if cfg["type"] == "dummy":
         return build_retriever(cfg)
 
-    mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
+    mapping = resolve_mapping(processed, split)
     provider = ImageProvider(mapping, raw)
     return build_retriever(cfg, provider=provider, split=split)
 
@@ -219,6 +253,17 @@ def smoke(
         typer.echo(f"  {m}: {v:.4f}")
 
 
+def _build_vlm_backend(backend: str, vlm_model: str, base_url: str):
+    """mock | openai (vLLM/servidor) | hf (transformers in-process, MPS/CUDA/CPU)."""
+    from .reranking.vlm_backend import HFVLMBackend, MockVLMBackend, OpenAICompatVLMBackend
+
+    if backend == "openai":
+        return OpenAICompatVLMBackend(model=vlm_model, base_url=base_url)
+    if backend == "hf":
+        return HFVLMBackend(model=vlm_model)
+    return MockVLMBackend()
+
+
 def _not_implemented(name: str):
     typer.echo(f"[stub] '{name}' se implementa en su fase correspondiente (ver ADR/plan).")
 
@@ -254,8 +299,8 @@ def build_index():
 def rerank_vlm(
     dense_run: Path = typer.Option(..., help="Runfile dense (B1/B3) con los candidatos"),
     split: str = typer.Option(..., help="train|valid|test (para resolver imágenes)"),
-    backend: str = typer.Option("mock", help="mock | openai"),
-    vlm_model: str = typer.Option("qwen2.5-vl", help="Modelo VLM servido"),
+    backend: str = typer.Option("mock", help="mock | openai | hf (transformers in-process)"),
+    vlm_model: str = typer.Option("qwen2.5-vl", help="Modelo VLM (servido o HF id)"),
     base_url: str = typer.Option("http://localhost:8001/v1", help="Endpoint OpenAI-compatible"),
     top_n: int = typer.Option(200, help="Candidatos del dense a rerankear"),
     final_top_k: int = typer.Option(100, help="Top-K final"),
@@ -267,25 +312,21 @@ def rerank_vlm(
     seed: int = typer.Option(42),
 ):
     """B4 — Reranker VLM pointwise sobre el top-N de un runfile dense."""
-    from .data.prepare_dataset import load_mapping
+    from .data.prepare_dataset import resolve_mapping
     from .data.queries import load_instruments, load_queries
     from .reranking.base import load_candidates_from_run
     from .reranking.runner import run_pointwise_rerank
-    from .reranking.vlm_backend import MockVLMBackend, OpenAICompatVLMBackend
     from .reranking.vlm_pointwise import VLMPointwiseReranker
     from .utils.io import ImageProvider
 
     set_global_determinism(seed)
-    mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
+    mapping = resolve_mapping(processed, split)
     provider = ImageProvider(mapping, raw)
     qs = load_queries(queries)
     instr = load_instruments(instruments)
     cands = load_candidates_from_run(dense_run, top_n)
 
-    if backend == "openai":
-        vlm = OpenAICompatVLMBackend(model=vlm_model, base_url=base_url)
-    else:
-        vlm = MockVLMBackend()
+    vlm = _build_vlm_backend(backend, vlm_model, base_url)
     reranker = VLMPointwiseReranker(vlm, provider, seed=seed)
 
     name = run_name or f"B4_{Path(dense_run).stem}_{vlm.model_id}_{split}".replace("/", "-")
@@ -326,27 +367,23 @@ def rerank_agent(
 ):
     """B5 — Reranker agéntico determinista (grafo propio) sobre el top-N dense."""
     from .agent.graph import AgenticReranker
-    from .data.prepare_dataset import load_mapping
+    from .data.prepare_dataset import resolve_mapping
     from .data.queries import load_instruments, load_queries
     from .reranking.base import load_candidates_from_run
     from .reranking.runner import run_pointwise_rerank
-    from .reranking.vlm_backend import MockVLMBackend, OpenAICompatVLMBackend
     from .utils.io import ImageProvider
 
     if ablation not in _ABLATIONS:
         raise typer.BadParameter(f"ablation desconocida: {ablation} ({list(_ABLATIONS)})")
 
     set_global_determinism(seed)
-    mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
+    mapping = resolve_mapping(processed, split)
     provider = ImageProvider(mapping, raw)
     qs = load_queries(queries)
     instr = load_instruments(instruments)
     cands = load_candidates_from_run(dense_run, top_n)
 
-    vlm = (
-        OpenAICompatVLMBackend(model=vlm_model, base_url=base_url)
-        if backend == "openai" else MockVLMBackend()
-    )
+    vlm = _build_vlm_backend(backend, vlm_model, base_url)
     reranker = AgenticReranker(
         vlm, provider, high_confidence_threshold=high_conf, max_crops=max_crops,
         dense_retriever_name=Path(dense_run).stem, seed=seed, **_ABLATIONS[ablation],
