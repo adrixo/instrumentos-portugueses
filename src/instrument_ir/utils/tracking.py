@@ -15,7 +15,10 @@ def log_run(experiment: str, run_name: str, params: dict, metrics: dict) -> None
     except ImportError:
         return
     try:
-        uri = os.environ.get("MLFLOW_TRACKING_URI", "file:./outputs/mlruns")
+        # MLflow 3.x deprecó el file-store → backend sqlite por defecto (como el compose del ADR).
+        uri = os.environ.get("MLFLOW_TRACKING_URI", "sqlite:///outputs/mlflow.db")
+        if uri.startswith("sqlite:///"):
+            os.makedirs(os.path.dirname(uri.replace("sqlite:///", "")) or ".", exist_ok=True)
         mlflow.set_tracking_uri(uri)
         mlflow.set_experiment(experiment)
         with mlflow.start_run(run_name=run_name):
