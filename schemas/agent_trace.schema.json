@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://instrument-ir/schemas/agent_trace.schema.json",
+  "title": "B5 agent rerank trace (one JSON object per candidate)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id", "query_id", "instrument", "image_id", "dense_rank", "dense_score",
+    "steps", "final_decision", "final_score", "final_rank", "seed", "temperature",
+    "model_versions", "timestamp_utc"
+  ],
+  "properties": {
+    "run_id": { "type": "string" },
+    "query_id": { "type": "string", "pattern": "^q_[a-z0-9_]+$" },
+    "instrument": { "type": "string" },
+    "image_id": { "type": "string", "pattern": "^img_(train|valid|test)_[0-9]{6}$" },
+    "dense_rank": { "type": "integer", "minimum": 0 },
+    "dense_score": { "type": "number" },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tool"],
+        "properties": {
+          "tool": {
+            "type": "string",
+            "enum": ["ask_vlm_full_image", "caption_image", "generate_crops", "ask_vlm_crop", "score_evidence"]
+          },
+          "decision": { "type": "string", "enum": ["present", "absent", "uncertain"] },
+          "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "crop_id": { "type": "string" },
+          "crops": { "type": "array", "items": { "type": "string" } },
+          "caption": { "type": "string", "maxLength": 300 },
+          "evidence": { "type": "array", "maxItems": 4, "items": { "type": "string", "maxLength": 120 } }
+        }
+      }
+    },
+    "final_decision": { "type": "string", "enum": ["present", "absent", "uncertain"] },
+    "final_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "final_rank": { "type": "integer", "minimum": 0 },
+    "seed": { "type": "integer" },
+    "temperature": { "type": "number" },
+    "model_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dense_retriever", "vlm", "agent_framework"],
+      "properties": {
+        "dense_retriever": { "type": "string" },
+        "vlm": { "type": "string" },
+        "agent_framework": { "type": "string" }
+      }
+    },
+    "timestamp_utc": { "type": "string" }
+  }
+}

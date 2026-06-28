@@ -1,0 +1,37 @@
+# Pipeline DVC (ADR §8.4). Envuelve la CLI; el dataset es inmutable (DOI) → sin `dvc add` ni remote.
+# Solo se versiona el DAG de stages para `dvc repro`. Fase 1: prepare_data, build_qrels, retrieve, evaluate.
+stages:
+  prepare_data:
+    cmd: instrument-ir prepare-data
+    deps:
+      - data/raw/portuguese_instruments
+      - src/instrument_ir/data
+      - configs/instruments.yaml
+    outs:
+      - data/processed/image_id_mapping.parquet
+      - data/processed/valid/corpus.parquet
+
+  build_qrels:
+    cmd: instrument-ir build-qrels --split valid
+    deps:
+      - data/processed/image_id_mapping.parquet
+      - configs/queries.yaml
+    outs:
+      - data/processed/qrels/valid.qrels
+
+  retrieve:
+    cmd: instrument-ir retrieve --split valid --model dummy
+    deps:
+      - data/processed/valid/corpus.parquet
+      - configs/queries.yaml
+    outs:
+      - outputs/runs/B1_dummy_valid.trec
+
+  evaluate:
+    cmd: instrument-ir evaluate --run outputs/runs/B1_dummy_valid.trec --qrels data/processed/qrels/valid.qrels
+    deps:
+      - outputs/runs/B1_dummy_valid.trec
+      - data/processed/qrels/valid.qrels
+    metrics:
+      - outputs/metrics/B1_dummy_valid.json:
+          cache: false

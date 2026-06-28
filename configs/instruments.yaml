@@ -1,0 +1,290 @@
+# Definiciones de instrumentos (ADR §16).
+# `canonical_name` debe coincidir con el nombre de la categoría COCO (es el instrument_id).
+# `names` se usa para generar las queries (pt/en/es). `definitions`/`visual_cues`/`confusing_classes`
+# se usan en los prompts del VLM (B4/B5). NO usar el ground truth de cada imagen en los prompts.
+
+adufe:
+  canonical_name: adufe
+  names:
+    pt: "adufe"
+    en: "adufe, a Portuguese square frame drum"
+    es: "adufe, tambor cuadrado portugués"
+  definitions:
+    en: "Traditional Portuguese square frame drum, usually held by hand and played with the fingers."
+    es: "Tambor cuadrado tradicional portugués, normalmente sostenido con las manos."
+    pt: "Tambor quadrado tradicional português, normalmente segurado com as mãos."
+  visual_cues: ["square frame", "flat percussion surface", "held by performer"]
+  confusing_classes: ["pandeiro", "tambourine"]
+
+bombos:
+  canonical_name: bombos
+  names:
+    pt: "bombos"
+    en: "bombo, a large Portuguese bass drum"
+    es: "bombo, gran tambor grave portugués"
+  definitions:
+    en: "Large two-headed bass drum carried with a strap and struck with a mallet."
+    es: "Gran tambor grave de dos parches, colgado con correa y golpeado con maza."
+    pt: "Grande tambor grave de duas peles, suspenso por correia e tocado com maço."
+  visual_cues: ["large cylindrical drum", "carried with strap", "played with mallet"]
+  confusing_classes: ["caixa-tamboril"]
+
+caixa-tamboril:
+  canonical_name: caixa-tamboril
+  names:
+    pt: "caixa ou tamboril"
+    en: "caixa / tamboril, a Portuguese snare drum"
+    es: "caja o tamboril, tambor portugués"
+  definitions:
+    en: "Snare/side drum, smaller than the bombo, played with two sticks."
+    es: "Tambor de caja, más pequeño que el bombo, tocado con dos baquetas."
+    pt: "Tambor de caixa, mais pequeno que o bombo, tocado com duas baquetas."
+  visual_cues: ["small cylindrical drum", "played with two sticks", "snare"]
+  confusing_classes: ["bombos"]
+
+castanholas:
+  canonical_name: castanholas
+  names:
+    pt: "castanholas"
+    en: "castanets"
+    es: "castañuelas"
+  definitions:
+    en: "Concave shell-shaped hand percussion clicked together with the fingers."
+    es: "Percusión de mano cóncava que se hace chocar con los dedos."
+    pt: "Percussão de mão côncava tocada com os dedos."
+  visual_cues: ["small shell-shaped clappers", "held in hand"]
+  confusing_classes: []
+
+cavaquinho:
+  canonical_name: cavaquinho
+  names:
+    pt: "cavaquinho"
+    en: "cavaquinho, a small four-string Portuguese guitar"
+    es: "cavaquinho, pequeña guitarra portuguesa de cuatro cuerdas"
+  definitions:
+    en: "Small four-stringed plucked chordophone, similar in size to a ukulele."
+    es: "Pequeño cordófono punteado de cuatro cuerdas, tamaño similar al ukelele."
+    pt: "Pequeno cordofone de quatro cordas, de tamanho semelhante ao ukelele."
+  visual_cues: ["very small guitar body", "four strings", "short neck"]
+  confusing_classes: ["violao", "guitarra-portuguesa", "viola-de-arame"]
+
+concertina:
+  canonical_name: concertina
+  names:
+    pt: "concertina"
+    en: "concertina / button accordion"
+    es: "concertina / acordeón de botones"
+  definitions:
+    en: "Bellows-driven free-reed instrument with buttons on both ends."
+    es: "Instrumento de lengüeta libre con fuelle y botones en ambos extremos."
+    pt: "Instrumento de palheta livre com fole e botões nas duas extremidades."
+  visual_cues: ["central bellows", "buttons", "expanded/compressed body"]
+  confusing_classes: []
+
+ferrinhos-triangulo:
+  canonical_name: ferrinhos-triangulo
+  names:
+    pt: "ferrinhos ou triângulo"
+    en: "triangle (ferrinhos)"
+    es: "triángulo (ferrinhos)"
+  definitions:
+    en: "Triangular steel bar idiophone struck with a metal beater."
+    es: "Idiófono de barra de acero triangular golpeado con una varilla metálica."
+    pt: "Idiofone de barra de aço triangular tocado com uma vareta metálica."
+  visual_cues: ["triangular metal bar", "metal beater", "held by hand"]
+  confusing_classes: []
+
+flauta:
+  canonical_name: flauta
+  names:
+    pt: "flauta"
+    en: "flute"
+    es: "flauta"
+  definitions:
+    en: "Wind instrument, a tube (transverse flute or recorder/whistle) played by blowing."
+    es: "Instrumento de viento, un tubo (flauta travesera o de pico) que se toca soplando."
+    pt: "Instrumento de sopro, um tubo (flauta transversal ou de bisel) tocado a soprar."
+  visual_cues: ["thin tube", "finger holes", "held to mouth"]
+  confusing_classes: ["palheta"]
+
+gaita-de-foles:
+  canonical_name: gaita-de-foles
+  names:
+    pt: "gaita de foles"
+    en: "bagpipes"
+    es: "gaita"
+  definitions:
+    en: "Bagpipes: an air reservoir (bag) feeding a chanter and drone pipes."
+    es: "Gaita: un odre que alimenta el puntero y los bordones."
+    pt: "Gaita de foles: um saco de ar que alimenta o ponteiro e os bordões."
+  visual_cues: ["air bag", "protruding pipes", "drones over shoulder"]
+  confusing_classes: []
+
+guitarra-portuguesa:
+  canonical_name: guitarra-portuguesa
+  names:
+    pt: "guitarra portuguesa"
+    en: "Portuguese guitar (pear-shaped, twelve strings)"
+    es: "guitarra portuguesa (forma de pera, doce cuerdas)"
+  definitions:
+    en: "Pear-shaped twelve-string plucked guitar used in fado, with a fan-shaped tuner."
+    es: "Guitarra de cuerda pulsada con forma de pera y doce cuerdas, usada en el fado."
+    pt: "Guitarra de doze cordas em forma de pera, usada no fado, com leque de afinação."
+  visual_cues: ["pear-shaped body", "twelve strings", "fan-shaped headstock tuner"]
+  confusing_classes: ["violao", "cavaquinho", "viola-amarantina"]
+
+matracas:
+  canonical_name: matracas
+  names:
+    pt: "matracas"
+    en: "matraca, a wooden rattle/clapper"
+    es: "matraca, carraca de madera"
+  definitions:
+    en: "Wooden ratchet/clapper idiophone producing a clacking sound."
+    es: "Idiófono de madera tipo carraca que produce un sonido de chasquido."
+    pt: "Idiofone de madeira tipo matraca que produz um som de estalido."
+  visual_cues: ["wooden clapper", "hinged or ratchet mechanism"]
+  confusing_classes: ["reque-reque"]
+
+palheta:
+  canonical_name: palheta
+  names:
+    pt: "palheta"
+    en: "palheta, a Portuguese double-reed wind instrument"
+    es: "palheta, instrumento de viento de doble lengüeta portugués"
+  definitions:
+    en: "Folk double-reed wind instrument (shawm-like) with a conical bore."
+    es: "Instrumento de viento popular de doble lengüeta (tipo chirimía), de tubo cónico."
+    pt: "Instrumento de sopro popular de palheta dupla (tipo charamela), de tubo cónico."
+  visual_cues: ["conical wooden pipe", "reed at the mouthpiece", "finger holes"]
+  confusing_classes: ["flauta"]
+
+rabeca-chuleira:
+  canonical_name: rabeca-chuleira
+  names:
+    pt: "rabeca chuleira"
+    en: "rabeca, a Portuguese folk fiddle"
+    es: "rabeca, violín popular portugués"
+  definitions:
+    en: "Traditional bowed folk fiddle, a rustic violin played with a bow."
+    es: "Violín popular tradicional, tocado con arco."
+    pt: "Rabeca tradicional, um violino rústico tocado com arco."
+  visual_cues: ["violin-shaped body", "bow", "played at shoulder/chest"]
+  confusing_classes: ["violao"]
+
+reque-reque:
+  canonical_name: reque-reque
+  names:
+    pt: "reque-reque"
+    en: "reque-reque, a notched scraper idiophone"
+    es: "reque-reque, raspador con muescas"
+  definitions:
+    en: "Notched scraper idiophone (güiro-like) scraped with a stick."
+    es: "Idiófono raspador con muescas (tipo güiro) que se rasca con una vara."
+    pt: "Idiofone raspador com ranhuras (tipo reco-reco) raspado com uma vareta."
+  visual_cues: ["notched ridged surface", "scraping stick"]
+  confusing_classes: ["matracas"]
+
+sarronca:
+  canonical_name: sarronca
+  names:
+    pt: "sarronca"
+    en: "sarronca, a Portuguese friction drum"
+    es: "sarronca, tambor de fricción portugués"
+  definitions:
+    en: "Friction drum: a membrane with a central rod rubbed to produce a roaring sound."
+    es: "Tambor de fricción: una membrana con una varilla central que se frota."
+    pt: "Tambor de fricção: uma membrana com uma vara central que se esfrega (ronca)."
+  visual_cues: ["drum with central protruding rod", "rubbed by hand"]
+  confusing_classes: []
+
+viola-amarantina:
+  canonical_name: viola-amarantina
+  names:
+    pt: "viola amarantina"
+    en: "viola amarantina, a regional Portuguese guitar with heart-shaped soundholes"
+    es: "viola amarantina, guitarra regional portuguesa con bocas en forma de corazón"
+  definitions:
+    en: "Regional viola from Amarante with two heart-shaped soundholes."
+    es: "Viola regional de Amarante con dos bocas en forma de corazón."
+    pt: "Viola regional de Amarante com duas bocas em forma de coração."
+  visual_cues: ["heart-shaped soundholes", "guitar body", "decorated soundboard"]
+  confusing_classes: ["viola-braguesa", "viola-toeira", "violao"]
+
+viola-beiroa:
+  canonical_name: viola-beiroa
+  names:
+    pt: "viola beiroa"
+    en: "viola beiroa, a regional Portuguese guitar from Beira"
+    es: "viola beiroa, guitarra regional portuguesa de Beira"
+  definitions:
+    en: "Regional viola from the Beira region, a folk guitar variant."
+    es: "Viola regional de la región de Beira, variante de guitarra popular."
+    pt: "Viola regional da Beira, variante de guitarra popular."
+  visual_cues: ["guitar body", "regional folk decoration"]
+  confusing_classes: ["viola-campanica", "viola-toeira"]
+
+viola-braguesa:
+  canonical_name: viola-braguesa
+  names:
+    pt: "viola braguesa"
+    en: "viola braguesa, a regional Portuguese guitar from Braga"
+    es: "viola braguesa, guitarra regional portuguesa de Braga"
+  definitions:
+    en: "Regional viola from Braga with five double courses of strings."
+    es: "Viola regional de Braga con cinco órdenes dobles de cuerdas."
+    pt: "Viola regional de Braga com cinco ordens duplas de cordas."
+  visual_cues: ["guitar body", "double-course strings"]
+  confusing_classes: ["viola-amarantina", "viola-de-arame"]
+
+viola-campanica:
+  canonical_name: viola-campanica
+  names:
+    pt: "viola campaniça"
+    en: "viola campaniça, a regional Portuguese guitar from the Alentejo"
+    es: "viola campaniça, guitarra regional portuguesa del Alentejo"
+  definitions:
+    en: "Large regional viola from the Alentejo (Campo) used to accompany singing."
+    es: "Gran viola regional del Alentejo usada para acompañar el canto."
+    pt: "Grande viola regional do Alentejo (Campo) usada para acompanhar o canto."
+  visual_cues: ["large guitar body", "regional decoration"]
+  confusing_classes: ["viola-beiroa"]
+
+viola-de-arame:
+  canonical_name: viola-de-arame
+  names:
+    pt: "viola de arame"
+    en: "viola de arame, a wire-strung Portuguese guitar from Madeira"
+    es: "viola de arame, guitarra portuguesa de cuerdas metálicas de Madeira"
+  definitions:
+    en: "Wire-strung folk viola from Madeira."
+    es: "Viola popular de cuerdas metálicas de Madeira."
+    pt: "Viola popular de cordas de arame da Madeira."
+  visual_cues: ["guitar body", "metal (wire) strings"]
+  confusing_classes: ["viola-braguesa", "cavaquinho"]
+
+viola-toeira:
+  canonical_name: viola-toeira
+  names:
+    pt: "viola toeira"
+    en: "viola toeira, a regional Portuguese guitar from Coimbra"
+    es: "viola toeira, guitarra regional portuguesa de Coímbra"
+  definitions:
+    en: "Regional viola from the Coimbra region with double-course strings."
+    es: "Viola regional de la región de Coímbra con cuerdas en órdenes dobles."
+    pt: "Viola regional da região de Coimbra com cordas em ordens duplas."
+  visual_cues: ["guitar body", "double-course strings", "regional decoration"]
+  confusing_classes: ["viola-amarantina", "viola-beiroa"]
+
+violao:
+  canonical_name: violao
+  names:
+    pt: "violão"
+    en: "classical acoustic guitar (six strings)"
+    es: "guitarra clásica acústica (seis cuerdas)"
+  definitions:
+    en: "Standard six-string acoustic/classical guitar with a round soundhole."
+    es: "Guitarra acústica/clásica estándar de seis cuerdas con boca redonda."
+    pt: "Viola/violão acústico clássico de seis cordas com boca redonda."
+  visual_cues: ["large guitar body", "round soundhole", "six strings"]
+  confusing_classes: ["guitarra-portuguesa", "cavaquinho", "viola-amarantina"]

@@ -1,0 +1,47 @@
+# Docker Compose GPU (ADR §11.2). Qdrant se omite (opcional); MLflow es file-store (sin servicio).
+services:
+  irlab:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.gpu
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_HOME=/models/huggingface
+      - TRANSFORMERS_CACHE=/models/huggingface
+      - MLFLOW_TRACKING_URI=file:/workspace/outputs/mlruns
+      - EXPERIMENT_OFFLINE=${EXPERIMENT_OFFLINE:-false}
+    volumes:
+      - ../data:/workspace/data
+      - ../outputs:/workspace/outputs
+      - ../configs:/workspace/configs
+      - ../models:/models
+    ports:
+      - "7860:7860"   # Gradio
+      - "8000:8000"   # API
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+  # Servidor VLM OpenAI-compatible (B4/B5). Sirve Qwen2.5-VL vía vLLM.
+  vlm-server:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    command: >
+      --model Qwen/Qwen2.5-VL-7B-Instruct
+      --served-model-name qwen2.5-vl
+      --port 8001
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_HOME=/models/huggingface
+    volumes:
+      - ../models:/models
+    ports:
+      - "8001:8001"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]

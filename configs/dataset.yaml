@@ -1,0 +1,19 @@
+# Configuración del dataset (ADR §5).
+dataset:
+  name: portuguese_instruments
+  doi: "10.17632/pk7txkgt4v.2"          # Mendeley Data (dataset inmutable)
+  source: "Mendeley / Roboflow COCO export"
+  license: "CC BY 4.0"
+  raw_root: data/raw/portuguese_instruments
+  processed_root: data/processed
+  mapping: data/processed/image_id_mapping.parquet
+  splits: [train, valid, test]
+  unit: frame                            # unidad de búsqueda = frame (no vídeo)
+  anonymize_filenames: true             # ADR §5.2 (los nombres contienen el instrumento + vimeo_id)
+  exclude_umbrella_categories: [instruments]   # categoría COCO id 0, sin anotaciones
+  n_classes: 22
+
+queries:
+  config: configs/queries.yaml
+  languages: [pt, en, es]
+  primary_language: en                  # query principal para macro por instrumento

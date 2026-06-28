@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "instrument-ir"
+version = "0.1.0"
+description = "Instrument Retrieval Lab — visual IR for traditional Portuguese musical instruments (B1/B3/B4/B5)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Adrián Valera" }]
+
+# Dependencias base: capa de datos + evaluación + CLI (sin torch).
+# Permite trabajar prepare-data / build-qrels / evaluate sin instalar GPU stack.
+dependencies = [
+    "typer>=0.12",
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "pandas>=2.0",
+    "pyarrow>=15.0",
+    "numpy>=1.26",
+    "pillow>=10.0",
+    "ranx>=0.3.20",
+    "jsonschema>=4.21",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+# Retrieval denso (B1) + índice exacto. Instalar con: pip install -e ".[dense]"
+dense = [
+    "torch>=2.1",
+    "open-clip-torch>=2.24",
+    "faiss-cpu>=1.8",
+]
+# Reranking VLM (B4/B5): cliente OpenAI-compatible contra vLLM local.
+rerank = [
+    "openai>=1.30",
+]
+# Tracking, demo y reporting.
+extras = [
+    "mlflow>=2.12",
+    "dvc>=3.50",
+    "gradio>=4.0",
+    "matplotlib>=3.8",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+instrument-ir = "instrument_ir.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+instrument_ir = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

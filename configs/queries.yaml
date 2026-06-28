@@ -1,0 +1,222 @@
+# Queries por instrumento (ADR §5.4). Generado desde configs/instruments.yaml.
+# Editable: puedes mejorar textos, sinónimos o añadir idiomas.
+adufe:
+- id: q_adufe_pt
+  language: pt
+  text: adufe
+- id: q_adufe_en
+  language: en
+  text: adufe, a Portuguese square frame drum
+- id: q_adufe_es
+  language: es
+  text: adufe, tambor cuadrado portugués
+bombos:
+- id: q_bombos_pt
+  language: pt
+  text: bombos
+- id: q_bombos_en
+  language: en
+  text: bombo, a large Portuguese bass drum
+- id: q_bombos_es
+  language: es
+  text: bombo, gran tambor grave portugués
+caixa-tamboril:
+- id: q_caixa_tamboril_pt
+  language: pt
+  text: caixa ou tamboril
+- id: q_caixa_tamboril_en
+  language: en
+  text: caixa / tamboril, a Portuguese snare drum
+- id: q_caixa_tamboril_es
+  language: es
+  text: caja o tamboril, tambor portugués
+castanholas:
+- id: q_castanholas_pt
+  language: pt
+  text: castanholas
+- id: q_castanholas_en
+  language: en
+  text: castanets
+- id: q_castanholas_es
+  language: es
+  text: castañuelas
+cavaquinho:
+- id: q_cavaquinho_pt
+  language: pt
+  text: cavaquinho
+- id: q_cavaquinho_en
+  language: en
+  text: cavaquinho, a small four-string Portuguese guitar
+- id: q_cavaquinho_es
+  language: es
+  text: cavaquinho, pequeña guitarra portuguesa de cuatro cuerdas
+concertina:
+- id: q_concertina_pt
+  language: pt
+  text: concertina
+- id: q_concertina_en
+  language: en
+  text: concertina / button accordion
+- id: q_concertina_es
+  language: es
+  text: concertina / acordeón de botones
+ferrinhos-triangulo:
+- id: q_ferrinhos_triangulo_pt
+  language: pt
+  text: ferrinhos ou triângulo
+- id: q_ferrinhos_triangulo_en
+  language: en
+  text: triangle (ferrinhos)
+- id: q_ferrinhos_triangulo_es
+  language: es
+  text: triángulo (ferrinhos)
+flauta:
+- id: q_flauta_pt
+  language: pt
+  text: flauta
+- id: q_flauta_en
+  language: en
+  text: flute
+- id: q_flauta_es
+  language: es
+  text: flauta
+gaita-de-foles:
+- id: q_gaita_de_foles_pt
+  language: pt
+  text: gaita de foles
+- id: q_gaita_de_foles_en
+  language: en
+  text: bagpipes
+- id: q_gaita_de_foles_es
+  language: es
+  text: gaita
+guitarra-portuguesa:
+- id: q_guitarra_portuguesa_pt
+  language: pt
+  text: guitarra portuguesa
+- id: q_guitarra_portuguesa_en
+  language: en
+  text: Portuguese guitar (pear-shaped, twelve strings)
+- id: q_guitarra_portuguesa_es
+  language: es
+  text: guitarra portuguesa (forma de pera, doce cuerdas)
+matracas:
+- id: q_matracas_pt
+  language: pt
+  text: matracas
+- id: q_matracas_en
+  language: en
+  text: matraca, a wooden rattle/clapper
+- id: q_matracas_es
+  language: es
+  text: matraca, carraca de madera
+palheta:
+- id: q_palheta_pt
+  language: pt
+  text: palheta
+- id: q_palheta_en
+  language: en
+  text: palheta, a Portuguese double-reed wind instrument
+- id: q_palheta_es
+  language: es
+  text: palheta, instrumento de viento de doble lengüeta portugués
+rabeca-chuleira:
+- id: q_rabeca_chuleira_pt
+  language: pt
+  text: rabeca chuleira
+- id: q_rabeca_chuleira_en
+  language: en
+  text: rabeca, a Portuguese folk fiddle
+- id: q_rabeca_chuleira_es
+  language: es
+  text: rabeca, violín popular portugués
+reque-reque:
+- id: q_reque_reque_pt
+  language: pt
+  text: reque-reque
+- id: q_reque_reque_en
+  language: en
+  text: reque-reque, a notched scraper idiophone
+- id: q_reque_reque_es
+  language: es
+  text: reque-reque, raspador con muescas
+sarronca:
+- id: q_sarronca_pt
+  language: pt
+  text: sarronca
+- id: q_sarronca_en
+  language: en
+  text: sarronca, a Portuguese friction drum
+- id: q_sarronca_es
+  language: es
+  text: sarronca, tambor de fricción portugués
+viola-amarantina:
+- id: q_viola_amarantina_pt
+  language: pt
+  text: viola amarantina
+- id: q_viola_amarantina_en
+  language: en
+  text: viola amarantina, a regional Portuguese guitar with heart-shaped soundholes
+- id: q_viola_amarantina_es
+  language: es
+  text: viola amarantina, guitarra regional portuguesa con bocas en forma de corazón
+viola-beiroa:
+- id: q_viola_beiroa_pt
+  language: pt
+  text: viola beiroa
+- id: q_viola_beiroa_en
+  language: en
+  text: viola beiroa, a regional Portuguese guitar from Beira
+- id: q_viola_beiroa_es
+  language: es
+  text: viola beiroa, guitarra regional portuguesa de Beira
+viola-braguesa:
+- id: q_viola_braguesa_pt
+  language: pt
+  text: viola braguesa
+- id: q_viola_braguesa_en
+  language: en
+  text: viola braguesa, a regional Portuguese guitar from Braga
+- id: q_viola_braguesa_es
+  language: es
+  text: viola braguesa, guitarra regional portuguesa de Braga
+viola-campanica:
+- id: q_viola_campanica_pt
+  language: pt
+  text: viola campaniça
+- id: q_viola_campanica_en
+  language: en
+  text: viola campaniça, a regional Portuguese guitar from the Alentejo
+- id: q_viola_campanica_es
+  language: es
+  text: viola campaniça, guitarra regional portuguesa del Alentejo
+viola-de-arame:
+- id: q_viola_de_arame_pt
+  language: pt
+  text: viola de arame
+- id: q_viola_de_arame_en
+  language: en
+  text: viola de arame, a wire-strung Portuguese guitar from Madeira
+- id: q_viola_de_arame_es
+  language: es
+  text: viola de arame, guitarra portuguesa de cuerdas metálicas de Madeira
+viola-toeira:
+- id: q_viola_toeira_pt
+  language: pt
+  text: viola toeira
+- id: q_viola_toeira_en
+  language: en
+  text: viola toeira, a regional Portuguese guitar from Coimbra
+- id: q_viola_toeira_es
+  language: es
+  text: viola toeira, guitarra regional portuguesa de Coímbra
+violao:
+- id: q_violao_pt
+  language: pt
+  text: violão
+- id: q_violao_en
+  language: en
+  text: classical acoustic guitar (six strings)
+- id: q_violao_es
+  language: es
+  text: guitarra clásica acústica (seis cuerdas)

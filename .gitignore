@@ -1,0 +1,30 @@
+# Datos (pesados / inmutables, versionados por DOI Mendeley, no por git)
+# Solo la carpeta de datos en la raíz (no src/instrument_ir/data/).
+/data/
+*.zip
+
+# Salidas de experimentos
+outputs/
+mlruns/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Caches de herramientas
+.pytest_cache/
+.dvc/cache
+.ruff_cache/
+.mypy_cache/
+
+# SO / editor
+.DS_Store
+.idea/
+.vscode/
