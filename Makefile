@@ -3,8 +3,14 @@
 
 COMPOSE = docker compose -f docker/docker-compose.gpu.yml
 SPLIT ?= valid
+B1_MODEL ?= openclip-vitb32
 
-.PHONY: help build check-gpu prepare queries qrels retrieve eval smoke test b1 b3 b4 b5 report serve slides repro
+# En macOS, forzar el camino numpy para evitar el deadlock OpenMP faiss+torch.
+ifeq ($(shell uname),Darwin)
+export INSTRUMENT_IR_NO_FAISS = 1
+endif
+
+.PHONY: help build check-gpu prepare queries qrels retrieve eval smoke test b1 b1-all b3 b4 b5 report serve slides repro
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  %-12s %s\n", $$1, $$2}'
@@ -36,8 +42,16 @@ smoke: ## Smoke test end-to-end (<10 min) — ADR §21
 test: ## Tests (incl. anti-fuga) — ADR §15.2
 	pytest -q
 
-b1: ## [Fase 2] Dense global
-	@echo "Fase 2 — pendiente"
+b1: ## [Fase 2] Dense global B1 (B1_MODEL=openclip-vitb32|openclip-vitl14|jinaclip, SPLIT=valid)
+	instrument-ir embed --split $(SPLIT) --model $(B1_MODEL)
+	instrument-ir retrieve --split $(SPLIT) --model $(B1_MODEL) --run-name B1_$(B1_MODEL)_$(SPLIT)
+	instrument-ir evaluate --run outputs/runs/B1_$(B1_MODEL)_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
+
+b1-all: ## [Fase 2] B1 con los 3 modelos dense (SPLIT=valid)
+	$(MAKE) b1 B1_MODEL=openclip-vitb32 SPLIT=$(SPLIT)
+	$(MAKE) b1 B1_MODEL=openclip-vitl14 SPLIT=$(SPLIT)
+	$(MAKE) b1 B1_MODEL=jinaclip SPLIT=$(SPLIT)
+
 b3: ## [Fase 3] Late-interaction
 	@echo "Fase 3 — pendiente"
 b4: ## [Fase 4] VLM reranker

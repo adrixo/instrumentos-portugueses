@@ -76,6 +76,15 @@ métricas en MLflow (file-store), pipeline en `dvc.yaml`. Dataset inmutable por 
 `tests/test_no_filename_leakage.py` verifica que los artefactos públicos (corpus, runfile, qrels) no
 contienen nombres de archivo, ids de Vimeo ni etiquetas, y que los `image_id` son anónimos.
 
+## Troubleshooting / notas
+
+- **faiss + torch en macOS (deadlock OpenMP)**: si al lanzar retrieval con OpenCLIP el proceso se
+  queda colgado (CPU ~0%, sin avanzar) o aparece `OMP: Error #15`, es el choque de dos runtimes
+  OpenMP (faiss y torch). En Mac, exporta `INSTRUMENT_IR_NO_FAISS=1` para usar el camino numpy exacto
+  (idéntico resultado; faiss solo aporta velocidad a gran escala, innecesaria con ~1.3k vectores). En
+  la máquina GPU remota (Linux + faiss-cpu/gpu) no ocurre.
+- **HF offline**: con `HF_HUB_OFFLINE=1` se evita contactar el Hub si los pesos ya están cacheados.
+
 ## Citation
 
 Dataset: *Visual Dataset of Traditional Portuguese Musical Instruments*, Mendeley Data,

@@ -85,25 +85,27 @@ def build_qrels_cmd(
 
 def _build_retriever(model: str, split: str, processed: Path, raw: Path, seed: int):
     from .data.prepare_dataset import load_mapping
+    from .retrieval.cache import CorpusEmbeddingCache
+    from .retrieval.factory import build_retriever, resolve_model
     from .utils.io import ImageProvider
 
-    if model == "dummy":
-        from .retrieval.base import DummyRetriever
+    cfg = resolve_model(model)
+    cfg.setdefault("seed", seed)
+    if cfg["type"] == "dummy":
+        return build_retriever(cfg)
 
-        return DummyRetriever(seed=seed)
-    if model in ("openclip", "openclip-vitb32"):
-        mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
-        provider = ImageProvider(mapping, raw)
-        from .retrieval.openclip_retriever import OpenClipRetriever
-
-        return OpenClipRetriever(provider, model_name="ViT-B-32")
-    raise typer.BadParameter(f"Modelo de retrieval desconocido: {model}")
+    mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
+    provider = ImageProvider(mapping, raw)
+    cache = CorpusEmbeddingCache()
+    return build_retriever(cfg, provider=provider, cache=cache, split=split)
 
 
 @app.command("retrieve")
 def retrieve(
     split: str = typer.Option(..., help="train|valid|test"),
-    model: str = typer.Option("dummy", help="dummy | openclip-vitb32"),
+    model: str = typer.Option(
+        "dummy", help="dummy | openclip-vitb32 | openclip-vitl14 | jinaclip | ruta YAML"
+    ),
     top_k: int = typer.Option(100, help="Top-K a recuperar"),
     processed: Path = typer.Option(PROCESSED_DEFAULT),
     raw: Path = typer.Option(RAW_DEFAULT),
@@ -152,6 +154,17 @@ def evaluate_cmd(
         typer.echo("  (macro por instrumento)")
         for m, v in result["macro_metrics"].items():
             typer.echo(f"    macro_{m}: {v:.4f}")
+
+    # Espejo en MLflow (file-store); no-op si no está instalado.
+    from .utils.tracking import log_run
+
+    macro = {f"macro_{m}": v for m, v in result.get("macro_metrics", {}).items()}
+    log_run(
+        experiment="portuguese_instruments_ir",
+        run_name=Path(run).stem,
+        params={"run": Path(run).stem, "qrels": str(qrels), "n_queries": result["n_queries"]},
+        metrics={**result["metrics"], **macro},
+    )
 
 
 @app.command("smoke")
@@ -213,9 +226,24 @@ def _not_implemented(name: str):
 
 
 @app.command("embed")
-def embed():
-    """[stub] Precomputar embeddings (Fase 2)."""
-    _not_implemented("embed")
+def embed(
+    split: str = typer.Option(..., help="train|valid|test"),
+    model: str = typer.Option("openclip-vitb32", help="atajo o ruta YAML de configs/models/"),
+    processed: Path = typer.Option(PROCESSED_DEFAULT),
+    raw: Path = typer.Option(RAW_DEFAULT),
+    seed: int = typer.Option(42),
+):
+    """Precomputa y cachea los embeddings del corpus de un modelo/split (acelera retrieve)."""
+    import pandas as pd
+
+    set_global_determinism(seed)
+    corpus = pd.read_parquet(processed / split / "corpus.parquet")
+    image_ids = corpus["image_id"].tolist()
+    retriever = _build_retriever(model, split, processed, raw, seed)
+    if not hasattr(retriever, "encode_corpus"):
+        raise typer.BadParameter(f"El modelo '{model}' no soporta embed (¿dummy?).")
+    emb = retriever.encode_corpus(image_ids)  # encode_corpus cachea internamente
+    typer.echo(f"embeddings {retriever.name} {split}: {emb.shape} cacheados")
 
 
 @app.command("build-index")

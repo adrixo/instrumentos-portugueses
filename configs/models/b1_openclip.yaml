@@ -1,0 +1,7 @@
+# B1 — Dense global OpenCLIP ViT-B/32 (baseline barato).
+retriever:
+  type: openclip
+  model_name: ViT-B-32
+  pretrained: laion2b_s34b_b79k
+  batch_size: 64
+  top_k: 100

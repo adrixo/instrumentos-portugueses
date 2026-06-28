@@ -1,0 +1,7 @@
+# B1 — Dense global JinaCLIP v2 (multimodal multilingüe: pt/en/es).
+retriever:
+  type: jinaclip
+  model_name: jinaai/jina-clip-v2
+  batch_size: 32
+  truncate_dim: null     # dimensión completa (Matryoshka permite truncar para ahorrar memoria)
+  top_k: 100

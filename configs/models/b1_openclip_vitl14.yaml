@@ -1,0 +1,7 @@
+# B1 — Dense global OpenCLIP ViT-L/14 (más fuerte, más caro).
+retriever:
+  type: openclip
+  model_name: ViT-L-14
+  pretrained: laion2b_s34b_b79k
+  batch_size: 32
+  top_k: 100
