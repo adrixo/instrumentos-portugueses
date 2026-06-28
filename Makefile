@@ -62,8 +62,11 @@ b4: ## [Fase 4] VLM reranker B4 (BACKEND=openai|mock, requiere VLM+GPU si openai
 	instrument-ir rerank-vlm --dense-run $(DENSE_RUN) --split $(SPLIT) --backend $(BACKEND) \
 		--run-name B4_$(B1_MODEL)_$(SPLIT)
 	instrument-ir evaluate --run outputs/runs/B4_$(B1_MODEL)_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
-b5: ## [Fase 5] Agente reranker
-	@echo "Fase 5 — pendiente"
+ABLATION ?= full
+b5: ## [Fase 5] Agente reranker B5 (BACKEND=openai|mock, ABLATION=full|no_crops|...)
+	instrument-ir rerank-agent --dense-run $(DENSE_RUN) --split $(SPLIT) --backend $(BACKEND) \
+		--ablation $(ABLATION) --run-name B5_$(B1_MODEL)_$(ABLATION)_$(SPLIT)
+	instrument-ir evaluate --run outputs/runs/B5_$(B1_MODEL)_$(ABLATION)_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
 report: ## [Fase 6] Informe
 	@echo "Fase 6 — pendiente"
 serve: ## [Fase 6] Buscador

@@ -1,0 +1,18 @@
+# B5 — Dense + agente reranker determinista (ADR §5). Requiere servidor VLM (vLLM) + GPU.
+reranker:
+  type: agentic
+  backend: openai
+  vlm_model: qwen2.5-vl
+  base_url: http://localhost:8001/v1
+  agent_framework: custom_graph        # grafo propio determinista (no LangGraph)
+  high_confidence_threshold: 0.80
+  low_confidence_threshold: 0.40
+  max_crops_per_image: 5
+  crop_strategies: [center, grid2x2]   # MVP: full_image + center + grid_2x2
+  fusion: max                          # simple (preferida para el paper); alt: weighted
+  top_n_candidates: 200
+  final_top_k: 100
+  temperature: 0.0
+  seed: 42
+dense_run: outputs/runs/B1_openclip-vitb32_valid.trec
+# Ablaciones: full, no_crops, no_caption, full_image_only, max_score_only, weighted_fusion

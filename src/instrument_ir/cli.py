@@ -295,10 +295,66 @@ def rerank_vlm(
     typer.echo(f"  candidates: outputs/candidates/{name}.parquet")
 
 
+_ABLATIONS = {
+    "full": {},
+    "no_crops": {"use_crops": False},
+    "no_caption": {"use_caption": False},
+    "full_image_only": {"full_image_only": True},
+    "max_score_only": {"fusion": "max"},
+    "weighted_fusion": {"fusion": "weighted"},
+}
+
+
 @app.command("rerank-agent")
-def rerank_agent():
-    """[stub] Reranker agéntico B5 (Fase 5)."""
-    _not_implemented("rerank-agent")
+def rerank_agent(
+    dense_run: Path = typer.Option(..., help="Runfile dense (B1/B3) con los candidatos"),
+    split: str = typer.Option(..., help="train|valid|test"),
+    backend: str = typer.Option("mock", help="mock | openai"),
+    vlm_model: str = typer.Option("qwen2.5-vl"),
+    base_url: str = typer.Option("http://localhost:8001/v1"),
+    ablation: str = typer.Option("full", help="full|no_crops|no_caption|full_image_only|weighted_fusion"),
+    top_n: int = typer.Option(200),
+    final_top_k: int = typer.Option(100),
+    high_conf: float = typer.Option(0.80),
+    max_crops: int = typer.Option(5),
+    processed: Path = typer.Option(PROCESSED_DEFAULT),
+    raw: Path = typer.Option(RAW_DEFAULT),
+    queries: Path = typer.Option(QUERIES_YAML),
+    instruments: Path = typer.Option(INSTRUMENTS_YAML),
+    run_name: str = typer.Option(None),
+    seed: int = typer.Option(42),
+):
+    """B5 — Reranker agéntico determinista (grafo propio) sobre el top-N dense."""
+    from .agent.graph import AgenticReranker
+    from .data.prepare_dataset import load_mapping
+    from .data.queries import load_instruments, load_queries
+    from .reranking.base import load_candidates_from_run
+    from .reranking.runner import run_pointwise_rerank
+    from .reranking.vlm_backend import MockVLMBackend, OpenAICompatVLMBackend
+    from .utils.io import ImageProvider
+
+    if ablation not in _ABLATIONS:
+        raise typer.BadParameter(f"ablation desconocida: {ablation} ({list(_ABLATIONS)})")
+
+    set_global_determinism(seed)
+    mapping = load_mapping(processed / "image_id_mapping.parquet", split=split)
+    provider = ImageProvider(mapping, raw)
+    qs = load_queries(queries)
+    instr = load_instruments(instruments)
+    cands = load_candidates_from_run(dense_run, top_n)
+
+    vlm = (
+        OpenAICompatVLMBackend(model=vlm_model, base_url=base_url)
+        if backend == "openai" else MockVLMBackend()
+    )
+    reranker = AgenticReranker(
+        vlm, provider, high_confidence_threshold=high_conf, max_crops=max_crops,
+        dense_retriever_name=Path(dense_run).stem, seed=seed, **_ABLATIONS[ablation],
+    )
+    name = run_name or f"B5_{Path(dense_run).stem}_{ablation}_{split}".replace("/", "-")
+    run_path = run_pointwise_rerank(reranker, qs, instr, cands, name, final_top_k=final_top_k)
+    typer.echo(f"B5 runfile: {run_path}")
+    typer.echo(f"  traces: outputs/rerank_traces/{name}.jsonl  (ablation={ablation})")
 
 
 @app.command("report")
