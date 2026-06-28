@@ -10,9 +10,10 @@ Ver el PRD completo en [ADR.md](ADR.md).
 
 ## Estado
 
-- **Fase 1 (infraestructura) — COMPLETA**: parser COCO, anonimización, qrels, retrieve dummy,
-  evaluación con ranx, smoke test y tests anti-fuga.
-- Fases 2–6 (B1/B3/B4/B5, buscador, informes, slides) — pendientes.
+Los 5 sistemas del ADR (B1/B3/B4/B5) + buscador, informes y slides están **implementados**.
+- **Validado en CPU**: pipeline de datos, anti-fuga, B1 dense (real en valid), núcleos de
+  B3 (MaxSim), B4 (reranker VLM) y B5 (agente) con backend mock + tests; informe y slides.
+- **Pendiente de ejecución real en GPU**: B3 (ColQwen), B4/B5 (servidor VLM vLLM) sobre valid/test.
 
 ## Dataset setup
 

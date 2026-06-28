@@ -358,15 +358,32 @@ def rerank_agent(
 
 
 @app.command("report")
-def report():
-    """[stub] Informe (Fase 6)."""
-    _not_implemented("report")
+def report(
+    metrics_dir: Path = typer.Option(METRICS_DIR),
+    out_dir: Path = typer.Option(Path("outputs/reports")),
+    slides: bool = typer.Option(True, help="Generar también slides Marp"),
+):
+    """Genera informe final (MD/HTML + tablas MD/LaTeX + figuras) y slides Marp."""
+    from .reporting.report_generator import generate_report
+    from .reporting.slides_generator import generate_slides
+
+    md = generate_report(metrics_dir, out_dir)
+    typer.echo(f"informe: {md}")
+    typer.echo(f"  tablas: {out_dir}/tables/  figuras: {out_dir}/figures/")
+    if slides:
+        deck = generate_slides(metrics_dir, Path("outputs/slides/slides.md"))
+        typer.echo(f"slides Marp: {deck}")
 
 
 @app.command("serve")
-def serve():
-    """[stub] Buscador web (Fase 6)."""
-    _not_implemented("serve")
+def serve(
+    host: str = typer.Option("0.0.0.0"),
+    port: int = typer.Option(7860),
+):
+    """Lanza el buscador web (Gradio) sobre los runfiles generados."""
+    from .serving.app import launch
+
+    launch(server_name=host, server_port=port)
 
 
 if __name__ == "__main__":

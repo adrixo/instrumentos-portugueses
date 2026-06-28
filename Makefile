@@ -67,11 +67,11 @@ b5: ## [Fase 5] Agente reranker B5 (BACKEND=openai|mock, ABLATION=full|no_crops|
 	instrument-ir rerank-agent --dense-run $(DENSE_RUN) --split $(SPLIT) --backend $(BACKEND) \
 		--ablation $(ABLATION) --run-name B5_$(B1_MODEL)_$(ABLATION)_$(SPLIT)
 	instrument-ir evaluate --run outputs/runs/B5_$(B1_MODEL)_$(ABLATION)_$(SPLIT).trec --qrels data/processed/qrels/$(SPLIT).qrels
-report: ## [Fase 6] Informe
-	@echo "Fase 6 — pendiente"
-serve: ## [Fase 6] Buscador
-	@echo "Fase 6 — pendiente"
-slides: ## [Fase 6] Slides
-	@echo "Fase 6 — pendiente"
+report: ## [Fase 6] Informe (MD/HTML + tablas + figuras) + slides
+	instrument-ir report
+slides: ## [Fase 6] Informe + slides Marp
+	instrument-ir report
+serve: ## [Fase 6] Buscador web Gradio (puerto 7860)
+	instrument-ir serve
 
 repro: prepare qrels retrieve eval ## Reproducir el flujo Fase 1 (SPLIT=valid)
