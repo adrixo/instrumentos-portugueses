@@ -1,0 +1,5 @@
+experiment: { name: EXP13_B5_agent_test, seed: 42, split: test }
+model: configs/models/b5_agentic.yaml
+dense_run: outputs/runs/B1_openclip-vitb32_test.trec
+ablation: full
+evaluation: { final_top_k: 100, top_n: 200 }

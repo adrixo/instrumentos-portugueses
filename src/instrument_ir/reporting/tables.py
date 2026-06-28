@@ -53,6 +53,46 @@ def macro_table_latex(all_metrics: dict[str, dict], columns: list[str] = MACRO_C
     return "\n".join(lines)
 
 
+def _per_query_metric(data: dict, metric: str) -> dict[str, float]:
+    return {q: v.get(metric) for q, v in data.get("per_query", {}).items() if metric in v}
+
+
+def gain_table_md(
+    all_metrics: dict[str, dict],
+    pairs: list[tuple[str, str]],
+    metric: str = "recall@100",
+    seed: int = 42,
+) -> str:
+    """Tabla de ganancia (ADR §18.3): comparison | delta | 95% CI | p | significant (Holm)."""
+    from ..evaluation.statistical_tests import compare_systems, holm_bonferroni
+
+    rows_data, pvals = [], {}
+    for a, b in pairs:
+        if a not in all_metrics or b not in all_metrics:
+            continue
+        pa = _per_query_metric(all_metrics[a], metric)
+        pb = _per_query_metric(all_metrics[b], metric)
+        if not pa or not pb:
+            continue
+        cmp = compare_systems(pb, pa, seed=seed)  # b vs a (mejora de b sobre a)
+        name = f"{b} vs {a}"
+        rows_data.append((name, cmp))
+        pvals[name] = cmp["p_value"]
+
+    adj = holm_bonferroni(pvals) if pvals else {}
+    header = f"| comparison | delta_{metric} | 95% CI | p (Holm) | significant |"
+    sep = "|---|---|---|---|---|"
+    rows = [header, sep]
+    for name, cmp in rows_data:
+        d = cmp["delta_ci"]
+        a = adj.get(name, {})
+        rows.append(
+            f"| {name} | {d['mean']:+.4f} | [{d['lo']:+.3f}, {d['hi']:+.3f}] | "
+            f"{a.get('p_adj', cmp['p_value']):.4f} | {'yes' if a.get('significant') else 'no'} |"
+        )
+    return "\n".join(rows) if rows_data else "_(sin pares comparables)_"
+
+
 def per_instrument_table_md(all_metrics: dict[str, dict], metric: str = "recall@100") -> str:
     """Tabla instrumento × sistema para una métrica (ADR §18.2)."""
     systems = [s for s, d in all_metrics.items() if "per_instrument" in d]

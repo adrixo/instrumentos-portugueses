@@ -11,7 +11,7 @@ ifeq ($(shell uname),Darwin)
 export INSTRUMENT_IR_NO_FAISS = 1
 endif
 
-.PHONY: help build check-gpu prepare queries qrels retrieve eval smoke test b1 b1-all b3 b4 b5 report serve slides repro
+.PHONY: help build check-gpu prepare queries qrels retrieve eval smoke test b1 b1-all b3 b4 b5 report serve slides repro mini-run
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  %-12s %s\n", $$1, $$2}'
@@ -75,3 +75,25 @@ serve: ## [Fase 6] Buscador web Gradio (puerto 7860)
 	instrument-ir serve
 
 repro: prepare qrels retrieve eval ## Reproducir el flujo Fase 1 (SPLIT=valid)
+
+# --- Ejecuciones reales con VLM en esta máquina (MPS) ---
+MINI_TOPN ?= 20
+mini-run: ## End-to-end REAL en el subset mini con VLM HF/MPS (~1h). Lánzalo antes de dormir.
+	instrument-ir prepare-mini
+	instrument-ir retrieve --split mini --model openclip-vitb32 --top-k $(MINI_TOPN) \
+		--queries configs/queries_mini.yaml --run-name B1_mini
+	instrument-ir evaluate --run outputs/runs/B1_mini.trec --qrels data/processed/qrels/mini.qrels \
+		--queries configs/queries_mini.yaml
+	instrument-ir rerank-vlm --dense-run outputs/runs/B1_mini.trec --split mini --backend hf \
+		--vlm-model Qwen/Qwen2.5-VL-3B-Instruct --top-n $(MINI_TOPN) --final-top-k $(MINI_TOPN) \
+		--queries configs/queries_mini.yaml --run-name B4_mini
+	instrument-ir evaluate --run outputs/runs/B4_mini.trec --qrels data/processed/qrels/mini.qrels \
+		--queries configs/queries_mini.yaml
+	instrument-ir rerank-agent --dense-run outputs/runs/B1_mini.trec --split mini --backend hf \
+		--vlm-model Qwen/Qwen2.5-VL-3B-Instruct --top-n $(MINI_TOPN) --final-top-k $(MINI_TOPN) \
+		--ablation full --queries configs/queries_mini.yaml --run-name B5_mini
+	instrument-ir evaluate --run outputs/runs/B5_mini.trec --qrels data/processed/qrels/mini.qrels \
+		--queries configs/queries_mini.yaml
+	instrument-ir rerank-metrics --dense-run outputs/runs/B1_mini.trec --reranked-run outputs/runs/B4_mini.trec \
+		--qrels data/processed/qrels/mini.qrels --n $(MINI_TOPN) --k $(MINI_TOPN)
+	instrument-ir report

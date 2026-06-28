@@ -5,7 +5,27 @@ from __future__ import annotations
 from pathlib import Path
 
 from .plots import recall_at_k_plot
-from .tables import load_all_metrics, macro_table_latex, macro_table_md, per_instrument_table_md
+from .tables import (
+    gain_table_md,
+    load_all_metrics,
+    macro_table_latex,
+    macro_table_md,
+    per_instrument_table_md,
+)
+
+
+def _gain_section(all_metrics: dict) -> str:
+    """Compara cada sistema contra el baseline (menor mAP macro), con test pareado."""
+    if len(all_metrics) < 2:
+        return "_(se necesitan ≥2 sistemas evaluados)_"
+
+    def _map(d):
+        m = d.get("macro_metrics", d.get("metrics", {}))
+        return m.get("map", 0.0)
+
+    baseline = min(all_metrics, key=lambda s: _map(all_metrics[s]))
+    pairs = [(baseline, s) for s in all_metrics if s != baseline]
+    return gain_table_md(all_metrics, pairs, metric="recall@100")
 
 SECTIONS_INTRO = """# Instrument Retrieval Lab — Informe de resultados
 
@@ -44,6 +64,9 @@ def generate_report(
     per_instr_md = per_instrument_table_md(all_metrics)
     (out_dir / "tables" / "results_per_class.md").write_text(per_instr_md, encoding="utf-8")
 
+    gain_md = _gain_section(all_metrics)
+    (out_dir / "tables" / "results_gain.md").write_text(gain_md, encoding="utf-8")
+
     fig_line = ""
     if figures:
         fig_path = recall_at_k_plot(all_metrics, out_dir / "figures" / "recall_at_k.png")
@@ -54,8 +77,9 @@ def generate_report(
         f"{SECTIONS_INTRO}\n"
         f"## 5. Resultados (macro por instrumento)\n\n{macro_md}\n{fig_line}\n"
         f"## 6. Resultados por instrumento (Recall@100)\n\n{per_instr_md}\n\n"
-        f"## 7. Sistemas evaluados\n\n{len(all_metrics)} runs en `{metrics_dir}`.\n\n"
-        f"## 8. Limitaciones\n"
+        f"## 7. Significancia estadística (gain vs baseline, Recall@100)\n\n{gain_md}\n\n"
+        f"## 8. Sistemas evaluados\n\n{len(all_metrics)} runs en `{metrics_dir}`.\n\n"
+        f"## 9. Limitaciones\n"
         f"- Modelos fundacionales pueden conocer instrumentos comunes.\n"
         f"- ~22 clases → potencia estadística limitada; CIs anchos.\n"
         f"- B4/B5 dependen del recall inicial del dense (oracle_recall@N).\n"

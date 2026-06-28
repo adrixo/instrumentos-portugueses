@@ -1,0 +1,4 @@
+experiment: { name: EXP12_B4_qwen25vl_test, seed: 42, split: test }
+model: configs/models/b4_vlm_rerank.yaml
+dense_run: outputs/runs/B1_openclip-vitb32_test.trec
+evaluation: { final_top_k: 100, top_n: 200 }

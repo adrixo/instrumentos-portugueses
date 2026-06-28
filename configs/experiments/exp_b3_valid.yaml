@@ -1,0 +1,3 @@
+experiment: { name: EXP03_B3_colqwen_valid, seed: 42, split: valid }
+model: configs/models/b3_colqwen.yaml
+evaluation: { final_top_k: 100 }

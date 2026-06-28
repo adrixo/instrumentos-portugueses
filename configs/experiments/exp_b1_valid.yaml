@@ -1,0 +1,3 @@
+experiment: { name: EXP01_B1_openclip_valid, seed: 42, split: valid }
+model: configs/models/b1_openclip.yaml
+evaluation: { final_top_k: 100 }

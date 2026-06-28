@@ -93,8 +93,18 @@ def prepare_mini(
     qs = load_queries(queries)
     rows = build_qrels(subset, qs)
     write_qrels_trec(rows, processed / "qrels" / "mini.qrels")
+
+    # Queries reducidas (instrumentos del subset, solo EN) para un end-to-end ágil.
+    from .data.queries import generate_queries, load_instruments, write_queries_yaml
+
+    spec = load_instruments(INSTRUMENTS_YAML)
+    sub_spec = {k: spec[k] for k in targets if k in spec}
+    mini_q = generate_queries(sub_spec, languages=("en",))
+    write_queries_yaml(mini_q, Path("configs/queries_mini.yaml"))
+
     typer.echo(f"split mini: {len(subset)} imágenes ({int(is_pos.sum())} positivas de {targets})")
     typer.echo(f"  corpus: {mini_dir}/corpus.parquet  qrels: {processed}/qrels/mini.qrels")
+    typer.echo("  queries reducidas: configs/queries_mini.yaml (EN)")
 
 
 @app.command("build-qrels")
@@ -392,6 +402,85 @@ def rerank_agent(
     run_path = run_pointwise_rerank(reranker, qs, instr, cands, name, final_top_k=final_top_k)
     typer.echo(f"B5 runfile: {run_path}")
     typer.echo(f"  traces: outputs/rerank_traces/{name}.jsonl  (ablation={ablation})")
+
+
+@app.command("rerank-metrics")
+def rerank_metrics_cmd(
+    dense_run: Path = typer.Option(..., help="Runfile dense (candidatos)"),
+    reranked_run: Path = typer.Option(..., help="Runfile reordenado (B4/B5)"),
+    qrels: Path = typer.Option(...),
+    n: int = typer.Option(200, help="top-N de candidatos"),
+    k: int = typer.Option(100),
+    out: Path = typer.Option(None),
+):
+    """Métricas de reranking (ADR §6.2): candidate/oracle recall, gain, delta nDCG/mAP."""
+    import json
+
+    from .data.qrels import load_qrels_trec
+    from .evaluation.rerank_metrics import (
+        candidate_recall_at_n, delta_metric, oracle_recall_at_k, rerank_gain_at_k,
+    )
+    from .utils.trec import load_run_trec
+
+    qr = load_qrels_trec(qrels)
+    dense = load_run_trec(dense_run)
+    rer = load_run_trec(reranked_run)
+    res = {
+        f"candidate_recall@{n}": candidate_recall_at_n(dense, qr, n)["macro"],
+        f"oracle_recall@{k}": oracle_recall_at_k(dense, qr, n, k)["macro"],
+        f"rerank_gain@{k}": rerank_gain_at_k(rer, dense, qr, k)["macro"],
+        f"delta_ndcg@{k}": delta_metric(rer, dense, qr, f"ndcg@{k}"),
+        "delta_map": delta_metric(rer, dense, qr, "map"),
+    }
+    for kk, vv in res.items():
+        typer.echo(f"  {kk}: {vv:+.4f}")
+    out_path = out or (METRICS_DIR / f"{Path(reranked_run).stem}__rerankmetrics.json")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(res, indent=2), encoding="utf-8")
+    typer.echo(f"-> {out_path}")
+
+
+@app.command("compare")
+def compare_cmd(
+    a: Path = typer.Option(..., help="metrics JSON del sistema A"),
+    b: Path = typer.Option(..., help="metrics JSON del sistema B"),
+    metric: str = typer.Option("recall@100"),
+    seed: int = typer.Option(42),
+):
+    """Compara dos sistemas en una métrica: delta, IC 95% bootstrap y test pareado (ADR §6.4)."""
+    import json
+
+    from .evaluation.statistical_tests import compare_systems
+
+    da = json.loads(Path(a).read_text())["per_query"]
+    db = json.loads(Path(b).read_text())["per_query"]
+    pa = {q: v[metric] for q, v in da.items() if metric in v}
+    pb = {q: v[metric] for q, v in db.items() if metric in v}
+    res = compare_systems(pa, pb, seed=seed)
+    typer.echo(f"{metric}: A={res['mean_a']:.4f}  B={res['mean_b']:.4f}  n={res['n']}")
+    ci = res["delta_ci"]
+    typer.echo(f"  delta(A-B)={ci['mean']:+.4f}  IC95%=[{ci['lo']:+.3f}, {ci['hi']:+.3f}]  p={res['p_value']:.4f}")
+
+
+@app.command("error-analysis")
+def error_analysis_cmd(
+    run: Path = typer.Option(...),
+    qrels: Path = typer.Option(...),
+    mapping: Path = typer.Option(PROCESSED_DEFAULT / "image_id_mapping.parquet"),
+    k: int = typer.Option(10),
+    out: Path = typer.Option(Path("outputs/reports/error_analysis.json")),
+):
+    """Falsos positivos/negativos por query (ADR §13)."""
+    import json
+
+    from .evaluation.error_analysis import analyze_run
+
+    res = analyze_run(run, qrels, mapping, k=k)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(res, indent=2, ensure_ascii=False), encoding="utf-8")
+    tot_fp = sum(v["n_fp"] for v in res.values())
+    tot_fn = sum(v["n_fn"] for v in res.values())
+    typer.echo(f"error analysis: {len(res)} queries, FP={tot_fp}, FN={tot_fn} -> {out}")
 
 
 @app.command("report")
