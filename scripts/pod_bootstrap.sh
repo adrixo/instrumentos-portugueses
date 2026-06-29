@@ -28,33 +28,28 @@ powerdown(){ [ -n "${RUNPOD_API_KEY:-}" ] && [ -n "${RUNPOD_POD_ID:-}" ] && \
 
 note "🚀 Pod arrancado, preparando entorno ($PHASE)..."
 
-# 1. sistema + gh
+# 1. sistema (sin gh: clone y release vía token+curl)
 apt-get update -y >/dev/null 2>&1 || true
-apt-get install -y git curl unzip python3-venv >/dev/null 2>&1 || true
-if ! command -v gh >/dev/null 2>&1; then
-  (type curl >/dev/null && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg 2>/dev/null; \
-   echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list; \
-   apt-get update -y >/dev/null 2>&1; apt-get install -y gh >/dev/null 2>&1) || pip install -q ghapi 2>/dev/null || true
-fi
-export GH_TOKEN
-git config --global credential.helper store
-printf "https://x-access-token:%s@github.com\n" "$GH_TOKEN" > ~/.git-credentials
+apt-get install -y git curl unzip python3-venv jq >/dev/null 2>&1 || true
 
-# 2. clone
+# 2. clone (token embebido en la URL del origin -> push de resultados funciona sin más auth)
 [ -d instrumentos-portugueses ] || git clone "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" || fail "git clone"
 cd instrumentos-portugueses
 git config user.email "pod@runpod"; git config user.name "runpod-bot"
 
-# 3. dataset desde el release
+# 3. dataset desde el release (API GitHub + curl)
 if [ ! -d data/raw/portuguese_instruments/train ]; then
   note "⬇️ bajando dataset del release..."
-  mkdir -p /tmp/ds data/raw
-  gh release download dataset-v2 --repo "$REPO" --dir /tmp/ds --clobber || fail "release download"
-  unzip -q /tmp/ds/*.zip -d /tmp/ds/extract || fail "unzip"
-  # la carpeta interna contiene train/valid/test
+  mkdir -p /tmp/ds data/raw/portuguese_instruments
+  asset_id="$(curl -fsSL -H "Authorization: token ${GH_TOKEN}" \
+    "https://api.github.com/repos/${REPO}/releases/tags/dataset-v2" \
+    | jq -r '.assets[] | select(.name|endswith(".zip")) | .id' | head -1)"
+  [ -z "$asset_id" ] && fail "no encuentro asset del dataset"
+  curl -fL -H "Authorization: token ${GH_TOKEN}" -H "Accept: application/octet-stream" \
+    "https://api.github.com/repos/${REPO}/releases/assets/${asset_id}" -o /tmp/ds/data.zip || fail "descarga dataset"
+  unzip -q /tmp/ds/data.zip -d /tmp/ds/extract || fail "unzip"
   inner="$(find /tmp/ds/extract -maxdepth 2 -type d -name train | head -1 | xargs dirname)"
   [ -z "$inner" ] && fail "estructura dataset inesperada"
-  mkdir -p data/raw/portuguese_instruments
   mv "$inner"/* data/raw/portuguese_instruments/
   rm -rf /tmp/ds
 fi
