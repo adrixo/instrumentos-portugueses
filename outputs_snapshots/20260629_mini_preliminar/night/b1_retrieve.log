@@ -1,0 +1,9 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/Users/adrianvalera/git/doctorado/instrumentos-portugueses/src/instrument_ir/retrieval/faiss_index.py:44: RuntimeWarning: divide by zero encountered in matmul
+  sims = queries @ self._matrix.T  # type: ignore[union-attr]
+/Users/adrianvalera/git/doctorado/instrumentos-portugueses/src/instrument_ir/retrieval/faiss_index.py:44: RuntimeWarning: overflow encountered in matmul
+  sims = queries @ self._matrix.T  # type: ignore[union-attr]
+/Users/adrianvalera/git/doctorado/instrumentos-portugueses/src/instrument_ir/retrieval/faiss_index.py:44: RuntimeWarning: invalid value encountered in matmul
+  sims = queries @ self._matrix.T  # type: ignore[union-attr]
+runfile: outputs/runs/B1_mini.trec  (6 queries, top_k=30)

@@ -1,0 +1,24 @@
+| instrument | B1_dummy_valid | B1_mini | B1_openclip-vitb32_valid | B4_mini | B5_full_mini | B5_fullimg_mini | B5_nocrops_mini | best |
+|---|---|---|---|---|---|---|---|---|
+| adufe | 0.101 | 0.133 | 0.065 | 0.133 | 0.133 | 0.133 | 0.133 | B1_mini |
+| bombos | 0.063 | — | 0.183 | — | — | — | — | B1_openclip-vitb32_valid |
+| caixa-tamboril | 0.061 | — | 0.210 | — | — | — | — | B1_openclip-vitb32_valid |
+| castanholas | 0.061 | — | 0.000 | — | — | — | — | B1_dummy_valid |
+| cavaquinho | 0.077 | 0.500 | 0.062 | 0.500 | 0.500 | 0.500 | 0.500 | B1_mini |
+| concertina | 0.079 | 0.771 | 0.432 | 0.771 | 0.771 | 0.771 | 0.771 | B1_mini |
+| ferrinhos-triangulo | 0.026 | — | 0.269 | — | — | — | — | B1_openclip-vitb32_valid |
+| flauta | 0.072 | — | 0.105 | — | — | — | — | B1_openclip-vitb32_valid |
+| gaita-de-foles | 0.064 | 0.429 | 0.196 | 0.429 | 0.429 | 0.429 | 0.429 | B1_mini |
+| guitarra-portuguesa | 0.087 | 0.700 | 0.118 | 0.700 | 0.700 | 0.700 | 0.700 | B1_mini |
+| matracas | 0.100 | — | 0.200 | — | — | — | — | B1_openclip-vitb32_valid |
+| palheta | 0.167 | — | 0.000 | — | — | — | — | B1_dummy_valid |
+| rabeca-chuleira | 0.096 | — | 0.105 | — | — | — | — | B1_openclip-vitb32_valid |
+| reque-reque | 0.042 | — | 0.042 | — | — | — | — | B1_dummy_valid |
+| sarronca | 0.033 | — | 0.533 | — | — | — | — | B1_openclip-vitb32_valid |
+| viola-amarantina | 0.053 | — | 0.129 | — | — | — | — | B1_openclip-vitb32_valid |
+| viola-beiroa | 0.051 | — | 0.615 | — | — | — | — | B1_openclip-vitb32_valid |
+| viola-braguesa | 0.089 | — | 0.083 | — | — | — | — | B1_dummy_valid |
+| viola-campanica | 0.089 | — | 0.120 | — | — | — | — | B1_openclip-vitb32_valid |
+| viola-de-arame | 0.065 | — | 0.376 | — | — | — | — | B1_openclip-vitb32_valid |
+| viola-toeira | 0.182 | — | 0.000 | — | — | — | — | B1_dummy_valid |
+| violao | 0.074 | 0.639 | 0.087 | 0.639 | 0.639 | 0.639 | 0.639 | B1_mini |

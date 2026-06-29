@@ -1,0 +1,7126 @@
+{
+  "q_adufe_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_001238",
+        "vimeo_id": "74751808"
+      },
+      {
+        "image_id": "img_valid_000600",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000550",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000001",
+        "vimeo_id": "101432923"
+      },
+      {
+        "image_id": "img_valid_000901",
+        "vimeo_id": "47957582"
+      },
+      {
+        "image_id": "img_valid_000345",
+        "vimeo_id": "240659864"
+      },
+      {
+        "image_id": "img_valid_000731",
+        "vimeo_id": "364041462"
+      },
+      {
+        "image_id": "img_valid_000375",
+        "vimeo_id": "247704488"
+      },
+      {
+        "image_id": "img_valid_000352",
+        "vimeo_id": "240988064"
+      },
+      {
+        "image_id": "img_valid_000042",
+        "vimeo_id": "121663441"
+      },
+      {
+        "image_id": "img_valid_000259",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_001274",
+        "vimeo_id": "800906769"
+      },
+      {
+        "image_id": "img_valid_000258",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000378",
+        "vimeo_id": "247704488"
+      },
+      {
+        "image_id": "img_valid_000114",
+        "vimeo_id": "152391768"
+      },
+      {
+        "image_id": "img_valid_001256",
+        "vimeo_id": "76281036"
+      },
+      {
+        "image_id": "img_valid_000369",
+        "vimeo_id": "247630916"
+      },
+      {
+        "image_id": "img_valid_001276",
+        "vimeo_id": "800906769"
+      },
+      {
+        "image_id": "img_valid_000651",
+        "vimeo_id": "322232753"
+      },
+      {
+        "image_id": "img_valid_001118",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_000394",
+        "vimeo_id": "25510596"
+      },
+      {
+        "image_id": "img_valid_001287",
+        "vimeo_id": "816157152"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 158
+  },
+  "q_adufe_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000746",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_001301",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_001115",
+        "vimeo_id": "67385142"
+      },
+      {
+        "image_id": "img_valid_000187",
+        "vimeo_id": "169302749"
+      },
+      {
+        "image_id": "img_valid_000750",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_001303",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000748",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000747",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000841",
+        "vimeo_id": "446182322"
+      },
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000001",
+        "vimeo_id": "101432923"
+      },
+      {
+        "image_id": "img_valid_000901",
+        "vimeo_id": "47957582"
+      },
+      {
+        "image_id": "img_valid_000345",
+        "vimeo_id": "240659864"
+      },
+      {
+        "image_id": "img_valid_000731",
+        "vimeo_id": "364041462"
+      },
+      {
+        "image_id": "img_valid_000375",
+        "vimeo_id": "247704488"
+      },
+      {
+        "image_id": "img_valid_000352",
+        "vimeo_id": "240988064"
+      },
+      {
+        "image_id": "img_valid_000042",
+        "vimeo_id": "121663441"
+      },
+      {
+        "image_id": "img_valid_000259",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_001274",
+        "vimeo_id": "800906769"
+      },
+      {
+        "image_id": "img_valid_000258",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000378",
+        "vimeo_id": "247704488"
+      },
+      {
+        "image_id": "img_valid_000114",
+        "vimeo_id": "152391768"
+      },
+      {
+        "image_id": "img_valid_001256",
+        "vimeo_id": "76281036"
+      },
+      {
+        "image_id": "img_valid_000369",
+        "vimeo_id": "247630916"
+      },
+      {
+        "image_id": "img_valid_001276",
+        "vimeo_id": "800906769"
+      },
+      {
+        "image_id": "img_valid_000651",
+        "vimeo_id": "322232753"
+      },
+      {
+        "image_id": "img_valid_001118",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_000394",
+        "vimeo_id": "25510596"
+      },
+      {
+        "image_id": "img_valid_001287",
+        "vimeo_id": "816157152"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 159
+  },
+  "q_adufe_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000636",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_000627",
+        "vimeo_id": "321963947"
+      },
+      {
+        "image_id": "img_valid_000617",
+        "vimeo_id": "321957973"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000605",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000628",
+        "vimeo_id": "321963947"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000001",
+        "vimeo_id": "101432923"
+      },
+      {
+        "image_id": "img_valid_000901",
+        "vimeo_id": "47957582"
+      },
+      {
+        "image_id": "img_valid_000345",
+        "vimeo_id": "240659864"
+      },
+      {
+        "image_id": "img_valid_000731",
+        "vimeo_id": "364041462"
+      },
+      {
+        "image_id": "img_valid_000375",
+        "vimeo_id": "247704488"
+      },
+      {
+        "image_id": "img_valid_000352",
+        "vimeo_id": "240988064"
+      },
+      {
+        "image_id": "img_valid_000042",
+        "vimeo_id": "121663441"
+      },
+      {
+        "image_id": "img_valid_000259",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_001274",
+        "vimeo_id": "800906769"
+      },
+      {
+        "image_id": "img_valid_000258",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000378",
+        "vimeo_id": "247704488"
+      },
+      {
+        "image_id": "img_valid_000114",
+        "vimeo_id": "152391768"
+      },
+      {
+        "image_id": "img_valid_001256",
+        "vimeo_id": "76281036"
+      },
+      {
+        "image_id": "img_valid_000369",
+        "vimeo_id": "247630916"
+      },
+      {
+        "image_id": "img_valid_001276",
+        "vimeo_id": "800906769"
+      },
+      {
+        "image_id": "img_valid_000651",
+        "vimeo_id": "322232753"
+      },
+      {
+        "image_id": "img_valid_001118",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_001287",
+        "vimeo_id": "816157152"
+      },
+      {
+        "image_id": "img_valid_000371",
+        "vimeo_id": "247630916"
+      }
+    ],
+    "n_fp": 7,
+    "n_fn": 156
+  },
+  "q_bombos_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000776",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_001002",
+        "vimeo_id": "62283089"
+      },
+      {
+        "image_id": "img_valid_000500",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000779",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000777",
+        "vimeo_id": "40005463"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000075",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_001094",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000074",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_001097",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_001261",
+        "vimeo_id": "764284259"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      }
+    ],
+    "n_fp": 6,
+    "n_fn": 260
+  },
+  "q_bombos_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000844",
+        "vimeo_id": "446182322"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000075",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_001094",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000074",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_001097",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_001261",
+        "vimeo_id": "764284259"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      }
+    ],
+    "n_fp": 1,
+    "n_fn": 255
+  },
+  "q_bombos_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000490",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000493",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000491",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000163",
+        "vimeo_id": "161179571"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_001238",
+        "vimeo_id": "74751808"
+      },
+      {
+        "image_id": "img_valid_000856",
+        "vimeo_id": "453027262"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000075",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_001094",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000074",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_001097",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_001261",
+        "vimeo_id": "764284259"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 263
+  },
+  "q_caixa_tamboril_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000650",
+        "vimeo_id": "322232753"
+      },
+      {
+        "image_id": "img_valid_000550",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000381",
+        "vimeo_id": "247717177"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000378",
+        "vimeo_id": "247704488"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_001150",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_000635",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000640",
+        "vimeo_id": "321977068"
+      },
+      {
+        "image_id": "img_valid_000657",
+        "vimeo_id": "322251360"
+      },
+      {
+        "image_id": "img_valid_000334",
+        "vimeo_id": "23966043"
+      },
+      {
+        "image_id": "img_valid_000683",
+        "vimeo_id": "33683412"
+      },
+      {
+        "image_id": "img_valid_000632",
+        "vimeo_id": "321967256"
+      }
+    ],
+    "n_fp": 7,
+    "n_fn": 227
+  },
+  "q_caixa_tamboril_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000750",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000748",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000749",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000746",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000747",
+        "vimeo_id": "383033676"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_001150",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_000635",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000657",
+        "vimeo_id": "322251360"
+      },
+      {
+        "image_id": "img_valid_000334",
+        "vimeo_id": "23966043"
+      },
+      {
+        "image_id": "img_valid_000683",
+        "vimeo_id": "33683412"
+      },
+      {
+        "image_id": "img_valid_000632",
+        "vimeo_id": "321967256"
+      }
+    ],
+    "n_fp": 6,
+    "n_fn": 226
+  },
+  "q_caixa_tamboril_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000687",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000550",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000473",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_001150",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_000635",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000640",
+        "vimeo_id": "321977068"
+      },
+      {
+        "image_id": "img_valid_000657",
+        "vimeo_id": "322251360"
+      },
+      {
+        "image_id": "img_valid_000334",
+        "vimeo_id": "23966043"
+      },
+      {
+        "image_id": "img_valid_000683",
+        "vimeo_id": "33683412"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 229
+  },
+  "q_castanholas_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000210",
+        "vimeo_id": "192498619"
+      },
+      {
+        "image_id": "img_valid_000207",
+        "vimeo_id": "192498619"
+      },
+      {
+        "image_id": "img_valid_001006",
+        "vimeo_id": "62283089"
+      },
+      {
+        "image_id": "img_valid_000209",
+        "vimeo_id": "192498619"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000206",
+        "vimeo_id": "192498619"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000007",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000009",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000720",
+        "vimeo_id": "356591252"
+      },
+      {
+        "image_id": "img_valid_000008",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000011",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000912",
+        "vimeo_id": "502154395"
+      },
+      {
+        "image_id": "img_valid_000010",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000988",
+        "vimeo_id": "571985844"
+      },
+      {
+        "image_id": "img_valid_000989",
+        "vimeo_id": "571985844"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 11
+  },
+  "q_castanholas_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000453",
+        "vimeo_id": "277190399"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000450",
+        "vimeo_id": "277190399"
+      },
+      {
+        "image_id": "img_valid_000451",
+        "vimeo_id": "277190399"
+      },
+      {
+        "image_id": "img_valid_000649",
+        "vimeo_id": "321999919"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_001127",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_000452",
+        "vimeo_id": "277190399"
+      },
+      {
+        "image_id": "img_valid_000527",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000007",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000009",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000720",
+        "vimeo_id": "356591252"
+      },
+      {
+        "image_id": "img_valid_000008",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000011",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000912",
+        "vimeo_id": "502154395"
+      },
+      {
+        "image_id": "img_valid_000010",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000988",
+        "vimeo_id": "571985844"
+      },
+      {
+        "image_id": "img_valid_000989",
+        "vimeo_id": "571985844"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 11
+  },
+  "q_castanholas_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000650",
+        "vimeo_id": "322232753"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000472",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000473",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000521",
+        "vimeo_id": "294556307"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000007",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000009",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000720",
+        "vimeo_id": "356591252"
+      },
+      {
+        "image_id": "img_valid_000008",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000011",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000912",
+        "vimeo_id": "502154395"
+      },
+      {
+        "image_id": "img_valid_000010",
+        "vimeo_id": "107446921"
+      },
+      {
+        "image_id": "img_valid_000988",
+        "vimeo_id": "571985844"
+      },
+      {
+        "image_id": "img_valid_000989",
+        "vimeo_id": "571985844"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 11
+  },
+  "q_cavaquinho_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_001006",
+        "vimeo_id": "62283089"
+      },
+      {
+        "image_id": "img_valid_000620",
+        "vimeo_id": "321957973"
+      },
+      {
+        "image_id": "img_valid_000515",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000519",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000215",
+        "vimeo_id": "192668080"
+      },
+      {
+        "image_id": "img_valid_000517",
+        "vimeo_id": "29368159"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000538",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000766",
+        "vimeo_id": "399230406"
+      },
+      {
+        "image_id": "img_valid_000773",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000240",
+        "vimeo_id": "220050255"
+      },
+      {
+        "image_id": "img_valid_000772",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000790",
+        "vimeo_id": "406153475"
+      },
+      {
+        "image_id": "img_valid_001106",
+        "vimeo_id": "671867378"
+      },
+      {
+        "image_id": "img_valid_000955",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000059",
+        "vimeo_id": "124806444"
+      },
+      {
+        "image_id": "img_valid_000799",
+        "vimeo_id": "408362269"
+      },
+      {
+        "image_id": "img_valid_000534",
+        "vimeo_id": "295780939"
+      },
+      {
+        "image_id": "img_valid_000528",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_001212",
+        "vimeo_id": "73160316"
+      },
+      {
+        "image_id": "img_valid_001213",
+        "vimeo_id": "73160316"
+      },
+      {
+        "image_id": "img_valid_000536",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000774",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_001261",
+        "vimeo_id": "764284259"
+      },
+      {
+        "image_id": "img_valid_000409",
+        "vimeo_id": "26086401"
+      },
+      {
+        "image_id": "img_valid_001087",
+        "vimeo_id": "657738164"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 187
+  },
+  "q_cavaquinho_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000555",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_001141",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000899",
+        "vimeo_id": "476249822"
+      },
+      {
+        "image_id": "img_valid_000558",
+        "vimeo_id": "299457234"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000538",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000766",
+        "vimeo_id": "399230406"
+      },
+      {
+        "image_id": "img_valid_000773",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000240",
+        "vimeo_id": "220050255"
+      },
+      {
+        "image_id": "img_valid_000772",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000790",
+        "vimeo_id": "406153475"
+      },
+      {
+        "image_id": "img_valid_001106",
+        "vimeo_id": "671867378"
+      },
+      {
+        "image_id": "img_valid_000955",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000059",
+        "vimeo_id": "124806444"
+      },
+      {
+        "image_id": "img_valid_000799",
+        "vimeo_id": "408362269"
+      },
+      {
+        "image_id": "img_valid_000534",
+        "vimeo_id": "295780939"
+      },
+      {
+        "image_id": "img_valid_000528",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_001212",
+        "vimeo_id": "73160316"
+      },
+      {
+        "image_id": "img_valid_001213",
+        "vimeo_id": "73160316"
+      },
+      {
+        "image_id": "img_valid_000536",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000774",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_001261",
+        "vimeo_id": "764284259"
+      },
+      {
+        "image_id": "img_valid_000409",
+        "vimeo_id": "26086401"
+      },
+      {
+        "image_id": "img_valid_001087",
+        "vimeo_id": "657738164"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 186
+  },
+  "q_cavaquinho_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000871",
+        "vimeo_id": "46189513"
+      },
+      {
+        "image_id": "img_valid_000775",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000296",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000779",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000873",
+        "vimeo_id": "46189513"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000538",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000766",
+        "vimeo_id": "399230406"
+      },
+      {
+        "image_id": "img_valid_000773",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000240",
+        "vimeo_id": "220050255"
+      },
+      {
+        "image_id": "img_valid_000772",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000790",
+        "vimeo_id": "406153475"
+      },
+      {
+        "image_id": "img_valid_001106",
+        "vimeo_id": "671867378"
+      },
+      {
+        "image_id": "img_valid_000955",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000059",
+        "vimeo_id": "124806444"
+      },
+      {
+        "image_id": "img_valid_000799",
+        "vimeo_id": "408362269"
+      },
+      {
+        "image_id": "img_valid_000534",
+        "vimeo_id": "295780939"
+      },
+      {
+        "image_id": "img_valid_000528",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_001212",
+        "vimeo_id": "73160316"
+      },
+      {
+        "image_id": "img_valid_001213",
+        "vimeo_id": "73160316"
+      },
+      {
+        "image_id": "img_valid_000536",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000774",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_001261",
+        "vimeo_id": "764284259"
+      },
+      {
+        "image_id": "img_valid_000409",
+        "vimeo_id": "26086401"
+      },
+      {
+        "image_id": "img_valid_001087",
+        "vimeo_id": "657738164"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 187
+  },
+  "q_concertina_pt": {
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000901",
+        "vimeo_id": "47957582"
+      },
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_000220",
+        "vimeo_id": "195226573"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001094",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000075",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_000483",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000831",
+        "vimeo_id": "427293226"
+      },
+      {
+        "image_id": "img_valid_000074",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000955",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000534",
+        "vimeo_id": "295780939"
+      },
+      {
+        "image_id": "img_valid_001097",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000553",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000029",
+        "vimeo_id": "121361655"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      }
+    ],
+    "n_fp": 0,
+    "n_fn": 185
+  },
+  "q_concertina_en": {
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000901",
+        "vimeo_id": "47957582"
+      },
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_000220",
+        "vimeo_id": "195226573"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001094",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000075",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_000483",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000831",
+        "vimeo_id": "427293226"
+      },
+      {
+        "image_id": "img_valid_000074",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000955",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000534",
+        "vimeo_id": "295780939"
+      },
+      {
+        "image_id": "img_valid_001097",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000553",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000029",
+        "vimeo_id": "121361655"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      }
+    ],
+    "n_fp": 0,
+    "n_fn": 185
+  },
+  "q_concertina_es": {
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000901",
+        "vimeo_id": "47957582"
+      },
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_000220",
+        "vimeo_id": "195226573"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001094",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000075",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_000483",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000074",
+        "vimeo_id": "135038375"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000955",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000534",
+        "vimeo_id": "295780939"
+      },
+      {
+        "image_id": "img_valid_001097",
+        "vimeo_id": "669142958"
+      },
+      {
+        "image_id": "img_valid_000553",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000029",
+        "vimeo_id": "121361655"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000073",
+        "vimeo_id": "135038375"
+      }
+    ],
+    "n_fp": 0,
+    "n_fn": 185
+  },
+  "q_ferrinhos_triangulo_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000696",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000476",
+        "vimeo_id": "289717853"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001230",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_001229",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000111",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000109",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000677",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001226",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000108",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000523",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000678",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001266",
+        "vimeo_id": "767858520"
+      },
+      {
+        "image_id": "img_valid_000675",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000524",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000521",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000855",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001228",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000520",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000110",
+        "vimeo_id": "150652133"
+      }
+    ],
+    "n_fp": 7,
+    "n_fn": 23
+  },
+  "q_ferrinhos_triangulo_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000479",
+        "vimeo_id": "289717853"
+      },
+      {
+        "image_id": "img_valid_000476",
+        "vimeo_id": "289717853"
+      },
+      {
+        "image_id": "img_valid_000489",
+        "vimeo_id": "290257690"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_001002",
+        "vimeo_id": "62283089"
+      },
+      {
+        "image_id": "img_valid_000475",
+        "vimeo_id": "289717853"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001230",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_001229",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000111",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000109",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000677",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001226",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000108",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000523",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000678",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001266",
+        "vimeo_id": "767858520"
+      },
+      {
+        "image_id": "img_valid_000675",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000524",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000521",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000855",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001228",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000520",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000110",
+        "vimeo_id": "150652133"
+      }
+    ],
+    "n_fp": 6,
+    "n_fn": 22
+  },
+  "q_ferrinhos_triangulo_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000851",
+        "vimeo_id": "448504556"
+      },
+      {
+        "image_id": "img_valid_000854",
+        "vimeo_id": "448504556"
+      },
+      {
+        "image_id": "img_valid_000622",
+        "vimeo_id": "321961485"
+      },
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000853",
+        "vimeo_id": "448504556"
+      },
+      {
+        "image_id": "img_valid_000210",
+        "vimeo_id": "192498619"
+      },
+      {
+        "image_id": "img_valid_000627",
+        "vimeo_id": "321963947"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001230",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_001229",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000111",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000522",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000109",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000677",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001226",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000108",
+        "vimeo_id": "150652133"
+      },
+      {
+        "image_id": "img_valid_000523",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000678",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001266",
+        "vimeo_id": "767858520"
+      },
+      {
+        "image_id": "img_valid_000675",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_000524",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000521",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000855",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001228",
+        "vimeo_id": "74006251"
+      },
+      {
+        "image_id": "img_valid_000520",
+        "vimeo_id": "294556307"
+      },
+      {
+        "image_id": "img_valid_000110",
+        "vimeo_id": "150652133"
+      }
+    ],
+    "n_fp": 7,
+    "n_fn": 23
+  },
+  "q_flauta_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000786",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000554",
+        "vimeo_id": "297922854"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_000528",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000825",
+        "vimeo_id": "426966126"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_000774",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000029",
+        "vimeo_id": "121361655"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000683",
+        "vimeo_id": "33683412"
+      },
+      {
+        "image_id": "img_valid_000494",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000526",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000972",
+        "vimeo_id": "560747327"
+      },
+      {
+        "image_id": "img_valid_001254",
+        "vimeo_id": "762624259"
+      },
+      {
+        "image_id": "img_valid_000397",
+        "vimeo_id": "258363935"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001069",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_000466",
+        "vimeo_id": "28110903"
+      },
+      {
+        "image_id": "img_valid_000760",
+        "vimeo_id": "388792383"
+      },
+      {
+        "image_id": "img_valid_000339",
+        "vimeo_id": "23969663"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 102
+  },
+  "q_flauta_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000738",
+        "vimeo_id": "364967031"
+      },
+      {
+        "image_id": "img_valid_000084",
+        "vimeo_id": "143753731"
+      },
+      {
+        "image_id": "img_valid_000503",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_000528",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000825",
+        "vimeo_id": "426966126"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_000774",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000029",
+        "vimeo_id": "121361655"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000683",
+        "vimeo_id": "33683412"
+      },
+      {
+        "image_id": "img_valid_000494",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000526",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_001254",
+        "vimeo_id": "762624259"
+      },
+      {
+        "image_id": "img_valid_000397",
+        "vimeo_id": "258363935"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001069",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_000466",
+        "vimeo_id": "28110903"
+      },
+      {
+        "image_id": "img_valid_000760",
+        "vimeo_id": "388792383"
+      },
+      {
+        "image_id": "img_valid_000339",
+        "vimeo_id": "23969663"
+      },
+      {
+        "image_id": "img_valid_000771",
+        "vimeo_id": "399831229"
+      }
+    ],
+    "n_fp": 4,
+    "n_fn": 96
+  },
+  "q_flauta_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000786",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000554",
+        "vimeo_id": "297922854"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001067",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_000528",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000825",
+        "vimeo_id": "426966126"
+      },
+      {
+        "image_id": "img_valid_000676",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001349",
+        "vimeo_id": "97807218"
+      },
+      {
+        "image_id": "img_valid_000774",
+        "vimeo_id": "399831229"
+      },
+      {
+        "image_id": "img_valid_000029",
+        "vimeo_id": "121361655"
+      },
+      {
+        "image_id": "img_valid_000867",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000683",
+        "vimeo_id": "33683412"
+      },
+      {
+        "image_id": "img_valid_000494",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000526",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000972",
+        "vimeo_id": "560747327"
+      },
+      {
+        "image_id": "img_valid_001254",
+        "vimeo_id": "762624259"
+      },
+      {
+        "image_id": "img_valid_000397",
+        "vimeo_id": "258363935"
+      },
+      {
+        "image_id": "img_valid_000679",
+        "vimeo_id": "33649598"
+      },
+      {
+        "image_id": "img_valid_001069",
+        "vimeo_id": "65257817"
+      },
+      {
+        "image_id": "img_valid_000466",
+        "vimeo_id": "28110903"
+      },
+      {
+        "image_id": "img_valid_000760",
+        "vimeo_id": "388792383"
+      },
+      {
+        "image_id": "img_valid_000339",
+        "vimeo_id": "23969663"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 102
+  },
+  "q_gaita_de_foles_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000711",
+        "vimeo_id": "349215136"
+      },
+      {
+        "image_id": "img_valid_000781",
+        "vimeo_id": "403974963"
+      },
+      {
+        "image_id": "img_valid_000090",
+        "vimeo_id": "147838363"
+      },
+      {
+        "image_id": "img_valid_000270",
+        "vimeo_id": "237724741"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000638",
+        "vimeo_id": "321976648"
+      },
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000498",
+        "vimeo_id": "290980613"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000738",
+        "vimeo_id": "364967031"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_001150",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000635",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_000086",
+        "vimeo_id": "143753731"
+      },
+      {
+        "image_id": "img_valid_000657",
+        "vimeo_id": "322251360"
+      },
+      {
+        "image_id": "img_valid_000998",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000499",
+        "vimeo_id": "290980613"
+      },
+      {
+        "image_id": "img_valid_000632",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001149",
+        "vimeo_id": "698330039"
+      }
+    ],
+    "n_fp": 5,
+    "n_fn": 172
+  },
+  "q_gaita_de_foles_en": {
+    "false_positives": [],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000638",
+        "vimeo_id": "321976648"
+      },
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000738",
+        "vimeo_id": "364967031"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_001150",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000635",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_000657",
+        "vimeo_id": "322251360"
+      },
+      {
+        "image_id": "img_valid_000998",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000632",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001149",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000502",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000628",
+        "vimeo_id": "321963947"
+      }
+    ],
+    "n_fp": 0,
+    "n_fn": 167
+  },
+  "q_gaita_de_foles_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000798",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000795",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000856",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000550",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000090",
+        "vimeo_id": "147838363"
+      },
+      {
+        "image_id": "img_valid_000554",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000797",
+        "vimeo_id": "407100474"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000638",
+        "vimeo_id": "321976648"
+      },
+      {
+        "image_id": "img_valid_001302",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000937",
+        "vimeo_id": "532680877"
+      },
+      {
+        "image_id": "img_valid_001000",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000498",
+        "vimeo_id": "290980613"
+      },
+      {
+        "image_id": "img_valid_000602",
+        "vimeo_id": "321743720"
+      },
+      {
+        "image_id": "img_valid_000738",
+        "vimeo_id": "364967031"
+      },
+      {
+        "image_id": "img_valid_001183",
+        "vimeo_id": "71750431"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_000608",
+        "vimeo_id": "321954383"
+      },
+      {
+        "image_id": "img_valid_000615",
+        "vimeo_id": "321955974"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_001150",
+        "vimeo_id": "698330039"
+      },
+      {
+        "image_id": "img_valid_000635",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_001039",
+        "vimeo_id": "63841668"
+      },
+      {
+        "image_id": "img_valid_000086",
+        "vimeo_id": "143753731"
+      },
+      {
+        "image_id": "img_valid_000657",
+        "vimeo_id": "322251360"
+      },
+      {
+        "image_id": "img_valid_000998",
+        "vimeo_id": "61513116"
+      },
+      {
+        "image_id": "img_valid_000499",
+        "vimeo_id": "290980613"
+      },
+      {
+        "image_id": "img_valid_000632",
+        "vimeo_id": "321967256"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 177
+  },
+  "q_guitarra_portuguesa_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000168",
+        "vimeo_id": "161186569"
+      },
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000555",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000420",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000299",
+        "vimeo_id": "23955307"
+      },
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000577",
+        "vimeo_id": "30959974"
+      },
+      {
+        "image_id": "img_valid_000588",
+        "vimeo_id": "315419093"
+      },
+      {
+        "image_id": "img_valid_000954",
+        "vimeo_id": "54783100"
+      },
+      {
+        "image_id": "img_valid_000361",
+        "vimeo_id": "242938261"
+      },
+      {
+        "image_id": "img_valid_000359",
+        "vimeo_id": "242938261"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000832",
+        "vimeo_id": "44045485"
+      },
+      {
+        "image_id": "img_valid_000897",
+        "vimeo_id": "476249822"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000848",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000777",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_001079",
+        "vimeo_id": "656235972"
+      },
+      {
+        "image_id": "img_valid_000259",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000258",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000847",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000051",
+        "vimeo_id": "122309885"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 226
+  },
+  "q_guitarra_portuguesa_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000555",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000106",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000107",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000871",
+        "vimeo_id": "46189513"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000420",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000299",
+        "vimeo_id": "23955307"
+      },
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000577",
+        "vimeo_id": "30959974"
+      },
+      {
+        "image_id": "img_valid_000588",
+        "vimeo_id": "315419093"
+      },
+      {
+        "image_id": "img_valid_000954",
+        "vimeo_id": "54783100"
+      },
+      {
+        "image_id": "img_valid_000361",
+        "vimeo_id": "242938261"
+      },
+      {
+        "image_id": "img_valid_000359",
+        "vimeo_id": "242938261"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000832",
+        "vimeo_id": "44045485"
+      },
+      {
+        "image_id": "img_valid_000897",
+        "vimeo_id": "476249822"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000848",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000777",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_001079",
+        "vimeo_id": "656235972"
+      },
+      {
+        "image_id": "img_valid_000259",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000258",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000847",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000051",
+        "vimeo_id": "122309885"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      }
+    ],
+    "n_fp": 8,
+    "n_fn": 224
+  },
+  "q_guitarra_portuguesa_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000795",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000871",
+        "vimeo_id": "46189513"
+      },
+      {
+        "image_id": "img_valid_000807",
+        "vimeo_id": "411995620"
+      },
+      {
+        "image_id": "img_valid_000872",
+        "vimeo_id": "46189513"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000420",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000299",
+        "vimeo_id": "23955307"
+      },
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000577",
+        "vimeo_id": "30959974"
+      },
+      {
+        "image_id": "img_valid_000588",
+        "vimeo_id": "315419093"
+      },
+      {
+        "image_id": "img_valid_000954",
+        "vimeo_id": "54783100"
+      },
+      {
+        "image_id": "img_valid_000361",
+        "vimeo_id": "242938261"
+      },
+      {
+        "image_id": "img_valid_000359",
+        "vimeo_id": "242938261"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000832",
+        "vimeo_id": "44045485"
+      },
+      {
+        "image_id": "img_valid_000897",
+        "vimeo_id": "476249822"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000848",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000777",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_001079",
+        "vimeo_id": "656235972"
+      },
+      {
+        "image_id": "img_valid_000259",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000258",
+        "vimeo_id": "23682198"
+      },
+      {
+        "image_id": "img_valid_000847",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000051",
+        "vimeo_id": "122309885"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 226
+  },
+  "q_matracas_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000786",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000798",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000795",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000789",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000797",
+        "vimeo_id": "407100474"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000127",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000130",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000131",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000691",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000129",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000128",
+        "vimeo_id": "156230434"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 10
+  },
+  "q_matracas_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000638",
+        "vimeo_id": "321976648"
+      },
+      {
+        "image_id": "img_valid_000415",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000969",
+        "vimeo_id": "560747327"
+      },
+      {
+        "image_id": "img_valid_001238",
+        "vimeo_id": "74751808"
+      },
+      {
+        "image_id": "img_valid_000494",
+        "vimeo_id": "290925328"
+      },
+      {
+        "image_id": "img_valid_000649",
+        "vimeo_id": "321999919"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000527",
+        "vimeo_id": "295778351"
+      },
+      {
+        "image_id": "img_valid_000737",
+        "vimeo_id": "364967031"
+      },
+      {
+        "image_id": "img_valid_000495",
+        "vimeo_id": "290980613"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000127",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000130",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000131",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000691",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000129",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000128",
+        "vimeo_id": "156230434"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 10
+  },
+  "q_matracas_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000415",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000786",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000417",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000554",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000798",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000550",
+        "vimeo_id": "297922854"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000127",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000130",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000131",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000691",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000129",
+        "vimeo_id": "156230434"
+      },
+      {
+        "image_id": "img_valid_000128",
+        "vimeo_id": "156230434"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 10
+  },
+  "q_palheta_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000856",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000859",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000857",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000858",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000855",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001313",
+        "vimeo_id": "89629431"
+      },
+      {
+        "image_id": "img_valid_001312",
+        "vimeo_id": "89629431"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 2
+  },
+  "q_palheta_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000503",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000738",
+        "vimeo_id": "364967031"
+      },
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000991",
+        "vimeo_id": "582451069"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001313",
+        "vimeo_id": "89629431"
+      },
+      {
+        "image_id": "img_valid_001312",
+        "vimeo_id": "89629431"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 2
+  },
+  "q_palheta_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000473",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000687",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000472",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000696",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000471",
+        "vimeo_id": "288454124"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001313",
+        "vimeo_id": "89629431"
+      },
+      {
+        "image_id": "img_valid_001312",
+        "vimeo_id": "89629431"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 2
+  },
+  "q_rabeca_chuleira_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000786",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000789",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000857",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000856",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000858",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_001002",
+        "vimeo_id": "62283089"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_001143",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000942",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000357",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000223",
+        "vimeo_id": "218638458"
+      },
+      {
+        "image_id": "img_valid_000355",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_001311",
+        "vimeo_id": "89629431"
+      },
+      {
+        "image_id": "img_valid_001136",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000945",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001134",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_000448",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001139",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000445",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001137",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000708",
+        "vimeo_id": "349001344"
+      },
+      {
+        "image_id": "img_valid_001135",
+        "vimeo_id": "69207680"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 38
+  },
+  "q_rabeca_chuleira_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000503",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000687",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_001143",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000942",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000357",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000223",
+        "vimeo_id": "218638458"
+      },
+      {
+        "image_id": "img_valid_000355",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_001311",
+        "vimeo_id": "89629431"
+      },
+      {
+        "image_id": "img_valid_001136",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000945",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001134",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_000448",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001139",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000445",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001137",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000708",
+        "vimeo_id": "349001344"
+      },
+      {
+        "image_id": "img_valid_001135",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_000225",
+        "vimeo_id": "218638458"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 37
+  },
+  "q_rabeca_chuleira_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000636",
+        "vimeo_id": "321967256"
+      },
+      {
+        "image_id": "img_valid_000577",
+        "vimeo_id": "30959974"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000503",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_001143",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000942",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_000447",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000446",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000357",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000223",
+        "vimeo_id": "218638458"
+      },
+      {
+        "image_id": "img_valid_000355",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_001311",
+        "vimeo_id": "89629431"
+      },
+      {
+        "image_id": "img_valid_001136",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000449",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_000945",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001134",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_000448",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001139",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000445",
+        "vimeo_id": "27372365"
+      },
+      {
+        "image_id": "img_valid_001137",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000708",
+        "vimeo_id": "349001344"
+      },
+      {
+        "image_id": "img_valid_001135",
+        "vimeo_id": "69207680"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 38
+  },
+  "q_reque_reque_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_001304",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_001300",
+        "vimeo_id": "85207277"
+      },
+      {
+        "image_id": "img_valid_000813",
+        "vimeo_id": "414226041"
+      },
+      {
+        "image_id": "img_valid_000687",
+        "vimeo_id": "33914530"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000137",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000481",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000482",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000139",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000875",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000717",
+        "vimeo_id": "356591252"
+      },
+      {
+        "image_id": "img_valid_000878",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000141",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000484",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000876",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000483",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000879",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000480",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000140",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000877",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000138",
+        "vimeo_id": "157048696"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 16
+  },
+  "q_reque_reque_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000419",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000415",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000735",
+        "vimeo_id": "364041462"
+      },
+      {
+        "image_id": "img_valid_000416",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000417",
+        "vimeo_id": "263687244"
+      },
+      {
+        "image_id": "img_valid_000734",
+        "vimeo_id": "364041462"
+      },
+      {
+        "image_id": "img_valid_000812",
+        "vimeo_id": "414226041"
+      },
+      {
+        "image_id": "img_valid_000731",
+        "vimeo_id": "364041462"
+      },
+      {
+        "image_id": "img_valid_000638",
+        "vimeo_id": "321976648"
+      },
+      {
+        "image_id": "img_valid_000418",
+        "vimeo_id": "263687244"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000137",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000481",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000482",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000139",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000875",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000717",
+        "vimeo_id": "356591252"
+      },
+      {
+        "image_id": "img_valid_000878",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000141",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000484",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000876",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000483",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000879",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000480",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000140",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000877",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000138",
+        "vimeo_id": "157048696"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 16
+  },
+  "q_reque_reque_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000550",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000554",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000795",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_001238",
+        "vimeo_id": "74751808"
+      },
+      {
+        "image_id": "img_valid_000838",
+        "vimeo_id": "44099014"
+      },
+      {
+        "image_id": "img_valid_000552",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000947",
+        "vimeo_id": "538119752"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000137",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000481",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000482",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000139",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000875",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000717",
+        "vimeo_id": "356591252"
+      },
+      {
+        "image_id": "img_valid_000878",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000141",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000484",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000876",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000483",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000879",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000480",
+        "vimeo_id": "290047735"
+      },
+      {
+        "image_id": "img_valid_000140",
+        "vimeo_id": "157048696"
+      },
+      {
+        "image_id": "img_valid_000877",
+        "vimeo_id": "46221076"
+      },
+      {
+        "image_id": "img_valid_000138",
+        "vimeo_id": "157048696"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 16
+  },
+  "q_sarronca_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000857",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000859",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000855",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000858",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000472",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_000856",
+        "vimeo_id": "453027262"
+      },
+      {
+        "image_id": "img_valid_000473",
+        "vimeo_id": "288454124"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000978",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000981",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000688",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000982",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000980",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000979",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000687",
+        "vimeo_id": "33914530"
+      }
+    ],
+    "n_fp": 8,
+    "n_fn": 8
+  },
+  "q_sarronca_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000748",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000746",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000750",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000749",
+        "vimeo_id": "383033676"
+      },
+      {
+        "image_id": "img_valid_000747",
+        "vimeo_id": "383033676"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000978",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000981",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000982",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000980",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000979",
+        "vimeo_id": "56826673"
+      }
+    ],
+    "n_fp": 5,
+    "n_fn": 5
+  },
+  "q_sarronca_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000851",
+        "vimeo_id": "448504556"
+      },
+      {
+        "image_id": "img_valid_000854",
+        "vimeo_id": "448504556"
+      },
+      {
+        "image_id": "img_valid_000551",
+        "vimeo_id": "297922854"
+      },
+      {
+        "image_id": "img_valid_000850",
+        "vimeo_id": "448504556"
+      },
+      {
+        "image_id": "img_valid_000473",
+        "vimeo_id": "288454124"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000978",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000981",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000982",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000980",
+        "vimeo_id": "56826673"
+      },
+      {
+        "image_id": "img_valid_000979",
+        "vimeo_id": "56826673"
+      }
+    ],
+    "n_fp": 5,
+    "n_fn": 5
+  },
+  "q_viola_amarantina_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000305",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000598",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000306",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000308",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001123",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_001129",
+        "vimeo_id": "68496619"
+      },
+      {
+        "image_id": "img_valid_000420",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000248",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_001126",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_001143",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_001124",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_000422",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000250",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_000247",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000264",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_000262",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_000261",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_001017",
+        "vimeo_id": "628386331"
+      },
+      {
+        "image_id": "img_valid_000263",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_001136",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000424",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_001133",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_001134",
+        "vimeo_id": "69207680"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 44
+  },
+  "q_viola_amarantina_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000699",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000696",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001123",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_001129",
+        "vimeo_id": "68496619"
+      },
+      {
+        "image_id": "img_valid_000420",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000248",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_001126",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_001143",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_001124",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_000422",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000250",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_000247",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000264",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_000262",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_000261",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_001017",
+        "vimeo_id": "628386331"
+      },
+      {
+        "image_id": "img_valid_000263",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_001136",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000424",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_001133",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_001134",
+        "vimeo_id": "69207680"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 44
+  },
+  "q_viola_amarantina_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000699",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000698",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_001332",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000696",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000411",
+        "vimeo_id": "26100592"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001123",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_001129",
+        "vimeo_id": "68496619"
+      },
+      {
+        "image_id": "img_valid_000420",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000248",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_001126",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_001143",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_001124",
+        "vimeo_id": "67992591"
+      },
+      {
+        "image_id": "img_valid_000422",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_000250",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_000247",
+        "vimeo_id": "236620686"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000264",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_000262",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_000261",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_001017",
+        "vimeo_id": "628386331"
+      },
+      {
+        "image_id": "img_valid_000263",
+        "vimeo_id": "236968804"
+      },
+      {
+        "image_id": "img_valid_001136",
+        "vimeo_id": "69226661"
+      },
+      {
+        "image_id": "img_valid_000424",
+        "vimeo_id": "26555760"
+      },
+      {
+        "image_id": "img_valid_001133",
+        "vimeo_id": "69207680"
+      },
+      {
+        "image_id": "img_valid_001134",
+        "vimeo_id": "69207680"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 43
+  },
+  "q_viola_beiroa_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000305",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000776",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000777",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000306",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000350",
+        "vimeo_id": "240988064"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_001194",
+        "vimeo_id": "728589276"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000865",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000368",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000366",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000866",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000868",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000364",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000365",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000691",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 13
+  },
+  "q_viola_beiroa_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000555",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000305",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000865",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000368",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000366",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000866",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000868",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000364",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000365",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000691",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 13
+  },
+  "q_viola_beiroa_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000699",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000698",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000696",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000865",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000368",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000366",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000866",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000868",
+        "vimeo_id": "459679565"
+      },
+      {
+        "image_id": "img_valid_000364",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000365",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000691",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 13
+  },
+  "q_viola_braguesa_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000785",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000788",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000786",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000787",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000846",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000789",
+        "vimeo_id": "404762228"
+      },
+      {
+        "image_id": "img_valid_000650",
+        "vimeo_id": "322232753"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001063",
+        "vimeo_id": "65088280"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000538",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_001122",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_001099",
+        "vimeo_id": "671518099"
+      },
+      {
+        "image_id": "img_valid_000151",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_000308",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000905",
+        "vimeo_id": "500144628"
+      },
+      {
+        "image_id": "img_valid_000253",
+        "vimeo_id": "236740037"
+      },
+      {
+        "image_id": "img_valid_000544",
+        "vimeo_id": "295837621"
+      },
+      {
+        "image_id": "img_valid_000909",
+        "vimeo_id": "500144628"
+      },
+      {
+        "image_id": "img_valid_000153",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_001100",
+        "vimeo_id": "671518099"
+      },
+      {
+        "image_id": "img_valid_000154",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_000539",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000155",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_001119",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_000535",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000908",
+        "vimeo_id": "500144628"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 56
+  },
+  "q_viola_braguesa_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000295",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_001332",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000846",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001063",
+        "vimeo_id": "65088280"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000538",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_001122",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_001099",
+        "vimeo_id": "671518099"
+      },
+      {
+        "image_id": "img_valid_000151",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_000308",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000905",
+        "vimeo_id": "500144628"
+      },
+      {
+        "image_id": "img_valid_000253",
+        "vimeo_id": "236740037"
+      },
+      {
+        "image_id": "img_valid_000544",
+        "vimeo_id": "295837621"
+      },
+      {
+        "image_id": "img_valid_000909",
+        "vimeo_id": "500144628"
+      },
+      {
+        "image_id": "img_valid_000153",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_001100",
+        "vimeo_id": "671518099"
+      },
+      {
+        "image_id": "img_valid_000154",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_000539",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000155",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_001119",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_000535",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000908",
+        "vimeo_id": "500144628"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 56
+  },
+  "q_viola_braguesa_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000295",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_001145",
+        "vimeo_id": "69233923"
+      },
+      {
+        "image_id": "img_valid_000366",
+        "vimeo_id": "243361440"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001063",
+        "vimeo_id": "65088280"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000538",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_001122",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_001099",
+        "vimeo_id": "671518099"
+      },
+      {
+        "image_id": "img_valid_000151",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_000308",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000905",
+        "vimeo_id": "500144628"
+      },
+      {
+        "image_id": "img_valid_000253",
+        "vimeo_id": "236740037"
+      },
+      {
+        "image_id": "img_valid_000544",
+        "vimeo_id": "295837621"
+      },
+      {
+        "image_id": "img_valid_000909",
+        "vimeo_id": "500144628"
+      },
+      {
+        "image_id": "img_valid_000153",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_001100",
+        "vimeo_id": "671518099"
+      },
+      {
+        "image_id": "img_valid_000154",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_000539",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000155",
+        "vimeo_id": "159479035"
+      },
+      {
+        "image_id": "img_valid_001119",
+        "vimeo_id": "67524592"
+      },
+      {
+        "image_id": "img_valid_000535",
+        "vimeo_id": "295823458"
+      },
+      {
+        "image_id": "img_valid_000908",
+        "vimeo_id": "500144628"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 56
+  },
+  "q_viola_campanica_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000305",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000941",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_000918",
+        "vimeo_id": "50978571"
+      },
+      {
+        "image_id": "img_valid_000164",
+        "vimeo_id": "161179571"
+      },
+      {
+        "image_id": "img_valid_000168",
+        "vimeo_id": "161186569"
+      },
+      {
+        "image_id": "img_valid_001336",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_000944",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001337",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_001334",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000103",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000884",
+        "vimeo_id": "46315174"
+      },
+      {
+        "image_id": "img_valid_001243",
+        "vimeo_id": "750252743"
+      },
+      {
+        "image_id": "img_valid_000315",
+        "vimeo_id": "23956843"
+      },
+      {
+        "image_id": "img_valid_000093",
+        "vimeo_id": "148772506"
+      },
+      {
+        "image_id": "img_valid_001338",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_000945",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001320",
+        "vimeo_id": "91273732"
+      },
+      {
+        "image_id": "img_valid_001344",
+        "vimeo_id": "95171406"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 191
+  },
+  "q_viola_campanica_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000692",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000690",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000693",
+        "vimeo_id": "33916792"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000694",
+        "vimeo_id": "33916792"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000941",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_000918",
+        "vimeo_id": "50978571"
+      },
+      {
+        "image_id": "img_valid_000164",
+        "vimeo_id": "161179571"
+      },
+      {
+        "image_id": "img_valid_000168",
+        "vimeo_id": "161186569"
+      },
+      {
+        "image_id": "img_valid_001336",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_000944",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001337",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_001334",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000103",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000884",
+        "vimeo_id": "46315174"
+      },
+      {
+        "image_id": "img_valid_001243",
+        "vimeo_id": "750252743"
+      },
+      {
+        "image_id": "img_valid_000315",
+        "vimeo_id": "23956843"
+      },
+      {
+        "image_id": "img_valid_000093",
+        "vimeo_id": "148772506"
+      },
+      {
+        "image_id": "img_valid_001338",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_000945",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001320",
+        "vimeo_id": "91273732"
+      },
+      {
+        "image_id": "img_valid_001344",
+        "vimeo_id": "95171406"
+      }
+    ],
+    "n_fp": 7,
+    "n_fn": 188
+  },
+  "q_viola_campanica_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000686",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000685",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000689",
+        "vimeo_id": "33914530"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000941",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_000918",
+        "vimeo_id": "50978571"
+      },
+      {
+        "image_id": "img_valid_000164",
+        "vimeo_id": "161179571"
+      },
+      {
+        "image_id": "img_valid_000168",
+        "vimeo_id": "161186569"
+      },
+      {
+        "image_id": "img_valid_001336",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_000944",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001337",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_001334",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000185",
+        "vimeo_id": "169005267"
+      },
+      {
+        "image_id": "img_valid_001246",
+        "vimeo_id": "762584658"
+      },
+      {
+        "image_id": "img_valid_000103",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000019",
+        "vimeo_id": "119491939"
+      },
+      {
+        "image_id": "img_valid_000884",
+        "vimeo_id": "46315174"
+      },
+      {
+        "image_id": "img_valid_001243",
+        "vimeo_id": "750252743"
+      },
+      {
+        "image_id": "img_valid_000315",
+        "vimeo_id": "23956843"
+      },
+      {
+        "image_id": "img_valid_000093",
+        "vimeo_id": "148772506"
+      },
+      {
+        "image_id": "img_valid_001338",
+        "vimeo_id": "93261120"
+      },
+      {
+        "image_id": "img_valid_000945",
+        "vimeo_id": "538011016"
+      },
+      {
+        "image_id": "img_valid_001320",
+        "vimeo_id": "91273732"
+      },
+      {
+        "image_id": "img_valid_001344",
+        "vimeo_id": "95171406"
+      }
+    ],
+    "n_fp": 6,
+    "n_fn": 187
+  },
+  "q_viola_de_arame_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000776",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000597",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000779",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000599",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000305",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000065",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000055",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000324",
+        "vimeo_id": "23963735"
+      },
+      {
+        "image_id": "img_valid_000699",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000056",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000887",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000027",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000889",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000064",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000053",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000024",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000026",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000067",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000025",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000063",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000057",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000066",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000885",
+        "vimeo_id": "46831717"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 30
+  },
+  "q_viola_de_arame_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000555",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000304",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000306",
+        "vimeo_id": "23956284"
+      },
+      {
+        "image_id": "img_valid_000775",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000305",
+        "vimeo_id": "23956284"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000065",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000055",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000324",
+        "vimeo_id": "23963735"
+      },
+      {
+        "image_id": "img_valid_000056",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000887",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000027",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000889",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000064",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000053",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000024",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000026",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000067",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000025",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000063",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000057",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000066",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000885",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000710",
+        "vimeo_id": "349215136"
+      },
+      {
+        "image_id": "img_valid_000325",
+        "vimeo_id": "23963735"
+      }
+    ],
+    "n_fp": 8,
+    "n_fn": 29
+  },
+  "q_viola_de_arame_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000776",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000775",
+        "vimeo_id": "40005463"
+      },
+      {
+        "image_id": "img_valid_000793",
+        "vimeo_id": "406153475"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000555",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000781",
+        "vimeo_id": "403974963"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000065",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000055",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000324",
+        "vimeo_id": "23963735"
+      },
+      {
+        "image_id": "img_valid_000056",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000887",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000027",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000889",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000064",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000053",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000024",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000026",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000067",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000695",
+        "vimeo_id": "33967090"
+      },
+      {
+        "image_id": "img_valid_000025",
+        "vimeo_id": "121174410"
+      },
+      {
+        "image_id": "img_valid_000063",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000057",
+        "vimeo_id": "124612084"
+      },
+      {
+        "image_id": "img_valid_000066",
+        "vimeo_id": "124914654"
+      },
+      {
+        "image_id": "img_valid_000885",
+        "vimeo_id": "46831717"
+      },
+      {
+        "image_id": "img_valid_000710",
+        "vimeo_id": "349215136"
+      }
+    ],
+    "n_fp": 9,
+    "n_fn": 30
+  },
+  "q_viola_toeira_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000846",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000847",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000848",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000368",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000596",
+        "vimeo_id": "321735715"
+      },
+      {
+        "image_id": "img_valid_000366",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000017",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000016",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000563",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000014",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000015",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000561",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000751",
+        "vimeo_id": "388062107"
+      },
+      {
+        "image_id": "img_valid_000013",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000560",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000562",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000559",
+        "vimeo_id": "305354874"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 11
+  },
+  "q_viola_toeira_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_001332",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000846",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000847",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000017",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000016",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000563",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000014",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000015",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000561",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000751",
+        "vimeo_id": "388062107"
+      },
+      {
+        "image_id": "img_valid_000013",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000560",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000562",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000559",
+        "vimeo_id": "305354874"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 11
+  },
+  "q_viola_toeira_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000845",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000846",
+        "vimeo_id": "447263887"
+      },
+      {
+        "image_id": "img_valid_000298",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_000367",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000297",
+        "vimeo_id": "23953614"
+      },
+      {
+        "image_id": "img_valid_001332",
+        "vimeo_id": "93257709"
+      },
+      {
+        "image_id": "img_valid_000366",
+        "vimeo_id": "243361440"
+      },
+      {
+        "image_id": "img_valid_000697",
+        "vimeo_id": "33967090"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_000017",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000016",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000563",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000014",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000015",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000561",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000751",
+        "vimeo_id": "388062107"
+      },
+      {
+        "image_id": "img_valid_000013",
+        "vimeo_id": "110341656"
+      },
+      {
+        "image_id": "img_valid_000560",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000562",
+        "vimeo_id": "305354874"
+      },
+      {
+        "image_id": "img_valid_000559",
+        "vimeo_id": "305354874"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 11
+  },
+  "q_violao_pt": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000556",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000557",
+        "vimeo_id": "299457234"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000504",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000797",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000798",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000501",
+        "vimeo_id": "290985978"
+      },
+      {
+        "image_id": "img_valid_000414",
+        "vimeo_id": "26100592"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000588",
+        "vimeo_id": "315419093"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000051",
+        "vimeo_id": "122309885"
+      },
+      {
+        "image_id": "img_valid_000121",
+        "vimeo_id": "153209154"
+      },
+      {
+        "image_id": "img_valid_000572",
+        "vimeo_id": "30666095"
+      },
+      {
+        "image_id": "img_valid_000836",
+        "vimeo_id": "44045485"
+      },
+      {
+        "image_id": "img_valid_001132",
+        "vimeo_id": "68496619"
+      },
+      {
+        "image_id": "img_valid_000666",
+        "vimeo_id": "332970899"
+      },
+      {
+        "image_id": "img_valid_000280",
+        "vimeo_id": "23913747"
+      },
+      {
+        "image_id": "img_valid_001293",
+        "vimeo_id": "81627519"
+      },
+      {
+        "image_id": "img_valid_000100",
+        "vimeo_id": "150520677"
+      },
+      {
+        "image_id": "img_valid_000467",
+        "vimeo_id": "28110903"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000661",
+        "vimeo_id": "32925105"
+      },
+      {
+        "image_id": "img_valid_000321",
+        "vimeo_id": "23960341"
+      },
+      {
+        "image_id": "img_valid_000701",
+        "vimeo_id": "33987579"
+      },
+      {
+        "image_id": "img_valid_000320",
+        "vimeo_id": "23960341"
+      },
+      {
+        "image_id": "img_valid_001247",
+        "vimeo_id": "762584658"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 323
+  },
+  "q_violao_en": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000106",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000105",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000104",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000412",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000107",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000410",
+        "vimeo_id": "26100592"
+      },
+      {
+        "image_id": "img_valid_000103",
+        "vimeo_id": "150539748"
+      },
+      {
+        "image_id": "img_valid_000805",
+        "vimeo_id": "411995620"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000588",
+        "vimeo_id": "315419093"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000051",
+        "vimeo_id": "122309885"
+      },
+      {
+        "image_id": "img_valid_000121",
+        "vimeo_id": "153209154"
+      },
+      {
+        "image_id": "img_valid_000572",
+        "vimeo_id": "30666095"
+      },
+      {
+        "image_id": "img_valid_000836",
+        "vimeo_id": "44045485"
+      },
+      {
+        "image_id": "img_valid_001132",
+        "vimeo_id": "68496619"
+      },
+      {
+        "image_id": "img_valid_000666",
+        "vimeo_id": "332970899"
+      },
+      {
+        "image_id": "img_valid_000280",
+        "vimeo_id": "23913747"
+      },
+      {
+        "image_id": "img_valid_001293",
+        "vimeo_id": "81627519"
+      },
+      {
+        "image_id": "img_valid_000100",
+        "vimeo_id": "150520677"
+      },
+      {
+        "image_id": "img_valid_000467",
+        "vimeo_id": "28110903"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000661",
+        "vimeo_id": "32925105"
+      },
+      {
+        "image_id": "img_valid_000321",
+        "vimeo_id": "23960341"
+      },
+      {
+        "image_id": "img_valid_000701",
+        "vimeo_id": "33987579"
+      },
+      {
+        "image_id": "img_valid_000320",
+        "vimeo_id": "23960341"
+      },
+      {
+        "image_id": "img_valid_001247",
+        "vimeo_id": "762584658"
+      }
+    ],
+    "n_fp": 8,
+    "n_fn": 321
+  },
+  "q_violao_es": {
+    "false_positives": [
+      {
+        "image_id": "img_valid_000795",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000794",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000796",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000798",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000797",
+        "vimeo_id": "407100474"
+      },
+      {
+        "image_id": "img_valid_000784",
+        "vimeo_id": "403974963"
+      },
+      {
+        "image_id": "img_valid_000807",
+        "vimeo_id": "411995620"
+      },
+      {
+        "image_id": "img_valid_000781",
+        "vimeo_id": "403974963"
+      },
+      {
+        "image_id": "img_valid_000780",
+        "vimeo_id": "403974963"
+      },
+      {
+        "image_id": "img_valid_000871",
+        "vimeo_id": "46189513"
+      }
+    ],
+    "false_negatives": [
+      {
+        "image_id": "img_valid_001191",
+        "vimeo_id": "728589276"
+      },
+      {
+        "image_id": "img_valid_000356",
+        "vimeo_id": "242049992"
+      },
+      {
+        "image_id": "img_valid_000588",
+        "vimeo_id": "315419093"
+      },
+      {
+        "image_id": "img_valid_000958",
+        "vimeo_id": "549862319"
+      },
+      {
+        "image_id": "img_valid_000051",
+        "vimeo_id": "122309885"
+      },
+      {
+        "image_id": "img_valid_000121",
+        "vimeo_id": "153209154"
+      },
+      {
+        "image_id": "img_valid_000572",
+        "vimeo_id": "30666095"
+      },
+      {
+        "image_id": "img_valid_000836",
+        "vimeo_id": "44045485"
+      },
+      {
+        "image_id": "img_valid_001132",
+        "vimeo_id": "68496619"
+      },
+      {
+        "image_id": "img_valid_000666",
+        "vimeo_id": "332970899"
+      },
+      {
+        "image_id": "img_valid_000280",
+        "vimeo_id": "23913747"
+      },
+      {
+        "image_id": "img_valid_001293",
+        "vimeo_id": "81627519"
+      },
+      {
+        "image_id": "img_valid_000100",
+        "vimeo_id": "150520677"
+      },
+      {
+        "image_id": "img_valid_000467",
+        "vimeo_id": "28110903"
+      },
+      {
+        "image_id": "img_valid_000518",
+        "vimeo_id": "29368159"
+      },
+      {
+        "image_id": "img_valid_000661",
+        "vimeo_id": "32925105"
+      },
+      {
+        "image_id": "img_valid_000321",
+        "vimeo_id": "23960341"
+      },
+      {
+        "image_id": "img_valid_000701",
+        "vimeo_id": "33987579"
+      },
+      {
+        "image_id": "img_valid_000320",
+        "vimeo_id": "23960341"
+      },
+      {
+        "image_id": "img_valid_001247",
+        "vimeo_id": "762584658"
+      }
+    ],
+    "n_fp": 10,
+    "n_fn": 323
+  }
+}

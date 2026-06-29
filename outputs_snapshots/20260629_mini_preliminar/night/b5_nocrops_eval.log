@@ -1,0 +1,22 @@
+métricas -> outputs/metrics/B5_nocrops_mini.json
+  recall@10: 0.2440
+  recall@20: 0.3907
+  recall@50: 0.5287
+  recall@100: 0.5287
+  precision@10: 0.5500
+  ndcg@10: 0.6032
+  ndcg@20: 0.5997
+  ndcg@100: 0.5669
+  map: 0.3955
+  mrr: 0.8667
+  (macro por instrumento)
+    macro_recall@10: 0.2440
+    macro_recall@20: 0.3907
+    macro_recall@50: 0.5287
+    macro_recall@100: 0.5287
+    macro_precision@10: 0.5500
+    macro_ndcg@10: 0.6032
+    macro_ndcg@20: 0.5997
+    macro_ndcg@100: 0.5669
+    macro_map: 0.3955
+    macro_mrr: 0.8667

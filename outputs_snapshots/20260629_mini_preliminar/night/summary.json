@@ -1,0 +1,82 @@
+[
+  {
+    "step": "prepare_mini",
+    "status": "skip(exists)",
+    "seconds": 0
+  },
+  {
+    "step": "b1_retrieve",
+    "status": "skip(exists)",
+    "seconds": 0
+  },
+  {
+    "step": "b1_eval",
+    "status": "skip(exists)",
+    "seconds": 0
+  },
+  {
+    "step": "b4_rerank",
+    "status": "ok",
+    "seconds": 2383.3
+  },
+  {
+    "step": "b4_eval",
+    "status": "ok",
+    "seconds": 4.3
+  },
+  {
+    "step": "b4_rerankmetrics",
+    "status": "ok",
+    "seconds": 2.3
+  },
+  {
+    "step": "b5_full",
+    "status": "ok",
+    "seconds": 3989.4
+  },
+  {
+    "step": "b5_full_eval",
+    "status": "ok",
+    "seconds": 4.5
+  },
+  {
+    "step": "b5_nocrops",
+    "status": "ok",
+    "seconds": 2431.6
+  },
+  {
+    "step": "b5_nocrops_eval",
+    "status": "ok",
+    "seconds": 4.3
+  },
+  {
+    "step": "b5_fullimg",
+    "status": "ok",
+    "seconds": 2397.7
+  },
+  {
+    "step": "b5_fullimg_eval",
+    "status": "ok",
+    "seconds": 4.2
+  },
+  {
+    "step": "b5_rerankmetrics",
+    "status": "ok",
+    "seconds": 2.3
+  },
+  {
+    "step": "error_b4",
+    "status": "ok",
+    "seconds": 0.3
+  },
+  {
+    "step": "error_b5",
+    "status": "ok",
+    "seconds": 0.3
+  },
+  {
+    "step": "report",
+    "status": "ok",
+    "seconds": 0.4
+  }
+]

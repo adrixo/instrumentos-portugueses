@@ -1,0 +1,6 @@
+  candidate_recall@30: +0.0661
+  oracle_recall@30: +0.0661
+  rerank_gain@30: +0.0000
+  delta_ndcg@30: +0.0586
+  delta_map: +0.0561
+-> outputs/metrics/B5_full_mini__rerankmetrics.json

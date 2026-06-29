@@ -1,0 +1,3 @@
+informe: outputs/reports/final_report.md
+  tablas: outputs/reports/tables/  figuras: outputs/reports/figures/
+slides Marp: outputs/slides/slides.md

@@ -1,0 +1,26 @@
+[skip] prepare_mini
+[skip] b1_retrieve
+[skip] b1_eval
+[skip] prepare_mini
+[skip] b1_retrieve
+[skip] b1_eval
+[skip] prepare_mini
+[skip] b1_retrieve
+[skip] b1_eval
+[skip] prepare_mini
+[skip] b1_retrieve
+[skip] b1_eval
+[ok] b4_rerank (2383.3s)
+[ok] b4_eval (4.3s)
+[ok] b4_rerankmetrics (2.3s)
+[ok] b5_full (3989.4s)
+[ok] b5_full_eval (4.5s)
+[ok] b5_nocrops (2431.6s)
+[ok] b5_nocrops_eval (4.3s)
+[ok] b5_fullimg (2397.7s)
+[ok] b5_fullimg_eval (4.2s)
+[ok] b5_rerankmetrics (2.3s)
+[ok] error_b4 (0.3s)
+[ok] error_b5 (0.3s)
+[ok] report (0.4s)
+NIGHT RUN DONE

@@ -1,0 +1,3 @@
+split mini: 120 imágenes (940 positivas de ['adufe', 'concertina', 'cavaquinho', 'gaita-de-foles', 'guitarra-portuguesa', 'violao'])
+  corpus: data/processed/mini/corpus.parquet  qrels: data/processed/qrels/mini.qrels
+  queries reducidas: configs/queries_mini.yaml (EN)
