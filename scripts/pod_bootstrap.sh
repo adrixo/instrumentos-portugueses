@@ -65,6 +65,16 @@ note "⚙️ descargando en paralelo: vLLM($VLM_MODEL_HF $EAGER) + dataset + ven
 # venv del proyecto
 ( [ -d .venv ] || { python3 -m venv .venv && .venv/bin/pip install -q -U pip && .venv/bin/pip install -q -e ".[dense,colpali,extras]" openai; } ) & PPID=$!
 
+# heartbeat de DESCARGA -> Telegram cada 60s con tamaños (feedback en vivo durante la bajada)
+rm -f /tmp/dl_done
+( while [ ! -f /tmp/dl_done ]; do
+    m=$(du -sh "${HF_HOME:-$HOME/.cache/huggingface}" 2>/dev/null | cut -f1)
+    d=$(du -sh /tmp/ds 2>/dev/null | cut -f1)
+    v=$(curl -s http://localhost:8001/v1/models 2>/dev/null | grep -q qwen2.5-vl && echo "listo" || echo "cargando")
+    note "⬇️ descargando... modelo≈${m:-0} · dataset≈${d:-0} · vLLM=${v}"
+    sleep 60
+  done ) & DLHB=$!
+
 wait $DPID || fail "descarga dataset"
 note "📦 dataset listo"
 wait $PPID || fail "instalación venv proyecto"
@@ -74,6 +84,7 @@ note "🐍 venv listo"
 echo "[vllm] esperando readiness..."
 for i in $(seq 1 120); do curl -s http://localhost:8001/v1/models 2>/dev/null | grep -q qwen2.5-vl && break; sleep 15; done
 curl -s http://localhost:8001/v1/models 2>/dev/null | grep -q qwen2.5-vl || fail "vLLM no respondió (mira pod-logs / vllm.log)"
+touch /tmp/dl_done; kill "$DLHB" 2>/dev/null || true   # parar heartbeat de descarga
 note "✅ vLLM listo. Ejecutando $PHASE"
 
 # --- ejecutar fase ---
