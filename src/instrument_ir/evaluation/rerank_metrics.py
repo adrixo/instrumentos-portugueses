@@ -23,10 +23,13 @@ def _ranked_ids(run_q: dict[str, float]) -> list[str]:
 
 
 def candidate_recall_at_n(dense_run: dict, qrels: dict, n: int = 200) -> dict:
-    """Por query y macro: fracción de relevantes presentes en el top-N de candidatos."""
+    """Por query y macro: fracción de relevantes presentes en el top-N de candidatos.
+
+    Solo se promedian las queries realmente evaluadas (presentes en el run), no todo el qrels.
+    """
     per_q = {}
-    for qid, rel_map in qrels.items():
-        rel = {d for d, r in rel_map.items() if r > 0}
+    for qid in set(qrels) & set(dense_run):
+        rel = {d for d, r in qrels[qid].items() if r > 0}
         cand = _ranked_ids(dense_run.get(qid, {}))[:n]
         per_q[qid] = (len(rel.intersection(cand)) / len(rel)) if rel else 0.0
     macro = sum(per_q.values()) / len(per_q) if per_q else 0.0
@@ -34,10 +37,13 @@ def candidate_recall_at_n(dense_run: dict, qrels: dict, n: int = 200) -> dict:
 
 
 def oracle_recall_at_k(dense_run: dict, qrels: dict, n: int = 200, k: int = 100) -> dict:
-    """Techo de recall@K alcanzable tras rerankear el top-N (relevantes en top-N, recolocados arriba)."""
+    """Techo de recall@K alcanzable tras rerankear el top-N (relevantes en top-N, recolocados arriba).
+
+    Solo sobre las queries presentes en el run.
+    """
     per_q = {}
-    for qid, rel_map in qrels.items():
-        rel = {d for d, r in rel_map.items() if r > 0}
+    for qid in set(qrels) & set(dense_run):
+        rel = {d for d, r in qrels[qid].items() if r > 0}
         if not rel:
             per_q[qid] = 0.0
             continue
@@ -51,8 +57,8 @@ def oracle_recall_at_k(dense_run: dict, qrels: dict, n: int = 200, k: int = 100)
 def rerank_gain_at_k(reranked_run: dict, dense_run: dict, qrels: dict, k: int = 100) -> dict:
     """recall@K(reranked) - recall@K(dense), por query y macro."""
     per_q = {}
-    for qid, rel_map in qrels.items():
-        rel = {d for d, r in rel_map.items() if r > 0}
+    for qid in set(qrels) & set(reranked_run) & set(dense_run):
+        rel = {d for d, r in qrels[qid].items() if r > 0}
         r_re = _recall_at_k(_ranked_ids(reranked_run.get(qid, {})), rel, k)
         r_de = _recall_at_k(_ranked_ids(dense_run.get(qid, {})), rel, k)
         per_q[qid] = r_re - r_de

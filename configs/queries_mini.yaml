@@ -1,0 +1,26 @@
+# Queries por instrumento (ADR §5.4). Generado desde configs/instruments.yaml.
+# Editable: puedes mejorar textos, sinónimos o añadir idiomas.
+adufe:
+- id: q_adufe_en
+  language: en
+  text: adufe, a Portuguese square frame drum
+cavaquinho:
+- id: q_cavaquinho_en
+  language: en
+  text: cavaquinho, a small four-string Portuguese guitar
+concertina:
+- id: q_concertina_en
+  language: en
+  text: concertina / button accordion
+gaita-de-foles:
+- id: q_gaita_de_foles_en
+  language: en
+  text: bagpipes
+guitarra-portuguesa:
+- id: q_guitarra_portuguesa_en
+  language: en
+  text: Portuguese guitar (pear-shaped, twelve strings)
+violao:
+- id: q_violao_en
+  language: en
+  text: classical acoustic guitar (six strings)
