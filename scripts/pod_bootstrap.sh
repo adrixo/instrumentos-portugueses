@@ -37,6 +37,12 @@ apt-get install -y git curl unzip python3-venv jq >/dev/null 2>&1 || true
 cd instrumentos-portugueses
 git config user.email "pod@runpod"; git config user.name "runpod-bot"
 
+# Heartbeat de logs -> sube bootstrap.log + vllm.log a GitHub (rama pod-logs) cada 30s.
+# Lectura en vivo desde fuera:  git fetch origin pod-logs && git show origin/pod-logs:pod_logs/live.log
+( while true; do python3 scripts/pod_logpush.py >/dev/null 2>&1 || true; sleep 30; done ) &
+echo "$!" > /tmp/heartbeat.pid
+note "📡 heartbeat de logs activo (rama pod-logs)"
+
 # 3. dataset desde el release (API GitHub + curl)
 if [ ! -d data/raw/portuguese_instruments/train ]; then
   note "⬇️ bajando dataset del release..."
@@ -60,6 +66,7 @@ if ! curl -s http://localhost:8001/v1/models 2>/dev/null | grep -q qwen2.5-vl; t
   python3 -m venv "$WS/vllm-env"
   "$WS/vllm-env/bin/pip" install -q -U pip vllm || fail "pip vllm"
   nohup "$WS/vllm-env/bin/vllm" serve "$VLM_MODEL_HF" --served-model-name qwen2.5-vl --port 8001 \
+    --max-model-len 8192 --enforce-eager --gpu-memory-utilization 0.92 \
     > "$WS/vllm.log" 2>&1 &
   for i in $(seq 1 90); do
     curl -s http://localhost:8001/v1/models 2>/dev/null | grep -q qwen2.5-vl && break
