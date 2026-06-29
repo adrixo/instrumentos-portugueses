@@ -11,7 +11,7 @@ Secretos: lee .env (RUNPOD_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID) y `gh 
 El Pod arranca scripts/pod_bootstrap.sh: clona, baja dataset del release, vLLM, smoke/gordo,
 sube resultados a GitHub, avisa por Telegram y se auto-apaga.
 """
-import json, os, subprocess, sys, urllib.request
+import json, os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = "adrixo/instrumentos-portugueses"
@@ -32,13 +32,16 @@ def load_env():
 
 
 def gql(api_key, query, variables=None):
-    body = json.dumps({"query": query, "variables": variables or {}}).encode()
-    req = urllib.request.Request(f"https://api.runpod.io/graphql?api_key={api_key}", data=body,
-                                 headers={"Content-Type": "application/json"})
+    body = json.dumps({"query": query, "variables": variables or {}})
+    out = subprocess.run(
+        ["curl", "-s", f"https://api.runpod.io/graphql?api_key={api_key}",
+         "-H", "Content-Type: application/json", "-d", body],
+        capture_output=True, text=True, timeout=90,
+    ).stdout
     try:
-        return json.load(urllib.request.urlopen(req, timeout=60))
-    except urllib.error.HTTPError as e:
-        return {"httpError": e.code, "body": e.read().decode()}
+        return json.loads(out)
+    except Exception:
+        return {"raw": out[:300]}
 
 
 def create(phase):
