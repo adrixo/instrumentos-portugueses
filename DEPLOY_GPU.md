@@ -34,6 +34,15 @@ pip install -e ".[dense,colpali,extras]" openai
 que `colpali-engine` fije su `transformers` compatible (no lo fuerces a >5). El **smoke** lo verifica;
 si B3 falla, prueba: `pip install 'transformers>=4.49,<4.52'` y repite el smoke.
 
+## 2b. Auth de git en el Pod (para que los resultados se suban solos)
+Los scripts hacen `commit + push` de `outputs/` tras cada experimento → así los resultados aparecen en
+GitHub en tiempo real (verificación remota, sin scp). Configura el push una vez:
+```bash
+git config user.email "tu@email"; git config user.name "tu-nombre"
+gh auth login          # o: git remote set-url origin https://<TOKEN>@github.com/adrixo/instrumentos-portugueses
+```
+Si no configuras auth, el run NO falla: guarda en local y al final haces `git push origin main`.
+
 ## 3. Dataset
 Colócalo en `data/raw/portuguese_instruments/{train,valid,test}`. Opciones:
 - **scp/rsync** desde tu Mac (1.4 GB), o
