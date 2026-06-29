@@ -15,3 +15,5 @@ if git push -q origin main 2>/dev/null; then
 else
   echo "[save] commit OK, push falló (¿auth?) -> $msg  (se subirá al final con: git push origin main)"
 fi
+# aviso por Telegram de que ESE experimento acabó
+bash "$(dirname "$0")/notify.sh" "✅ $msg — resultados guardados en GitHub" 2>/dev/null || true

@@ -9,6 +9,9 @@ Produce (ADR §4):
 from __future__ import annotations
 
 import json
+import os
+import subprocess
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -17,6 +20,18 @@ from ..data.queries import Query
 from ..retrieval.base import ScoredDoc
 from ..utils.trec import write_run_trec
 from .base import Candidate, Reranker
+
+
+def _telegram(msg: str) -> None:
+    tok = os.environ.get("TELEGRAM_BOT_TOKEN")
+    cid = os.environ.get("TELEGRAM_CHAT_ID")
+    if tok and cid:
+        try:
+            subprocess.run(["curl", "-s", f"https://api.telegram.org/bot{tok}/sendMessage",
+                            "-d", f"chat_id={cid}", "-d", f"text={msg}"],
+                           capture_output=True, timeout=15)
+        except Exception:
+            pass
 
 
 def run_pointwise_rerank(
@@ -39,6 +54,21 @@ def run_pointwise_rerank(
     rankings: dict[str, list[ScoredDoc]] = {}
     cand_rows: list[dict] = []
 
+    # Progreso global cada PROGRESS_EVERY% (default 5%) -> Telegram + stdout.
+    total = sum(len(c) for c in candidates_by_query.values()) or 1
+    pct_step = max(1, int(os.environ.get("PROGRESS_EVERY", "5")))
+    state = {"n": 0, "next": pct_step, "t0": time.time()}
+
+    def progress():
+        state["n"] += 1
+        pct = 100 * state["n"] // total
+        if pct >= state["next"]:
+            el = int(time.time() - state["t0"])
+            eta = int(el * (total - state["n"]) / max(1, state["n"]))
+            _telegram(f"⏳ {run_id}: {pct}% ({state['n']}/{total}) · {el//60}m transcurridos · ETA ~{eta//60}m")
+            print(f"[progress] {run_id} {pct}% ({state['n']}/{total})", flush=True)
+            state["next"] = pct + pct_step
+
     with traces_path.open("w", encoding="utf-8") as tf:
         for query_id, cands in candidates_by_query.items():
             query = qmap.get(query_id)
@@ -50,7 +80,7 @@ def run_pointwise_rerank(
                     {"query_id": query_id, "image_id": c.image_id,
                      "dense_rank": c.dense_rank, "dense_score": c.dense_score, "run_id": run_id}
                 )
-            reranked, traces = reranker.rerank(query, instrument, cands, run_id)
+            reranked, traces = reranker.rerank(query, instrument, cands, run_id, progress_cb=progress)
             for tr in traces:
                 tf.write(json.dumps(tr, ensure_ascii=False) + "\n")
             rankings[query_id] = [

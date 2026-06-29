@@ -35,9 +35,13 @@ class Reranker(ABC):
 
     @abstractmethod
     def rerank(
-        self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str
+        self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str,
+        progress_cb=None,
     ) -> tuple[list[RerankedDoc], list[dict]]:
-        """Devuelve (docs reordenados con final_rank, trazas estructuradas por candidato)."""
+        """Devuelve (docs reordenados con final_rank, trazas estructuradas por candidato).
+
+        progress_cb(): si se pasa, se llama una vez por candidato procesado (para reportar progreso).
+        """
         raise NotImplementedError
 
 

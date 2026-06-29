@@ -124,13 +124,16 @@ class AgenticReranker(Reranker):
         return doc, trace
 
     def rerank(
-        self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str
+        self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str,
+        progress_cb=None,
     ) -> tuple[list[RerankedDoc], list[dict]]:
         docs, traces = [], []
         for cand in candidates:
             doc, trace = self._process_candidate(query, instrument, cand, run_id)
             docs.append(doc)
             traces.append(trace)
+            if progress_cb:
+                progress_cb()
 
         order = sorted(
             range(len(docs)), key=lambda i: (docs[i].final_score, docs[i].dense_score), reverse=True

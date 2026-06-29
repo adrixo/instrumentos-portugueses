@@ -34,7 +34,8 @@ class VLMPointwiseReranker(Reranker):
         self.name = f"vlm_{backend.model_id}".replace("/", "-").lower()
 
     def rerank(
-        self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str
+        self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str,
+        progress_cb=None,
     ) -> tuple[list[RerankedDoc], list[dict]]:
         prompt = build_rerank_prompt(instrument)
         scored: list[RerankedDoc] = []
@@ -78,6 +79,8 @@ class VLMPointwiseReranker(Reranker):
                     "timestamp_utc": datetime.now(timezone.utc).isoformat(),
                 }
             )
+            if progress_cb:
+                progress_cb()
 
         # Orden final: final_score desc, desempate por dense_score desc (ADR §4).
         order = sorted(
