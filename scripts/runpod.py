@@ -57,6 +57,8 @@ def create(phase):
     inp = {
         "gpuCount": 1, "gpuTypeId": GPU, "name": f"instr-ir-{phase}", "imageName": IMAGE,
         "containerDiskInGb": 80, "volumeInGb": 0, "dockerArgs": docker_args,
+        "ports": "22/tcp,8001/http",   # SSH siempre + endpoint vLLM
+        "supportPublicIp": True,
         "env": [
             {"key": "GH_TOKEN", "value": gh},
             {"key": "TELEGRAM_BOT_TOKEN", "value": env.get("TELEGRAM_BOT_TOKEN", "")},
@@ -75,9 +77,9 @@ def create(phase):
         pod = (r.get("data") or {}).get("podFindAndDeployOnDemand")
         if pod:
             print(f"✅ Pod creado ({cloud}): id={pod['id']}  ${pod.get('costPerHr')}/h  fase={phase}")
-            print(f"   monitor:   python3 scripts/runpod.py list")
-            print(f"   terminar:  python3 scripts/runpod.py terminate {pod['id']}")
-            print(f"   resultados: aparecerán en GitHub (commits) y aviso por Telegram.")
+            print(f"   terminal:  python3 scripts/runpod.py ssh {pod['id']}   (o: runpodctl ssh connect {pod['id']})")
+            print(f"   logs vivo: git fetch origin pod-logs -q && git show origin/pod-logs:pod_logs/live.log")
+            print(f"   monitor:   python3 scripts/runpod.py list   |   terminar: python3 scripts/runpod.py terminate {pod['id']}")
             return
         print(f"   {cloud}: sin disponibilidad/erro -> {json.dumps(r)[:200]}")
     print("❌ No se pudo crear el Pod (sin H100 disponible ahora). Reintenta o prueba otra GPU/region.")
@@ -101,11 +103,29 @@ def terminate(pid):
     print("terminado" if "errors" not in r else r)
 
 
+def ssh(pid):
+    env = load_env()
+    r = gql(env["RUNPOD_API_KEY"],
+            "query{ myself{ pods{ id desiredStatus runtime{ ports{ ip publicPort privatePort isIpPublic type } } } } }")
+    pods = ((r.get("data") or {}).get("myself") or {}).get("pods", [])
+    pod = next((p for p in pods if p["id"] == pid), None)
+    if not pod:
+        print("pod no encontrado"); return
+    rt = pod.get("runtime") or {}
+    for port in (rt.get("ports") or []):
+        if port.get("privatePort") == 22 and port.get("isIpPublic"):
+            print(f"ssh root@{port['ip']} -p {port['publicPort']}")
+            return
+    print(f"SSH no expuesto aún (estado {pod.get('desiredStatus')}). Prueba: runpodctl ssh connect {pid}")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "list"
     if cmd == "create":
         create(sys.argv[2] if len(sys.argv) > 2 else "smoke")
     elif cmd == "terminate":
         terminate(sys.argv[2])
+    elif cmd == "ssh":
+        ssh(sys.argv[2])
     else:
         list_pods()
