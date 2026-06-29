@@ -54,3 +54,9 @@ echo " Revisa outputs/reports/final_report.md y outputs/metrics/*_smoke.json"
 echo " Si B3 dio métricas razonables (no aleatorias), lanza scripts/gpu_full.sh"
 echo "===================================================================="
 bash scripts/notify.sh "✅ SMOKE GPU terminado — revisa resultados en GitHub y lanza el gordo"
+
+# Auto-apagado opcional también en el smoke (para probar el apagado). Default: NO apaga.
+if [ "${SHUTDOWN:-0}" = "1" ]; then
+  bash scripts/notify.sh "⏻ (smoke) Apagando el Pod en ${SHUTDOWN_GRACE:-60}s..."
+  bash scripts/shutdown_pod.sh
+fi
