@@ -65,6 +65,19 @@ bash scripts/gpu_full.sh                 # B1×3 + B3 (valid+test) + B4 + B5(+ab
 Resultados: `outputs/reports/final_report.md` + `outputs/reports/tables/` (macro, per-class, gain con
 p-value) + traces en `outputs/rerank_traces/`. Bájalos con scp.
 
+## Alertas y auto-apagado (opcional, recomendado)
+Para que te avise al terminar y apague el Pod solo (no malgastar saldo):
+```bash
+# Alerta push gratis sin cuenta: instala la app "ntfy" (iOS/Android) y suscríbete a TU topic único.
+export NTFY_TOPIC=instr-ir-adrixo-7f3k        # invéntate uno difícil de adivinar
+# (alternativa Telegram: export TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=8413253)
+
+# Auto-terminar el Pod al acabar el GORDO (los resultados ya están en GitHub):
+export RUNPOD_API_KEY=<tu_key>                # RUNPOD_POD_ID ya viene puesto en el Pod
+SHUTDOWN=1 bash scripts/gpu_full.sh           # apaga 60s después de terminar (Ctrl-C para cancelar)
+```
+Recibirás alerta también si algo **falla**. El smoke solo avisa (no apaga).
+
 ## Notas
 - Coste estimado en H100: smoke ~$1, run completo ~$5–12 (2–3 h).
 - Si la GPU tiene <24 GB, usa `Qwen/Qwen2.5-VL-3B-Instruct` en el paso 1 y `VLM_MODEL` acorde.

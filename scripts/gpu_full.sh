@@ -2,6 +2,7 @@
 # FASE 2 — Run completo en GPU (cifras del paper). Lánzalo SOLO si gpu_smoke.sh fue bien.
 # B1 (3 dense) + B3 (ColQwen) en valid+test; B4 y B5 (+ablaciones) en test con top_n=200.
 set -euo pipefail
+trap 'rc=$?; [ $rc -ne 0 ] && bash scripts/notify.sh "❌ RUN COMPLETO falló (rc=$rc) — revisa logs en el Pod"' EXIT
 
 VLM_BASE_URL="${VLM_BASE_URL:-http://localhost:8001/v1}"
 VLM_MODEL="${VLM_MODEL:-qwen2.5-vl}"
@@ -67,3 +68,10 @@ echo "===================================================================="
 echo " RUN COMPLETO OK. Resultados en outputs/reports/final_report.md"
 echo " Tablas: outputs/reports/tables/  (macro, per-class, gain con p-value)"
 echo "===================================================================="
+bash scripts/notify.sh "✅ RUN COMPLETO (gordo) terminado — resultados en GitHub"
+
+# Auto-apagado del Pod si SHUTDOWN=1 (los resultados ya están en GitHub).
+if [ "${SHUTDOWN:-0}" = "1" ]; then
+  bash scripts/notify.sh "⏻ Apagando el Pod en ${SHUTDOWN_GRACE:-60}s..."
+  bash scripts/shutdown_pod.sh
+fi
