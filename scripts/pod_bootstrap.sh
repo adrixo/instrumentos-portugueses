@@ -40,13 +40,15 @@ git config user.email "pod@runpod"; git config user.name "runpod-bot"
 note "📡 heartbeat logs activo (rama pod-logs)"
 
 # --- SETUP EN PARALELO: modelo(vLLM) + dataset + venv ---
-note "⚙️ descargando en paralelo: vLLM($VLM_MODEL_HF) + dataset + venv"
+# smoke: --enforce-eager (arranque rápido, pocas llamadas). gordo: sin él -> CUDA graphs = más throughput.
+EAGER=""; [ "$PHASE" = "smoke" ] && EAGER="--enforce-eager"
+note "⚙️ descargando en paralelo: vLLM($VLM_MODEL_HF $EAGER) + dataset + venv"
 
 # vLLM: instala y arranca el serve (la descarga del modelo ocurre aquí, en paralelo).
 ( python3 -m venv "$WS/vllm-env" \
   && "$WS/vllm-env/bin/pip" install -q -U pip vllm \
   && exec "$WS/vllm-env/bin/vllm" serve "$VLM_MODEL_HF" --served-model-name qwen2.5-vl --port 8001 \
-       --max-model-len 8192 --enforce-eager --gpu-memory-utilization 0.92 \
+       --max-model-len 8192 $EAGER --gpu-memory-utilization 0.92 \
   ) > "$WS/vllm.log" 2>&1 &
 
 # dataset
