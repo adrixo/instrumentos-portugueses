@@ -13,11 +13,13 @@ VLM_BASE_URL="${VLM_BASE_URL:-http://localhost:8001/v1}"
 VLM_MODEL="${VLM_MODEL:-qwen2.5-vl}"
 QM=configs/queries_mini.yaml
 QR=data/processed/qrels/mini.qrels
-TOPN=30
+SMOKE_INSTR="${SMOKE_INSTR:-adufe,concertina}"
+SMOKE_N="${SMOKE_N:-40}"
+TOPN="${SMOKE_TOPN:-15}"
 
-echo "### 0. prepare-data + subset mini (3 instrumentos, 60 imgs)"
+echo "### 0. prepare-data + subset mini ($SMOKE_INSTR, $SMOKE_N imgs, top_n=$TOPN)"
 instrument-ir prepare-data
-instrument-ir prepare-mini --instruments-sel adufe,concertina,cavaquinho --n-images 60
+instrument-ir prepare-mini --instruments-sel "$SMOKE_INSTR" --n-images "$SMOKE_N"
 
 echo "### 1. B1 dense (OpenCLIP)"
 instrument-ir retrieve --split mini --model openclip-vitb32 --top-k $TOPN --queries $QM --run-name B1_smoke

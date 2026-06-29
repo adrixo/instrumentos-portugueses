@@ -63,6 +63,9 @@ def create(phase):
             {"key": "TELEGRAM_CHAT_ID", "value": env.get("TELEGRAM_CHAT_ID", "")},
             {"key": "RUNPOD_API_KEY", "value": rp},
             {"key": "PHASE", "value": phase},
+            # smoke: VLM 3B (descarga/carga más rápida, solo verifica). gordo: 7B.
+            {"key": "VLM_MODEL_HF", "value": "Qwen/Qwen2.5-VL-3B-Instruct" if phase == "smoke"
+             else "Qwen/Qwen2.5-VL-7B-Instruct"},
         ],
     }
     q = "mutation($input: PodFindAndDeployOnDemandInput!){ podFindAndDeployOnDemand(input:$input){ id machineId costPerHr } }"
