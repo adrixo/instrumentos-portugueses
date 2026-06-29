@@ -39,7 +39,9 @@ class AgenticReranker(Reranker):
         temperature: float = 0.0,
         seed: int = 42,
         dense_retriever_name: str = "dense",
+        max_workers: int = 1,
     ):
+        self.max_workers = max(1, int(max_workers))
         self.backend = backend
         self.provider = provider
         self.high_conf = high_confidence_threshold
@@ -127,13 +129,20 @@ class AgenticReranker(Reranker):
         self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str,
         progress_cb=None,
     ) -> tuple[list[RerankedDoc], list[dict]]:
-        docs, traces = [], []
-        for cand in candidates:
-            doc, trace = self._process_candidate(query, instrument, cand, run_id)
-            docs.append(doc)
-            traces.append(trace)
+        def one(cand: Candidate):
+            r = self._process_candidate(query, instrument, cand, run_id)
             if progress_cb:
                 progress_cb()
+            return r
+
+        if self.max_workers > 1 and len(candidates) > 1:
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=self.max_workers) as ex:
+                results = list(ex.map(one, candidates))
+        else:
+            results = [one(c) for c in candidates]
+        docs = [d for d, _ in results]
+        traces = [t for _, t in results]
 
         order = sorted(
             range(len(docs)), key=lambda i: (docs[i].final_score, docs[i].dense_score), reverse=True

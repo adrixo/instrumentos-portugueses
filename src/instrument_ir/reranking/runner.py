@@ -55,19 +55,23 @@ def run_pointwise_rerank(
     cand_rows: list[dict] = []
 
     # Progreso global cada PROGRESS_EVERY% (default 5%) -> Telegram + stdout.
+    import threading
+
     total = sum(len(c) for c in candidates_by_query.values()) or 1
     pct_step = max(1, int(os.environ.get("PROGRESS_EVERY", "5")))
     state = {"n": 0, "next": pct_step, "t0": time.time()}
+    lock = threading.Lock()
 
     def progress():
-        state["n"] += 1
-        pct = 100 * state["n"] // total
-        if pct >= state["next"]:
-            el = int(time.time() - state["t0"])
-            eta = int(el * (total - state["n"]) / max(1, state["n"]))
-            _telegram(f"⏳ {run_id}: {pct}% ({state['n']}/{total}) · {el//60}m transcurridos · ETA ~{eta//60}m")
-            print(f"[progress] {run_id} {pct}% ({state['n']}/{total})", flush=True)
-            state["next"] = pct + pct_step
+        with lock:  # thread-safe (los rerankers pueden llamar en paralelo)
+            state["n"] += 1
+            pct = 100 * state["n"] // total
+            if pct >= state["next"]:
+                el = int(time.time() - state["t0"])
+                eta = int(el * (total - state["n"]) / max(1, state["n"]))
+                _telegram(f"⏳ {run_id}: {pct}% ({state['n']}/{total}) · {el//60}m · ETA ~{eta//60}m")
+                print(f"[progress] {run_id} {pct}% ({state['n']}/{total})", flush=True)
+                state["next"] = pct + pct_step
 
     with traces_path.open("w", encoding="utf-8") as tf:
         for query_id, cands in candidates_by_query.items():

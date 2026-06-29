@@ -274,6 +274,15 @@ def _build_vlm_backend(backend: str, vlm_model: str, base_url: str):
     return MockVLMBackend()
 
 
+def _vlm_concurrency(backend: str) -> int:
+    """Concurrencia de llamadas al VLM. Solo el servidor vLLM (openai) batchea -> alto; hf/mock = 1."""
+    import os
+
+    if backend == "openai":
+        return int(os.environ.get("VLM_CONCURRENCY", "16"))
+    return 1
+
+
 def _not_implemented(name: str):
     typer.echo(f"[stub] '{name}' se implementa en su fase correspondiente (ver ADR/plan).")
 
@@ -337,7 +346,7 @@ def rerank_vlm(
     cands = load_candidates_from_run(dense_run, top_n)
 
     vlm = _build_vlm_backend(backend, vlm_model, base_url)
-    reranker = VLMPointwiseReranker(vlm, provider, seed=seed)
+    reranker = VLMPointwiseReranker(vlm, provider, seed=seed, max_workers=_vlm_concurrency(backend))
 
     name = run_name or f"B4_{Path(dense_run).stem}_{vlm.model_id}_{split}".replace("/", "-")
     run_path = run_pointwise_rerank(reranker, qs, instr, cands, name, final_top_k=final_top_k)
@@ -396,7 +405,8 @@ def rerank_agent(
     vlm = _build_vlm_backend(backend, vlm_model, base_url)
     reranker = AgenticReranker(
         vlm, provider, high_confidence_threshold=high_conf, max_crops=max_crops,
-        dense_retriever_name=Path(dense_run).stem, seed=seed, **_ABLATIONS[ablation],
+        dense_retriever_name=Path(dense_run).stem, seed=seed,
+        max_workers=_vlm_concurrency(backend), **_ABLATIONS[ablation],
     )
     name = run_name or f"B5_{Path(dense_run).stem}_{ablation}_{split}".replace("/", "-")
     run_path = run_pointwise_rerank(reranker, qs, instr, cands, name, final_top_k=final_top_k)
