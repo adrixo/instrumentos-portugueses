@@ -1,0 +1,6 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/824 [00:00<?, ?it/s]Loading weights:   0%|          | 1/824 [00:00<08:38,  1.59it/s]Loading weights:  18%|█▊        | 147/824 [00:00<00:02, 257.98it/s]Loading weights:  26%|██▌       | 215/824 [00:00<00:02, 269.17it/s]Loading weights:  32%|███▏      | 265/824 [00:01<00:02, 275.19it/s]Loading weights:  37%|███▋      | 307/824 [00:01<00:01, 259.98it/s]Loading weights:  42%|████▏     | 342/824 [00:01<00:01, 254.33it/s]Loading weights:  45%|████▌     | 373/824 [00:01<00:01, 261.75it/s]Loading weights:  49%|████▉     | 404/824 [00:01<00:01, 246.82it/s]Loading weights:  56%|█████▌    | 460/824 [00:01<00:01, 313.13it/s]Loading weights:  69%|██████▉   | 568/824 [00:01<00:00, 495.17it/s]Loading weights:  81%|████████  | 666/824 [00:02<00:00, 604.98it/s]Loading weights:  91%|█████████ | 750/824 [00:02<00:00, 663.11it/s]Loading weights: 100%|██████████| 824/824 [00:02<00:00, 365.00it/s]
+B4 runfile: outputs/runs/B4_mini.trec
+  traces: outputs/rerank_traces/B4_mini.jsonl
+  candidates: outputs/candidates/B4_mini.parquet

@@ -21,25 +21,30 @@ instrument-ir prepare-mini --instruments-sel adufe,concertina,cavaquinho --n-ima
 echo "### 1. B1 dense (OpenCLIP)"
 instrument-ir retrieve --split mini --model openclip-vitb32 --top-k $TOPN --queries $QM --run-name B1_smoke
 instrument-ir evaluate --run outputs/runs/B1_smoke.trec --qrels $QR --queries $QM
+bash scripts/save_results.sh "smoke B1"
 
 echo "### 2. B3 late-interaction (ColQwen) — VERIFICACIÓN CLAVE (falló en Mac)"
 instrument-ir retrieve --split mini --model colqwen --top-k $TOPN --queries $QM --run-name B3_smoke
 instrument-ir evaluate --run outputs/runs/B3_smoke.trec --qrels $QR --queries $QM
+bash scripts/save_results.sh "smoke B3 (ColQwen)"
 
 echo "### 3. B4 VLM reranker (vía vLLM)"
 instrument-ir rerank-vlm --dense-run outputs/runs/B1_smoke.trec --split mini \
   --backend openai --base-url "$VLM_BASE_URL" --vlm-model "$VLM_MODEL" \
   --top-n $TOPN --final-top-k $TOPN --queries $QM --run-name B4_smoke
 instrument-ir evaluate --run outputs/runs/B4_smoke.trec --qrels $QR --queries $QM
+bash scripts/save_results.sh "smoke B4"
 
 echo "### 4. B5 agente (vía vLLM)"
 instrument-ir rerank-agent --dense-run outputs/runs/B1_smoke.trec --split mini \
   --backend openai --base-url "$VLM_BASE_URL" --vlm-model "$VLM_MODEL" \
   --ablation full --top-n $TOPN --final-top-k $TOPN --queries $QM --run-name B5_smoke
 instrument-ir evaluate --run outputs/runs/B5_smoke.trec --qrels $QR --queries $QM
+bash scripts/save_results.sh "smoke B5"
 
 echo "### 5. report"
 instrument-ir report
+bash scripts/save_results.sh "smoke report"
 
 echo ""
 echo "===================================================================="

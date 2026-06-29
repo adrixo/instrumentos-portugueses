@@ -3,9 +3,15 @@
 /data/
 *.zip
 
-# Salidas de experimentos
-outputs/
+# Salidas de experimentos: versionamos los RESULTADOS (métricas, runs, traces, reports),
+# pero ignoramos cachés pesadas y binarios regenerables.
 mlruns/
+outputs/cache/
+outputs/cache_test/
+outputs/mlruns/
+outputs/mlflow.db
+outputs/verify/
+models/
 
 # Python
 __pycache__/

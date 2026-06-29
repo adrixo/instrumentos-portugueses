@@ -18,6 +18,7 @@ for s in valid test; do
   for m in openclip-vitb32 openclip-vitl14 jinaclip; do
     instrument-ir retrieve --split "$s" --model "$m" --top-k 100 --run-name "B1_${m}_${s}"
     instrument-ir evaluate --run "outputs/runs/B1_${m}_${s}.trec" --qrels "data/processed/qrels/${s}.qrels"
+    bash scripts/save_results.sh "full B1 ${m} ${s}"
   done
 done
 
@@ -25,6 +26,7 @@ echo "### B3 ColQwen en valid+test"
 for s in valid test; do
   instrument-ir retrieve --split "$s" --model colqwen --top-k 100 --run-name "B3_colqwen_${s}"
   instrument-ir evaluate --run "outputs/runs/B3_colqwen_${s}.trec" --qrels "data/processed/qrels/${s}.qrels"
+  bash scripts/save_results.sh "full B3 colqwen ${s}"
 done
 
 # Dense base para reranking (top_n) en test. Re-recuperamos top_n con el mejor dense.
@@ -40,6 +42,7 @@ instrument-ir rerank-vlm --dense-run "$DENSE_RUN" --split test --backend openai 
 instrument-ir evaluate --run outputs/runs/B4_test.trec --qrels data/processed/qrels/test.qrels
 instrument-ir rerank-metrics --dense-run "$DENSE_RUN" --reranked-run outputs/runs/B4_test.trec \
   --qrels data/processed/qrels/test.qrels --n "$TOPN" --k "$FINAL_K"
+bash scripts/save_results.sh "full B4 test"
 
 echo "### B5 agente + ablaciones (test, top_n=$TOPN)"
 for abl in full no_crops no_caption full_image_only max_score_only weighted_fusion; do
@@ -47,6 +50,7 @@ for abl in full no_crops no_caption full_image_only max_score_only weighted_fusi
     --base-url "$VLM_BASE_URL" --vlm-model "$VLM_MODEL" --ablation "$abl" \
     --top-n "$TOPN" --final-top-k "$FINAL_K" --run-name "B5_${abl}_test"
   instrument-ir evaluate --run "outputs/runs/B5_${abl}_test.trec" --qrels data/processed/qrels/test.qrels
+  bash scripts/save_results.sh "full B5 ${abl} test"
 done
 instrument-ir rerank-metrics --dense-run "$DENSE_RUN" --reranked-run outputs/runs/B5_full_test.trec \
   --qrels data/processed/qrels/test.qrels --n "$TOPN" --k "$FINAL_K" \
@@ -56,6 +60,7 @@ echo "### error-analysis + report"
 instrument-ir error-analysis --run outputs/runs/B4_test.trec --qrels data/processed/qrels/test.qrels --out outputs/reports/error_B4_test.json
 instrument-ir error-analysis --run outputs/runs/B5_full_test.trec --qrels data/processed/qrels/test.qrels --out outputs/reports/error_B5_test.json
 instrument-ir report
+bash scripts/save_results.sh "full report (FINAL)"
 
 echo ""
 echo "===================================================================="

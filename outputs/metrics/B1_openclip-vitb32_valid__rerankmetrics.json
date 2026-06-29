@@ -1,0 +1,7 @@
+{
+  "candidate_recall@100": 0.17872539138883253,
+  "oracle_recall@100": 0.17872539138883253,
+  "rerank_gain@100": 0.0,
+  "delta_ndcg@100": 0.0,
+  "delta_map": 0.0
+}

@@ -1,0 +1,22 @@
+métricas -> outputs/metrics/B1_mini.json
+  recall@10: 0.2104
+  recall@20: 0.3673
+  recall@50: 0.5287
+  recall@100: 0.5287
+  precision@10: 0.5333
+  ndcg@10: 0.5568
+  ndcg@20: 0.5426
+  ndcg@100: 0.5249
+  map: 0.3614
+  mrr: 0.7153
+  (macro por instrumento)
+    macro_recall@10: 0.2104
+    macro_recall@20: 0.3673
+    macro_recall@50: 0.5287
+    macro_recall@100: 0.5287
+    macro_precision@10: 0.5333
+    macro_ndcg@10: 0.5568
+    macro_ndcg@20: 0.5426
+    macro_ndcg@100: 0.5249
+    macro_map: 0.3614
+    macro_mrr: 0.7153

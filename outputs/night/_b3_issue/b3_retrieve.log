@@ -1,0 +1,53 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [04:04<04:04, 244.83s/it]Fetching 2 files: 100%|██████████| 2/2 [04:04<00:00, 122.42s/it]
+Loading weights:   0%|          | 0/729 [00:00<?, ?it/s]Loading weights:   4%|▍         | 29/729 [00:00<00:02, 255.02it/s]Loading weights:   9%|▉         | 64/729 [00:00<00:02, 250.18it/s]Loading weights:  12%|█▏        | 90/729 [00:00<00:03, 195.17it/s]Loading weights:  15%|█▌        | 112/729 [00:00<00:04, 143.62it/s]Loading weights:  18%|█▊        | 128/729 [00:00<00:04, 138.00it/s]Loading weights:  20%|█▉        | 143/729 [00:00<00:04, 134.85it/s]Loading weights:  22%|██▏       | 157/729 [00:01<00:04, 135.41it/s]Loading weights:  23%|██▎       | 171/729 [00:01<00:04, 116.04it/s]Loading weights:  25%|██▌       | 184/729 [00:01<00:06, 87.20it/s] Loading weights:  27%|██▋       | 196/729 [00:01<00:06, 81.62it/s]Loading weights:  29%|██▊       | 208/729 [00:01<00:06, 76.78it/s]Loading weights:  30%|███       | 220/729 [00:01<00:06, 78.47it/s]Loading weights:  32%|███▏      | 232/729 [00:02<00:06, 77.19it/s]Loading weights:  33%|███▎      | 244/729 [00:02<00:06, 72.46it/s]Loading weights:  35%|███▌      | 256/729 [00:02<00:06, 72.52it/s]Loading weights:  37%|███▋      | 268/729 [00:02<00:05, 81.03it/s]Loading weights:  38%|███▊      | 277/729 [00:02<00:05, 82.46it/s]Loading weights:  39%|███▉      | 286/729 [00:02<00:06, 72.30it/s]Loading weights:  40%|████      | 294/729 [00:02<00:05, 73.97it/s]Loading weights:  42%|████▏     | 304/729 [00:03<00:06, 66.41it/s]Loading weights:  43%|████▎     | 316/729 [00:03<00:06, 66.82it/s]Loading weights:  44%|████▍     | 323/729 [00:03<00:06, 63.28it/s]Loading weights:  45%|████▌     | 330/729 [00:03<00:06, 60.12it/s]Loading weights:  50%|█████     | 366/729 [00:03<00:02, 128.52it/s]Loading weights:  52%|█████▏    | 382/729 [00:03<00:02, 127.88it/s]Loading weights:  66%|██████▌   | 478/729 [00:03<00:00, 309.22it/s]Loading weights:  70%|██████▉   | 510/729 [00:04<00:00, 270.84it/s]Loading weights:  74%|███████▍  | 539/729 [00:04<00:00, 236.45it/s]Loading weights:  77%|███████▋  | 564/729 [00:04<00:00, 216.14it/s]Loading weights:  81%|████████  | 587/729 [00:04<00:00, 197.44it/s]Loading weights:  84%|████████▎ | 610/729 [00:04<00:00, 200.15it/s]Loading weights:  87%|████████▋ | 632/729 [00:04<00:00, 201.64it/s]Loading weights:  90%|████████▉ | 653/729 [00:04<00:00, 200.41it/s]Loading weights:  92%|█████████▏| 674/729 [00:05<00:00, 187.89it/s]Loading weights:  95%|█████████▌| 694/729 [00:05<00:00, 175.43it/s]Loading weights:  98%|█████████▊| 716/729 [00:05<00:00, 184.14it/s]Loading weights: 100%|██████████| 729/729 [00:05<00:00, 136.93it/s]
+[transformers] [1mColQwen2 LOAD REPORT[0m from: vidore/colqwen2-base
+Key                                | Status     | 
+-----------------------------------+------------+-
+model.norm.weight                  | UNEXPECTED | 
+model.embed_tokens.weight          | UNEXPECTED | 
+language_model.embed_tokens.weight | MISSING    | 
+language_model.norm.weight         | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Loading weights:   0%|          | 0/2 [00:00<?, ?it/s]Loading weights: 100%|██████████| 2/2 [00:00<00:00, 28630.06it/s]
+[transformers] [1mColQwen2 LOAD REPORT[0m from: vidore/colqwen2-v1.0
+Key                                                                   | Status     | 
+----------------------------------------------------------------------+------------+-
+model.layers.{0...27}.mlp.up_proj.lora_A.default.weight               | UNEXPECTED | 
+model.layers.{0...27}.self_attn.o_proj.lora_B.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.self_attn.v_proj.lora_A.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.self_attn.v_proj.lora_B.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.self_attn.o_proj.lora_A.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.self_attn.q_proj.lora_A.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.mlp.gate_proj.lora_A.default.weight             | UNEXPECTED | 
+model.layers.{0...27}.mlp.gate_proj.lora_B.default.weight             | UNEXPECTED | 
+model.layers.{0...27}.self_attn.k_proj.lora_B.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.mlp.up_proj.lora_B.default.weight               | UNEXPECTED | 
+model.layers.{0...27}.mlp.down_proj.lora_A.default.weight             | UNEXPECTED | 
+model.layers.{0...27}.mlp.down_proj.lora_B.default.weight             | UNEXPECTED | 
+model.layers.{0...27}.self_attn.k_proj.lora_A.default.weight          | UNEXPECTED | 
+model.layers.{0...27}.self_attn.q_proj.lora_B.default.weight          | UNEXPECTED | 
+language_model.layers.{0...27}.self_attn.k_proj.lora_B.default.weight | MISSING    | 
+language_model.layers.{0...27}.self_attn.q_proj.lora_A.default.weight | MISSING    | 
+language_model.layers.{0...27}.mlp.down_proj.lora_A.default.weight    | MISSING    | 
+language_model.layers.{0...27}.mlp.down_proj.lora_B.default.weight    | MISSING    | 
+language_model.layers.{0...27}.self_attn.k_proj.lora_A.default.weight | MISSING    | 
+language_model.layers.{0...27}.mlp.gate_proj.lora_B.default.weight    | MISSING    | 
+language_model.layers.{0...27}.self_attn.o_proj.lora_A.default.weight | MISSING    | 
+language_model.layers.{0...27}.self_attn.o_proj.lora_B.default.weight | MISSING    | 
+language_model.layers.{0...27}.mlp.up_proj.lora_A.default.weight      | MISSING    | 
+language_model.layers.{0...27}.self_attn.v_proj.lora_A.default.weight | MISSING    | 
+language_model.layers.{0...27}.self_attn.v_proj.lora_B.default.weight | MISSING    | 
+language_model.layers.{0...27}.mlp.gate_proj.lora_A.default.weight    | MISSING    | 
+language_model.layers.{0...27}.self_attn.q_proj.lora_B.default.weight | MISSING    | 
+language_model.layers.{0...27}.mlp.up_proj.lora_B.default.weight      | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
