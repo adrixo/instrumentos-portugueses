@@ -33,6 +33,36 @@ def _env_int(name: str, default: int) -> int:
         return default
 
 
+def _env_bool(name: str, default: bool = False) -> bool:
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.lower() in {"1", "true", "yes", "on"}
+
+
+def _env_json(name: str) -> dict:
+    value = os.environ.get(name)
+    if not value:
+        return {}
+    try:
+        parsed = json.loads(value)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"{name} must be a valid JSON object") from exc
+    if not isinstance(parsed, dict):
+        raise ValueError(f"{name} must be a valid JSON object")
+    return parsed
+
+
+def _deep_merge(base: dict, override: dict) -> dict:
+    merged = dict(base)
+    for key, value in override.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+
 def _prepare_image(pil_image):
     image = pil_image.convert("RGB")
     max_side = _env_int("VLM_MAX_IMAGE_SIDE", 768)
@@ -69,9 +99,16 @@ class OpenAICompatVLMBackend:
         self.client = OpenAI(base_url=base_url, api_key=api_key)
         self.cache_enabled = os.environ.get("VLM_CACHE", "1").lower() not in {"0", "false", "no"}
         self.cache_dir = Path(os.environ.get("VLM_CACHE_DIR", "outputs/cache/vlm_openai"))
+        self.extra_body = self._build_extra_body()
         self._cache_lock = threading.Lock()
         if self.cache_enabled:
             self.cache_dir.mkdir(parents=True, exist_ok=True)
+
+    def _build_extra_body(self) -> dict:
+        extra = _env_json("VLM_EXTRA_BODY_JSON")
+        if _env_bool("VLM_DISABLE_THINKING", False):
+            extra = _deep_merge(extra, {"chat_template_kwargs": {"enable_thinking": False}})
+        return extra
 
     def _cache_key(
         self,
@@ -90,6 +127,7 @@ class OpenAICompatVLMBackend:
             "max_new_tokens": max_new_tokens,
             "max_image_side": _env_int("VLM_MAX_IMAGE_SIDE", 768),
             "jpeg_quality": max(1, min(95, _env_int("VLM_JPEG_QUALITY", 85))),
+            "extra_body": self.extra_body,
         }
         raw = json.dumps(data, sort_keys=True, ensure_ascii=False).encode("utf-8")
         return hashlib.sha256(raw).hexdigest()
@@ -131,14 +169,17 @@ class OpenAICompatVLMBackend:
         content = [{"type": "text", "text": prompt}]
         for data_url, _ in encoded:
             content.append({"type": "image_url", "image_url": {"url": data_url}})
-        resp = self.client.chat.completions.create(
-            model=self.model_id,
-            messages=[{"role": "user", "content": content}],
-            temperature=temperature,
-            seed=seed,
-            max_tokens=max_new_tokens,
-            response_format={"type": "json_object"},
-        )
+        request = {
+            "model": self.model_id,
+            "messages": [{"role": "user", "content": content}],
+            "temperature": temperature,
+            "seed": seed,
+            "max_tokens": max_new_tokens,
+            "response_format": {"type": "json_object"},
+        }
+        if self.extra_body:
+            request["extra_body"] = self.extra_body
+        resp = self.client.chat.completions.create(**request)
         text = resp.choices[0].message.content or ""
         self._write_cache(key, text)
         return text

@@ -120,3 +120,40 @@ python scripts/monitor_remote.py --server esalab-big
 
 El snapshot del run completo ejecutado en `esalab-big` esta en
 `results/esalab-big/2026-06-30_gpu_full/`.
+
+## Comparacion Qwen3.6-27B en MIDA
+
+MIDA tiene un endpoint llama.cpp/OpenAI-compatible con alias `qwen36-27b`. Desde esta maquina
+responde en `http://100.113.15.12:8080/v1`; desde `esalab-big` la ruta Tailscale que funciona es
+`http://100.127.120.42:8080/v1`.
+
+El modelo `unsloth/Qwen3.6-27B-GGUF` incluye `Qwen3.6-27B-Q4_K_M.gguf` y `mmproj-F16.gguf`. El script
+adjunto de MIDA deja `ENABLE_MMPROJ_DEFAULT=0`; si se arranca asi, llama.cpp queda como modelo de texto
+y rechaza imagenes con: `image input is not supported - hint: if this is unexpected, you may need to
+provide the mmproj`. La prueba del 2026-06-30 contra MIDA ya devolvia `capabilities:
+["completion","multimodal"]` y aceptaba una imagen minima.
+
+Para habilitar vision en MIDA:
+
+```bash
+cd ~/datos/llamacpp
+ENABLE_MMPROJ=1 ./qwen36_27b_gpu0.sh restart
+curl http://127.0.0.1:8080/v1/models
+```
+
+Para desactivar el thinking de Qwen desde el pipeline se usa `chat_template_kwargs.enable_thinking=false`;
+el backend OpenAI-compatible lo activa con `VLM_DISABLE_THINKING=true`.
+
+Lanzar la comparacion B4 zero-shot desde `esalab-big`:
+
+```bash
+export VLM_BASE_URL=http://100.127.120.42:8080/v1
+export VLM_MODEL=qwen36-27b
+export VLM_DISABLE_THINKING=true
+export VLM_MAX_IMAGE_SIDE=768
+export VLM_WORKERS=1
+TOPN=50 FINAL_K=50 bash scripts/gpu_qwen36_zero_shot.sh
+```
+
+El script hace un preflight con una imagen pequena y falla pronto si MIDA sigue sin `mmproj`. Para una
+comparacion mas exhaustiva, sube `TOPN=200 FINAL_K=100` cuando el preflight pase.

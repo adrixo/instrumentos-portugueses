@@ -1,10 +1,13 @@
+import sys
+from types import SimpleNamespace
+
 from PIL import Image
 
 from instrument_ir.data.queries import Query
 from instrument_ir.reranking.base import Candidate
 from instrument_ir.reranking.schemas import parse_vlm_response
 from instrument_ir.reranking.scoring import normalize_score
-from instrument_ir.reranking.vlm_backend import MockVLMBackend
+from instrument_ir.reranking.vlm_backend import MockVLMBackend, OpenAICompatVLMBackend
 from instrument_ir.reranking.vlm_pointwise import VLMPointwiseReranker
 
 
@@ -53,3 +56,33 @@ def test_vlm_pointwise_reorders_and_traces():
     assert all("final_rank" in t for t in traces)
     assert all("image_id" in t and t["image_id"].startswith("img_valid_") for t in traces)
     assert all("file_name" not in t for t in traces)
+
+
+def test_openai_backend_passes_qwen_thinking_extra_body(monkeypatch):
+    calls = {}
+
+    class FakeCompletions:
+        def create(self, **kwargs):
+            calls.update(kwargs)
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(content='{"ok":true}'))]
+            )
+
+    class FakeOpenAI:
+        def __init__(self, **_kwargs):
+            self.chat = SimpleNamespace(completions=FakeCompletions())
+
+    monkeypatch.setitem(sys.modules, "openai", SimpleNamespace(OpenAI=FakeOpenAI))
+    monkeypatch.setenv("VLM_CACHE", "0")
+    monkeypatch.setenv("VLM_DISABLE_THINKING", "true")
+    monkeypatch.setenv(
+        "VLM_EXTRA_BODY_JSON",
+        '{"foo":{"bar":1},"chat_template_kwargs":{"other":true}}',
+    )
+
+    backend = OpenAICompatVLMBackend("qwen36-27b", "http://localhost:8080/v1", api_key="local")
+    assert backend.generate("Return JSON", [], temperature=0, seed=42, max_new_tokens=8) == '{"ok":true}'
+    assert calls["extra_body"] == {
+        "foo": {"bar": 1},
+        "chat_template_kwargs": {"other": True, "enable_thinking": False},
+    }

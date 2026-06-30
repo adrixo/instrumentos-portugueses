@@ -22,3 +22,20 @@ servers:
       vlm_workers: 8
       vlm_cache: true
       vlm_cache_dir: outputs/cache/vlm_openai
+
+  mida-qwen36-27b:
+    kind: tailscale
+    host: esalab-mida
+    tailscale_ip_from_esalab_big: 100.127.120.42
+    tailscale_ip_from_local: 100.113.15.12
+    user: esalab
+    openai_base_url_from_esalab_big: http://100.127.120.42:8080/v1
+    openai_base_url_from_local: http://100.113.15.12:8080/v1
+    served_model_name: qwen36-27b
+    model_repo: unsloth/Qwen3.6-27B-GGUF
+    model_file: Qwen3.6-27B-Q4_K_M.gguf
+    mmproj_file: mmproj-F16.gguf
+    notes: >
+      Image input requires llama-server to be started with --mmproj. The attached
+      qwen36_27b_gpu0.sh defaults ENABLE_MMPROJ=0; if image requests return "image
+      input is not supported", restart MIDA with ENABLE_MMPROJ=1.
