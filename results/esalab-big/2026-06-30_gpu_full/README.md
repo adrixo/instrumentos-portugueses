@@ -43,3 +43,16 @@ Snapshot descargado desde `esalab-big` (`100.69.221.87`) el 2026-06-30.
 |---|---:|---:|---:|---:|---:|
 | B4_test | 0.2938 | 0.2781 | 0.0096 | 0.0097 | -0.0309 |
 | B5_full_test | 0.2938 | 0.2781 | 0.0118 | 0.0183 | -0.0278 |
+
+## Query Latency
+
+Per-query latency was benchmarked with corpus embeddings cached for B1/B3. B4/B5 latency is estimated
+from trace timestamp spans over top-200 reranking runs.
+
+| system | mean seconds/query | median seconds/query | p95 seconds/query |
+|---|---:|---:|---:|
+| openclip-vitl14 | 0.019 | 0.017 | 0.017 |
+| jinaclip | 0.104 | 0.092 | 0.096 |
+| colqwen | 0.479 | 0.476 | 0.495 |
+| B4_VLM | 30.117 | 27.748 | 52.407 |
+| B5_agentic | 44.885 | 29.677 | 118.313 |

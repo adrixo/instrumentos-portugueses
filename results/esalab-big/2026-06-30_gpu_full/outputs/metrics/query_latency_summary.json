@@ -1,0 +1,42 @@
+{
+  "openclip-vitl14": {
+    "n_queries": 66,
+    "mean_seconds": 0.018933878787878788,
+    "median_seconds": 0.016789,
+    "p25_seconds": 0.0167225,
+    "p75_seconds": 0.0168365,
+    "p95_seconds": 0.017191750000000002
+  },
+  "jinaclip": {
+    "n_queries": 66,
+    "mean_seconds": 0.1041945303030303,
+    "median_seconds": 0.092291,
+    "p25_seconds": 0.0920965,
+    "p75_seconds": 0.0928345,
+    "p95_seconds": 0.09573375
+  },
+  "colqwen": {
+    "n_queries": 66,
+    "mean_seconds": 0.47935225757575756,
+    "median_seconds": 0.47633800000000004,
+    "p25_seconds": 0.47302825,
+    "p75_seconds": 0.48099149999999996,
+    "p95_seconds": 0.49543175
+  },
+  "B4_VLM": {
+    "n_queries": 66,
+    "mean_seconds": 30.117289106060607,
+    "median_seconds": 27.748222,
+    "p25_seconds": 14.33167825,
+    "p75_seconds": 46.95604,
+    "p95_seconds": 52.40746325
+  },
+  "B5_agentic": {
+    "n_queries": 66,
+    "mean_seconds": 44.88452172727273,
+    "median_seconds": 29.6767495,
+    "p25_seconds": 17.065369,
+    "p75_seconds": 67.64712549999999,
+    "p95_seconds": 118.31340974999999
+  }
+}

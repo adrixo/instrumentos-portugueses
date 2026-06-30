@@ -1,9 +1,9 @@
 ---
 theme: default
-title: "Multimodal Visual Information Retrieval of Traditional Portuguese Instruments: A Reproducible Comparison of Dense Retrieval and Agentic Reranking"
+title: "Visual Information Retrieval for Traditional Portuguese Instruments"
 info: |
-  GPU experiment results from esalab-big, included in this repository under
-  results/esalab-big/2026-06-30_gpu_full.
+  Academic presentation on visual information retrieval over a labelled corpus of
+  traditional Portuguese instrument frames.
 class: text-left
 highlighter: shiki
 drawings:
@@ -12,67 +12,66 @@ transition: fade
 mdc: true
 ---
 
-# Multimodal Visual Information Retrieval of Traditional Portuguese Instruments
+# Visual Information Retrieval for Traditional Portuguese Instruments
 
 <p class="subtitle">
-A reproducible comparison of dense retrieval, late interaction, VLM reranking, and agentic reranking.
+Evaluating dense, late-interaction, multimodal and agentic retrieval systems on a labelled visual corpus.
 </p>
 
 <p class="meta">
-Traditional Portuguese Instruments IR · GPU full run on esalab-big · 2026-06-30
+Adrian Valera Roman
 </p>
 
 ---
 
-## Talk Map
+## Índice de contenidos
 
-1. Motivation and retrieval task
-2. Dataset, privacy, and leakage controls
-3. Systems compared
-4. Reproducible GPU setup
-5. Results and reranking analysis
-6. Limitations and next steps
+<div class="toc-large">
+
+1. Motivación: recuperación de información en archivos audiovisuales
+2. Corpus anotado y formulación del caso de estudio
+3. Sistemas evaluados
+4. Resultados de recuperación y reranking
+5. Coste temporal por consulta
+6. Conclusiones y futuras líneas de trabajo
+
+</div>
 
 ---
 
-## Motivation
+## Motivación
 
-Visual archives often need retrieval by semantic instrument names, not by filenames or manual tags.
+La recuperación de información permite explorar grandes corpus culturales sin revisar manualmente cada vídeo, imagen o documento. En archivos audiovisuales, una consulta útil no suele ser un identificador técnico, sino una necesidad semántica:
 
 <div class="callout">
-Given a query such as <strong>adufe</strong>, rank images that visibly contain that traditional instrument.
+Encontrar fragmentos visuales donde aparece un instrumento tradicional concreto, aunque el vídeo no esté etiquetado con ese instrumento.
 </div>
 
-- Instrument categories are visually fine-grained and often small in the frame.
-- Several viola variants are visually close to each other.
-- The evaluation must not leak filenames, video identifiers, or labels into inference.
+El mapa de <span class="emph">A Música Portuguesa a Gostar Dela Própria</span> reúne numerosos vídeos de música tradicional portuguesa. En ese tipo de archivo, la pregunta de IR sería: dado un instrumento, ¿qué frames o vídeos deberían aparecer primero?
 
 ---
 
-## IR Formulation
+## Del archivo al corpus evaluable
 
-<div class="two-col">
+<div class="two-col wide-left">
 
 <div>
 
-### Query side
+El punto de partida es un archivo audiovisual amplio: actuaciones, entrevistas, bailes, grabaciones de campo y vídeos con instrumentos en contextos muy variables.
 
-- 22 instrument classes
-- 3 query languages per class
-- 66 test queries
-- Text-only query input
+Para evaluar sistemas de recuperación no basta con tener vídeos: se necesita ground truth. Por eso se etiquetó un dataset visual y se publicó como:
+
+<div class="citation">
+Comprehensive dataset of Portuguese folk instruments for computer vision and heritage research<br>
+Data in Brief 61, 2025. DOI 10.1016/j.dib.2025.111739<br>
+Dataset: Mendeley DOI 10.17632/pk7txkgt4v.2
+</div>
 
 </div>
 
-<div>
-
-### Document side
-
-- Candidate image frames
-- Multi-label COCO ground truth
-- Anonymous `image_id`
-- Relevance = instrument is present
-
+<div class="paper-stack">
+  <img src="./assets/paper/dataset_collection.jpg" />
+  <img src="./assets/paper/dataset_annotations.jpg" />
 </div>
 
 </div>
@@ -81,97 +80,223 @@ Given a query such as <strong>adufe</strong>, rank images that visibly contain t
 
 ## Dataset
 
+<div class="two-col">
+
+<div>
+
 <div class="metric-grid">
   <div class="metric">
     <div class="label">Train</div>
     <div class="value">3,954</div>
-    <div class="note">images</div>
+    <div class="note">imágenes</div>
   </div>
   <div class="metric">
     <div class="label">Valid</div>
     <div class="value">1,351</div>
-    <div class="note">images</div>
+    <div class="note">imágenes</div>
   </div>
   <div class="metric">
     <div class="label">Test</div>
     <div class="value">1,317</div>
-    <div class="note">images</div>
+    <div class="note">imágenes</div>
   </div>
   <div class="metric">
-    <div class="label">Classes</div>
+    <div class="label">Clases</div>
     <div class="value">22</div>
-    <div class="note">instrument labels</div>
+    <div class="note">instrumentos</div>
   </div>
 </div>
 
-<br>
+<p class="body-text">
+Cada imagen puede contener varios instrumentos. Esto convierte el problema en recuperación multi-etiqueta: una imagen es relevante para una consulta si el instrumento aparece visualmente en el frame.
+</p>
 
-Source dataset: Mendeley DOI `10.17632/pk7txkgt4v.2`.
+</div>
 
----
+<div class="paper-frame tall">
+  <img src="./assets/paper/dataset_classes.jpg" />
+</div>
 
-## Leakage Controls
-
-- Public retrieval corpus contains `image_id`, split, width, and height.
-- Private mapping resolves pixels only inside `ImageProvider`.
-- Prompts and traces do not expose filename, Vimeo id, or labels.
-- Tests cover runfile format, qrels, reporting, and no-filename leakage.
-
-```text
-query text + anonymous image_id -> model inference -> ranked image_id list
-private filename/labels -> qrels/evaluation only
-```
-
----
-
-## Systems Compared
-
-<div class="pipeline">
-  <div class="stage">
-    <strong>B1 Dense</strong>
-    <p>OpenCLIP ViT-B/32, OpenCLIP ViT-L/14, JinaCLIP.</p>
-  </div>
-  <div class="stage">
-    <strong>B3 Late Interaction</strong>
-    <p>ColQwen multivector image/text scoring.</p>
-  </div>
-  <div class="stage">
-    <strong>B4 VLM Reranker</strong>
-    <p>Dense top-200 candidates reranked pointwise by Qwen2.5-VL.</p>
-  </div>
-  <div class="stage">
-    <strong>B5 Agentic Reranker</strong>
-    <p>Full image VQA, optional captions, deterministic crops, evidence fusion.</p>
-  </div>
 </div>
 
 ---
 
-## GPU Run Configuration
+## Caso de estudio: formulación IR
+
+<div class="two-col wide-left">
+
+<div>
+
+El caso de estudio se plantea como una tarea clásica de recuperación:
+
+- <span class="emph">Consulta</span>: nombre textual de un instrumento, en portugués, español o inglés.
+- <span class="emph">Documento</span>: una imagen, normalmente un frame extraído de un vídeo.
+- <span class="emph">Relevancia</span>: el instrumento consultado aparece en la imagen.
+- <span class="emph">Salida</span>: ranking de imágenes ordenadas por probabilidad de relevancia.
+
+Esto permite comparar sistemas con métricas IR estándar: Recall@K, nDCG@K, mAP y MRR.
+
+</div>
+
+<img class="hero-figure" src="./assets/ir_case_study.png" />
+
+</div>
+
+---
+
+## Relevancia y control de información
 
 <div class="two-col">
 
 <div>
 
-### Hardware and containers
+La entrada disponible para los modelos es solo visual:
 
-- Server: `esalab-big`
-- GPU: RTX 3090 Ti, 24 GB
-- Docker Compose GPU pipeline
-- vLLM image: `vllm/vllm-openai:v0.10.1.1`
+<div class="callout compact">
+Consulta textual + imagen del frame.
+</div>
+
+Los nombres de archivo, identificadores de vídeo y etiquetas del dataset no se exponen durante la inferencia. Solo se usan después, para construir qrels y calcular métricas.
+
+</div>
+
+<div class="flow-card">
+  <div class="flow-step">Consulta<br><strong>“adufe”</strong></div>
+  <div class="arrow">→</div>
+  <div class="flow-step">Frame<br><strong>imagen</strong></div>
+  <div class="arrow">→</div>
+  <div class="flow-step">Modelo<br><strong>score</strong></div>
+  <div class="arrow">→</div>
+  <div class="flow-step">Ranking<br><strong>image_id</strong></div>
+</div>
+
+</div>
+
+---
+
+## Sistemas evaluados
+
+<img class="full-bleed-figure" src="./assets/systems_overview.png" />
+
+<p class="small center">
+Cuatro familias de aproximaciones: embeddings globales, interacción tardía, reranking multimodal y búsqueda agéntica.
+</p>
+
+---
+
+## Sistema 1: recuperación densa
+
+<div class="two-col wide-left">
+
+<div>
+
+Los modelos densos proyectan la consulta y cada imagen a un espacio vectorial común. El ranking se obtiene por similitud entre vectores.
+
+- Un embedding por consulta.
+- Un embedding por imagen.
+- Muy eficiente para indexar y recuperar a gran escala.
+- Limitación: puede perder detalles pequeños o instrumentos visualmente parecidos.
+
+Sistemas evaluados: OpenCLIP ViT-B/32, OpenCLIP ViT-L/14 y JinaCLIP.
+
+</div>
+
+<div class="system-crop dense"></div>
+
+</div>
+
+---
+
+## Sistema 2: interacción tardía
+
+<div class="two-col wide-left">
+
+<div>
+
+ColQwen representa la imagen y la consulta mediante múltiples vectores. En lugar de comparar un único embedding global, calcula coincidencias entre tokens visuales y textuales.
+
+- Mejor sensibilidad a partes locales de la imagen.
+- Útil cuando el instrumento ocupa una zona pequeña.
+- Más costoso que un índice denso global.
+
+Este enfoque es especialmente interesante para instrumentos que aparecen parcialmente o entre otros objetos visuales.
+
+</div>
+
+<div class="system-crop late"></div>
+
+</div>
+
+---
+
+## Sistema 3: reranking multimodal
+
+<div class="two-col wide-left">
+
+<div>
+
+El reranking multimodal parte de una lista candidata generada por recuperación densa. Después, un VLM examina cada imagen candidata y decide si el instrumento está presente.
+
+- El VLM no busca en todo el corpus: solo reordena candidatos.
+- Produce una decisión y una confianza.
+- Puede incorporar evidencia visual explícita.
+
+La calidad final depende del techo impuesto por los candidatos recuperados inicialmente.
+
+</div>
+
+<div class="system-crop vlm"></div>
+
+</div>
+
+---
+
+## Sistema 4: búsqueda agéntica
+
+<div class="two-col wide-left">
+
+<div>
+
+La búsqueda agéntica añade una estrategia de inspección visual sobre el reranking multimodal.
+
+- Primero pregunta por la imagen completa.
+- Si hay incertidumbre, puede generar recortes deterministas.
+- Puede producir una breve descripción visual.
+- Fusiona evidencias para decidir el score final.
+
+El objetivo no es solo “mirar más”, sino mirar de forma controlada cuando la imagen completa no basta.
+
+</div>
+
+<div class="system-crop agentic"></div>
+
+</div>
+
+---
+
+## Diseño experimental
+
+<div class="two-col">
+
+<div>
+
+La evaluación compara sistemas sobre las mismas consultas y el mismo split de test:
+
+- 22 instrumentos.
+- 3 idiomas por instrumento.
+- 66 consultas.
+- Métricas macro por consulta/instrumento.
 
 </div>
 
 <div>
 
-### VLM settings
+El protocolo separa dos fases:
 
-- Model: `Qwen/Qwen2.5-VL-3B-Instruct`
-- Served as: `qwen2.5-vl`
-- `max_model_len=4096`
-- `VLM_MAX_IMAGE_SIDE=768`
-- `VLM_WORKERS=8`
-- Persistent VLM cache enabled
+- <span class="emph">Recuperación inicial</span>: ranking directo sobre el corpus.
+- <span class="emph">Reranking</span>: reordenación de candidatos ya recuperados.
+
+Esto permite distinguir entre capacidad de encontrar candidatos y capacidad de ordenar correctamente los candidatos encontrados.
 
 </div>
 
@@ -179,152 +304,99 @@ private filename/labels -> qrels/evaluation only
 
 ---
 
-## Reproducibility Artifacts
+## Resultados: Recall@K
 
-The full snapshot is versioned in:
+<img class="chart" src="./assets/metrics_recall_at_k.png" />
 
-```text
-results/esalab-big/2026-06-30_gpu_full/
-```
-
-- `outputs/runs/`: TREC runfiles
-- `outputs/metrics/`: JSON metrics
-- `outputs/rerank_traces/`: B4/B5 decision traces
-- `outputs/reports/final_report.md`: generated report
-- `outputs/remote/gpu_full.log`: remote execution log
+<p class="small center">
+JinaCLIP obtiene el mejor Recall@100 entre los sistemas de recuperación directa. El reranking mejora la ordenación, pero no puede recuperar imágenes que no entraron en el conjunto candidato.
+</p>
 
 ---
 
-## Main Test Results
+## Resultados: calidad del ranking
+
+<img class="chart" src="./assets/metrics_quality_bars.png" />
+
+<p class="small center">
+La búsqueda agéntica obtiene el mejor MRR, lo que indica que tiende a colocar resultados relevantes antes en el ranking.
+</p>
+
+---
+
+## Lectura de los resultados
 
 <div class="compact-table">
 
-| system | recall@100 | ndcg@100 | map | mrr |
-|---|---:|---:|---:|---:|
-| B1_openclip-vitb32_test | 0.1485 | 0.2007 | 0.0514 | 0.2251 |
-| B1_openclip-vitl14_test | 0.1808 | 0.2456 | 0.0760 | 0.3438 |
-| B1_jinaclip_test | **0.1938** | **0.2640** | **0.0842** | 0.3282 |
-| B3_colqwen_test | 0.1617 | 0.2268 | 0.0705 | 0.3043 |
-| B4_test | 0.1904 | 0.2553 | 0.0764 | 0.3777 |
-| B5_full_test | 0.1926 | 0.2639 | 0.0795 | **0.4229** |
-| B5_weighted_fusion_test | 0.1853 | 0.2597 | 0.0787 | 0.3885 |
+| Enfoque | Lectura principal |
+|---|---|
+| Dense retrieval | Muy competitivo y barato; JinaCLIP lidera Recall@100 y mAP. |
+| Late interaction | No domina en promedio, pero ayuda en clases con señales locales. |
+| VLM reranking | Mejora la ordenación de candidatos, especialmente nDCG/MRR. |
+| Agentic reranking | Añade valor cuando la inspección completa no basta, pero aumenta el coste. |
 
 </div>
-
-<p class="small">Macro averages over instrument queries. Full table is in the result snapshot.</p>
-
----
-
-## Recall at K
-
-![Recall at K](./assets/recall_at_k.png)
-
----
-
-## Reranking Gain
-
-<div class="compact-table">
-
-| system | candidate_recall@200 | oracle_recall@100 | rerank_gain@100 | delta_ndcg@100 | delta_map |
-|---|---:|---:|---:|---:|---:|
-| B4_test | 0.2938 | 0.2781 | +0.0096 | +0.0097 | -0.0309 |
-| B5_full_test | 0.2938 | 0.2781 | +0.0118 | +0.0183 | -0.0278 |
-
-</div>
-
-<br>
 
 <div class="callout">
-B4/B5 can only rerank what the dense stage retrieves. Candidate recall at top-200 sets the ceiling.
+El cuello de botella no es solo el razonamiento visual: también importa que la primera etapa recupere suficientes candidatos relevantes.
 </div>
 
 ---
 
-## B5 Ablations
+## Coste temporal por consulta
 
-<div class="compact-table">
+<div class="two-col wide-left">
 
-| variant | recall@100 | ndcg@100 | map | mrr |
-|---|---:|---:|---:|---:|
-| full | 0.1926 | 0.2639 | 0.0795 | 0.4229 |
-| no_crops | 0.1904 | 0.2553 | 0.0764 | 0.3777 |
-| no_caption | 0.1926 | 0.2639 | 0.0795 | 0.4229 |
-| full_image_only | 0.1904 | 0.2553 | 0.0764 | 0.3777 |
-| max_score_only | 0.1926 | 0.2639 | 0.0795 | 0.4229 |
-| weighted_fusion | 0.1853 | 0.2597 | 0.0787 | 0.3885 |
+<div>
+
+<img class="chart inset" src="./assets/latency_boxplot.png" />
+
+</div>
+
+<div>
+
+La comparación temporal debe leerse como parte del diseño del sistema:
+
+- OpenCLIP L/14: 0.019 s/consulta; JinaCLIP: 0.104 s/consulta.
+- ColQwen: 0.479 s/consulta con embeddings de corpus cacheados.
+- B4 VLM: 30.1 s/consulta; B5 agéntico: 44.9 s/consulta.
+- B5 tiene una cola más larga por recortes, captions y llamadas adicionales.
+
+<p class="small">
+Box-and-whisker en escala logarítmica. Dense/ColQwen se midieron con benchmark por consulta; B4/B5 se estiman desde marcas temporales de traces.
+</p>
+
+</div>
 
 </div>
 
 ---
 
-## What Improved?
+## Conclusiones
 
-- B5 full improves MRR most clearly: `0.4229` vs `0.3282` for JinaCLIP.
-- B5 full gives the best reranking gain among B4/B5: `+0.0118` recall@100.
-- JinaCLIP remains the strongest single dense model on recall@100 and MAP.
-- Weighted fusion improves nDCG@10 but hurts recall@100 in this run.
-
----
-
-## Per-class Observations
-
-- `viola-beiroa`: B4/full-image reranking is strongest at recall@100.
-- `flauta`: ColQwen is strongest, suggesting patch-level matching helps.
-- `cavaquinho`: B5 full is strongest among test systems.
-- Rare classes such as `matracas`, `palheta`, and `sarronca` remain difficult.
+1. La tarea es útil para explorar archivos audiovisuales de patrimonio musical cuando el usuario busca por instrumentos, no por metadatos técnicos.
+2. Un dataset anotado convierte el corpus en un banco de pruebas cuantitativo para sistemas de IR visual.
+3. Los modelos densos son una base sólida y eficiente.
+4. Los VLMs y la búsqueda agéntica aportan mejoras de ordenación, especialmente en MRR, pero dependen de la calidad del conjunto candidato.
+5. El coste temporal debe considerarse junto a la métrica: el mejor ranking no siempre es el sistema más operativo.
 
 ---
 
-## Operational Notes
+## Futuras líneas de trabajo
 
-- Full run completed with exit code `0`.
-- B4 and every B5 ablation processed `13,200 / 13,200` candidates.
-- vLLM was stopped after result collection to release GPU memory.
-- Local tests pass: `28 passed`.
-
----
-
-## Limitations
-
-- VLM reranking is bounded by dense candidate recall.
-- The dataset has 22 classes, so per-class variance can be high.
-- Some instrument variants are visually similar and may need domain-specific visual cues.
-- Qwen-VL context limits require controlled image resizing for stable vLLM serving.
+- Medir latencia completa por query para todos los enfoques bajo el mismo entorno y con cachés controladas.
+- Evaluar VLMs más recientes, incluyendo Qwen3.6-27B servido con soporte multimodal.
+- Llevar la evaluación de frames a recuperación de vídeos completos.
+- Integrar señales temporales: múltiples frames, audio y contexto de actuación.
+- Añadir aprendizaje específico para instrumentos visualmente cercanos.
+- Diseñar una interfaz de búsqueda para exploración del archivo por investigadores y público general.
 
 ---
 
-## Takeaways
+## Fuentes y créditos
 
-1. Dense retrieval remains competitive and cheap.
-2. VLM reranking improves ordering quality, especially MRR and nDCG.
-3. Agentic B5 adds value over plain B4, but only modestly under the current candidate ceiling.
-4. The full run is reproducible and packaged with runfiles, metrics, traces, reports, logs, and slides.
-
----
-
-## Appendix: Run Commands
-
-```bash
-export VLM_MODEL_HF=Qwen/Qwen2.5-VL-3B-Instruct
-export VLLM_IMAGE=vllm/vllm-openai:v0.10.1.1
-export VLLM_MAX_MODEL_LEN=4096
-export VLLM_GPU_MEMORY_UTILIZATION=0.60
-export VLM_MAX_IMAGE_SIDE=768
-export VLM_WORKERS=8
-export VLM_CACHE=1
-
-docker compose -f docker/docker-compose.gpu.yml up -d vlm-server
-docker compose -f docker/docker-compose.gpu.yml run --rm irlab bash scripts/gpu_full.sh
-```
-
----
-
-## Appendix: Slidev
-
-```bash
-cd slides/slidev
-npm install
-npm run dev
-npm run build
-npm run export
-```
+- A Música Portuguesa a Gostar Dela Própria, mapa audiovisual: `https://amusicaportuguesaagostardelapropria.org/map`
+- Zendron et al., “Comprehensive dataset of Portuguese folk instruments for computer vision and heritage research”, Data in Brief 61, 2025. DOI `10.1016/j.dib.2025.111739`.
+- Dataset publicado en Mendeley Data: DOI `10.17632/pk7txkgt4v.2`.
+- Figuras del dataset: artículo en PubMed Central `PMC12205808`.
+- Ilustraciones de caso de estudio y sistemas: generadas con `imagegen` para esta presentación.
