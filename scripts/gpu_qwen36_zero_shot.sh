@@ -9,6 +9,7 @@ VLM_DISABLE_THINKING="${VLM_DISABLE_THINKING:-true}"
 TOPN="${TOPN:-50}"
 FINAL_K="${FINAL_K:-50}"
 DENSE_MODEL="${DENSE_MODEL:-openclip-vitl14}"
+DENSE_RUN_NAME="${DENSE_RUN_NAME:-DENSE_qwen36_test}"
 RUN_NAME="${RUN_NAME:-B4_qwen36_zero_shot_test}"
 
 export VLM_DISABLE_THINKING
@@ -68,8 +69,8 @@ instrument-ir prepare-data
 instrument-ir build-qrels --split test
 
 echo "### dense candidates top-$TOPN (dense=$DENSE_MODEL, test)"
-instrument-ir retrieve --split test --model "$DENSE_MODEL" --top-k "$TOPN" --run-name "DENSE_qwen36_test"
-DENSE_RUN="outputs/runs/DENSE_qwen36_test.trec"
+instrument-ir retrieve --split test --model "$DENSE_MODEL" --top-k "$TOPN" --run-name "$DENSE_RUN_NAME"
+DENSE_RUN="outputs/runs/${DENSE_RUN_NAME}.trec"
 
 echo "### $RUN_NAME (zero-shot, top_n=$TOPN, final_k=$FINAL_K)"
 instrument-ir rerank-vlm --dense-run "$DENSE_RUN" --split test --backend openai \

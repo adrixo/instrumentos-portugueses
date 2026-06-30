@@ -99,6 +99,12 @@ EXPECTED_ARTIFACTS = {
         "outputs/rerank_traces/B4_qwen36_zero_shot_test.jsonl",
         "outputs/metrics/B4_qwen36_zero_shot_test.json",
         "outputs/metrics/B4_qwen36_zero_shot_test__rerankmetrics.json",
+        "outputs/runs/DENSE_qwen36_top100_test.trec",
+        "outputs/runs/B4_qwen36_zero_shot_top100_test.trec",
+        "outputs/candidates/B4_qwen36_zero_shot_top100_test.parquet",
+        "outputs/rerank_traces/B4_qwen36_zero_shot_top100_test.jsonl",
+        "outputs/metrics/B4_qwen36_zero_shot_top100_test.json",
+        "outputs/metrics/B4_qwen36_zero_shot_top100_test__rerankmetrics.json",
         "outputs/reports/final_report.md",
     ],
 }
@@ -313,9 +319,11 @@ def line_count(path):
 
 dense_target = line_count(root / "outputs" / "runs" / "DENSE_test.trec")
 qwen36_dense_target = line_count(root / "outputs" / "runs" / "DENSE_qwen36_test.trec")
+qwen36_top100_dense_target = line_count(root / "outputs" / "runs" / "DENSE_qwen36_top100_test.trec")
 trace_counts = {}
 for name in [
     "B4_qwen36_zero_shot_test",
+    "B4_qwen36_zero_shot_top100_test",
     "B4_test",
     "B5_full_test",
     "B5_no_crops_test",
@@ -326,7 +334,12 @@ for name in [
 ]:
     path = root / "outputs" / "rerank_traces" / f"{name}.jsonl"
     if path.exists():
-        target = qwen36_dense_target if name == "B4_qwen36_zero_shot_test" else dense_target
+        if name == "B4_qwen36_zero_shot_test":
+            target = qwen36_dense_target
+        elif name == "B4_qwen36_zero_shot_top100_test":
+            target = qwen36_top100_dense_target
+        else:
+            target = dense_target
         trace_counts[name] = {
             "lines": line_count(path),
             "target": target,
