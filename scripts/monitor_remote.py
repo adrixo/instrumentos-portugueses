@@ -92,6 +92,15 @@ EXPECTED_ARTIFACTS = {
         "outputs/reports/error_B5_test.json",
         "outputs/reports/final_report.md",
     ],
+    "qwen36": [
+        "outputs/runs/DENSE_qwen36_test.trec",
+        "outputs/runs/B4_qwen36_zero_shot_test.trec",
+        "outputs/candidates/B4_qwen36_zero_shot_test.parquet",
+        "outputs/rerank_traces/B4_qwen36_zero_shot_test.jsonl",
+        "outputs/metrics/B4_qwen36_zero_shot_test.json",
+        "outputs/metrics/B4_qwen36_zero_shot_test__rerankmetrics.json",
+        "outputs/reports/final_report.md",
+    ],
 }
 
 SMOKE_STEPS = [
@@ -112,6 +121,19 @@ FULL_STEPS = [
     "B5 agente + ablaciones",
     "error-analysis + report",
 ]
+
+QWEN36_STEPS = [
+    "preflight",
+    "prepare-data + test qrels",
+    "dense candidates",
+    "B4_qwen36_zero_shot_test",
+]
+
+PHASE_JOB = {
+    "smoke": "gpu_smoke",
+    "full": "gpu_full",
+    "qwen36": "qwen36_zero_shot",
+}
 
 
 REMOTE_COLLECTOR = r"""
@@ -291,6 +313,7 @@ def line_count(path):
 dense_target = line_count(root / "outputs" / "runs" / "DENSE_test.trec")
 trace_counts = {}
 for name in [
+    "B4_qwen36_zero_shot_test",
     "B4_test",
     "B5_full_test",
     "B5_no_crops_test",
@@ -327,13 +350,14 @@ print(json.dumps({
     "cache_files": cache_files,
     "paths": paths,
     "latest": latest,
-    "jobs": {
-        "build_irlab": job_status("build_irlab"),
-        "vlm_server": job_status("vlm_server"),
-        "gpu_smoke": job_status("gpu_smoke"),
-        "gpu_full": job_status("gpu_full"),
-    },
-}, ensure_ascii=True))
+        "jobs": {
+            "build_irlab": job_status("build_irlab"),
+            "vlm_server": job_status("vlm_server"),
+            "gpu_smoke": job_status("gpu_smoke"),
+            "gpu_full": job_status("gpu_full"),
+            "qwen36_zero_shot": job_status("qwen36_zero_shot"),
+        },
+    }, ensure_ascii=True))
 """
 
 
@@ -345,7 +369,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--project-dir", help="Override remote project directory")
     parser.add_argument("--identity-file", help="SSH private key path")
     parser.add_argument("--password-env", default="ESALAB_BIG_PASSWORD")
-    parser.add_argument("--phase", choices=["auto", "smoke", "full"], default="auto")
+    parser.add_argument("--phase", choices=["auto", "smoke", "full", "qwen36"], default="auto")
     parser.add_argument("--interval", type=float, default=10.0)
     parser.add_argument("--tail-lines", type=int, default=36)
     parser.add_argument("--once", action="store_true", help="Print one snapshot and exit")
@@ -430,6 +454,8 @@ def detect_phase(snapshot: dict[str, Any], requested: str) -> str:
     if requested != "auto":
         return requested
     jobs = snapshot.get("jobs", {})
+    if jobs.get("qwen36_zero_shot", {}).get("state") in {"running", "done", "failed", "stopped"}:
+        return "qwen36"
     if jobs.get("gpu_full", {}).get("state") in {"running", "done", "failed", "stopped"}:
         return "full"
     if jobs.get("gpu_smoke", {}).get("state") in {"running", "done", "failed", "stopped"}:
@@ -460,19 +486,23 @@ def job_percent(job: dict[str, Any]) -> int:
 
 
 def phase_marker_progress(snapshot: dict[str, Any], phase: str) -> tuple[int, int]:
-    job = snapshot.get("jobs", {}).get(f"gpu_{phase}", {})
+    job = snapshot.get("jobs", {}).get(PHASE_JOB.get(phase, f"gpu_{phase}"), {})
     markers = job.get("markers") or []
-    total = len(SMOKE_STEPS if phase == "smoke" else FULL_STEPS)
+    steps = {"smoke": SMOKE_STEPS, "full": FULL_STEPS, "qwen36": QWEN36_STEPS}.get(
+        phase, SMOKE_STEPS
+    )
+    total = len(steps)
     return min(len(markers), total), total
 
 
 def choose_log(snapshot: dict[str, Any], phase: str) -> tuple[str, list[str]]:
     jobs = snapshot.get("jobs", {})
-    for name in [f"gpu_{phase}", "build_irlab", "vlm_server"]:
+    phase_job = PHASE_JOB.get(phase, f"gpu_{phase}")
+    for name in [phase_job, "build_irlab", "vlm_server"]:
         job = jobs.get(name, {})
         if job.get("state") == "running" and job.get("tail"):
             return name, job.get("tail") or []
-    for name in [f"gpu_{phase}", "build_irlab", "vlm_server"]:
+    for name in [phase_job, "build_irlab", "vlm_server"]:
         job = jobs.get(name, {})
         if job.get("tail"):
             return name, job.get("tail") or []
