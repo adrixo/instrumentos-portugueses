@@ -18,7 +18,7 @@ from .cache import CorpusEmbeddingCache, MultiVectorCache
 SHORTHANDS: dict[str, dict] = {
     "dummy": {"type": "dummy"},
     "openclip-vitb32": {"type": "openclip", "model_name": "ViT-B-32", "pretrained": "laion2b_s34b_b79k"},
-    "openclip-vitl14": {"type": "openclip", "model_name": "ViT-L-14", "pretrained": "laion2b_s34b_b79k"},
+    "openclip-vitl14": {"type": "openclip", "model_name": "ViT-L-14", "pretrained": "laion2b_s32b_b82k"},
     "jinaclip": {"type": "jinaclip", "model_name": "jinaai/jina-clip-v2"},
     "colqwen": {"type": "colqwen", "model_name": "vidore/colqwen2-v1.0"},
 }

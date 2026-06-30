@@ -83,3 +83,40 @@ Recibirás alerta también si algo **falla**. El smoke solo avisa (no apaga).
 - Si la GPU tiene <24 GB, usa `Qwen/Qwen2.5-VL-3B-Instruct` en el paso 1 y `VLM_MODEL` acorde.
 - En Linux NO hace falta `INSTRUMENT_IR_NO_FAISS` (faiss va bien).
 - Apaga la instancia al terminar para no seguir pagando.
+
+## Servidores disponibles
+
+La lista versionada esta en `configs/servers.yaml`. No guarda secretos.
+
+- `esalab-big`: servidor Tailscale `esalab-big.taild1b22.ts.net` (`100.69.221.87`),
+  usuario `esalab`, proyecto en `/home/esalab/Escritorio/instrumentos_portugueses_ir`.
+  Tiene una RTX 3090 Ti de 24 GB; para evitar presion de VRAM con vLLM + retrievers se recomienda:
+
+```bash
+export VLM_MODEL_HF=Qwen/Qwen2.5-VL-3B-Instruct
+export VLLM_IMAGE=vllm/vllm-openai:v0.10.1.1
+export VLLM_MAX_MODEL_LEN=4096
+export VLLM_GPU_MEMORY_UTILIZATION=0.60
+export VLM_MAX_IMAGE_SIDE=768
+export VLM_JPEG_QUALITY=85
+export VLM_WORKERS=8
+export VLM_CACHE=1
+export VLM_CACHE_DIR=outputs/cache/vlm_openai
+docker compose -f docker/docker-compose.gpu.yml up -d vlm-server
+docker compose -f docker/docker-compose.gpu.yml run --rm irlab bash scripts/gpu_smoke.sh
+```
+
+El resize de imagen es importante para Qwen-VL via vLLM: sin `VLM_MAX_IMAGE_SIDE`, algunas imagenes
+superan el contexto visual de `max_model_len=4096`. La cache evita repetir llamadas VLM entre B4 y las
+ablaciones B5.
+
+Monitor local desde esta maquina:
+
+```powershell
+pip install -e ".[monitor]"
+$env:ESALAB_BIG_PASSWORD="..."
+python scripts/monitor_remote.py --server esalab-big
+```
+
+El snapshot del run completo ejecutado en `esalab-big` esta en
+`results/esalab-big/2026-06-30_gpu_full/`.

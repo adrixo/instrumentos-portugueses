@@ -10,7 +10,12 @@
 from __future__ import annotations
 
 import base64
+import hashlib
 import io
+import json
+import os
+import threading
+from pathlib import Path
 from typing import Protocol
 
 
@@ -21,11 +26,37 @@ class VLMBackend(Protocol):
                  max_new_tokens: int) -> str: ...
 
 
-def _data_url(pil_image) -> str:
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.environ.get(name, str(default)))
+    except ValueError:
+        return default
+
+
+def _prepare_image(pil_image):
+    image = pil_image.convert("RGB")
+    max_side = _env_int("VLM_MAX_IMAGE_SIDE", 768)
+    if max_side > 0 and max(image.size) > max_side:
+        from PIL import Image
+
+        image = image.copy()
+        resampling = getattr(getattr(Image, "Resampling", Image), "LANCZOS", Image.BICUBIC)
+        image.thumbnail((max_side, max_side), resampling)
+    return image
+
+
+def _encode_image(pil_image) -> tuple[str, str]:
     buf = io.BytesIO()
-    pil_image.convert("RGB").save(buf, format="JPEG", quality=90)
-    b64 = base64.b64encode(buf.getvalue()).decode()
-    return f"data:image/jpeg;base64,{b64}"
+    quality = max(1, min(95, _env_int("VLM_JPEG_QUALITY", 85)))
+    _prepare_image(pil_image).save(buf, format="JPEG", quality=quality, optimize=True)
+    payload = buf.getvalue()
+    digest = hashlib.sha256(payload).hexdigest()
+    b64 = base64.b64encode(payload).decode()
+    return f"data:image/jpeg;base64,{b64}", digest
+
+
+def _data_url(pil_image) -> str:
+    return _encode_image(pil_image)[0]
 
 
 class OpenAICompatVLMBackend:
@@ -36,12 +67,70 @@ class OpenAICompatVLMBackend:
 
         self.model_id = model
         self.client = OpenAI(base_url=base_url, api_key=api_key)
+        self.cache_enabled = os.environ.get("VLM_CACHE", "1").lower() not in {"0", "false", "no"}
+        self.cache_dir = Path(os.environ.get("VLM_CACHE_DIR", "outputs/cache/vlm_openai"))
+        self._cache_lock = threading.Lock()
+        if self.cache_enabled:
+            self.cache_dir.mkdir(parents=True, exist_ok=True)
+
+    def _cache_key(
+        self,
+        prompt: str,
+        image_digests: list[str],
+        temperature: float,
+        seed: int,
+        max_new_tokens: int,
+    ) -> str:
+        data = {
+            "model": self.model_id,
+            "prompt": prompt,
+            "images": image_digests,
+            "temperature": temperature,
+            "seed": seed,
+            "max_new_tokens": max_new_tokens,
+            "max_image_side": _env_int("VLM_MAX_IMAGE_SIDE", 768),
+            "jpeg_quality": max(1, min(95, _env_int("VLM_JPEG_QUALITY", 85))),
+        }
+        raw = json.dumps(data, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        return hashlib.sha256(raw).hexdigest()
+
+    def _cache_path(self, key: str) -> Path:
+        return self.cache_dir / key[:2] / f"{key}.json"
+
+    def _read_cache(self, key: str) -> str | None:
+        if not self.cache_enabled:
+            return None
+        path = self._cache_path(key)
+        if not path.exists():
+            return None
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))["text"]
+        except Exception:
+            return None
+
+    def _write_cache(self, key: str, text: str) -> None:
+        if not self.cache_enabled:
+            return
+        path = self._cache_path(key)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_name(f"{key}.{os.getpid()}.{threading.get_ident()}.tmp")
+        with self._cache_lock:
+            tmp.write_text(json.dumps({"text": text}, ensure_ascii=False), encoding="utf-8")
+            tmp.replace(path)
 
     def generate(self, prompt: str, images: list, *, temperature: float, seed: int,
                  max_new_tokens: int) -> str:
+        encoded = [_encode_image(img) for img in images]
+        key = self._cache_key(
+            prompt, [digest for _, digest in encoded], temperature, seed, max_new_tokens
+        )
+        cached = self._read_cache(key)
+        if cached is not None:
+            return cached
+
         content = [{"type": "text", "text": prompt}]
-        for img in images:
-            content.append({"type": "image_url", "image_url": {"url": _data_url(img)}})
+        for data_url, _ in encoded:
+            content.append({"type": "image_url", "image_url": {"url": data_url}})
         resp = self.client.chat.completions.create(
             model=self.model_id,
             messages=[{"role": "user", "content": content}],
@@ -50,7 +139,9 @@ class OpenAICompatVLMBackend:
             max_tokens=max_new_tokens,
             response_format={"type": "json_object"},
         )
-        return resp.choices[0].message.content or ""
+        text = resp.choices[0].message.content or ""
+        self._write_cache(key, text)
+        return text
 
 
 class HFVLMBackend:

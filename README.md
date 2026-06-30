@@ -13,7 +13,11 @@ Ver el PRD completo en [ADR.md](ADR.md).
 Los 5 sistemas del ADR (B1/B3/B4/B5) + buscador, informes y slides están **implementados**.
 - **Validado en CPU**: pipeline de datos, anti-fuga, B1 dense (real en valid), núcleos de
   B3 (MaxSim), B4 (reranker VLM) y B5 (agente) con backend mock + tests; informe y slides.
-- **Pendiente de ejecución real en GPU**: B3 (ColQwen), B4/B5 (servidor VLM vLLM) sobre valid/test.
+- **Validado en GPU**: run completo en `esalab-big` con B1/B3 en valid+test y B4/B5 sobre test.
+  Resultados versionados en `results/esalab-big/2026-06-30_gpu_full/`.
+- **Presentación Slidev**: `slides/slidev/`, titulada
+  *Multimodal Visual Information Retrieval of Traditional Portuguese Instruments: A Reproducible
+  Comparison of Dense Retrieval and Agentic Reranking*.
 
 ## Dataset setup
 

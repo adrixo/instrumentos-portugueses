@@ -6,6 +6,8 @@ el score y reordena. Genera trazas estructuradas (una por candidato). Determinis
 
 from __future__ import annotations
 
+import os
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 from ..data.queries import Query
@@ -15,6 +17,13 @@ from .prompts import build_rerank_prompt
 from .schemas import parse_vlm_response
 from .scoring import normalize_score
 from .vlm_backend import VLMBackend
+
+
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.environ.get(name, str(default)))
+    except ValueError:
+        return default
 
 
 class VLMPointwiseReranker(Reranker):
@@ -33,51 +42,61 @@ class VLMPointwiseReranker(Reranker):
         self.max_new_tokens = max_new_tokens
         self.name = f"vlm_{backend.model_id}".replace("/", "-").lower()
 
+    def _process_candidate(
+        self, prompt: str, query: Query, cand: Candidate, run_id: str
+    ) -> tuple[RerankedDoc, dict]:
+        img = self.provider.load(cand.image_id)
+        raw = self.backend.generate(
+            prompt, [img], temperature=self.temperature, seed=self.seed,
+            max_new_tokens=self.max_new_tokens,
+        )
+        parsed = parse_vlm_response(raw)
+        decision = parsed["decision"]
+        confidence = float(parsed.get("confidence", 0.0))
+        final = normalize_score(decision, confidence)
+
+        doc = RerankedDoc(
+            image_id=cand.image_id, final_score=final, final_rank=-1,
+            dense_rank=cand.dense_rank, dense_score=cand.dense_score,
+            decision=decision, confidence=confidence,
+        )
+        trace = {
+            "run_id": run_id,
+            "query_id": query.query_id,
+            "instrument": query.instrument_id,
+            "image_id": cand.image_id,
+            "dense_rank": cand.dense_rank,
+            "dense_score": cand.dense_score,
+            "vlm_decision": decision,
+            "vlm_confidence": confidence,
+            "vlm_score": final,
+            "final_score": final,
+            "visual_evidence": parsed.get("visual_evidence", [])[:4],
+            "negative_evidence": parsed.get("negative_evidence", [])[:4],
+            "model": self.backend.model_id,
+            "temperature": self.temperature,
+            "seed": self.seed,
+            "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        }
+        return doc, trace
+
     def rerank(
         self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str
     ) -> tuple[list[RerankedDoc], list[dict]]:
         prompt = build_rerank_prompt(instrument)
-        scored: list[RerankedDoc] = []
-        traces: list[dict] = []
+        workers = max(1, _env_int("VLM_WORKERS", 1))
+        if workers == 1 or len(candidates) <= 1:
+            results = [self._process_candidate(prompt, query, cand, run_id) for cand in candidates]
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                futures = [
+                    executor.submit(self._process_candidate, prompt, query, cand, run_id)
+                    for cand in candidates
+                ]
+                results = [future.result() for future in futures]
 
-        for cand in candidates:
-            img = self.provider.load(cand.image_id)
-            raw = self.backend.generate(
-                prompt, [img], temperature=self.temperature, seed=self.seed,
-                max_new_tokens=self.max_new_tokens,
-            )
-            parsed = parse_vlm_response(raw)
-            decision = parsed["decision"]
-            confidence = float(parsed.get("confidence", 0.0))
-            final = normalize_score(decision, confidence)
-
-            scored.append(
-                RerankedDoc(
-                    image_id=cand.image_id, final_score=final, final_rank=-1,
-                    dense_rank=cand.dense_rank, dense_score=cand.dense_score,
-                    decision=decision, confidence=confidence,
-                )
-            )
-            traces.append(
-                {
-                    "run_id": run_id,
-                    "query_id": query.query_id,
-                    "instrument": query.instrument_id,
-                    "image_id": cand.image_id,
-                    "dense_rank": cand.dense_rank,
-                    "dense_score": cand.dense_score,
-                    "vlm_decision": decision,
-                    "vlm_confidence": confidence,
-                    "vlm_score": final,
-                    "final_score": final,
-                    "visual_evidence": parsed.get("visual_evidence", [])[:4],
-                    "negative_evidence": parsed.get("negative_evidence", [])[:4],
-                    "model": self.backend.model_id,
-                    "temperature": self.temperature,
-                    "seed": self.seed,
-                    "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-                }
-            )
+        scored = [doc for doc, _ in results]
+        traces = [trace for _, trace in results]
 
         # Orden final: final_score desc, desempate por dense_score desc (ADR §4).
         order = sorted(
