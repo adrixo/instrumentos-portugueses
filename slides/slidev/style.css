@@ -244,7 +244,7 @@
 
 .chart.inset {
   max-width: 100%;
-  max-height: 392px;
+  max-height: 360px;
 }
 
 .compact-table table {
@@ -264,4 +264,37 @@
 
 .center {
   text-align: center;
+}
+
+.refs {
+  column-count: 2;
+  column-gap: 1.1rem;
+  color: var(--text-strong);
+  font-size: 0.57rem;
+  line-height: 1.28;
+}
+
+.refs p {
+  break-inside: avoid;
+  margin: 0 0 0.34rem;
+}
+
+.cost-slide {
+  align-items: start;
+  gap: 1.05rem;
+}
+
+.cost-slide ul {
+  margin: 0.45rem 0 0.45rem;
+}
+
+.cost-slide li {
+  font-size: 0.88rem;
+  line-height: 1.32;
+  margin-bottom: 0.34rem;
+}
+
+.cost-slide .small {
+  font-size: 0.68rem;
+  line-height: 1.25;
 }

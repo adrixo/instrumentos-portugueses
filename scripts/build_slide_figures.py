@@ -14,7 +14,7 @@ import pandas as pd
 
 
 RESULTS = Path("results/esalab-big/2026-06-30_gpu_full/outputs")
-QWEN_RESULTS = Path("results/mida-qwen36-27b/2026-06-30_zero_shot_top50/outputs")
+QWEN_RESULTS = Path("results/mida-qwen36-27b/2026-06-30_zero_shot_top100/outputs")
 ASSETS = Path("slides/slidev/assets")
 
 SYSTEMS = [
@@ -24,7 +24,7 @@ SYSTEMS = [
     (RESULTS, "B3_colqwen_test", "ColQwen"),
     (RESULTS, "B4_test", "VLM rerank"),
     (RESULTS, "B5_full_test", "Agéntico"),
-    (QWEN_RESULTS, "B4_qwen36_zero_shot_test", "Qwen3.6 VLM top-50"),
+    (QWEN_RESULTS, "B4_qwen36_zero_shot_top100_test", "Qwen3.6 VLM top-100"),
 ]
 
 PALETTE = {
@@ -34,7 +34,7 @@ PALETTE = {
     "ColQwen": "#7c3aed",
     "VLM rerank": "#0f766e",
     "Agéntico": "#b45309",
-    "Qwen3.6 VLM top-50": "#be123c",
+    "Qwen3.6 VLM top-100": "#be123c",
 }
 
 LATENCY_LABELS = {
@@ -43,7 +43,7 @@ LATENCY_LABELS = {
     "colqwen": "ColQwen",
     "B4_VLM": "B4 VLM",
     "B5_agentic": "B5 agéntico",
-    "B4_qwen36_zero_shot": "Qwen3.6 VLM",
+    "B4_qwen36_zero_shot_top100_incremental": "Qwen3.6 VLM 51-100",
 }
 
 
@@ -120,8 +120,15 @@ def save_latency_boxplot() -> None:
     if not path.exists():
         return
     rows = list(csv.DictReader(path.open(encoding="utf-8")))
-    qwen_trace = QWEN_RESULTS / "rerank_traces" / "B4_qwen36_zero_shot_test.jsonl"
-    rows.extend(trace_latency_rows("B4_qwen36_zero_shot", qwen_trace, top_k="50"))
+    qwen_trace = QWEN_RESULTS / "rerank_traces" / "B4_qwen36_zero_shot_top100_test.jsonl"
+    rows.extend(
+        trace_latency_rows(
+            "B4_qwen36_zero_shot_top100_incremental",
+            qwen_trace,
+            top_k="51-100",
+            skip_reused=True,
+        )
+    )
     by_system: dict[str, list[float]] = {}
     for row in rows:
         by_system.setdefault(LATENCY_LABELS.get(row["system"], row["system"]), []).append(
@@ -129,7 +136,14 @@ def save_latency_boxplot() -> None:
         )
     if not by_system:
         return
-    order = ["OpenCLIP L/14", "JinaCLIP", "ColQwen", "B4 VLM", "B5 agéntico", "Qwen3.6 VLM"]
+    order = [
+        "OpenCLIP L/14",
+        "JinaCLIP",
+        "ColQwen",
+        "B4 VLM",
+        "B5 agéntico",
+        "Qwen3.6 VLM 51-100",
+    ]
     labels = [label for label in order if label in by_system]
     labels.extend(label for label in by_system if label not in labels)
     values = [by_system[label] for label in labels]
@@ -142,7 +156,7 @@ def save_latency_boxplot() -> None:
         "ColQwen": "#7c3aed",
         "B4 VLM": "#0f766e",
         "B5 agéntico": "#b45309",
-        "Qwen3.6 VLM": "#be123c",
+        "Qwen3.6 VLM 51-100": "#be123c",
     }
     for patch, label in zip(box["boxes"], labels):
         color = colors.get(label, "#6b7280")
@@ -159,7 +173,7 @@ def save_latency_boxplot() -> None:
     ax.text(
         0.02,
         0.97,
-        "Escala log. Dense/ColQwen: benchmark con caché; B4/B5: trazas top-200; Qwen3.6: traza top-50",
+        "Escala log. Dense/ColQwen: benchmark con caché; B4/B5: trazas top-200; Qwen3.6: candidatos 51-100",
         transform=ax.transAxes,
         va="top",
         fontsize=9,
@@ -170,7 +184,7 @@ def save_latency_boxplot() -> None:
     plt.close(fig)
 
 
-def trace_latency_rows(label: str, path: Path, top_k: str) -> list[dict]:
+def trace_latency_rows(label: str, path: Path, top_k: str, skip_reused: bool = False) -> list[dict]:
     if not path.exists():
         return []
     stamps: dict[str, list[datetime]] = defaultdict(list)
@@ -179,6 +193,8 @@ def trace_latency_rows(label: str, path: Path, top_k: str) -> list[dict]:
         if not line.strip():
             continue
         item = json.loads(line)
+        if skip_reused and item.get("reused_from_run"):
+            continue
         query_id = item.get("query_id")
         stamp = item.get("timestamp_utc")
         if not query_id or not stamp:
