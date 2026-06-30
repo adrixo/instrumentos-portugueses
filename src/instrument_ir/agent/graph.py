@@ -12,6 +12,8 @@ use_crops, use_caption, fusion ("max"|"weighted"), full_image_only.
 
 from __future__ import annotations
 
+import os
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 from ..data.queries import Query
@@ -21,6 +23,13 @@ from ..utils.io import ImageProvider
 from .crop_generation import generate_crops
 from .scoring import fuse
 from .tools import ask_vlm_vqa, caption_image
+
+
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.environ.get(name, str(default)))
+    except ValueError:
+        return default
 
 
 class AgenticReranker(Reranker):
@@ -127,13 +136,26 @@ class AgenticReranker(Reranker):
         self, query: Query, instrument: dict, candidates: list[Candidate], run_id: str,
         progress_cb=None,
     ) -> tuple[list[RerankedDoc], list[dict]]:
-        docs, traces = [], []
-        for cand in candidates:
-            doc, trace = self._process_candidate(query, instrument, cand, run_id)
-            docs.append(doc)
-            traces.append(trace)
-            if progress_cb:
-                progress_cb()
+        workers = max(1, _env_int("VLM_WORKERS", 1))
+        results = []
+        if workers == 1 or len(candidates) <= 1:
+            for cand in candidates:
+                results.append(self._process_candidate(query, instrument, cand, run_id))
+                if progress_cb:
+                    progress_cb()
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                futures = [
+                    executor.submit(self._process_candidate, query, instrument, cand, run_id)
+                    for cand in candidates
+                ]
+                for future in futures:
+                    results.append(future.result())
+                    if progress_cb:
+                        progress_cb()
+
+        docs = [doc for doc, _ in results]
+        traces = [trace for _, trace in results]
 
         order = sorted(
             range(len(docs)), key=lambda i: (docs[i].final_score, docs[i].dense_score), reverse=True

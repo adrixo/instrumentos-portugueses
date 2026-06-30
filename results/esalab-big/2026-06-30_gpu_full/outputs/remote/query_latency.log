@@ -1,0 +1,225 @@
+ Container docker-irlab-run-7cf2e4e41efc Creating 
+ Container docker-irlab-run-7cf2e4e41efc Created 
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/utils/hub.py:105: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+openclip-vitl14	q_adufe_pt	0.156s
+openclip-vitl14	q_adufe_en	0.017s
+openclip-vitl14	q_adufe_es	0.017s
+openclip-vitl14	q_bombos_pt	0.017s
+openclip-vitl14	q_bombos_en	0.017s
+openclip-vitl14	q_bombos_es	0.017s
+openclip-vitl14	q_caixa_tamboril_pt	0.017s
+openclip-vitl14	q_caixa_tamboril_en	0.017s
+openclip-vitl14	q_caixa_tamboril_es	0.017s
+openclip-vitl14	q_castanholas_pt	0.017s
+openclip-vitl14	q_castanholas_en	0.017s
+openclip-vitl14	q_castanholas_es	0.017s
+openclip-vitl14	q_cavaquinho_pt	0.017s
+openclip-vitl14	q_cavaquinho_en	0.017s
+openclip-vitl14	q_cavaquinho_es	0.017s
+openclip-vitl14	q_concertina_pt	0.017s
+openclip-vitl14	q_concertina_en	0.017s
+openclip-vitl14	q_concertina_es	0.017s
+openclip-vitl14	q_ferrinhos_triangulo_pt	0.017s
+openclip-vitl14	q_ferrinhos_triangulo_en	0.017s
+openclip-vitl14	q_ferrinhos_triangulo_es	0.017s
+openclip-vitl14	q_flauta_pt	0.017s
+openclip-vitl14	q_flauta_en	0.017s
+openclip-vitl14	q_flauta_es	0.017s
+openclip-vitl14	q_gaita_de_foles_pt	0.017s
+openclip-vitl14	q_gaita_de_foles_en	0.017s
+openclip-vitl14	q_gaita_de_foles_es	0.017s
+openclip-vitl14	q_guitarra_portuguesa_pt	0.017s
+openclip-vitl14	q_guitarra_portuguesa_en	0.017s
+openclip-vitl14	q_guitarra_portuguesa_es	0.017s
+openclip-vitl14	q_matracas_pt	0.017s
+openclip-vitl14	q_matracas_en	0.017s
+openclip-vitl14	q_matracas_es	0.017s
+openclip-vitl14	q_palheta_pt	0.017s
+openclip-vitl14	q_palheta_en	0.017s
+openclip-vitl14	q_palheta_es	0.017s
+openclip-vitl14	q_rabeca_chuleira_pt	0.017s
+openclip-vitl14	q_rabeca_chuleira_en	0.017s
+openclip-vitl14	q_rabeca_chuleira_es	0.017s
+openclip-vitl14	q_reque_reque_pt	0.017s
+openclip-vitl14	q_reque_reque_en	0.017s
+openclip-vitl14	q_reque_reque_es	0.017s
+openclip-vitl14	q_sarronca_pt	0.017s
+openclip-vitl14	q_sarronca_en	0.017s
+openclip-vitl14	q_sarronca_es	0.017s
+openclip-vitl14	q_viola_amarantina_pt	0.017s
+openclip-vitl14	q_viola_amarantina_en	0.017s
+openclip-vitl14	q_viola_amarantina_es	0.017s
+openclip-vitl14	q_viola_beiroa_pt	0.017s
+openclip-vitl14	q_viola_beiroa_en	0.017s
+openclip-vitl14	q_viola_beiroa_es	0.017s
+openclip-vitl14	q_viola_braguesa_pt	0.017s
+openclip-vitl14	q_viola_braguesa_en	0.017s
+openclip-vitl14	q_viola_braguesa_es	0.017s
+openclip-vitl14	q_viola_campanica_pt	0.018s
+openclip-vitl14	q_viola_campanica_en	0.018s
+openclip-vitl14	q_viola_campanica_es	0.017s
+openclip-vitl14	q_viola_de_arame_pt	0.017s
+openclip-vitl14	q_viola_de_arame_en	0.017s
+openclip-vitl14	q_viola_de_arame_es	0.017s
+openclip-vitl14	q_viola_toeira_pt	0.017s
+openclip-vitl14	q_viola_toeira_en	0.017s
+openclip-vitl14	q_viola_toeira_es	0.017s
+openclip-vitl14	q_violao_pt	0.017s
+openclip-vitl14	q_violao_en	0.017s
+openclip-vitl14	q_violao_es	0.017s
+A new version of the following files was downloaded from https://huggingface.co/jinaai/jina-clip-implementation:
+- configuration_clip.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/jinaai/jina-clip-implementation:
+- modeling_clip.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+/models/huggingface/modules/transformers_modules/jinaai/jina-clip-implementation/39e6a55ae971b59bea6e44675d237c99762e7ee2/modeling_clip.py:140: UserWarning: Flash attention is not installed. Check https://github.com/Dao-AILab/flash-attention?tab=readme-ov-file#installation-and-features for installation instructions, disabling
+  warnings.warn(
+/models/huggingface/modules/transformers_modules/jinaai/jina-clip-implementation/39e6a55ae971b59bea6e44675d237c99762e7ee2/modeling_clip.py:175: UserWarning: xFormers is not installed. Check https://github.com/facebookresearch/xformers?tab=readme-ov-file#installing-xformers for installation instructions, disabling
+  warnings.warn(
+A new version of the following files was downloaded from https://huggingface.co/jinaai/xlm-roberta-flash-implementation:
+- configuration_xlm_roberta.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/jinaai/xlm-roberta-flash-implementation:
+- modeling_lora.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+jinaclip	q_adufe_pt	0.843s
+jinaclip	q_adufe_en	0.096s
+jinaclip	q_adufe_es	0.093s
+jinaclip	q_bombos_pt	0.093s
+jinaclip	q_bombos_en	0.092s
+jinaclip	q_bombos_es	0.093s
+jinaclip	q_caixa_tamboril_pt	0.096s
+jinaclip	q_caixa_tamboril_en	0.095s
+jinaclip	q_caixa_tamboril_es	0.092s
+jinaclip	q_castanholas_pt	0.092s
+jinaclip	q_castanholas_en	0.092s
+jinaclip	q_castanholas_es	0.093s
+jinaclip	q_cavaquinho_pt	0.092s
+jinaclip	q_cavaquinho_en	0.095s
+jinaclip	q_cavaquinho_es	0.092s
+jinaclip	q_concertina_pt	0.092s
+jinaclip	q_concertina_en	0.092s
+jinaclip	q_concertina_es	0.096s
+jinaclip	q_ferrinhos_triangulo_pt	0.093s
+jinaclip	q_ferrinhos_triangulo_en	0.092s
+jinaclip	q_ferrinhos_triangulo_es	0.093s
+jinaclip	q_flauta_pt	0.092s
+jinaclip	q_flauta_en	0.092s
+jinaclip	q_flauta_es	0.092s
+jinaclip	q_gaita_de_foles_pt	0.092s
+jinaclip	q_gaita_de_foles_en	0.092s
+jinaclip	q_gaita_de_foles_es	0.092s
+jinaclip	q_guitarra_portuguesa_pt	0.092s
+jinaclip	q_guitarra_portuguesa_en	0.098s
+jinaclip	q_guitarra_portuguesa_es	0.092s
+jinaclip	q_matracas_pt	0.092s
+jinaclip	q_matracas_en	0.093s
+jinaclip	q_matracas_es	0.092s
+jinaclip	q_palheta_pt	0.092s
+jinaclip	q_palheta_en	0.092s
+jinaclip	q_palheta_es	0.092s
+jinaclip	q_rabeca_chuleira_pt	0.092s
+jinaclip	q_rabeca_chuleira_en	0.094s
+jinaclip	q_rabeca_chuleira_es	0.095s
+jinaclip	q_reque_reque_pt	0.095s
+jinaclip	q_reque_reque_en	0.092s
+jinaclip	q_reque_reque_es	0.092s
+jinaclip	q_sarronca_pt	0.092s
+jinaclip	q_sarronca_en	0.092s
+jinaclip	q_sarronca_es	0.092s
+jinaclip	q_viola_amarantina_pt	0.092s
+jinaclip	q_viola_amarantina_en	0.095s
+jinaclip	q_viola_amarantina_es	0.093s
+jinaclip	q_viola_beiroa_pt	0.092s
+jinaclip	q_viola_beiroa_en	0.092s
+jinaclip	q_viola_beiroa_es	0.095s
+jinaclip	q_viola_braguesa_pt	0.092s
+jinaclip	q_viola_braguesa_en	0.092s
+jinaclip	q_viola_braguesa_es	0.092s
+jinaclip	q_viola_campanica_pt	0.092s
+jinaclip	q_viola_campanica_en	0.092s
+jinaclip	q_viola_campanica_es	0.092s
+jinaclip	q_viola_de_arame_pt	0.092s
+jinaclip	q_viola_de_arame_en	0.093s
+jinaclip	q_viola_de_arame_es	0.092s
+jinaclip	q_viola_toeira_pt	0.092s
+jinaclip	q_viola_toeira_en	0.095s
+jinaclip	q_viola_toeira_es	0.093s
+jinaclip	q_violao_pt	0.092s
+jinaclip	q_violao_en	0.092s
+jinaclip	q_violao_es	0.092s
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 8248.39it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.09it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.31it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.27it/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+colqwen	q_adufe_pt	0.525s
+colqwen	q_adufe_en	0.485s
+colqwen	q_adufe_es	0.486s
+colqwen	q_bombos_pt	0.471s
+colqwen	q_bombos_en	0.479s
+colqwen	q_bombos_es	0.477s
+colqwen	q_caixa_tamboril_pt	0.477s
+colqwen	q_caixa_tamboril_en	0.478s
+colqwen	q_caixa_tamboril_es	0.478s
+colqwen	q_castanholas_pt	0.472s
+colqwen	q_castanholas_en	0.474s
+colqwen	q_castanholas_es	0.471s
+colqwen	q_cavaquinho_pt	0.475s
+colqwen	q_cavaquinho_en	0.540s
+colqwen	q_cavaquinho_es	0.489s
+colqwen	q_concertina_pt	0.470s
+colqwen	q_concertina_en	0.482s
+colqwen	q_concertina_es	0.474s
+colqwen	q_ferrinhos_triangulo_pt	0.476s
+colqwen	q_ferrinhos_triangulo_en	0.473s
+colqwen	q_ferrinhos_triangulo_es	0.475s
+colqwen	q_flauta_pt	0.472s
+colqwen	q_flauta_en	0.469s
+colqwen	q_flauta_es	0.479s
+colqwen	q_gaita_de_foles_pt	0.475s
+colqwen	q_gaita_de_foles_en	0.471s
+colqwen	q_gaita_de_foles_es	0.469s
+colqwen	q_guitarra_portuguesa_pt	0.475s
+colqwen	q_guitarra_portuguesa_en	0.475s
+colqwen	q_guitarra_portuguesa_es	0.484s
+colqwen	q_matracas_pt	0.471s
+colqwen	q_matracas_en	0.478s
+colqwen	q_matracas_es	0.475s
+colqwen	q_palheta_pt	0.471s
+colqwen	q_palheta_en	0.490s
+colqwen	q_palheta_es	0.484s
+colqwen	q_rabeca_chuleira_pt	0.473s
+colqwen	q_rabeca_chuleira_en	0.473s
+colqwen	q_rabeca_chuleira_es	0.477s
+colqwen	q_reque_reque_pt	0.471s
+colqwen	q_reque_reque_en	0.481s
+colqwen	q_reque_reque_es	0.475s
+colqwen	q_sarronca_pt	0.473s
+colqwen	q_sarronca_en	0.475s
+colqwen	q_sarronca_es	0.490s
+colqwen	q_viola_amarantina_pt	0.503s
+colqwen	q_viola_amarantina_en	0.482s
+colqwen	q_viola_amarantina_es	0.497s
+colqwen	q_viola_beiroa_pt	0.474s
+colqwen	q_viola_beiroa_en	0.478s
+colqwen	q_viola_beiroa_es	0.480s
+colqwen	q_viola_braguesa_pt	0.472s
+colqwen	q_viola_braguesa_en	0.480s
+colqwen	q_viola_braguesa_es	0.479s
+colqwen	q_viola_campanica_pt	0.475s
+colqwen	q_viola_campanica_en	0.480s
+colqwen	q_viola_campanica_es	0.484s
+colqwen	q_viola_de_arame_pt	0.474s
+colqwen	q_viola_de_arame_en	0.481s
+colqwen	q_viola_de_arame_es	0.486s
+colqwen	q_viola_toeira_pt	0.471s
+colqwen	q_viola_toeira_en	0.480s
+colqwen	q_viola_toeira_es	0.481s
+colqwen	q_violao_pt	0.472s
+colqwen	q_violao_en	0.473s
+colqwen	q_violao_es	0.481s
+wrote outputs/metrics/query_latency.csv
+wrote outputs/metrics/query_latency_summary.json

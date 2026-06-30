@@ -53,6 +53,8 @@ def run_pointwise_rerank(
     qmap = {q.query_id: q for q in queries}
     rankings: dict[str, list[ScoredDoc]] = {}
     cand_rows: list[dict] = []
+    total_candidates = sum(len(cands) for cands in candidates_by_query.values())
+    processed_candidates = 0
 
     # Progreso global cada PROGRESS_EVERY% (default 5%) -> Telegram + stdout.
     total = sum(len(c) for c in candidates_by_query.values()) or 1
@@ -83,6 +85,13 @@ def run_pointwise_rerank(
             reranked, traces = reranker.rerank(query, instrument, cands, run_id, progress_cb=progress)
             for tr in traces:
                 tf.write(json.dumps(tr, ensure_ascii=False) + "\n")
+            processed_candidates += len(traces)
+            tf.flush()
+            print(
+                f"rerank progress: {processed_candidates}/{total_candidates} candidates "
+                f"({query_id})",
+                flush=True,
+            )
             rankings[query_id] = [
                 ScoredDoc(d.image_id, d.final_score) for d in reranked[:final_top_k]
             ]

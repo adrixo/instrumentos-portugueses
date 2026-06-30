@@ -1,0 +1,104 @@
+rerank progress: 100/6600 candidates (q_adufe_pt; reused=50, new=50)
+rerank progress: 200/6600 candidates (q_adufe_en; reused=100, new=100)
+rerank progress: 300/6600 candidates (q_adufe_es; reused=150, new=150)
+rerank progress: 400/6600 candidates (q_bombos_pt; reused=200, new=200)
+rerank progress: 500/6600 candidates (q_bombos_en; reused=250, new=250)
+rerank progress: 600/6600 candidates (q_bombos_es; reused=300, new=300)
+rerank progress: 700/6600 candidates (q_caixa_tamboril_pt; reused=350, new=350)
+rerank progress: 800/6600 candidates (q_caixa_tamboril_en; reused=400, new=400)
+rerank progress: 900/6600 candidates (q_caixa_tamboril_es; reused=450, new=450)
+rerank progress: 1000/6600 candidates (q_castanholas_pt; reused=500, new=500)
+rerank progress: 1100/6600 candidates (q_castanholas_en; reused=550, new=550)
+rerank progress: 1200/6600 candidates (q_castanholas_es; reused=600, new=600)
+rerank progress: 1300/6600 candidates (q_cavaquinho_pt; reused=650, new=650)
+rerank progress: 1400/6600 candidates (q_cavaquinho_en; reused=700, new=700)
+rerank progress: 1500/6600 candidates (q_cavaquinho_es; reused=750, new=750)
+rerank progress: 1600/6600 candidates (q_concertina_pt; reused=800, new=800)
+rerank progress: 1700/6600 candidates (q_concertina_en; reused=850, new=850)
+rerank progress: 1800/6600 candidates (q_concertina_es; reused=900, new=900)
+rerank progress: 1900/6600 candidates (q_ferrinhos_triangulo_pt; reused=950, new=950)
+rerank progress: 2000/6600 candidates (q_ferrinhos_triangulo_en; reused=1000, new=1000)
+rerank progress: 2100/6600 candidates (q_ferrinhos_triangulo_es; reused=1050, new=1050)
+rerank progress: 2200/6600 candidates (q_flauta_pt; reused=1100, new=1100)
+rerank progress: 2300/6600 candidates (q_flauta_en; reused=1150, new=1150)
+rerank progress: 2400/6600 candidates (q_flauta_es; reused=1200, new=1200)
+rerank progress: 2500/6600 candidates (q_gaita_de_foles_pt; reused=1250, new=1250)
+rerank progress: 2600/6600 candidates (q_gaita_de_foles_en; reused=1300, new=1300)
+rerank progress: 2700/6600 candidates (q_gaita_de_foles_es; reused=1350, new=1350)
+rerank progress: 2800/6600 candidates (q_guitarra_portuguesa_pt; reused=1400, new=1400)
+rerank progress: 2900/6600 candidates (q_guitarra_portuguesa_en; reused=1450, new=1450)
+rerank progress: 3000/6600 candidates (q_guitarra_portuguesa_es; reused=1500, new=1500)
+rerank progress: 3100/6600 candidates (q_matracas_pt; reused=1550, new=1550)
+rerank progress: 3200/6600 candidates (q_matracas_en; reused=1600, new=1600)
+rerank progress: 3300/6600 candidates (q_matracas_es; reused=1650, new=1650)
+rerank progress: 3400/6600 candidates (q_palheta_pt; reused=1700, new=1700)
+rerank progress: 3500/6600 candidates (q_palheta_en; reused=1750, new=1750)
+rerank progress: 3600/6600 candidates (q_palheta_es; reused=1800, new=1800)
+rerank progress: 3700/6600 candidates (q_rabeca_chuleira_pt; reused=1850, new=1850)
+rerank progress: 3800/6600 candidates (q_rabeca_chuleira_en; reused=1900, new=1900)
+rerank progress: 3900/6600 candidates (q_rabeca_chuleira_es; reused=1950, new=1950)
+rerank progress: 4000/6600 candidates (q_reque_reque_pt; reused=2000, new=2000)
+rerank progress: 4100/6600 candidates (q_reque_reque_en; reused=2050, new=2050)
+rerank progress: 4200/6600 candidates (q_reque_reque_es; reused=2100, new=2100)
+rerank progress: 4300/6600 candidates (q_sarronca_pt; reused=2150, new=2150)
+rerank progress: 4400/6600 candidates (q_sarronca_en; reused=2200, new=2200)
+rerank progress: 4500/6600 candidates (q_sarronca_es; reused=2250, new=2250)
+rerank progress: 4600/6600 candidates (q_viola_amarantina_pt; reused=2300, new=2300)
+rerank progress: 4700/6600 candidates (q_viola_amarantina_en; reused=2350, new=2350)
+rerank progress: 4800/6600 candidates (q_viola_amarantina_es; reused=2400, new=2400)
+rerank progress: 4900/6600 candidates (q_viola_beiroa_pt; reused=2450, new=2450)
+rerank progress: 5000/6600 candidates (q_viola_beiroa_en; reused=2500, new=2500)
+rerank progress: 5100/6600 candidates (q_viola_beiroa_es; reused=2550, new=2550)
+rerank progress: 5200/6600 candidates (q_viola_braguesa_pt; reused=2600, new=2600)
+rerank progress: 5300/6600 candidates (q_viola_braguesa_en; reused=2650, new=2650)
+rerank progress: 5400/6600 candidates (q_viola_braguesa_es; reused=2700, new=2700)
+rerank progress: 5500/6600 candidates (q_viola_campanica_pt; reused=2750, new=2750)
+rerank progress: 5600/6600 candidates (q_viola_campanica_en; reused=2800, new=2800)
+rerank progress: 5700/6600 candidates (q_viola_campanica_es; reused=2850, new=2850)
+rerank progress: 5800/6600 candidates (q_viola_de_arame_pt; reused=2900, new=2900)
+rerank progress: 5900/6600 candidates (q_viola_de_arame_en; reused=2950, new=2950)
+rerank progress: 6000/6600 candidates (q_viola_de_arame_es; reused=3000, new=3000)
+rerank progress: 6100/6600 candidates (q_viola_toeira_pt; reused=3050, new=3050)
+rerank progress: 6200/6600 candidates (q_viola_toeira_en; reused=3100, new=3100)
+rerank progress: 6300/6600 candidates (q_viola_toeira_es; reused=3150, new=3150)
+rerank progress: 6400/6600 candidates (q_violao_pt; reused=3200, new=3200)
+rerank progress: 6500/6600 candidates (q_violao_en; reused=3250, new=3250)
+rerank progress: 6600/6600 candidates (q_violao_es; reused=3300, new=3300)
+B4 runfile: outputs/runs/B4_qwen36_zero_shot_top100_test.trec
+  traces: outputs/rerank_traces/B4_qwen36_zero_shot_top100_test.jsonl
+  candidates: outputs/candidates/B4_qwen36_zero_shot_top100_test.parquet
+  reused traces: 3300
+  new VLM calls: 3300
+/opt/conda/lib/python3.10/site-packages/ranx/metrics/recall.py:29: NumbaTypeSafetyWarning: [1m[1m[1munsafe cast from uint64 to int64. Precision may be lost.[0m[0m[0m
+  scores[i] = _recall(qrels[i], run[i], k, rel_lvl)
+métricas -> outputs/metrics/B4_qwen36_zero_shot_top100_test.json
+  recall@10: 0.0386
+  recall@20: 0.0629
+  recall@50: 0.1111
+  recall@100: 0.1808
+  precision@10: 0.3818
+  ndcg@10: 0.3885
+  ndcg@20: 0.3563
+  ndcg@100: 0.2717
+  map: 0.0882
+  mrr: 0.4953
+  (macro por instrumento)
+    macro_recall@10: 0.0386
+    macro_recall@20: 0.0629
+    macro_recall@50: 0.1111
+    macro_recall@100: 0.1808
+    macro_precision@10: 0.3818
+    macro_ndcg@10: 0.3885
+    macro_ndcg@20: 0.3563
+    macro_ndcg@100: 0.2717
+    macro_map: 0.0882
+    macro_mrr: 0.4953
+  candidate_recall@100: +0.1808
+  oracle_recall@100: +0.1808
+  rerank_gain@100: +0.0000
+  delta_ndcg@100: +0.0261
+  delta_map: +0.0123
+-> outputs/metrics/B4_qwen36_zero_shot_top100_test__rerankmetrics.json
+informe: outputs/reports/final_report.md
+  tablas: outputs/reports/tables/  figuras: outputs/reports/figures/
+slides Marp: outputs/slides/slides.md
