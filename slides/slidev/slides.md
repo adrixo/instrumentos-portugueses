@@ -306,10 +306,10 @@ Esto permite distinguir entre capacidad de encontrar candidatos y capacidad de o
 
 ## Resultados: Recall@K
 
-<img class="chart" src="./assets/metrics_recall_at_k.png" />
+<img class="chart recall" src="./assets/metrics_recall_at_k.png" />
 
 <p class="small center">
-JinaCLIP obtiene el mejor Recall@100 entre los sistemas de recuperación directa. El reranking mejora la ordenación, pero no puede recuperar imágenes que no entraron en el conjunto candidato.
+JinaCLIP obtiene el mejor Recall@100 entre los sistemas de recuperación directa. Qwen3.6 se muestra como reranker top-50: mejora señales tempranas, pero su recall queda limitado por el conjunto candidato.
 </p>
 
 ---
@@ -319,7 +319,7 @@ JinaCLIP obtiene el mejor Recall@100 entre los sistemas de recuperación directa
 <img class="chart" src="./assets/metrics_quality_bars.png" />
 
 <p class="small center">
-La búsqueda agéntica obtiene el mejor MRR, lo que indica que tiende a colocar resultados relevantes antes en el ranking.
+Qwen3.6 obtiene el mejor nDCG@10 y MRR en la comparación top-50, mientras que el sistema agéntico mantiene un mejor equilibrio entre recall, mAP y ordenación en top-200.
 </p>
 
 ---
@@ -333,6 +333,7 @@ La búsqueda agéntica obtiene el mejor MRR, lo que indica que tiende a colocar 
 | Dense retrieval | Muy competitivo y barato; JinaCLIP lidera Recall@100 y mAP. |
 | Late interaction | No domina en promedio, pero ayuda en clases con señales locales. |
 | VLM reranking | Mejora la ordenación de candidatos, especialmente nDCG/MRR. |
+| Qwen3.6-27B VLM | Aumenta la calidad de las primeras posiciones, pero la prueba top-50 no amplía cobertura. |
 | Agentic reranking | Añade valor cuando la inspección completa no basta, pero aumenta el coste. |
 
 </div>
@@ -360,10 +361,11 @@ La comparación temporal debe leerse como parte del diseño del sistema:
 - OpenCLIP L/14: 0.019 s/consulta; JinaCLIP: 0.104 s/consulta.
 - ColQwen: 0.479 s/consulta con embeddings de corpus cacheados.
 - B4 VLM: 30.1 s/consulta; B5 agéntico: 44.9 s/consulta.
+- Qwen3.6-27B: 154.9 s/consulta en top-50, servido en MIDA vía llama.cpp multimodal.
 - B5 tiene una cola más larga por recortes, captions y llamadas adicionales.
 
 <p class="small">
-Box-and-whisker en escala logarítmica. Dense/ColQwen se midieron con benchmark por consulta; B4/B5 se estiman desde marcas temporales de traces.
+Box-and-whisker en escala logarítmica. Dense/ColQwen se midieron con benchmark por consulta; B4/B5/Qwen3.6 se estiman desde marcas temporales de traces.
 </p>
 
 </div>
@@ -377,15 +379,15 @@ Box-and-whisker en escala logarítmica. Dense/ColQwen se midieron con benchmark 
 1. La tarea es útil para explorar archivos audiovisuales de patrimonio musical cuando el usuario busca por instrumentos, no por metadatos técnicos.
 2. Un dataset anotado convierte el corpus en un banco de pruebas cuantitativo para sistemas de IR visual.
 3. Los modelos densos son una base sólida y eficiente.
-4. Los VLMs y la búsqueda agéntica aportan mejoras de ordenación, especialmente en MRR, pero dependen de la calidad del conjunto candidato.
+4. Los VLMs y la búsqueda agéntica aportan mejoras de ordenación, especialmente en MRR; Qwen3.6 confirma este efecto en top-50, aunque con mayor coste temporal.
 5. El coste temporal debe considerarse junto a la métrica: el mejor ranking no siempre es el sistema más operativo.
 
 ---
 
 ## Futuras líneas de trabajo
 
-- Medir latencia completa por query para todos los enfoques bajo el mismo entorno y con cachés controladas.
-- Evaluar VLMs más recientes, incluyendo Qwen3.6-27B servido con soporte multimodal.
+- Repetir Qwen3.6-27B en top-200 y bajo el mismo entorno GPU para separar calidad del modelo, red y coste de serving.
+- Medir latencia completa por query para todos los enfoques bajo cachés y hardware controlados.
 - Llevar la evaluación de frames a recuperación de vídeos completos.
 - Integrar señales temporales: múltiples frames, audio y contexto de actuación.
 - Añadir aprendizaje específico para instrumentos visualmente cercanos.
@@ -399,4 +401,5 @@ Box-and-whisker en escala logarítmica. Dense/ColQwen se midieron con benchmark 
 - Zendron et al., “Comprehensive dataset of Portuguese folk instruments for computer vision and heritage research”, Data in Brief 61, 2025. DOI `10.1016/j.dib.2025.111739`.
 - Dataset publicado en Mendeley Data: DOI `10.17632/pk7txkgt4v.2`.
 - Figuras del dataset: artículo en PubMed Central `PMC12205808`.
+- Qwen3.6-27B GGUF multimodal servido con llama.cpp y `mmproj-F16.gguf`.
 - Ilustraciones de caso de estudio y sistemas: generadas con `imagegen` para esta presentación.

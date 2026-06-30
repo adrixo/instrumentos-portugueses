@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import csv
 import json
+from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -12,18 +14,19 @@ import pandas as pd
 
 
 RESULTS = Path("results/esalab-big/2026-06-30_gpu_full/outputs")
+QWEN_RESULTS = Path("results/mida-qwen36-27b/2026-06-30_zero_shot_top50/outputs")
 ASSETS = Path("slides/slidev/assets")
 
-SYSTEM_LABELS = {
-    "B1_openclip-vitb32_test": "OpenCLIP B/32",
-    "B1_openclip-vitl14_test": "OpenCLIP L/14",
-    "B1_jinaclip_test": "JinaCLIP",
-    "B3_colqwen_test": "ColQwen",
-    "B4_test": "VLM rerank",
-    "B5_full_test": "Agéntico",
-}
+SYSTEMS = [
+    (RESULTS, "B1_openclip-vitb32_test", "OpenCLIP B/32"),
+    (RESULTS, "B1_openclip-vitl14_test", "OpenCLIP L/14"),
+    (RESULTS, "B1_jinaclip_test", "JinaCLIP"),
+    (RESULTS, "B3_colqwen_test", "ColQwen"),
+    (RESULTS, "B4_test", "VLM rerank"),
+    (RESULTS, "B5_full_test", "Agéntico"),
+    (QWEN_RESULTS, "B4_qwen36_zero_shot_test", "Qwen3.6 VLM top-50"),
+]
 
-SYSTEM_ORDER = list(SYSTEM_LABELS)
 PALETTE = {
     "OpenCLIP B/32": "#7c8a96",
     "OpenCLIP L/14": "#4f6f8f",
@@ -31,6 +34,7 @@ PALETTE = {
     "ColQwen": "#7c3aed",
     "VLM rerank": "#0f766e",
     "Agéntico": "#b45309",
+    "Qwen3.6 VLM top-50": "#be123c",
 }
 
 LATENCY_LABELS = {
@@ -39,15 +43,16 @@ LATENCY_LABELS = {
     "colqwen": "ColQwen",
     "B4_VLM": "B4 VLM",
     "B5_agentic": "B5 agéntico",
+    "B4_qwen36_zero_shot": "Qwen3.6 VLM",
 }
 
 
 def load_metrics() -> pd.DataFrame:
     rows = []
-    for system in SYSTEM_ORDER:
-        path = RESULTS / "metrics" / f"{system}.json"
+    for root, system, label in SYSTEMS:
+        path = root / "metrics" / f"{system}.json"
         data = json.loads(path.read_text(encoding="utf-8"))
-        row = {"system": SYSTEM_LABELS[system]}
+        row = {"system": label}
         row.update(data["metrics"])
         rows.append(row)
     return pd.DataFrame(rows)
@@ -90,7 +95,7 @@ def save_recall_at_k(df: pd.DataFrame) -> None:
 
 def save_quality_bars(df: pd.DataFrame) -> None:
     fig, axes = plt.subplots(1, 3, figsize=(11.2, 4.5), dpi=180, sharey=False)
-    metrics = [("ndcg@100", "nDCG@100"), ("map", "mAP"), ("mrr", "MRR")]
+    metrics = [("ndcg@10", "nDCG@10"), ("map", "mAP"), ("mrr", "MRR")]
     for ax, (metric, title) in zip(axes, metrics):
         values = df[metric].tolist()
         labels = df["system"].tolist()
@@ -115,6 +120,8 @@ def save_latency_boxplot() -> None:
     if not path.exists():
         return
     rows = list(csv.DictReader(path.open(encoding="utf-8")))
+    qwen_trace = QWEN_RESULTS / "rerank_traces" / "B4_qwen36_zero_shot_test.jsonl"
+    rows.extend(trace_latency_rows("B4_qwen36_zero_shot", qwen_trace, top_k="50"))
     by_system: dict[str, list[float]] = {}
     for row in rows:
         by_system.setdefault(LATENCY_LABELS.get(row["system"], row["system"]), []).append(
@@ -122,15 +129,23 @@ def save_latency_boxplot() -> None:
         )
     if not by_system:
         return
-    order = ["OpenCLIP L/14", "JinaCLIP", "ColQwen", "B4 VLM", "B5 agéntico"]
+    order = ["OpenCLIP L/14", "JinaCLIP", "ColQwen", "B4 VLM", "B5 agéntico", "Qwen3.6 VLM"]
     labels = [label for label in order if label in by_system]
     labels.extend(label for label in by_system if label not in labels)
     values = [by_system[label] for label in labels]
 
     fig, ax = plt.subplots(figsize=(9.6, 5.2), dpi=180)
     box = ax.boxplot(values, tick_labels=labels, patch_artist=True, showmeans=True)
-    colors = ["#4f6f8f", "#155e75", "#7c3aed", "#0f766e", "#b45309"]
-    for patch, color in zip(box["boxes"], colors):
+    colors = {
+        "OpenCLIP L/14": "#4f6f8f",
+        "JinaCLIP": "#155e75",
+        "ColQwen": "#7c3aed",
+        "B4 VLM": "#0f766e",
+        "B5 agéntico": "#b45309",
+        "Qwen3.6 VLM": "#be123c",
+    }
+    for patch, label in zip(box["boxes"], labels):
+        color = colors.get(label, "#6b7280")
         patch.set_facecolor(color)
         patch.set_alpha(0.20)
         patch.set_edgecolor(color)
@@ -144,7 +159,7 @@ def save_latency_boxplot() -> None:
     ax.text(
         0.02,
         0.97,
-        "Escala log. Dense/ColQwen: benchmark con caché; B4/B5: marcas temporales de traces top-200",
+        "Escala log. Dense/ColQwen: benchmark con caché; B4/B5: trazas top-200; Qwen3.6: traza top-50",
         transform=ax.transAxes,
         va="top",
         fontsize=9,
@@ -153,6 +168,40 @@ def save_latency_boxplot() -> None:
     fig.tight_layout()
     fig.savefig(ASSETS / "latency_boxplot.png", bbox_inches="tight")
     plt.close(fig)
+
+
+def trace_latency_rows(label: str, path: Path, top_k: str) -> list[dict]:
+    if not path.exists():
+        return []
+    stamps: dict[str, list[datetime]] = defaultdict(list)
+    instruments: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        item = json.loads(line)
+        query_id = item.get("query_id")
+        stamp = item.get("timestamp_utc")
+        if not query_id or not stamp:
+            continue
+        stamps[query_id].append(datetime.fromisoformat(stamp.replace("Z", "+00:00")))
+        instruments[query_id] = item.get("instrument", "")
+
+    rows = []
+    for query_id, values in stamps.items():
+        if len(values) < 2:
+            continue
+        elapsed = (max(values) - min(values)).total_seconds()
+        rows.append(
+            {
+                "system": label,
+                "query_id": query_id,
+                "instrument": instruments.get(query_id, ""),
+                "latency_seconds": f"{elapsed:.6f}",
+                "source": "trace_span",
+                "top_k": top_k,
+            }
+        )
+    return rows
 
 
 def main() -> None:

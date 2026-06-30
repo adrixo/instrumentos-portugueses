@@ -25,6 +25,7 @@ venv/
 .env
 
 # Caches de herramientas
+.codex-slidev-logs/
 .pytest_cache/
 .dvc/cache
 .ruff_cache/
