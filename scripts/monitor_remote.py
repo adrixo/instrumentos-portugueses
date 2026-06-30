@@ -277,6 +277,7 @@ disk = df_out[-1].split() if df_out else []
 paths = []
 for pattern in [
     "outputs/runs/*",
+    "outputs/candidates/*",
     "outputs/metrics/*",
     "outputs/rerank_traces/*",
     "outputs/reports/*",
