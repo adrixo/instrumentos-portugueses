@@ -311,6 +311,7 @@ def line_count(path):
 
 
 dense_target = line_count(root / "outputs" / "runs" / "DENSE_test.trec")
+qwen36_dense_target = line_count(root / "outputs" / "runs" / "DENSE_qwen36_test.trec")
 trace_counts = {}
 for name in [
     "B4_qwen36_zero_shot_test",
@@ -324,9 +325,10 @@ for name in [
 ]:
     path = root / "outputs" / "rerank_traces" / f"{name}.jsonl"
     if path.exists():
+        target = qwen36_dense_target if name == "B4_qwen36_zero_shot_test" else dense_target
         trace_counts[name] = {
             "lines": line_count(path),
-            "target": dense_target,
+            "target": target,
             "size": path.stat().st_size,
         }
 
