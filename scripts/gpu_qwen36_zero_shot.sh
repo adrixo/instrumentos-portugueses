@@ -61,7 +61,6 @@ PY
 }
 
 echo "### preflight: Qwen3.6 image support at $VLM_BASE_URL"
-curl -fsS "$VLM_BASE_URL/models" >/dev/null
 probe_image_support
 
 echo "### prepare-data + test qrels"
