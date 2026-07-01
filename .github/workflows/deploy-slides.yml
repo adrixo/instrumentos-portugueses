@@ -36,8 +36,10 @@ jobs:
         run: npm ci
 
       - name: Build slides
-        # --base must match the repo name so assets resolve under /<repo>/
-        run: npm run build -- --base /instrumentos-portugueses/
+        # Relative base ("./") — an absolute base is applied twice by Slidev v52
+        # (once to asset paths, once to router links) and breaks navigation on a
+        # GitHub Pages subpath. Relative base + hash router works under /<repo>/.
+        run: npm run build -- --base ./
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
