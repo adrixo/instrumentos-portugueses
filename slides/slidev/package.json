@@ -1,0 +1,16 @@
+{
+  "name": "traditional-portuguese-instruments-slidev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md --out dist",
+    "export": "slidev export slides.md --format pdf --output dist/portuguese-instruments-ir.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.2.0",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.56.1"
+  },
+  "devDependencies": {}
+}

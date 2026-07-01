@@ -40,7 +40,7 @@ colpali = [
 # Reranking VLM (B4/B5): cliente OpenAI-compatible (vLLM) y backend HF in-process (MPS/CUDA).
 rerank = [
     "openai>=1.30",
-    "transformers>=4.49",
+    "transformers>=4.49,<4.52",
     "accelerate>=0.30",
 ]
 # Tracking, demo y reporting.
@@ -49,6 +49,10 @@ extras = [
     "dvc>=3.50",
     "gradio>=4.0",
     "matplotlib>=3.8",
+]
+monitor = [
+    "paramiko>=3.4",
+    "rich>=13.7",
 ]
 dev = [
     "pytest>=8.0",

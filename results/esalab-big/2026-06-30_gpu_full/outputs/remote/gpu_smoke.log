@@ -1,0 +1,146 @@
+﻿ Container docker-irlab-run-416a9f20b443 Creating
+ Container docker-irlab-run-416a9f20b443 Created
+### 0. prepare-data + subset mini (adufe,concertina, 40 imgs, top_n=15)
+Mapping privado: data/processed/image_id_mapping.parquet
+  corpus train: 3954 imágenes -> data/processed/train/corpus.parquet
+  corpus valid: 1351 imágenes -> data/processed/valid/corpus.parquet
+  corpus test: 1317 imágenes -> data/processed/test/corpus.parquet
+Instrumentos (clases): 22
+split mini: 40 imágenes (344 positivas de ['adufe', 'concertina'])
+  corpus: data/processed/mini/corpus.parquet  qrels: data/processed/qrels/mini.qrels
+  queries reducidas: configs/queries_mini.yaml (EN)
+### 1. B1 dense (OpenCLIP)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/utils/hub.py:105: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+runfile: outputs/runs/B1_smoke.trec  (2 queries, top_k=15)
+/opt/conda/lib/python3.10/site-packages/ranx/metrics/recall.py:29: NumbaTypeSafetyWarning: [1m[1m[1munsafe cast from uint64 to int64. Precision may be lost.[0m[0m[0m
+  scores[i] = _recall(qrels[i], run[i], k, rel_lvl)
+métricas -> outputs/metrics/B1_smoke.json
+  recall@10: 0.2667
+  recall@20: 0.4000
+  recall@50: 0.4000
+  recall@100: 0.4000
+  precision@10: 0.6000
+  ndcg@10: 0.5678
+  ndcg@20: 0.4913
+  ndcg@100: 0.4354
+  map: 0.3193
+  mrr: 0.5625
+  (macro por instrumento)
+    macro_recall@10: 0.2667
+    macro_recall@20: 0.4000
+    macro_recall@50: 0.4000
+    macro_recall@100: 0.4000
+    macro_precision@10: 0.6000
+    macro_ndcg@10: 0.5678
+    macro_ndcg@20: 0.4913
+    macro_ndcg@100: 0.4354
+    macro_map: 0.3193
+    macro_mrr: 0.5625
+2026/06/29 23:23:11 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/06/29 23:23:12 INFO mlflow.store.db.utils: Updating database tables
+2026/06/29 23:23:15 INFO mlflow.tracking.fluent: Experiment with name 'portuguese_instruments_ir' does not exist. Creating a new experiment.
+[save] commit falló (smoke B1)
+### 2. B3 late-interaction (ColQwen) — VERIFICACIÓN CLAVE (falló en Mac)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/utils/hub.py:105: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [01:45<01:45, 105.12s/it]Fetching 2 files: 100%|██████████| 2/2 [01:45<00:00, 52.56s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.14s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.06it/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+runfile: outputs/runs/B3_smoke.trec  (2 queries, top_k=15)
+métricas -> outputs/metrics/B3_smoke.json
+  recall@10: 0.3667
+  recall@20: 0.5333
+  recall@50: 0.5333
+  recall@100: 0.5333
+  precision@10: 0.7500
+  ndcg@10: 0.7523
+  ndcg@20: 0.6587
+  ndcg@100: 0.6028
+  map: 0.4283
+  mrr: 1.0000
+  (macro por instrumento)
+    macro_recall@10: 0.3667
+    macro_recall@20: 0.5333
+    macro_recall@50: 0.5333
+    macro_recall@100: 0.5333
+    macro_precision@10: 0.7500
+    macro_ndcg@10: 0.7523
+    macro_ndcg@20: 0.6587
+    macro_ndcg@100: 0.6028
+    macro_map: 0.4283
+    macro_mrr: 1.0000
+[save] commit falló (smoke B3 (ColQwen))
+### 3. B4 VLM reranker (vía vLLM)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B4 runfile: outputs/runs/B4_smoke.trec
+  traces: outputs/rerank_traces/B4_smoke.jsonl
+  candidates: outputs/candidates/B4_smoke.parquet
+métricas -> outputs/metrics/B4_smoke.json
+  recall@10: 0.3000
+  recall@20: 0.4000
+  recall@50: 0.4000
+  recall@100: 0.4000
+  precision@10: 0.6500
+  ndcg@10: 0.7345
+  ndcg@20: 0.5981
+  ndcg@100: 0.5422
+  map: 0.4000
+  mrr: 1.0000
+  (macro por instrumento)
+    macro_recall@10: 0.3000
+    macro_recall@20: 0.4000
+    macro_recall@50: 0.4000
+    macro_recall@100: 0.4000
+    macro_precision@10: 0.6500
+    macro_ndcg@10: 0.7345
+    macro_ndcg@20: 0.5981
+    macro_ndcg@100: 0.5422
+    macro_map: 0.4000
+    macro_mrr: 1.0000
+[save] commit falló (smoke B4)
+### 4. B5 agente (vía vLLM)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_smoke.trec
+  traces: outputs/rerank_traces/B5_smoke.jsonl  (ablation=full)
+métricas -> outputs/metrics/B5_smoke.json
+  recall@10: 0.3000
+  recall@20: 0.4000
+  recall@50: 0.4000
+  recall@100: 0.4000
+  precision@10: 0.6500
+  ndcg@10: 0.7345
+  ndcg@20: 0.5981
+  ndcg@100: 0.5422
+  map: 0.4000
+  mrr: 1.0000
+  (macro por instrumento)
+    macro_recall@10: 0.3000
+    macro_recall@20: 0.4000
+    macro_recall@50: 0.4000
+    macro_recall@100: 0.4000
+    macro_precision@10: 0.6500
+    macro_ndcg@10: 0.7345
+    macro_ndcg@20: 0.5981
+    macro_ndcg@100: 0.5422
+    macro_map: 0.4000
+    macro_mrr: 1.0000
+[save] commit falló (smoke B5)
+### 5. report
+informe: outputs/reports/final_report.md
+  tablas: outputs/reports/tables/  figuras: outputs/reports/figures/
+slides Marp: outputs/slides/slides.md
+[save] commit falló (smoke report)
+
+====================================================================
+ SMOKE GPU OK — B1/B3/B4/B5 ejecutados de extremo a extremo.
+ Revisa outputs/reports/final_report.md y outputs/metrics/*_smoke.json
+ Si B3 dio métricas razonables (no aleatorias), lanza scripts/gpu_full.sh
+====================================================================
+[notify] (sin NTFY_TOPIC ni TELEGRAM_*; mensaje: ✅ SMOKE GPU terminado — revisa resultados en GitHub y lanza el gordo)

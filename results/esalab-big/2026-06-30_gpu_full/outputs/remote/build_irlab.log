@@ -1,0 +1,987 @@
+﻿ Image docker-irlab Building
+#1 [internal] load local bake definitions
+#1 reading from stdin 559B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile.gpu
+#2 transferring dockerfile: 1.06kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 233B done
+#4 DONE 0.0s
+
+#5 [1/9] FROM docker.io/pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime@sha256:fc47f8018254e6df30f48c48f2db1c758d44de21a8c553de1a1c451a65baa70a
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 51.81kB 0.0s done
+#6 DONE 0.0s
+
+#7 [3/9] WORKDIR /workspace
+#7 CACHED
+
+#8 [2/9] RUN apt-get update && apt-get install -y --no-install-recommends     git libgl1 libglib2.0-0 make     && rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [4/9] COPY pyproject.toml README.md ./
+#9 CACHED
+
+#10 [5/9] COPY src ./src
+#10 DONE 0.1s
+
+#11 [6/9] RUN pip install --no-cache-dir -e ".[dense,colpali,rerank,extras,dev]"
+#11 0.565 Obtaining file:///workspace
+#11 0.568   Installing build dependencies: started
+#11 3.279   Installing build dependencies: finished with status 'done'
+#11 3.281   Checking if build backend supports build_editable: started
+#11 3.415   Checking if build backend supports build_editable: finished with status 'done'
+#11 3.417   Getting requirements to build editable: started
+#11 3.617   Getting requirements to build editable: finished with status 'done'
+#11 3.620   Preparing editable metadata (pyproject.toml): started
+#11 3.807   Preparing editable metadata (pyproject.toml): finished with status 'done'
+#11 4.078 Collecting typer>=0.12 (from instrument-ir==0.1.0)
+#11 4.168   Downloading typer-0.26.8-py3-none-any.whl.metadata (15 kB)
+#11 4.385 Collecting pydantic>=2.6 (from instrument-ir==0.1.0)
+#11 4.398   Downloading pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+#11 4.415      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.4/109.4 kB 6.9 MB/s eta 0:00:00
+#11 4.420 Requirement already satisfied: pyyaml>=6.0 in /opt/conda/lib/python3.10/site-packages (from instrument-ir==0.1.0) (6.0.1)
+#11 4.602 Collecting pandas>=2.0 (from instrument-ir==0.1.0)
+#11 4.615   Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+#11 4.619      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.2/91.2 kB 58.0 MB/s eta 0:00:00
+#11 4.776 Collecting pyarrow>=15.0 (from instrument-ir==0.1.0)
+#11 4.789   Downloading pyarrow-24.0.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+#11 4.790 Requirement already satisfied: numpy>=1.26 in /opt/conda/lib/python3.10/site-packages (from instrument-ir==0.1.0) (1.26.4)
+#11 4.790 Requirement already satisfied: pillow>=10.0 in /opt/conda/lib/python3.10/site-packages (from instrument-ir==0.1.0) (10.3.0)
+#11 4.906 Collecting ranx>=0.3.20 (from instrument-ir==0.1.0)
+#11 4.919   Downloading ranx-0.3.21-py3-none-any.whl.metadata (17 kB)
+#11 4.968 Collecting jsonschema>=4.21 (from instrument-ir==0.1.0)
+#11 4.982   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#11 4.983 Requirement already satisfied: tqdm>=4.66 in /opt/conda/lib/python3.10/site-packages (from instrument-ir==0.1.0) (4.66.4)
+#11 5.071 Collecting pytest>=8.0 (from instrument-ir==0.1.0)
+#11 5.084   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+#11 5.632 Collecting ruff>=0.4 (from instrument-ir==0.1.0)
+#11 5.645   Downloading ruff-0.15.20-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (26 kB)
+#11 5.764 Collecting openai>=1.30 (from instrument-ir==0.1.0)
+#11 5.777   Downloading openai-2.44.0-py3-none-any.whl.metadata (34 kB)
+#11 5.855 Collecting transformers<4.52,>=4.49 (from instrument-ir==0.1.0)
+#11 5.868   Downloading transformers-4.51.3-py3-none-any.whl.metadata (38 kB)
+#11 5.909 Collecting accelerate>=0.30 (from instrument-ir==0.1.0)
+#11 5.922   Downloading accelerate-1.14.0-py3-none-any.whl.metadata (19 kB)
+#11 5.985 Collecting mlflow>=2.12 (from instrument-ir==0.1.0)
+#11 5.998   Downloading mlflow-3.14.0-py3-none-any.whl.metadata (49 kB)
+#11 6.000      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 49.7/49.7 kB 303.7 MB/s eta 0:00:00
+#11 6.273 Collecting dvc>=3.50 (from instrument-ir==0.1.0)
+#11 6.287   Downloading dvc-3.67.1-py3-none-any.whl.metadata (17 kB)
+#11 6.526 Collecting gradio>=4.0 (from instrument-ir==0.1.0)
+#11 6.540   Downloading gradio-6.19.0-py3-none-any.whl.metadata (17 kB)
+#11 6.715 Collecting matplotlib>=3.8 (from instrument-ir==0.1.0)
+#11 6.729   Downloading matplotlib-3.10.9-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (52 kB)
+#11 6.732      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.8/52.8 kB 296.0 MB/s eta 0:00:00
+#11 6.734 Requirement already satisfied: torch>=2.1 in /opt/conda/lib/python3.10/site-packages (from instrument-ir==0.1.0) (2.3.1)
+#11 6.867 Collecting open-clip-torch>=2.24 (from instrument-ir==0.1.0)
+#11 6.881   Downloading open_clip_torch-3.3.0-py3-none-any.whl.metadata (32 kB)
+#11 6.945 Collecting faiss-cpu>=1.8 (from instrument-ir==0.1.0)
+#11 6.959   Downloading faiss_cpu-1.14.3-cp310-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (7.8 kB)
+#11 7.089 Collecting colpali-engine>=0.3.5 (from instrument-ir==0.1.0)
+#11 7.103   Downloading colpali_engine-0.3.17-py3-none-any.whl.metadata (35 kB)
+#11 7.165 Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.10/site-packages (from accelerate>=0.30->instrument-ir==0.1.0) (23.2)
+#11 7.166 Requirement already satisfied: psutil in /opt/conda/lib/python3.10/site-packages (from accelerate>=0.30->instrument-ir==0.1.0) (5.9.0)
+#11 7.268 Collecting huggingface_hub>=0.21.0 (from accelerate>=0.30->instrument-ir==0.1.0)
+#11 7.281   Downloading huggingface_hub-1.21.0-py3-none-any.whl.metadata (14 kB)
+#11 7.435 Collecting safetensors>=0.4.3 (from accelerate>=0.30->instrument-ir==0.1.0)
+#11 7.449   Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+#11 7.588 Collecting peft<0.20.0,>=0.18.0 (from colpali-engine>=0.3.5->instrument-ir==0.1.0)
+#11 7.601   Downloading peft-0.19.1-py3-none-any.whl.metadata (15 kB)
+#11 7.602 Requirement already satisfied: requests in /opt/conda/lib/python3.10/site-packages (from colpali-engine>=0.3.5->instrument-ir==0.1.0) (2.32.2)
+#11 7.770 Collecting scipy (from colpali-engine>=0.3.5->instrument-ir==0.1.0)
+#11 7.783   Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+#11 7.786      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.0/62.0 kB 263.8 MB/s eta 0:00:00
+#11 7.788 Requirement already satisfied: torchvision in /opt/conda/lib/python3.10/site-packages (from colpali-engine>=0.3.5->instrument-ir==0.1.0) (0.18.1)
+#11 7.801 INFO: pip is looking at multiple versions of colpali-engine to determine which version is compatible with other requirements. This could take a while.
+#11 7.807 Collecting colpali-engine>=0.3.5 (from instrument-ir==0.1.0)
+#11 7.820   Downloading colpali_engine-0.3.16-py3-none-any.whl.metadata (34 kB)
+#11 7.859   Downloading colpali_engine-0.3.15-py3-none-any.whl.metadata (34 kB)
+#11 7.887 Collecting peft<0.19.0,>=0.18.0 (from colpali-engine>=0.3.5->instrument-ir==0.1.0)
+#11 7.900   Downloading peft-0.18.1-py3-none-any.whl.metadata (14 kB)
+#11 7.906 Collecting colpali-engine>=0.3.5 (from instrument-ir==0.1.0)
+#11 7.920   Downloading colpali_engine-0.3.14-py3-none-any.whl.metadata (34 kB)
+#11 7.972   Downloading colpali_engine-0.3.13-py3-none-any.whl.metadata (32 kB)
+#11 8.000 Collecting peft<0.18.0,>=0.14.0 (from colpali-engine>=0.3.5->instrument-ir==0.1.0)
+#11 8.013   Downloading peft-0.17.1-py3-none-any.whl.metadata (14 kB)
+#11 8.032 Collecting colpali-engine>=0.3.5 (from instrument-ir==0.1.0)
+#11 8.045   Downloading colpali_engine-0.3.12-py3-none-any.whl.metadata (32 kB)
+#11 8.073 Collecting peft<0.17.0,>=0.14.0 (from colpali-engine>=0.3.5->instrument-ir==0.1.0)
+#11 8.087   Downloading peft-0.16.0-py3-none-any.whl.metadata (14 kB)
+#11 8.156 Collecting torch>=2.1 (from instrument-ir==0.1.0)
+#11 8.170   Downloading torch-2.7.1-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (29 kB)
+#11 8.189 Collecting colpali-engine>=0.3.5 (from instrument-ir==0.1.0)
+#11 8.202   Downloading colpali_engine-0.3.11-py3-none-any.whl.metadata (34 kB)
+#11 8.230 Collecting peft<0.16.0,>=0.14.0 (from colpali-engine>=0.3.5->instrument-ir==0.1.0)
+#11 8.243   Downloading peft-0.15.2-py3-none-any.whl.metadata (13 kB)
+#11 8.249 Collecting colpali-engine>=0.3.5 (from instrument-ir==0.1.0)
+#11 8.262   Downloading colpali_engine-0.3.10-py3-none-any.whl.metadata (33 kB)
+#11 8.289 Collecting torch>=2.1 (from instrument-ir==0.1.0)
+#11 8.302   Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl.metadata (28 kB)
+#11 8.371 Requirement already satisfied: attrs>=22.2.0 in /opt/conda/lib/python3.10/site-packages (from dvc>=3.50->instrument-ir==0.1.0) (23.1.0)
+#11 8.428 Collecting celery (from dvc>=3.50->instrument-ir==0.1.0)
+#11 8.441   Downloading celery-5.6.3-py3-none-any.whl.metadata (23 kB)
+#11 8.470 Collecting colorama>=0.3.9 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 8.482   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+#11 8.505 Collecting configobj>=5.0.9 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 8.518   Downloading configobj-5.0.9-py2.py3-none-any.whl.metadata (3.2 kB)
+#11 8.520 Requirement already satisfied: distro>=1.3 in /opt/conda/lib/python3.10/site-packages (from dvc>=3.50->instrument-ir==0.1.0) (1.9.0)
+#11 8.636 Collecting dpath<3,>=2.1.0 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 8.650   Downloading dpath-2.2.0-py3-none-any.whl.metadata (15 kB)
+#11 8.860 Collecting dulwich (from dvc>=3.50->instrument-ir==0.1.0)
+#11 8.873   Downloading dulwich-1.2.6-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (6.0 kB)
+#11 9.184 Collecting dvc-data<3.19.0,>=3.18.2 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 9.197   Downloading dvc_data-3.18.3-py3-none-any.whl.metadata (4.9 kB)
+#11 9.329 Collecting dvc-http>=2.29.0 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 9.343   Downloading dvc_http-2.32.0-py3-none-any.whl.metadata (1.3 kB)
+#11 9.507 Collecting dvc-objects (from dvc>=3.50->instrument-ir==0.1.0)
+#11 9.520   Downloading dvc_objects-5.2.0-py3-none-any.whl.metadata (3.9 kB)
+#11 9.645 Collecting dvc-render<2,>=1.0.1 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 9.659   Downloading dvc_render-1.0.2-py3-none-any.whl.metadata (5.4 kB)
+#11 9.791 Collecting dvc-studio-client<1,>=0.21 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 9.806   Downloading dvc_studio_client-0.23.0-py3-none-any.whl.metadata (4.4 kB)
+#11 9.947 Collecting dvc-task<1,>=0.3.0 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 9.962   Downloading dvc_task-0.40.2-py3-none-any.whl.metadata (10.0 kB)
+#11 10.11 Collecting flatten-dict<1,>=0.4.1 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.12   Downloading flatten_dict-0.5.0-py3-none-any.whl.metadata (8.9 kB)
+#11 10.25 Collecting flufl.lock<10,>=8.1.0 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.27   Downloading flufl_lock-9.1.0-py3-none-any.whl.metadata (3.3 kB)
+#11 10.27 Requirement already satisfied: fsspec>=2024.2.0 in /opt/conda/lib/python3.10/site-packages (from dvc>=3.50->instrument-ir==0.1.0) (2024.6.0)
+#11 10.40 Collecting funcy>=1.14 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.42   Downloading funcy-2.0-py2.py3-none-any.whl.metadata (5.9 kB)
+#11 10.54 Collecting grandalf<1,>=0.7 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.55   Downloading grandalf-0.8-py3-none-any.whl.metadata (1.7 kB)
+#11 10.71 Collecting gto<2,>=1.6.0 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.73   Downloading gto-1.9.0-py3-none-any.whl.metadata (4.9 kB)
+#11 10.77 Collecting hydra-core>=1.1 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.79   Downloading hydra_core-1.3.3-py3-none-any.whl.metadata (5.7 kB)
+#11 10.92 Collecting iterative-telemetry>=0.0.7 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 10.94   Downloading iterative_telemetry-0.0.10-py3-none-any.whl.metadata (4.1 kB)
+#11 11.03 Collecting kombu (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.05   Downloading kombu-5.6.2-py3-none-any.whl.metadata (3.5 kB)
+#11 11.05 Requirement already satisfied: networkx>=2.5 in /opt/conda/lib/python3.10/site-packages (from dvc>=3.50->instrument-ir==0.1.0) (3.2.1)
+#11 11.13 Collecting omegaconf (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.14   Downloading omegaconf-2.3.1-py3-none-any.whl.metadata (4.5 kB)
+#11 11.17 Collecting pathspec<2,>=0.10.3 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.19   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+#11 11.19 Requirement already satisfied: platformdirs<5,>=3.1.1 in /opt/conda/lib/python3.10/site-packages (from dvc>=3.50->instrument-ir==0.1.0) (3.10.0)
+#11 11.22 Collecting pydot>=1.2.4 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.23   Downloading pydot-4.0.1-py3-none-any.whl.metadata (11 kB)
+#11 11.36 Collecting pygtrie>=2.3.2 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.38   Downloading pygtrie-2.5.0-py3-none-any.whl.metadata (7.5 kB)
+#11 11.46 Collecting pyparsing>=3.0.0 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.48   Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+#11 11.58 Collecting rich>=12 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.59   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+#11 11.59 Requirement already satisfied: ruamel.yaml>=0.17.11 in /opt/conda/lib/python3.10/site-packages (from dvc>=3.50->instrument-ir==0.1.0) (0.17.21)
+#11 11.74 Collecting scmrepo<4,>=3.5.2 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.75   Downloading scmrepo-3.6.2-py3-none-any.whl.metadata (4.8 kB)
+#11 11.79 Collecting shortuuid>=0.5 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.81   Downloading shortuuid-1.0.13-py3-none-any.whl.metadata (5.8 kB)
+#11 11.86 Collecting shtab<2,>=1.3.4 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.87   Downloading shtab-1.8.0-py3-none-any.whl.metadata (7.3 kB)
+#11 11.90 Collecting tabulate>=0.8.7 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 11.92   Downloading tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+#11 11.92      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 kB 133.9 MB/s eta 0:00:00
+#11 11.99 Collecting tomlkit>=0.11.1 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 12.00   Downloading tomlkit-0.15.0-py3-none-any.whl.metadata (2.8 kB)
+#11 12.03 Collecting voluptuous>=0.11.7 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 12.04   Downloading voluptuous-0.16.0-py3-none-any.whl.metadata (20 kB)
+#11 12.07 Collecting zc.lockfile>=1.2.1 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 12.09   Downloading zc_lockfile-4.0-py3-none-any.whl.metadata (6.6 kB)
+#11 12.18 Collecting anyio<5.0,>=3.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.19   Downloading anyio-4.14.1-py3-none-any.whl.metadata (4.6 kB)
+#11 12.25 Collecting brotli>=1.1.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.26   Downloading brotli-1.2.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.1 kB)
+#11 12.37 Collecting fastapi<1.0,>=0.115.2 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.39   Downloading fastapi-0.138.2-py3-none-any.whl.metadata (26 kB)
+#11 12.43 Collecting gradio-client==2.5.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.45   Downloading gradio_client-2.5.0-py3-none-any.whl.metadata (7.1 kB)
+#11 12.47 Collecting groovy~=0.1 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.48   Downloading groovy-0.1.2-py3-none-any.whl.metadata (6.1 kB)
+#11 12.51 Collecting hf-gradio<1.0,>=0.4.1 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.52   Downloading hf_gradio-0.4.1-py3-none-any.whl.metadata (428 bytes)
+#11 12.56 Collecting httpx<1.0,>=0.24.1 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 12.57   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#11 12.60 Requirement already satisfied: jinja2<4.0 in /opt/conda/lib/python3.10/site-packages (from gradio>=4.0->instrument-ir==0.1.0) (3.1.4)
+#11 12.60 Requirement already satisfied: markupsafe<4.0,>=2.0 in /opt/conda/lib/python3.10/site-packages (from gradio>=4.0->instrument-ir==0.1.0) (2.1.3)
+#11 13.07 Collecting orjson~=3.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.08   Downloading orjson-3.11.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+#11 13.09      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.0/42.0 kB 230.7 MB/s eta 0:00:00
+#11 13.14 Collecting pydub<1.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.15   Downloading pydub-0.25.1-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 13.18 Collecting python-multipart<1.0,>=0.0.18 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.19   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+#11 13.19 Requirement already satisfied: pytz>=2017.2 in /opt/conda/lib/python3.10/site-packages (from gradio>=4.0->instrument-ir==0.1.0) (2024.1)
+#11 13.21 Collecting safehttpx<0.2.0,>=0.1.7 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.23   Downloading safehttpx-0.1.7-py3-none-any.whl.metadata (4.2 kB)
+#11 13.25 Collecting semantic-version~=2.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.27   Downloading semantic_version-2.10.0-py2.py3-none-any.whl.metadata (9.7 kB)
+#11 13.34 Collecting starlette<2.0,>=1.0.1 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.35   Downloading starlette-1.3.1-py3-none-any.whl.metadata (6.4 kB)
+#11 13.36 Collecting tomlkit>=0.11.1 (from dvc>=3.50->instrument-ir==0.1.0)
+#11 13.37   Downloading tomlkit-0.14.0-py3-none-any.whl.metadata (2.8 kB)
+#11 13.38 Requirement already satisfied: typing-extensions~=4.0 in /opt/conda/lib/python3.10/site-packages (from gradio>=4.0->instrument-ir==0.1.0) (4.11.0)
+#11 13.44 Collecting uvicorn>=0.14.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 13.45   Downloading uvicorn-0.49.0-py3-none-any.whl.metadata (6.7 kB)
+#11 13.50 Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /opt/conda/lib/python3.10/site-packages (from jsonschema>=4.21->instrument-ir==0.1.0) (2023.7.1)
+#11 13.50 Requirement already satisfied: referencing>=0.28.4 in /opt/conda/lib/python3.10/site-packages (from jsonschema>=4.21->instrument-ir==0.1.0) (0.30.2)
+#11 13.83 Collecting rpds-py>=0.25.0 (from jsonschema>=4.21->instrument-ir==0.1.0)
+#11 13.84   Downloading rpds_py-0.30.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#11 13.95 Collecting contourpy>=1.0.1 (from matplotlib>=3.8->instrument-ir==0.1.0)
+#11 13.96   Downloading contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.5 kB)
+#11 13.98 Collecting cycler>=0.10 (from matplotlib>=3.8->instrument-ir==0.1.0)
+#11 14.00   Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+#11 14.21 Collecting fonttools>=4.22.0 (from matplotlib>=3.8->instrument-ir==0.1.0)
+#11 14.23   Downloading fonttools-4.63.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (118 kB)
+#11 14.23      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.7/118.7 kB 97.7 MB/s eta 0:00:00
+#11 14.48 Collecting kiwisolver>=1.3.1 (from matplotlib>=3.8->instrument-ir==0.1.0)
+#11 14.50   Downloading kiwisolver-1.5.0-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.1 kB)
+#11 14.52 Collecting python-dateutil>=2.7 (from matplotlib>=3.8->instrument-ir==0.1.0)
+#11 14.53   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#11 14.63 Collecting mlflow-skinny==3.14.0 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 14.64   Downloading mlflow_skinny-3.14.0-py3-none-any.whl.metadata (50 kB)
+#11 14.65      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.5/50.5 kB 290.1 MB/s eta 0:00:00
+#11 14.68 Collecting mlflow-tracing==3.14.0 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 14.69   Downloading mlflow_tracing-3.14.0-py3-none-any.whl.metadata (19 kB)
+#11 14.73 Collecting Flask-CORS<7 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 14.74   Downloading flask_cors-6.0.5-py3-none-any.whl.metadata (5.4 kB)
+#11 14.78 Collecting Flask<4 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 14.79   Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+#11 15.43 Collecting aiohttp<4,>=3.7.0 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 15.45   Downloading aiohttp-3.14.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+#11 15.50 Collecting alembic!=1.10.0,<2 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 15.51   Downloading alembic-1.18.5-py3-none-any.whl.metadata (7.2 kB)
+#11 15.97 Collecting cryptography<49,>=43.0.0 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 15.98   Downloading cryptography-48.0.1-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#11 16.02 Collecting docker<8,>=4.0.0 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.03   Downloading docker-7.1.0-py3-none-any.whl.metadata (3.8 kB)
+#11 16.06 Collecting graphene<4 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.07   Downloading graphene-3.4.3-py2.py3-none-any.whl.metadata (6.9 kB)
+#11 16.11 Collecting gunicorn<27 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.12   Downloading gunicorn-26.0.0-py3-none-any.whl.metadata (5.4 kB)
+#11 16.15 Collecting huey<4,>=2.5.4 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.16   Downloading huey-3.0.3-py3-none-any.whl.metadata (4.5 kB)
+#11 16.30 Collecting scikit-learn<2 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.32   Downloading scikit_learn-1.7.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (11 kB)
+#11 16.34 Collecting skops<1 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.36   Downloading skops-0.14.0-py3-none-any.whl.metadata (4.4 kB)
+#11 16.75 Collecting sqlalchemy<3,>=1.4.0 (from mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.77   Downloading sqlalchemy-2.0.51-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#11 16.84 Collecting cachetools<8,>=5.0.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.86   Downloading cachetools-7.1.4-py3-none-any.whl.metadata (5.5 kB)
+#11 16.86 Requirement already satisfied: click<9,>=7.0 in /opt/conda/lib/python3.10/site-packages (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0) (8.1.7)
+#11 16.89 Collecting cloudpickle<4 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.90   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+#11 16.96 Collecting databricks-sdk<1,>=0.20.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 16.97   Downloading databricks_sdk-0.119.0-py3-none-any.whl.metadata (43 kB)
+#11 16.98      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.7/43.7 kB 299.1 MB/s eta 0:00:00
+#11 17.03 Collecting gitpython<4,>=3.1.9 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.04   Downloading gitpython-3.1.50-py3-none-any.whl.metadata (14 kB)
+#11 17.12 Collecting importlib_metadata!=4.7.0,<10,>=3.7.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.13   Downloading importlib_metadata-9.0.0-py3-none-any.whl.metadata (4.5 kB)
+#11 17.17 Collecting opentelemetry-api<3,>=1.9.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.19   Downloading opentelemetry_api-1.43.0-py3-none-any.whl.metadata (1.4 kB)
+#11 17.23 Collecting opentelemetry-proto<3,>=1.9.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.24   Downloading opentelemetry_proto-1.43.0-py3-none-any.whl.metadata (2.3 kB)
+#11 17.29 Collecting opentelemetry-sdk<3,>=1.9.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.30   Downloading opentelemetry_sdk-1.43.0-py3-none-any.whl.metadata (1.7 kB)
+#11 17.54 Collecting protobuf<8,>=3.12.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.56   Downloading protobuf-7.35.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+#11 17.60 Collecting python-dotenv<2,>=0.19.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.61   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+#11 17.64 Collecting sqlparse<1,>=0.4.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 17.65   Downloading sqlparse-0.5.5-py3-none-any.whl.metadata (4.7 kB)
+#11 18.38 Collecting regex (from open-clip-torch>=2.24->instrument-ir==0.1.0)
+#11 18.39   Downloading regex-2026.6.28-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#11 18.40      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.5/40.5 kB 291.9 MB/s eta 0:00:00
+#11 18.42 Collecting ftfy (from open-clip-torch>=2.24->instrument-ir==0.1.0)
+#11 18.43   Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+#11 18.58 Collecting timm>=1.0.17 (from open-clip-torch>=2.24->instrument-ir==0.1.0)
+#11 18.59   Downloading timm-1.0.27-py3-none-any.whl.metadata (40 kB)
+#11 18.59      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.2/40.2 kB 251.4 MB/s eta 0:00:00
+#11 18.75 Collecting jiter<1,>=0.10.0 (from openai>=1.30->instrument-ir==0.1.0)
+#11 18.77   Downloading jiter-0.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+#11 18.81 Collecting sniffio (from openai>=1.30->instrument-ir==0.1.0)
+#11 18.82   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#11 18.85 Collecting typing-extensions~=4.0 (from gradio>=4.0->instrument-ir==0.1.0)
+#11 18.86   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#11 18.97 Collecting tzdata>=2022.7 (from pandas>=2.0->instrument-ir==0.1.0)
+#11 18.98   Downloading tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 19.03 Collecting annotated-types>=0.6.0 (from pydantic>=2.6->instrument-ir==0.1.0)
+#11 19.04   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#11 19.86 Collecting pydantic-core==2.46.4 (from pydantic>=2.6->instrument-ir==0.1.0)
+#11 19.87   Downloading pydantic_core-2.46.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#11 19.90 Collecting typing-inspection>=0.4.2 (from pydantic>=2.6->instrument-ir==0.1.0)
+#11 19.91   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#11 19.93 Requirement already satisfied: exceptiongroup>=1 in /opt/conda/lib/python3.10/site-packages (from pytest>=8.0->instrument-ir==0.1.0) (1.2.0)
+#11 19.95 Collecting iniconfig>=1.0.1 (from pytest>=8.0->instrument-ir==0.1.0)
+#11 19.96   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+#11 19.99 Collecting pluggy<2,>=1.5 (from pytest>=8.0->instrument-ir==0.1.0)
+#11 20.00   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+#11 20.00 Requirement already satisfied: pygments>=2.7.2 in /opt/conda/lib/python3.10/site-packages (from pytest>=8.0->instrument-ir==0.1.0) (2.15.1)
+#11 20.00 Requirement already satisfied: tomli>=1 in /opt/conda/lib/python3.10/site-packages (from pytest>=8.0->instrument-ir==0.1.0) (2.0.1)
+#11 20.15 Collecting numba>=0.54.1 (from ranx>=0.3.20->instrument-ir==0.1.0)
+#11 20.17   Downloading numba-0.65.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.9 kB)
+#11 20.59 Collecting ir-datasets (from ranx>=0.3.20->instrument-ir==0.1.0)
+#11 20.60   Downloading ir_datasets-0.6.1-py3-none-any.whl.metadata (13 kB)
+#11 20.68 Collecting lz4 (from ranx>=0.3.20->instrument-ir==0.1.0)
+#11 20.70   Downloading lz4-4.4.5-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+#11 20.78 Collecting cbor2 (from ranx>=0.3.20->instrument-ir==0.1.0)
+#11 20.80   Downloading cbor2-6.1.2-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+#11 20.82 Collecting seaborn (from ranx>=0.3.20->instrument-ir==0.1.0)
+#11 20.83   Downloading seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+#11 20.91 Collecting fastparquet (from ranx>=0.3.20->instrument-ir==0.1.0)
+#11 20.92   Downloading fastparquet-2026.5.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.8 kB)
+#11 20.96 Requirement already satisfied: filelock in /opt/conda/lib/python3.10/site-packages (from torch>=2.1->instrument-ir==0.1.0) (3.13.1)
+#11 20.99 Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.01   Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+#11 21.03 Collecting nvidia-cuda-runtime-cu12==12.4.127 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.04   Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+#11 21.07 Collecting nvidia-cuda-cupti-cu12==12.4.127 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.08   Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+#11 21.12 Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.14   Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+#11 21.17 Collecting nvidia-cublas-cu12==12.4.5.8 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.18   Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+#11 21.22 Collecting nvidia-cufft-cu12==11.2.1.3 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.23   Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+#11 21.27 Collecting nvidia-curand-cu12==10.3.5.147 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.28   Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+#11 21.32 Collecting nvidia-cusolver-cu12==11.6.1.9 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.33   Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+#11 21.37 Collecting nvidia-cusparse-cu12==12.3.1.170 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.38   Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl.metadata (1.6 kB)
+#11 21.41 Collecting nvidia-cusparselt-cu12==0.6.2 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.43   Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl.metadata (6.8 kB)
+#11 21.48 Collecting nvidia-nccl-cu12==2.21.5 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.49   Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+#11 21.53 Collecting nvidia-nvtx-cu12==12.4.127 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.55   Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.7 kB)
+#11 21.59 Collecting nvidia-nvjitlink-cu12==12.4.127 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.61   Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+#11 21.66 Collecting triton==3.2.0 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.67   Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+#11 21.73 Collecting sympy==1.13.1 (from torch>=2.1->instrument-ir==0.1.0)
+#11 21.74   Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+#11 21.85 Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from sympy==1.13.1->torch>=2.1->instrument-ir==0.1.0) (1.3.0)
+#11 22.23 INFO: pip is looking at multiple versions of transformers to determine which version is compatible with other requirements. This could take a while.
+#11 22.23 Collecting transformers<4.52,>=4.49 (from instrument-ir==0.1.0)
+#11 22.25   Downloading transformers-4.51.2-py3-none-any.whl.metadata (38 kB)
+#11 22.58   Downloading transformers-4.51.1-py3-none-any.whl.metadata (38 kB)
+#11 22.91 Collecting open-clip-torch>=2.24 (from instrument-ir==0.1.0)
+#11 22.93   Downloading open_clip_torch-3.2.0-py3-none-any.whl.metadata (32 kB)
+#11 22.97   Downloading open_clip_torch-3.1.0-py3-none-any.whl.metadata (32 kB)
+#11 22.99 INFO: pip is still looking at multiple versions of transformers to determine which version is compatible with other requirements. This could take a while.
+#11 23.01   Downloading open_clip_torch-3.0.0-py3-none-any.whl.metadata (32 kB)
+#11 23.06   Downloading open_clip_torch-2.32.0-py3-none-any.whl.metadata (31 kB)
+#11 23.08 INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+#11 23.11   Downloading open_clip_torch-2.31.0-py3-none-any.whl.metadata (31 kB)
+#11 23.15   Downloading open_clip_torch-2.30.0-py3-none-any.whl.metadata (31 kB)
+#11 23.19   Downloading open_clip_torch-2.29.0-py3-none-any.whl.metadata (31 kB)
+#11 23.23   Downloading open_clip_torch-2.28.0-py3-none-any.whl.metadata (31 kB)
+#11 23.28   Downloading open_clip_torch-2.27.1-py3-none-any.whl.metadata (31 kB)
+#11 23.32   Downloading open_clip_torch-2.27.0-py3-none-any.whl.metadata (31 kB)
+#11 23.36   Downloading open_clip_torch-2.26.1-py3-none-any.whl.metadata (31 kB)
+#11 23.41   Downloading open_clip_torch-2.24.0-py3-none-any.whl.metadata (30 kB)
+#11 23.49 Collecting sentencepiece (from open-clip-torch>=2.24->instrument-ir==0.1.0)
+#11 23.50   Downloading sentencepiece-0.2.1-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+#11 23.52 Collecting gradio>=4.0 (from instrument-ir==0.1.0)
+#11 23.54   Downloading gradio-6.18.0-py3-none-any.whl.metadata (17 kB)
+#11 23.76   Downloading gradio-6.17.3-py3-none-any.whl.metadata (17 kB)
+#11 23.87 Collecting huggingface_hub>=0.21.0 (from accelerate>=0.30->instrument-ir==0.1.0)
+#11 23.88   Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+#11 24.26 Collecting tokenizers<0.22,>=0.21 (from transformers<4.52,>=4.49->instrument-ir==0.1.0)
+#11 24.27   Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+#11 24.42 Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface_hub>=0.21.0->accelerate>=0.30->instrument-ir==0.1.0)
+#11 24.43   Downloading hf_xet-1.5.1-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+#11 24.74 Collecting shellingham>=1.3.0 (from typer>=0.12->instrument-ir==0.1.0)
+#11 24.76   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+#11 24.79 Collecting annotated-doc>=0.0.2 (from typer>=0.12->instrument-ir==0.1.0)
+#11 24.80   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+#11 24.85 Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 24.86   Downloading aiohappyeyeballs-2.6.2-py3-none-any.whl.metadata (5.9 kB)
+#11 24.89 Collecting aiosignal>=1.4.0 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 24.90   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+#11 24.93 Collecting async-timeout<6.0,>=4.0 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 24.94   Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+#11 25.04 Collecting frozenlist>=1.1.1 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 25.06   Downloading frozenlist-1.8.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+#11 25.35 Collecting multidict<7.0,>=4.5 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 25.37   Downloading multidict-6.7.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+#11 25.44 Collecting propcache>=0.2.0 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 25.46   Downloading propcache-0.5.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (16 kB)
+#11 25.78 Collecting yarl<2.0,>=1.17.0 (from aiohttp<4,>=3.7.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 25.80   Downloading yarl-1.24.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (94 kB)
+#11 25.80      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.2/94.2 kB 316.7 MB/s eta 0:00:00
+#11 25.87 Collecting Mako (from alembic!=1.10.0,<2->mlflow>=2.12->instrument-ir==0.1.0)
+#11 25.89   Downloading mako-1.3.12-py3-none-any.whl.metadata (2.9 kB)
+#11 25.93 Requirement already satisfied: idna>=2.8 in /opt/conda/lib/python3.10/site-packages (from anyio<5.0,>=3.0->gradio>=4.0->instrument-ir==0.1.0) (3.7)
+#11 26.50 Collecting cffi>=2.0.0 (from cryptography<49,>=43.0.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 26.52   Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+#11 26.57 Requirement already satisfied: urllib3>=1.26.0 in /opt/conda/lib/python3.10/site-packages (from docker<8,>=4.0.0->mlflow>=2.12->instrument-ir==0.1.0) (2.2.1)
+#11 26.73 Collecting dictdiffer>=0.8.1 (from dvc-data<3.19.0,>=3.18.2->dvc>=3.50->instrument-ir==0.1.0)
+#11 26.74   Downloading dictdiffer-0.9.0-py2.py3-none-any.whl.metadata (4.8 kB)
+#11 26.78 Collecting diskcache>=5.2.1 (from dvc-data<3.19.0,>=3.18.2->dvc>=3.50->instrument-ir==0.1.0)
+#11 26.79   Downloading diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+#11 26.94 Collecting sqltrie<1,>=0.11.0 (from dvc-data<3.19.0,>=3.18.2->dvc>=3.50->instrument-ir==0.1.0)
+#11 26.95   Downloading sqltrie-0.11.2-py3-none-any.whl.metadata (3.3 kB)
+#11 27.03 Collecting aiohttp-retry>=2.5.0 (from dvc-http>=2.29.0->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.05   Downloading aiohttp_retry-2.9.1-py3-none-any.whl.metadata (8.8 kB)
+#11 27.26 Collecting billiard<5.0,>=4.2.1 (from celery->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.28   Downloading billiard-4.2.4-py3-none-any.whl.metadata (4.8 kB)
+#11 27.31 Collecting vine<6.0,>=5.1.0 (from celery->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.32   Downloading vine-5.1.0-py3-none-any.whl.metadata (2.7 kB)
+#11 27.34 Collecting click-didyoumean>=0.3.0 (from celery->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.35   Downloading click_didyoumean-0.3.1-py3-none-any.whl.metadata (3.9 kB)
+#11 27.37 Collecting click-repl>=0.2.0 (from celery->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.39   Downloading click_repl-0.3.0-py3-none-any.whl.metadata (3.6 kB)
+#11 27.41 Collecting click-plugins>=1.1.1 (from celery->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.42   Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl.metadata (6.5 kB)
+#11 27.46 Collecting exceptiongroup>=1 (from pytest>=8.0->instrument-ir==0.1.0)
+#11 27.47   Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+#11 27.51 Collecting tzlocal (from celery->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.53   Downloading tzlocal-5.4.4-py3-none-any.whl.metadata (7.7 kB)
+#11 27.68 Collecting blinker>=1.9.0 (from Flask<4->mlflow>=2.12->instrument-ir==0.1.0)
+#11 27.70   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+#11 27.72 Collecting itsdangerous>=2.2.0 (from Flask<4->mlflow>=2.12->instrument-ir==0.1.0)
+#11 27.73   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#11 27.78 Collecting werkzeug>=3.1.0 (from Flask<4->mlflow>=2.12->instrument-ir==0.1.0)
+#11 27.79   Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+#11 27.96 Collecting atpublic (from flufl.lock<10,>=8.1.0->dvc>=3.50->instrument-ir==0.1.0)
+#11 27.98   Downloading atpublic-7.0.0-py3-none-any.whl.metadata (2.0 kB)
+#11 28.20 Collecting graphql-core<3.3,>=3.1 (from graphene<4->mlflow>=2.12->instrument-ir==0.1.0)
+#11 28.21   Downloading graphql_core-3.2.11-py3-none-any.whl.metadata (11 kB)
+#11 28.24 Collecting graphql-relay<3.3,>=3.1 (from graphene<4->mlflow>=2.12->instrument-ir==0.1.0)
+#11 28.25   Downloading graphql_relay-3.2.0-py3-none-any.whl.metadata (12 kB)
+#11 28.32 Collecting entrypoints (from gto<2,>=1.6.0->dvc>=3.50->instrument-ir==0.1.0)
+#11 28.34   Downloading entrypoints-0.4-py3-none-any.whl.metadata (2.6 kB)
+#11 28.37 Collecting pydantic-settings>=2 (from gto<2,>=1.6.0->dvc>=3.50->instrument-ir==0.1.0)
+#11 28.38   Downloading pydantic_settings-2.14.2-py3-none-any.whl.metadata (3.4 kB)
+#11 28.42 Collecting semver>=2.13.0 (from gto<2,>=1.6.0->dvc>=3.50->instrument-ir==0.1.0)
+#11 28.43   Downloading semver-3.0.4-py3-none-any.whl.metadata (6.8 kB)
+#11 28.52 Requirement already satisfied: certifi in /opt/conda/lib/python3.10/site-packages (from httpx<1.0,>=0.24.1->gradio>=4.0->instrument-ir==0.1.0) (2024.2.2)
+#11 28.56 Collecting httpcore==1.* (from httpx<1.0,>=0.24.1->gradio>=4.0->instrument-ir==0.1.0)
+#11 28.57   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#11 28.61 Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0,>=0.24.1->gradio>=4.0->instrument-ir==0.1.0)
+#11 28.63   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#11 28.69 Collecting antlr4-python3-runtime==4.9.* (from hydra-core>=1.1->dvc>=3.50->instrument-ir==0.1.0)
+#11 28.70   Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+#11 28.70      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.0/117.0 kB 71.8 MB/s eta 0:00:00
+#11 28.72   Preparing metadata (setup.py): started
+#11 28.91   Preparing metadata (setup.py): finished with status 'done'
+#11 29.03 Collecting appdirs (from iterative-telemetry>=0.0.7->dvc>=3.50->instrument-ir==0.1.0)
+#11 29.04   Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+#11 29.18 Collecting amqp<6.0.0,>=5.1.1 (from kombu->dvc>=3.50->instrument-ir==0.1.0)
+#11 29.20   Downloading amqp-5.3.1-py3-none-any.whl.metadata (8.9 kB)
+#11 29.36 Collecting llvmlite<0.48,>=0.47.0dev0 (from numba>=0.54.1->ranx>=0.3.20->instrument-ir==0.1.0)
+#11 29.37   Downloading llvmlite-0.47.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.0 kB)
+#11 29.68 Requirement already satisfied: six>=1.5 in /opt/conda/lib/python3.10/site-packages (from python-dateutil>=2.7->matplotlib>=3.8->instrument-ir==0.1.0) (1.16.0)
+#11 29.77 Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests->colpali-engine>=0.3.5->instrument-ir==0.1.0) (2.0.4)
+#11 29.82 Collecting markdown-it-py>=2.2.0 (from rich>=12->dvc>=3.50->instrument-ir==0.1.0)
+#11 29.83   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+#11 29.88 Requirement already satisfied: ruamel.yaml.clib>=0.2.6 in /opt/conda/lib/python3.10/site-packages (from ruamel.yaml>=0.17.11->dvc>=3.50->instrument-ir==0.1.0) (0.2.6)
+#11 30.02 Collecting joblib>=1.2.0 (from scikit-learn<2->mlflow>=2.12->instrument-ir==0.1.0)
+#11 30.04   Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+#11 30.06 Collecting threadpoolctl>=3.1.0 (from scikit-learn<2->mlflow>=2.12->instrument-ir==0.1.0)
+#11 30.07   Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+#11 30.27 Collecting pygit2>=1.14.0 (from scmrepo<4,>=3.5.2->dvc>=3.50->instrument-ir==0.1.0)
+#11 30.28   Downloading pygit2-1.18.2-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+#11 30.32 Collecting asyncssh<3,>=2.13.1 (from scmrepo<4,>=3.5.2->dvc>=3.50->instrument-ir==0.1.0)
+#11 30.33   Downloading asyncssh-2.24.0-py3-none-any.whl.metadata (9.8 kB)
+#11 30.41 Collecting urllib3>=1.26.0 (from docker<8,>=4.0.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 30.43   Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+#11 30.57 Collecting prettytable>=3.9 (from skops<1->mlflow>=2.12->instrument-ir==0.1.0)
+#11 30.58   Downloading prettytable-3.18.0-py3-none-any.whl.metadata (37 kB)
+#11 30.83 Collecting greenlet>=1 (from sqlalchemy<3,>=1.4.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 30.84   Downloading greenlet-3.5.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+#11 31.15 Requirement already satisfied: setuptools in /opt/conda/lib/python3.10/site-packages (from zc.lockfile>=1.2.1->dvc>=3.50->instrument-ir==0.1.0) (69.5.1)
+#11 31.40 Collecting cramjam>=2.3 (from fastparquet->ranx>=0.3.20->instrument-ir==0.1.0)
+#11 31.41   Downloading cramjam-2.11.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+#11 31.46 Requirement already satisfied: wcwidth in /opt/conda/lib/python3.10/site-packages (from ftfy->open-clip-torch>=2.24->instrument-ir==0.1.0) (0.2.5)
+#11 31.79 Collecting lxml>=4.5.2 (from ir-datasets->ranx>=0.3.20->instrument-ir==0.1.0)
+#11 31.80   Downloading lxml-6.1.1-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.5 kB)
+#11 32.22 Requirement already satisfied: pycparser in /opt/conda/lib/python3.10/site-packages (from cffi>=2.0.0->cryptography<49,>=43.0.0->mlflow>=2.12->instrument-ir==0.1.0) (2.21)
+#11 32.33 Requirement already satisfied: prompt-toolkit>=3.0.36 in /opt/conda/lib/python3.10/site-packages (from click-repl>=0.2.0->celery->dvc>=3.50->instrument-ir==0.1.0) (3.0.43)
+#11 32.52 Collecting google-auth~=2.0 (from databricks-sdk<1,>=0.20.0->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 32.53   Downloading google_auth-2.55.1-py3-none-any.whl.metadata (5.1 kB)
+#11 32.63 Collecting protobuf<8,>=3.12.0 (from mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 32.65   Downloading protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+#11 32.83 Collecting gitdb<5,>=4.0.1 (from gitpython<4,>=3.1.9->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 32.84   Downloading gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+#11 33.08 Collecting zipp>=3.20 (from importlib_metadata!=4.7.0,<10,>=3.7.0->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 33.09   Downloading zipp-4.1.0-py3-none-any.whl.metadata (3.6 kB)
+#11 33.26 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12->dvc>=3.50->instrument-ir==0.1.0)
+#11 33.27   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#11 33.52 Collecting opentelemetry-semantic-conventions==0.64b0 (from opentelemetry-sdk<3,>=1.9.0->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 33.54   Downloading opentelemetry_semantic_conventions-0.64b0-py3-none-any.whl.metadata (2.4 kB)
+#11 33.62 Collecting wcwidth (from ftfy->open-clip-torch>=2.24->instrument-ir==0.1.0)
+#11 33.64   Downloading wcwidth-0.8.2-py3-none-any.whl.metadata (43 kB)
+#11 33.64      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.3/43.3 kB 268.4 MB/s eta 0:00:00
+#11 34.41 Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->gitpython<4,>=3.1.9->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 34.42   Downloading smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+#11 34.51 Collecting pyasn1-modules>=0.2.1 (from google-auth~=2.0->databricks-sdk<1,>=0.20.0->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 34.52   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+#11 34.72 Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth~=2.0->databricks-sdk<1,>=0.20.0->mlflow-skinny==3.14.0->mlflow>=2.12->instrument-ir==0.1.0)
+#11 34.73   Downloading pyasn1-0.6.3-py3-none-any.whl.metadata (8.4 kB)
+#11 34.84 Downloading accelerate-1.14.0-py3-none-any.whl (389 kB)
+#11 34.85    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 389.2/389.2 kB 30.7 MB/s eta 0:00:00
+#11 34.87 Downloading colpali_engine-0.3.10-py3-none-any.whl (58 kB)
+#11 34.87    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.8/58.8 kB 78.0 MB/s eta 0:00:00
+#11 34.88 Downloading dvc-3.67.1-py3-none-any.whl (470 kB)
+#11 34.89    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 470.1/470.1 kB 52.6 MB/s eta 0:00:00
+#11 34.91 Downloading faiss_cpu-1.14.3-cp310-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (18.5 MB)
+#11 35.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.5/18.5 MB 36.9 MB/s eta 0:00:00
+#11 35.43 Downloading gradio-6.17.3-py3-none-any.whl (32.3 MB)
+#11 36.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 32.3/32.3 MB 36.6 MB/s eta 0:00:00
+#11 36.47 Downloading gradio_client-2.5.0-py3-none-any.whl (59 kB)
+#11 36.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.0/60.0 kB 124.1 MB/s eta 0:00:00
+#11 36.49 Downloading open_clip_torch-3.3.0-py3-none-any.whl (1.5 MB)
+#11 36.53    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 41.0 MB/s eta 0:00:00
+#11 36.55 Downloading transformers-4.51.3-py3-none-any.whl (10.4 MB)
+#11 36.85    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 35.4 MB/s eta 0:00:00
+#11 36.86 Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+#11 36.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 38.7 MB/s eta 0:00:00
+#11 36.90 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#11 36.91    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 138.7 MB/s eta 0:00:00
+#11 36.92 Downloading matplotlib-3.10.9-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.8 MB)
+#11 37.22    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 30.3 MB/s eta 0:00:00
+#11 37.25 Downloading mlflow-3.14.0-py3-none-any.whl (12.6 MB)
+#11 37.66    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.6/12.6 MB 31.3 MB/s eta 0:00:00
+#11 37.68 Downloading mlflow_skinny-3.14.0-py3-none-any.whl (3.5 MB)
+#11 37.80    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 29.9 MB/s eta 0:00:00
+#11 37.89 Downloading mlflow_tracing-3.14.0-py3-none-any.whl (1.7 MB)
+#11 37.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 43.1 MB/s eta 0:00:00
+#11 37.95 Downloading openai-2.44.0-py3-none-any.whl (1.4 MB)
+#11 37.99    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 44.1 MB/s eta 0:00:00
+#11 38.00 Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+#11 38.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 36.9 MB/s eta 0:00:00
+#11 38.37 Downloading pyarrow-24.0.0-cp310-cp310-manylinux_2_28_x86_64.whl (48.8 MB)
+#11 40.01    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.8/48.8 MB 28.1 MB/s eta 0:00:00
+#11 40.02 Downloading pydantic-2.13.4-py3-none-any.whl (472 kB)
+#11 40.04    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 472.3/472.3 kB 42.9 MB/s eta 0:00:00
+#11 40.06 Downloading pydantic_core-2.46.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#11 40.13    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 36.3 MB/s eta 0:00:00
+#11 40.15 Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+#11 40.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 386.5/386.5 kB 44.4 MB/s eta 0:00:00
+#11 40.18 Downloading ranx-0.3.21-py3-none-any.whl (99 kB)
+#11 40.19    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.3/99.3 kB 50.9 MB/s eta 0:00:00
+#11 40.21 Downloading ruff-0.15.20-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.5 MB)
+#11 40.60    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.5/11.5 MB 29.9 MB/s eta 0:00:00
+#11 40.62 Downloading torch-2.6.0-cp310-cp310-manylinux1_x86_64.whl (766.7 MB)
+#11 64.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 766.7/766.7 MB 36.7 MB/s eta 0:00:00
+#11 64.56 Downloading nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl (363.4 MB)
+#11 75.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 363.4/363.4 MB 38.0 MB/s eta 0:00:00
+#11 75.80 Downloading nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+#11 76.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 18.1 MB/s eta 0:00:00
+#11 76.49 Downloading nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (24.6 MB)
+#11 77.17    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.6/24.6 MB 36.3 MB/s eta 0:00:00
+#11 77.19 Downloading nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (883 kB)
+#11 77.21    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.7/883.7 kB 44.4 MB/s eta 0:00:00
+#11 77.23 Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+#11 98.55    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.8/664.8 MB 28.1 MB/s eta 0:00:00
+#11 98.56 Downloading nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl (211.5 MB)
+#11 105.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.5/211.5 MB 34.8 MB/s eta 0:00:00
+#11 105.1 Downloading nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl (56.3 MB)
+#11 107.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 36.8 MB/s eta 0:00:00
+#11 107.0 Downloading nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl (127.9 MB)
+#11 110.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 MB 31.3 MB/s eta 0:00:00
+#11 110.8 Downloading nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl (207.5 MB)
+#11 117.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 MB 36.7 MB/s eta 0:00:00
+#11 117.6 Downloading nvidia_cusparselt_cu12-0.6.2-py3-none-manylinux2014_x86_64.whl (150.1 MB)
+#11 122.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.1/150.1 MB 31.1 MB/s eta 0:00:00
+#11 122.5 Downloading nvidia_nccl_cu12-2.21.5-py3-none-manylinux2014_x86_64.whl (188.7 MB)
+#11 128.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 188.7/188.7 MB 29.0 MB/s eta 0:00:00
+#11 128.5 Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+#11 129.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 32.0 MB/s eta 0:00:00
+#11 129.2 Downloading nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (99 kB)
+#11 129.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.1/99.1 kB 131.0 MB/s eta 0:00:00
+#11 129.2 Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+#11 129.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 38.2 MB/s eta 0:00:00
+#11 129.4 Downloading triton-3.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (253.1 MB)
+#11 137.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.1/253.1 MB 36.3 MB/s eta 0:00:00
+#11 137.2 Downloading typer-0.26.8-py3-none-any.whl (122 kB)
+#11 137.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 122.6/122.6 kB 145.2 MB/s eta 0:00:00
+#11 137.2 Downloading aiohttp-3.14.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+#11 137.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 39.3 MB/s eta 0:00:00
+#11 137.3 Downloading alembic-1.18.5-py3-none-any.whl (264 kB)
+#11 137.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 264.7/264.7 kB 83.7 MB/s eta 0:00:00
+#11 137.3 Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+#11 137.3 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#11 137.3 Downloading anyio-4.14.1-py3-none-any.whl (124 kB)
+#11 137.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 124.9/124.9 kB 151.0 MB/s eta 0:00:00
+#11 137.4 Downloading brotli-1.2.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.4 MB)
+#11 137.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 43.9 MB/s eta 0:00:00
+#11 137.4 Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+#11 137.5 Downloading configobj-5.0.9-py2.py3-none-any.whl (35 kB)
+#11 137.5 Downloading contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (325 kB)
+#11 137.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 325.0/325.0 kB 98.7 MB/s eta 0:00:00
+#11 137.5 Downloading cryptography-48.0.1-cp39-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#11 137.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 37.9 MB/s eta 0:00:00
+#11 137.6 Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+#11 137.7 Downloading docker-7.1.0-py3-none-any.whl (147 kB)
+#11 137.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.8/147.8 kB 140.7 MB/s eta 0:00:00
+#11 137.7 Downloading dpath-2.2.0-py3-none-any.whl (17 kB)
+#11 137.7 Downloading dvc_data-3.18.3-py3-none-any.whl (79 kB)
+#11 137.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.3/79.3 kB 125.4 MB/s eta 0:00:00
+#11 137.7 Downloading dvc_http-2.32.0-py3-none-any.whl (12 kB)
+#11 137.7 Downloading dvc_objects-5.2.0-py3-none-any.whl (33 kB)
+#11 137.7 Downloading dvc_render-1.0.2-py3-none-any.whl (22 kB)
+#11 137.8 Downloading dvc_studio_client-0.23.0-py3-none-any.whl (16 kB)
+#11 137.8 Downloading dvc_task-0.40.2-py3-none-any.whl (21 kB)
+#11 137.8 Downloading celery-5.6.3-py3-none-any.whl (451 kB)
+#11 137.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 451.2/451.2 kB 67.4 MB/s eta 0:00:00
+#11 137.8 Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+#11 137.8 Downloading fastapi-0.138.2-py3-none-any.whl (129 kB)
+#11 137.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 129.3/129.3 kB 69.0 MB/s eta 0:00:00
+#11 137.9 Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+#11 137.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.4/103.4 kB 136.7 MB/s eta 0:00:00
+#11 137.9 Downloading flask_cors-6.0.5-py3-none-any.whl (16 kB)
+#11 137.9 Downloading flatten_dict-0.5.0-py3-none-any.whl (9.9 kB)
+#11 137.9 Downloading flufl_lock-9.1.0-py3-none-any.whl (11 kB)
+#11 137.9 Downloading fonttools-4.63.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.9 MB)
+#11 138.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 24.0 MB/s eta 0:00:00
+#11 138.2 Downloading funcy-2.0-py2.py3-none-any.whl (30 kB)
+#11 138.2 Downloading grandalf-0.8-py3-none-any.whl (41 kB)
+#11 138.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.8/41.8 kB 105.2 MB/s eta 0:00:00
+#11 138.2 Downloading graphene-3.4.3-py2.py3-none-any.whl (114 kB)
+#11 138.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.9/114.9 kB 131.7 MB/s eta 0:00:00
+#11 138.2 Downloading groovy-0.1.2-py3-none-any.whl (14 kB)
+#11 138.2 Downloading gto-1.9.0-py3-none-any.whl (45 kB)
+#11 138.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.0/45.0 kB 115.3 MB/s eta 0:00:00
+#11 138.3 Downloading gunicorn-26.0.0-py3-none-any.whl (212 kB)
+#11 138.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 212.0/212.0 kB 150.2 MB/s eta 0:00:00
+#11 138.3 Downloading hf_gradio-0.4.1-py3-none-any.whl (4.5 kB)
+#11 138.3 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#11 138.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 129.6 MB/s eta 0:00:00
+#11 138.3 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#11 138.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 122.9 MB/s eta 0:00:00
+#11 138.3 Downloading huey-3.0.3-py3-none-any.whl (94 kB)
+#11 138.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.9/94.9 kB 134.1 MB/s eta 0:00:00
+#11 138.4 Downloading hydra_core-1.3.3-py3-none-any.whl (154 kB)
+#11 138.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 154.7/154.7 kB 141.3 MB/s eta 0:00:00
+#11 138.4 Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+#11 138.4 Downloading iterative_telemetry-0.0.10-py3-none-any.whl (10 kB)
+#11 138.4 Downloading jiter-0.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (348 kB)
+#11 138.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 348.3/348.3 kB 38.9 MB/s eta 0:00:00
+#11 138.4 Downloading kiwisolver-1.5.0-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+#11 138.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 27.2 MB/s eta 0:00:00
+#11 138.5 Downloading kombu-5.6.2-py3-none-any.whl (214 kB)
+#11 138.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.2/214.2 kB 147.8 MB/s eta 0:00:00
+#11 138.6 Downloading vine-5.1.0-py3-none-any.whl (9.6 kB)
+#11 138.6 Downloading numba-0.65.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.7 MB)
+#11 138.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 34.2 MB/s eta 0:00:00
+#11 138.7 Downloading omegaconf-2.3.1-py3-none-any.whl (79 kB)
+#11 138.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 125.6 MB/s eta 0:00:00
+#11 138.7 Downloading orjson-3.11.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (134 kB)
+#11 138.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.2/134.2 kB 136.1 MB/s eta 0:00:00
+#11 138.7 Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+#11 138.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 120.1 MB/s eta 0:00:00
+#11 138.8 Downloading peft-0.15.2-py3-none-any.whl (411 kB)
+#11 138.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 411.1/411.1 kB 50.5 MB/s eta 0:00:00
+#11 138.8 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+#11 138.8 Downloading pydot-4.0.1-py3-none-any.whl (37 kB)
+#11 138.8 Downloading pydub-0.25.1-py2.py3-none-any.whl (32 kB)
+#11 138.8 Downloading pygtrie-2.5.0-py3-none-any.whl (25 kB)
+#11 138.9 Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+#11 138.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 122.8/122.8 kB 139.6 MB/s eta 0:00:00
+#11 138.9 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#11 138.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 93.7 MB/s eta 0:00:00
+#11 138.9 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+#11 138.9 Downloading regex-2026.6.28-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (794 kB)
+#11 138.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 794.1/794.1 kB 49.3 MB/s eta 0:00:00
+#11 139.0 Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+#11 139.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 59.4 MB/s eta 0:00:00
+#11 139.0 Downloading rpds_py-0.30.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (390 kB)
+#11 139.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 390.5/390.5 kB 88.4 MB/s eta 0:00:00
+#11 139.0 Downloading safehttpx-0.1.7-py3-none-any.whl (9.0 kB)
+#11 139.1 Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)
+#11 139.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 516.0/516.0 kB 67.4 MB/s eta 0:00:00
+#11 139.1 Downloading scikit_learn-1.7.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (9.7 MB)
+#11 139.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 37.0 MB/s eta 0:00:00
+#11 139.4 Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (37.7 MB)
+#11 140.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.7/37.7 MB 30.9 MB/s eta 0:00:00
+#11 140.5 Downloading scmrepo-3.6.2-py3-none-any.whl (74 kB)
+#11 140.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.2/74.2 kB 125.3 MB/s eta 0:00:00
+#11 140.5 Downloading dulwich-1.2.6-cp310-cp310-manylinux_2_28_x86_64.whl (1.5 MB)
+#11 140.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 34.7 MB/s eta 0:00:00
+#11 140.5 Downloading semantic_version-2.10.0-py2.py3-none-any.whl (15 kB)
+#11 140.6 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+#11 140.6 Downloading shortuuid-1.0.13-py3-none-any.whl (10 kB)
+#11 140.6 Downloading shtab-1.8.0-py3-none-any.whl (14 kB)
+#11 140.6 Downloading skops-0.14.0-py3-none-any.whl (132 kB)
+#11 140.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.2/132.2 kB 112.1 MB/s eta 0:00:00
+#11 140.6 Downloading sqlalchemy-2.0.51-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.2 MB)
+#11 140.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 30.6 MB/s eta 0:00:00
+#11 140.8 Downloading starlette-1.3.1-py3-none-any.whl (73 kB)
+#11 140.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.6/73.6 kB 120.0 MB/s eta 0:00:00
+#11 140.8 Downloading tabulate-0.10.0-py3-none-any.whl (39 kB)
+#11 140.8 Downloading timm-1.0.27-py3-none-any.whl (2.6 MB)
+#11 140.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 30.7 MB/s eta 0:00:00
+#11 140.9 Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+#11 141.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 30.5 MB/s eta 0:00:00
+#11 141.0 Downloading tomlkit-0.14.0-py3-none-any.whl (39 kB)
+#11 141.0 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#11 141.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 99.4 MB/s eta 0:00:00
+#11 141.1 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#11 141.1 Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+#11 141.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 349.3/349.3 kB 83.3 MB/s eta 0:00:00
+#11 141.1 Downloading uvicorn-0.49.0-py3-none-any.whl (71 kB)
+#11 141.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.4/71.4 kB 133.7 MB/s eta 0:00:00
+#11 141.1 Downloading voluptuous-0.16.0-py3-none-any.whl (31 kB)
+#11 141.1 Downloading zc_lockfile-4.0-py3-none-any.whl (9.1 kB)
+#11 141.1 Downloading cbor2-6.1.2-cp310-cp310-manylinux_2_28_x86_64.whl (468 kB)
+#11 141.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 468.7/468.7 kB 55.4 MB/s eta 0:00:00
+#11 141.2 Downloading fastparquet-2026.5.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+#11 141.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 40.9 MB/s eta 0:00:00
+#11 141.2 Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+#11 141.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.8/44.8 kB 113.3 MB/s eta 0:00:00
+#11 141.3 Downloading ir_datasets-0.6.1-py3-none-any.whl (947 kB)
+#11 141.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 947.5/947.5 kB 45.6 MB/s eta 0:00:00
+#11 141.3 Downloading lz4-4.4.5-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.4 MB)
+#11 141.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 41.3 MB/s eta 0:00:00
+#11 141.4 Downloading seaborn-0.13.2-py3-none-any.whl (294 kB)
+#11 141.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 294.9/294.9 kB 130.0 MB/s eta 0:00:00
+#11 141.4 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#11 141.4 Downloading aiohappyeyeballs-2.6.2-py3-none-any.whl (15 kB)
+#11 141.4 Downloading aiohttp_retry-2.9.1-py3-none-any.whl (10.0 kB)
+#11 141.4 Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#11 141.4 Downloading amqp-5.3.1-py3-none-any.whl (50 kB)
+#11 141.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.9/50.9 kB 100.9 MB/s eta 0:00:00
+#11 141.5 Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#11 141.5 Downloading asyncssh-2.24.0-py3-none-any.whl (381 kB)
+#11 141.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 381.2/381.2 kB 70.3 MB/s eta 0:00:00
+#11 141.5 Downloading billiard-4.2.4-py3-none-any.whl (87 kB)
+#11 141.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.1/87.1 kB 125.0 MB/s eta 0:00:00
+#11 141.5 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#11 141.5 Downloading cachetools-7.1.4-py3-none-any.whl (16 kB)
+#11 141.6 Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (216 kB)
+#11 141.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.5/216.5 kB 150.4 MB/s eta 0:00:00
+#11 141.6 Downloading click_didyoumean-0.3.1-py3-none-any.whl (3.6 kB)
+#11 141.6 Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl (11 kB)
+#11 141.6 Downloading click_repl-0.3.0-py3-none-any.whl (10 kB)
+#11 141.6 Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+#11 141.6 Downloading cramjam-2.11.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+#11 141.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 38.8 MB/s eta 0:00:00
+#11 141.7 Downloading databricks_sdk-0.119.0-py3-none-any.whl (948 kB)
+#11 141.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 948.4/948.4 kB 65.4 MB/s eta 0:00:00
+#11 141.8 Downloading dictdiffer-0.9.0-py2.py3-none-any.whl (16 kB)
+#11 141.8 Downloading diskcache-5.6.3-py3-none-any.whl (45 kB)
+#11 141.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.5/45.5 kB 98.2 MB/s eta 0:00:00
+#11 141.8 Downloading frozenlist-1.8.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (219 kB)
+#11 141.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.5/219.5 kB 149.0 MB/s eta 0:00:00
+#11 141.8 Downloading gitpython-3.1.50-py3-none-any.whl (212 kB)
+#11 141.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 212.5/212.5 kB 146.8 MB/s eta 0:00:00
+#11 141.9 Downloading graphql_core-3.2.11-py3-none-any.whl (214 kB)
+#11 141.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.9/214.9 kB 144.1 MB/s eta 0:00:00
+#11 141.9 Downloading graphql_relay-3.2.0-py3-none-any.whl (16 kB)
+#11 141.9 Downloading greenlet-3.5.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (615 kB)
+#11 141.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 615.7/615.7 kB 93.2 MB/s eta 0:00:00
+#11 141.9 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#11 141.9 Downloading hf_xet-1.5.1-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.5 MB)
+#11 142.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 40.3 MB/s eta 0:00:00
+#11 142.1 Downloading importlib_metadata-9.0.0-py3-none-any.whl (27 kB)
+#11 142.1 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#11 142.1 Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+#11 142.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 309.1/309.1 kB 60.4 MB/s eta 0:00:00
+#11 142.1 Downloading llvmlite-0.47.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (56.3 MB)
+#11 143.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.3/56.3 MB 35.9 MB/s eta 0:00:00
+#11 143.7 Downloading lxml-6.1.1-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.3 MB)
+#11 143.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 38.6 MB/s eta 0:00:00
+#11 143.9 Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+#11 143.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.7/91.7 kB 135.4 MB/s eta 0:00:00
+#11 143.9 Downloading multidict-6.7.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (243 kB)
+#11 143.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 243.3/243.3 kB 74.8 MB/s eta 0:00:00
+#11 143.9 Downloading opentelemetry_api-1.43.0-py3-none-any.whl (61 kB)
+#11 143.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.9/61.9 kB 112.0 MB/s eta 0:00:00
+#11 143.9 Downloading opentelemetry_proto-1.43.0-py3-none-any.whl (72 kB)
+#11 143.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.5/72.5 kB 120.2 MB/s eta 0:00:00
+#11 143.9 Downloading opentelemetry_sdk-1.43.0-py3-none-any.whl (178 kB)
+#11 144.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 178.9/178.9 kB 43.6 MB/s eta 0:00:00
+#11 144.0 Downloading opentelemetry_semantic_conventions-0.64b0-py3-none-any.whl (203 kB)
+#11 144.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 203.7/203.7 kB 55.5 MB/s eta 0:00:00
+#11 144.0 Downloading prettytable-3.18.0-py3-none-any.whl (37 kB)
+#11 144.0 Downloading propcache-0.5.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (60 kB)
+#11 144.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.1/60.1 kB 131.7 MB/s eta 0:00:00
+#11 144.0 Downloading protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+#11 144.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 323.4/323.4 kB 98.3 MB/s eta 0:00:00
+#11 144.0 Downloading pydantic_settings-2.14.2-py3-none-any.whl (61 kB)
+#11 144.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.7/61.7 kB 112.0 MB/s eta 0:00:00
+#11 144.1 Downloading pygit2-1.18.2-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.5 MB)
+#11 144.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 28.9 MB/s eta 0:00:00
+#11 144.3 Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+#11 144.3 Downloading semver-3.0.4-py3-none-any.whl (17 kB)
+#11 144.3 Downloading sqlparse-0.5.5-py3-none-any.whl (46 kB)
+#11 144.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.1/46.1 kB 113.3 MB/s eta 0:00:00
+#11 144.3 Downloading sqltrie-0.11.2-py3-none-any.whl (17 kB)
+#11 144.4 Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+#11 144.4 Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+#11 144.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.1/131.1 kB 133.0 MB/s eta 0:00:00
+#11 144.4 Downloading wcwidth-0.8.2-py3-none-any.whl (323 kB)
+#11 144.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 323.2/323.2 kB 150.1 MB/s eta 0:00:00
+#11 144.4 Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+#11 144.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 226.5/226.5 kB 146.4 MB/s eta 0:00:00
+#11 144.5 Downloading yarl-1.24.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (106 kB)
+#11 144.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.7/106.7 kB 128.3 MB/s eta 0:00:00
+#11 144.5 Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+#11 144.5 Downloading atpublic-7.0.0-py3-none-any.whl (6.4 kB)
+#11 144.5 Downloading entrypoints-0.4-py3-none-any.whl (5.3 kB)
+#11 144.5 Downloading mako-1.3.12-py3-none-any.whl (78 kB)
+#11 144.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 kB 134.0 MB/s eta 0:00:00
+#11 144.5 Downloading tzlocal-5.4.4-py3-none-any.whl (18 kB)
+#11 144.6 Downloading gitdb-4.0.12-py3-none-any.whl (62 kB)
+#11 144.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 127.1 MB/s eta 0:00:00
+#11 144.6 Downloading google_auth-2.55.1-py3-none-any.whl (252 kB)
+#11 144.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 252.3/252.3 kB 56.2 MB/s eta 0:00:00
+#11 144.6 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#11 144.6 Downloading zipp-4.1.0-py3-none-any.whl (10 kB)
+#11 144.6 Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+#11 144.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.3/181.3 kB 61.6 MB/s eta 0:00:00
+#11 144.7 Downloading smmap-5.0.3-py3-none-any.whl (24 kB)
+#11 144.7 Downloading pyasn1-0.6.3-py3-none-any.whl (83 kB)
+#11 144.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.0/84.0 kB 134.0 MB/s eta 0:00:00
+#11 153.0 Checking if build backend supports build_editable: started
+#11 153.1 Checking if build backend supports build_editable: finished with status 'done'
+#11 153.1 Building wheels for collected packages: instrument-ir, antlr4-python3-runtime
+#11 153.2   Building editable for instrument-ir (pyproject.toml): started
+#11 153.4   Building editable for instrument-ir (pyproject.toml): finished with status 'done'
+#11 153.4   Created wheel for instrument-ir: filename=instrument_ir-0.1.0-0.editable-py3-none-any.whl size=3810 sha256=9ae9400400e91a319f1eb75f7c662a386ed3bd35b8ec6abf26bdd568155e0f2d
+#11 153.4   Stored in directory: /tmp/pip-ephem-wheel-cache-enof_36s/wheels/80/75/f6/d63789e3414f7f88206102fa596a8ddafc889f48984e8712b3
+#11 153.4   Building wheel for antlr4-python3-runtime (setup.py): started
+#11 153.6   Building wheel for antlr4-python3-runtime (setup.py): finished with status 'done'
+#11 153.6   Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144554 sha256=aa9dad981b8f41e6dcb00ad420a8b9a01d9f3b49ded04254f3f278d4091c5715
+#11 153.6   Stored in directory: /tmp/pip-ephem-wheel-cache-enof_36s/wheels/12/93/dd/1f6a127edc45659556564c5730f6d4e300888f4bca2d4c5a88
+#11 153.6 Successfully built instrument-ir antlr4-python3-runtime
+#11 156.1 Installing collected packages: triton, pygtrie, pydub, nvidia-cusparselt-cu12, huey, funcy, dictdiffer, brotli, appdirs, antlr4-python3-runtime, zipp, zc.lockfile, werkzeug, wcwidth, voluptuous, vine, urllib3, tzlocal, tzdata, typing-extensions, tomlkit, threadpoolctl, tabulate, sympy, sqlparse, sniffio, smmap, shtab, shortuuid, shellingham, semver, semantic-version, scipy, safetensors, ruff, rpds-py, regex, python-multipart, python-dotenv, python-dateutil, pyparsing, pyasn1, pyarrow, protobuf, propcache, pluggy, pathspec, orjson, omegaconf, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, mdurl, Mako, lz4, lxml, llvmlite, kiwisolver, joblib, jiter, itsdangerous, iniconfig, hf-xet, h11, gunicorn, groovy, greenlet, graphql-core, frozenlist, fonttools, flatten-dict, faiss-cpu, entrypoints, dvc-render, dvc-objects, dpath, diskcache, cycler, cramjam, contourpy, configobj, colorama, cloudpickle, click-plugins, click-didyoumean, cffi, cbor2, cachetools, blinker, billiard, atpublic, async-timeout, annotated-types, annotated-doc, aiohappyeyeballs, uvicorn, typing-inspection, sqltrie, sqlalchemy, scikit-learn, pygit2, pydot, pydantic-core, pyasn1-modules, prettytable, pandas, opentelemetry-proto, opentelemetry-api, nvidia-cusparse-cu12, nvidia-cudnn-cu12, numba, multidict, matplotlib, markdown-it-py, importlib_metadata, hydra-core, httpcore, graphql-relay, grandalf, gitdb, ftfy, flufl.lock, Flask, exceptiongroup, dulwich, cryptography, amqp, aiosignal, yarl, skops, seaborn, rich, pytest, pydantic, opentelemetry-semantic-conventions, nvidia-cusolver-cu12, kombu, iterative-telemetry, ir-datasets, huggingface_hub, graphene, google-auth, gitpython, Flask-CORS, fastparquet, dvc-studio-client, dvc-data, docker, click-repl, asyncssh, anyio, alembic, typer, torch, tokenizers, starlette, ranx, pydantic-settings, opentelemetry-sdk, jsonschema, httpx, databricks-sdk, celery, aiohttp, transformers, safehttpx, openai, mlflow-tracing, instrument-ir, gradio-client, fastapi, dvc-task, aiohttp-retry, accelerate, timm, scmrepo, peft, mlflow-skinny, hf-gradio, dvc-http, open-clip-torch, mlflow, gto, gradio, colpali-engine, dvc
+#11 156.1   Attempting uninstall: triton
+#11 156.1     Found existing installation: triton 2.3.1
+#11 156.1     Uninstalling triton-2.3.1:
+#11 156.6       Successfully uninstalled triton-2.3.1
+#11 161.1   Attempting uninstall: brotli
+#11 161.1     Found existing installation: Brotli 1.0.9
+#11 161.2     Uninstalling Brotli-1.0.9:
+#11 161.3       Successfully uninstalled Brotli-1.0.9
+#11 161.6   Attempting uninstall: wcwidth
+#11 161.6     Found existing installation: wcwidth 0.2.5
+#11 161.6     Uninstalling wcwidth-0.2.5:
+#11 161.6       Successfully uninstalled wcwidth-0.2.5
+#11 161.9   Attempting uninstall: urllib3
+#11 161.9     Found existing installation: urllib3 2.2.1
+#11 161.9     Uninstalling urllib3-2.2.1:
+#11 162.0       Successfully uninstalled urllib3-2.2.1
+#11 162.2   Attempting uninstall: typing-extensions
+#11 162.2     Found existing installation: typing_extensions 4.11.0
+#11 162.2     Uninstalling typing_extensions-4.11.0:
+#11 162.3       Successfully uninstalled typing_extensions-4.11.0
+#11 162.4   Attempting uninstall: sympy
+#11 162.4     Found existing installation: sympy 1.12.1
+#11 162.5     Uninstalling sympy-1.12.1:
+#11 165.3       Successfully uninstalled sympy-1.12.1
+#11 173.0   Attempting uninstall: rpds-py
+#11 173.0     Found existing installation: rpds-py 0.10.6
+#11 173.0     Uninstalling rpds-py-0.10.6:
+#11 173.0       Successfully uninstalled rpds-py-0.10.6
+#11 174.7   Attempting uninstall: pluggy
+#11 174.7     Found existing installation: pluggy 1.0.0
+#11 174.7     Uninstalling pluggy-1.0.0:
+#11 174.7       Successfully uninstalled pluggy-1.0.0
+#11 185.6   Attempting uninstall: cffi
+#11 185.6     Found existing installation: cffi 1.16.0
+#11 185.6     Uninstalling cffi-1.16.0:
+#11 185.8       Successfully uninstalled cffi-1.16.0
+#11 204.0   Attempting uninstall: exceptiongroup
+#11 204.0     Found existing installation: exceptiongroup 1.2.0
+#11 204.0     Uninstalling exceptiongroup-1.2.0:
+#11 204.0       Successfully uninstalled exceptiongroup-1.2.0
+#11 204.4   Attempting uninstall: cryptography
+#11 204.4     Found existing installation: cryptography 42.0.5
+#11 204.4     Uninstalling cryptography-42.0.5:
+#11 204.6       Successfully uninstalled cryptography-42.0.5
+#11 209.0   Attempting uninstall: torch
+#11 209.0     Found existing installation: torch 2.3.1
+#11 209.0     Uninstalling torch-2.3.1:
+#11 217.1       Successfully uninstalled torch-2.3.1
+#11 231.2   Attempting uninstall: jsonschema
+#11 231.2     Found existing installation: jsonschema 4.19.2
+#11 231.2     Uninstalling jsonschema-4.19.2:
+#11 231.3       Successfully uninstalled jsonschema-4.19.2
+#11 245.2 ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+#11 245.2 pyopenssl 24.0.0 requires cryptography<43,>=41.0.5, but you have cryptography 48.0.1 which is incompatible.
+#11 245.2 Successfully installed Flask-3.1.3 Flask-CORS-6.0.5 Mako-1.3.12 accelerate-1.14.0 aiohappyeyeballs-2.6.2 aiohttp-3.14.1 aiohttp-retry-2.9.1 aiosignal-1.4.0 alembic-1.18.5 amqp-5.3.1 annotated-doc-0.0.4 annotated-types-0.7.0 antlr4-python3-runtime-4.9.3 anyio-4.14.1 appdirs-1.4.4 async-timeout-5.0.1 asyncssh-2.24.0 atpublic-7.0.0 billiard-4.2.4 blinker-1.9.0 brotli-1.2.0 cachetools-7.1.4 cbor2-6.1.2 celery-5.6.3 cffi-2.0.0 click-didyoumean-0.3.1 click-plugins-1.1.1.2 click-repl-0.3.0 cloudpickle-3.1.2 colorama-0.4.6 colpali-engine-0.3.10 configobj-5.0.9 contourpy-1.3.2 cramjam-2.11.0 cryptography-48.0.1 cycler-0.12.1 databricks-sdk-0.119.0 dictdiffer-0.9.0 diskcache-5.6.3 docker-7.1.0 dpath-2.2.0 dulwich-1.2.6 dvc-3.67.1 dvc-data-3.18.3 dvc-http-2.32.0 dvc-objects-5.2.0 dvc-render-1.0.2 dvc-studio-client-0.23.0 dvc-task-0.40.2 entrypoints-0.4 exceptiongroup-1.3.1 faiss-cpu-1.14.3 fastapi-0.138.2 fastparquet-2026.5.0 flatten-dict-0.5.0 flufl.lock-9.1.0 fonttools-4.63.0 frozenlist-1.8.0 ftfy-6.3.1 funcy-2.0 gitdb-4.0.12 gitpython-3.1.50 google-auth-2.55.1 gradio-6.17.3 gradio-client-2.5.0 grandalf-0.8 graphene-3.4.3 graphql-core-3.2.11 graphql-relay-3.2.0 greenlet-3.5.3 groovy-0.1.2 gto-1.9.0 gunicorn-26.0.0 h11-0.16.0 hf-gradio-0.4.1 hf-xet-1.5.1 httpcore-1.0.9 httpx-0.28.1 huey-3.0.3 huggingface_hub-0.36.2 hydra-core-1.3.3 importlib_metadata-9.0.0 iniconfig-2.3.0 instrument-ir-0.1.0 ir-datasets-0.6.1 iterative-telemetry-0.0.10 itsdangerous-2.2.0 jiter-0.16.0 joblib-1.5.3 jsonschema-4.26.0 kiwisolver-1.5.0 kombu-5.6.2 llvmlite-0.47.0 lxml-6.1.1 lz4-4.4.5 markdown-it-py-4.2.0 matplotlib-3.10.9 mdurl-0.1.2 mlflow-3.14.0 mlflow-skinny-3.14.0 mlflow-tracing-3.14.0 multidict-6.7.1 numba-0.65.1 nvidia-cublas-cu12-12.4.5.8 nvidia-cuda-cupti-cu12-12.4.127 nvidia-cuda-nvrtc-cu12-12.4.127 nvidia-cuda-runtime-cu12-12.4.127 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.1.3 nvidia-curand-cu12-10.3.5.147 nvidia-cusolver-cu12-11.6.1.9 nvidia-cusparse-cu12-12.3.1.170 nvidia-cusparselt-cu12-0.6.2 nvidia-nccl-cu12-2.21.5 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.4.127 omegaconf-2.3.1 open-clip-torch-3.3.0 openai-2.44.0 opentelemetry-api-1.43.0 opentelemetry-proto-1.43.0 opentelemetry-sdk-1.43.0 opentelemetry-semantic-conventions-0.64b0 orjson-3.11.9 pandas-2.3.3 pathspec-1.1.1 peft-0.15.2 pluggy-1.6.0 prettytable-3.18.0 propcache-0.5.2 protobuf-6.33.6 pyarrow-24.0.0 pyasn1-0.6.3 pyasn1-modules-0.4.2 pydantic-2.13.4 pydantic-core-2.46.4 pydantic-settings-2.14.2 pydot-4.0.1 pydub-0.25.1 pygit2-1.18.2 pygtrie-2.5.0 pyparsing-3.3.2 pytest-9.1.1 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 python-multipart-0.0.32 ranx-0.3.21 regex-2026.6.28 rich-15.0.0 rpds-py-0.30.0 ruff-0.15.20 safehttpx-0.1.7 safetensors-0.8.0 scikit-learn-1.7.2 scipy-1.15.3 scmrepo-3.6.2 seaborn-0.13.2 semantic-version-2.10.0 semver-3.0.4 shellingham-1.5.4 shortuuid-1.0.13 shtab-1.8.0 skops-0.14.0 smmap-5.0.3 sniffio-1.3.1 sqlalchemy-2.0.51 sqlparse-0.5.5 sqltrie-0.11.2 starlette-1.3.1 sympy-1.12 tabulate-0.10.0 threadpoolctl-3.6.0 timm-1.0.27 tokenizers-0.21.4 tomlkit-0.14.0 torch-2.6.0 transformers-4.51.3 triton-3.2.0 typer-0.26.8 typing-extensions-4.12.1 typing-inspection-0.4.2 tzdata-2026.2 tzlocal-5.4.4 urllib3-2.7.0 uvicorn-0.49.0 vine-5.1.0 voluptuous-0.16.0 wcwidth-0.8.2 werkzeug-3.1.8 yarl-1.24.2 zc.lockfile-4.0 zipp-4.1.0
+#11 245.2 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#11 DONE 253.2s
+
+#12 [7/9] RUN pip install --no-cache-dir torchvision==0.21.0 einops
+#12 0.758 Collecting torchvision==0.21.0
+#12 0.842   Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl.metadata (6.1 kB)
+#12 0.870 Collecting einops
+#12 0.883   Downloading einops-0.8.2-py3-none-any.whl.metadata (13 kB)
+#12 0.893 Requirement already satisfied: numpy in /opt/conda/lib/python3.10/site-packages (from torchvision==0.21.0) (1.26.4)
+#12 0.894 Requirement already satisfied: torch==2.6.0 in /opt/conda/lib/python3.10/site-packages (from torchvision==0.21.0) (2.6.0)
+#12 0.895 Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /opt/conda/lib/python3.10/site-packages (from torchvision==0.21.0) (10.3.0)
+#12 0.941 Requirement already satisfied: filelock in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (3.13.1)
+#12 0.942 Requirement already satisfied: typing-extensions>=4.10.0 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (4.12.1)
+#12 0.942 Requirement already satisfied: networkx in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (3.2.1)
+#12 0.943 Requirement already satisfied: jinja2 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (3.1.4)
+#12 0.943 Requirement already satisfied: fsspec in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (2024.6.0)
+#12 0.945 Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.4.127)
+#12 0.946 Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.4.127)
+#12 0.948 Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.4.127)
+#12 0.949 Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (9.1.0.70)
+#12 0.951 Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.4.5.8)
+#12 0.952 Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (11.2.1.3)
+#12 0.953 Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (10.3.5.147)
+#12 0.955 Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (11.6.1.9)
+#12 0.956 Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.3.1.170)
+#12 0.957 Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (0.6.2)
+#12 0.958 Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (2.21.5)
+#12 0.960 Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.4.127)
+#12 0.961 Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (12.4.127)
+#12 0.962 Requirement already satisfied: triton==3.2.0 in /opt/conda/lib/python3.10/site-packages (from torch==2.6.0->torchvision==0.21.0) (3.2.0)
+#12 0.994 Collecting sympy==1.13.1 (from torch==2.6.0->torchvision==0.21.0)
+#12 1.007   Downloading sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+#12 1.028 Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from sympy==1.13.1->torch==2.6.0->torchvision==0.21.0) (1.3.0)
+#12 1.165 Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/lib/python3.10/site-packages (from jinja2->torch==2.6.0->torchvision==0.21.0) (2.1.3)
+#12 1.203 Downloading torchvision-0.21.0-cp310-cp310-manylinux1_x86_64.whl (7.2 MB)
+#12 1.345    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 52.9 MB/s eta 0:00:00
+#12 1.361 Downloading sympy-1.13.1-py3-none-any.whl (6.2 MB)
+#12 1.461    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 65.5 MB/s eta 0:00:00
+#12 1.477 Downloading einops-0.8.2-py3-none-any.whl (65 kB)
+#12 1.483    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.6/65.6 kB 111.5 MB/s eta 0:00:00
+#12 3.349 Installing collected packages: sympy, einops, torchvision
+#12 3.349   Attempting uninstall: sympy
+#12 3.351     Found existing installation: sympy 1.12
+#12 3.466     Uninstalling sympy-1.12:
+#12 11.50       Successfully uninstalled sympy-1.12
+#12 15.93   Attempting uninstall: torchvision
+#12 15.93     Found existing installation: torchvision 0.18.1
+#12 15.93     Uninstalling torchvision-0.18.1:
+#12 16.44       Successfully uninstalled torchvision-0.18.1
+#12 16.93 Successfully installed einops-0.8.2 sympy-1.13.1 torchvision-0.21.0
+#12 16.93 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#12 DONE 17.4s
+
+#13 [8/9] COPY . .
+#13 DONE 0.2s
+
+#14 [9/9] RUN find /workspace/scripts /workspace/docker -type f -name "*.sh" -exec sed -i 's/\r$//' {} +     && chmod +x /workspace/scripts/*.sh /workspace/docker/*.sh
+#14 DONE 0.3s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 75.2s done
+#15 writing image sha256:cd0eb188dab1d63d6e13f11858a54767cecfabbf04d97a3197a54b6c4110f494 done
+#15 naming to docker.io/library/docker-irlab 0.0s done
+#15 DONE 75.3s
+
+#16 resolving provenance for metadata file
+#16 DONE 0.0s
+ Image docker-irlab Built

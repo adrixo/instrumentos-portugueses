@@ -1,0 +1,217 @@
+﻿ Container docker-irlab-run-d79a13d4c798 Creating
+ Container docker-irlab-run-d79a13d4c798 Created
+### resume B4/B5 from existing DENSE_test (top_n=200, max_image_side=768, workers=8, cache=1)
+### B4 VLM reranker (test, top_n=200)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B4 runfile: outputs/runs/B4_test.trec
+  traces: outputs/rerank_traces/B4_test.jsonl
+  candidates: outputs/candidates/B4_test.parquet
+/opt/conda/lib/python3.10/site-packages/ranx/metrics/recall.py:29: NumbaTypeSafetyWarning: [1m[1m[1munsafe cast from uint64 to int64. Precision may be lost.[0m[0m[0m
+  scores[i] = _recall(qrels[i], run[i], k, rel_lvl)
+métricas -> outputs/metrics/B4_test.json
+  recall@10: 0.0274
+  recall@20: 0.0419
+  recall@50: 0.1027
+  recall@100: 0.1904
+  precision@10: 0.2545
+  ndcg@10: 0.2600
+  ndcg@20: 0.2411
+  ndcg@100: 0.2553
+  map: 0.0764
+  mrr: 0.3777
+  (macro por instrumento)
+    macro_recall@10: 0.0274
+    macro_recall@20: 0.0419
+    macro_recall@50: 0.1027
+    macro_recall@100: 0.1904
+    macro_precision@10: 0.2545
+    macro_ndcg@10: 0.2600
+    macro_ndcg@20: 0.2411
+    macro_ndcg@100: 0.2553
+    macro_map: 0.0764
+    macro_mrr: 0.3777
+  candidate_recall@200: +0.2938
+  oracle_recall@100: +0.2781
+  rerank_gain@100: +0.0096
+  delta_ndcg@100: +0.0097
+  delta_map: -0.0309
+-> outputs/metrics/B4_test__rerankmetrics.json
+[save] commit falló (full B4 test)
+### B5 agente + ablaciones (test, top_n=200)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_full_test.trec
+  traces: outputs/rerank_traces/B5_full_test.jsonl  (ablation=full)
+métricas -> outputs/metrics/B5_full_test.json
+  recall@10: 0.0266
+  recall@20: 0.0462
+  recall@50: 0.1094
+  recall@100: 0.1926
+  precision@10: 0.2439
+  ndcg@10: 0.2620
+  ndcg@20: 0.2475
+  ndcg@100: 0.2639
+  map: 0.0795
+  mrr: 0.4229
+  (macro por instrumento)
+    macro_recall@10: 0.0266
+    macro_recall@20: 0.0462
+    macro_recall@50: 0.1094
+    macro_recall@100: 0.1926
+    macro_precision@10: 0.2439
+    macro_ndcg@10: 0.2620
+    macro_ndcg@20: 0.2475
+    macro_ndcg@100: 0.2639
+    macro_map: 0.0795
+    macro_mrr: 0.4229
+[save] commit falló (full B5 full test)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_no_crops_test.trec
+  traces: outputs/rerank_traces/B5_no_crops_test.jsonl  (ablation=no_crops)
+métricas -> outputs/metrics/B5_no_crops_test.json
+  recall@10: 0.0274
+  recall@20: 0.0419
+  recall@50: 0.1027
+  recall@100: 0.1904
+  precision@10: 0.2545
+  ndcg@10: 0.2600
+  ndcg@20: 0.2411
+  ndcg@100: 0.2553
+  map: 0.0764
+  mrr: 0.3777
+  (macro por instrumento)
+    macro_recall@10: 0.0274
+    macro_recall@20: 0.0419
+    macro_recall@50: 0.1027
+    macro_recall@100: 0.1904
+    macro_precision@10: 0.2545
+    macro_ndcg@10: 0.2600
+    macro_ndcg@20: 0.2411
+    macro_ndcg@100: 0.2553
+    macro_map: 0.0764
+    macro_mrr: 0.3777
+[save] commit falló (full B5 no_crops test)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_no_caption_test.trec
+  traces: outputs/rerank_traces/B5_no_caption_test.jsonl  (ablation=no_caption)
+métricas -> outputs/metrics/B5_no_caption_test.json
+  recall@10: 0.0266
+  recall@20: 0.0462
+  recall@50: 0.1094
+  recall@100: 0.1926
+  precision@10: 0.2439
+  ndcg@10: 0.2620
+  ndcg@20: 0.2475
+  ndcg@100: 0.2639
+  map: 0.0795
+  mrr: 0.4229
+  (macro por instrumento)
+    macro_recall@10: 0.0266
+    macro_recall@20: 0.0462
+    macro_recall@50: 0.1094
+    macro_recall@100: 0.1926
+    macro_precision@10: 0.2439
+    macro_ndcg@10: 0.2620
+    macro_ndcg@20: 0.2475
+    macro_ndcg@100: 0.2639
+    macro_map: 0.0795
+    macro_mrr: 0.4229
+[save] commit falló (full B5 no_caption test)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_full_image_only_test.trec
+  traces: outputs/rerank_traces/B5_full_image_only_test.jsonl  (ablation=full_image_only)
+métricas -> outputs/metrics/B5_full_image_only_test.json
+  recall@10: 0.0274
+  recall@20: 0.0419
+  recall@50: 0.1027
+  recall@100: 0.1904
+  precision@10: 0.2545
+  ndcg@10: 0.2600
+  ndcg@20: 0.2411
+  ndcg@100: 0.2553
+  map: 0.0764
+  mrr: 0.3777
+  (macro por instrumento)
+    macro_recall@10: 0.0274
+    macro_recall@20: 0.0419
+    macro_recall@50: 0.1027
+    macro_recall@100: 0.1904
+    macro_precision@10: 0.2545
+    macro_ndcg@10: 0.2600
+    macro_ndcg@20: 0.2411
+    macro_ndcg@100: 0.2553
+    macro_map: 0.0764
+    macro_mrr: 0.3777
+[save] commit falló (full B5 full_image_only test)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_max_score_only_test.trec
+  traces: outputs/rerank_traces/B5_max_score_only_test.jsonl  (ablation=max_score_only)
+métricas -> outputs/metrics/B5_max_score_only_test.json
+  recall@10: 0.0266
+  recall@20: 0.0462
+  recall@50: 0.1094
+  recall@100: 0.1926
+  precision@10: 0.2439
+  ndcg@10: 0.2620
+  ndcg@20: 0.2475
+  ndcg@100: 0.2639
+  map: 0.0795
+  mrr: 0.4229
+  (macro por instrumento)
+    macro_recall@10: 0.0266
+    macro_recall@20: 0.0462
+    macro_recall@50: 0.1094
+    macro_recall@100: 0.1926
+    macro_precision@10: 0.2439
+    macro_ndcg@10: 0.2620
+    macro_ndcg@20: 0.2475
+    macro_ndcg@100: 0.2639
+    macro_map: 0.0795
+    macro_mrr: 0.4229
+[save] commit falló (full B5 max_score_only test)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+B5 runfile: outputs/runs/B5_weighted_fusion_test.trec
+  traces: outputs/rerank_traces/B5_weighted_fusion_test.jsonl  (ablation=weighted_fusion)
+métricas -> outputs/metrics/B5_weighted_fusion_test.json
+  recall@10: 0.0289
+  recall@20: 0.0479
+  recall@50: 0.1110
+  recall@100: 0.1853
+  precision@10: 0.2682
+  ndcg@10: 0.2727
+  ndcg@20: 0.2548
+  ndcg@100: 0.2597
+  map: 0.0787
+  mrr: 0.3885
+  (macro por instrumento)
+    macro_recall@10: 0.0289
+    macro_recall@20: 0.0479
+    macro_recall@50: 0.1110
+    macro_recall@100: 0.1853
+    macro_precision@10: 0.2682
+    macro_ndcg@10: 0.2727
+    macro_ndcg@20: 0.2548
+    macro_ndcg@100: 0.2597
+    macro_map: 0.0787
+    macro_mrr: 0.3885
+[save] commit falló (full B5 weighted_fusion test)
+  candidate_recall@200: +0.2938
+  oracle_recall@100: +0.2781
+  rerank_gain@100: +0.0118
+  delta_ndcg@100: +0.0183
+  delta_map: -0.0278
+-> outputs/metrics/B5_full_test__rerankmetrics.json
+### error-analysis + report
+error analysis: 66 queries, FP=489, FN=6876 -> outputs/reports/error_B4_test.json
+error analysis: 66 queries, FP=496, FN=6883 -> outputs/reports/error_B5_test.json
+informe: outputs/reports/final_report.md
+  tablas: outputs/reports/tables/  figuras: outputs/reports/figures/
+slides Marp: outputs/slides/slides.md
+[save] commit falló (full report (FINAL))
+RUN COMPLETO OK. Resultados en outputs/reports/final_report.md

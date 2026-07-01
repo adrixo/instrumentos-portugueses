@@ -83,3 +83,77 @@ Recibirás alerta también si algo **falla**. El smoke solo avisa (no apaga).
 - Si la GPU tiene <24 GB, usa `Qwen/Qwen2.5-VL-3B-Instruct` en el paso 1 y `VLM_MODEL` acorde.
 - En Linux NO hace falta `INSTRUMENT_IR_NO_FAISS` (faiss va bien).
 - Apaga la instancia al terminar para no seguir pagando.
+
+## Servidores disponibles
+
+La lista versionada esta en `configs/servers.yaml`. No guarda secretos.
+
+- `esalab-big`: servidor Tailscale `esalab-big.taild1b22.ts.net` (`100.69.221.87`),
+  usuario `esalab`, proyecto en `/home/esalab/Escritorio/instrumentos_portugueses_ir`.
+  Tiene una RTX 3090 Ti de 24 GB; para evitar presion de VRAM con vLLM + retrievers se recomienda:
+
+```bash
+export VLM_MODEL_HF=Qwen/Qwen2.5-VL-3B-Instruct
+export VLLM_IMAGE=vllm/vllm-openai:v0.10.1.1
+export VLLM_MAX_MODEL_LEN=4096
+export VLLM_GPU_MEMORY_UTILIZATION=0.60
+export VLM_MAX_IMAGE_SIDE=768
+export VLM_JPEG_QUALITY=85
+export VLM_WORKERS=8
+export VLM_CACHE=1
+export VLM_CACHE_DIR=outputs/cache/vlm_openai
+docker compose -f docker/docker-compose.gpu.yml up -d vlm-server
+docker compose -f docker/docker-compose.gpu.yml run --rm irlab bash scripts/gpu_smoke.sh
+```
+
+El resize de imagen es importante para Qwen-VL via vLLM: sin `VLM_MAX_IMAGE_SIDE`, algunas imagenes
+superan el contexto visual de `max_model_len=4096`. La cache evita repetir llamadas VLM entre B4 y las
+ablaciones B5.
+
+Monitor local desde esta maquina:
+
+```powershell
+pip install -e ".[monitor]"
+$env:ESALAB_BIG_PASSWORD="..."
+python scripts/monitor_remote.py --server esalab-big
+```
+
+El snapshot del run completo ejecutado en `esalab-big` esta en
+`results/esalab-big/2026-06-30_gpu_full/`.
+
+## Comparacion Qwen3.6-27B en MIDA
+
+MIDA tiene un endpoint llama.cpp/OpenAI-compatible con alias `qwen36-27b`. Desde esta maquina
+responde en `http://100.113.15.12:8080/v1`; desde `esalab-big` la ruta Tailscale que funciona es
+`http://100.127.120.42:8080/v1`.
+
+El modelo `unsloth/Qwen3.6-27B-GGUF` incluye `Qwen3.6-27B-Q4_K_M.gguf` y `mmproj-F16.gguf`. El script
+adjunto de MIDA deja `ENABLE_MMPROJ_DEFAULT=0`; si se arranca asi, llama.cpp queda como modelo de texto
+y rechaza imagenes con: `image input is not supported - hint: if this is unexpected, you may need to
+provide the mmproj`. La prueba del 2026-06-30 contra MIDA ya devolvia `capabilities:
+["completion","multimodal"]` y aceptaba una imagen minima.
+
+Para habilitar vision en MIDA:
+
+```bash
+cd ~/datos/llamacpp
+ENABLE_MMPROJ=1 ./qwen36_27b_gpu0.sh restart
+curl http://127.0.0.1:8080/v1/models
+```
+
+Para desactivar el thinking de Qwen desde el pipeline se usa `chat_template_kwargs.enable_thinking=false`;
+el backend OpenAI-compatible lo activa con `VLM_DISABLE_THINKING=true`.
+
+Lanzar la comparacion B4 zero-shot desde `esalab-big`:
+
+```bash
+export VLM_BASE_URL=http://100.127.120.42:8080/v1
+export VLM_MODEL=qwen36-27b
+export VLM_DISABLE_THINKING=true
+export VLM_MAX_IMAGE_SIDE=768
+export VLM_WORKERS=1
+TOPN=50 FINAL_K=50 bash scripts/gpu_qwen36_zero_shot.sh
+```
+
+El script hace un preflight con una imagen pequena y falla pronto si MIDA sigue sin `mmproj`. Para una
+comparacion mas exhaustiva, sube `TOPN=200 FINAL_K=100` cuando el preflight pase.

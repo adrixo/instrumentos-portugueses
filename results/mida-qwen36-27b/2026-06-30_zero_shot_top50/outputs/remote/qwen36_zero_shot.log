@@ -1,0 +1,123 @@
+ Container docker-irlab-run-97e7771210cf Creating 
+ Container docker-irlab-run-97e7771210cf Created 
+### preflight: Qwen3.6 image support at http://100.127.120.42:8080/v1
+{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\"ok\":true}"}}],"created":1782800248,"model":"qwen36-27b","system_fingerprint":"b9800-1ec44d178","object":"chat.completion","usage":{"completion_tokens":6,"prompt_tokens":1047,"total_tokens":1053,"prompt_tokens_details":{"cached_tokens":0}},"id":"chatcmpl-psAmIkk2oRP94DneeHJmPw6T7IRL07gQ","timings":{"cache_n":0,"prompt_n":1047,"prompt_ms":1113.716,"prompt_per_token_ms":1.0637211079274116,"prompt_per_second":
+### prepare-data + test qrels
+Mapping privado: data/processed/image_id_mapping.parquet
+  corpus train: 3954 imágenes -> data/processed/train/corpus.parquet
+  corpus valid: 1351 imágenes -> data/processed/valid/corpus.parquet
+  corpus test: 1317 imágenes -> data/processed/test/corpus.parquet
+Instrumentos (clases): 22
+qrels test: 7047 pares relevantes -> data/processed/qrels/test.qrels
+### dense candidates top-50 (dense=openclip-vitl14, test)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/utils/hub.py:105: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+runfile: outputs/runs/DENSE_qwen36_test.trec  (66 queries, top_k=50)
+### B4_qwen36_zero_shot_test (zero-shot, top_n=50, final_k=50)
+/opt/conda/lib/python3.10/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+rerank progress: 50/3300 candidates (q_adufe_pt)
+rerank progress: 100/3300 candidates (q_adufe_en)
+rerank progress: 150/3300 candidates (q_adufe_es)
+rerank progress: 200/3300 candidates (q_bombos_pt)
+rerank progress: 250/3300 candidates (q_bombos_en)
+rerank progress: 300/3300 candidates (q_bombos_es)
+rerank progress: 350/3300 candidates (q_caixa_tamboril_pt)
+rerank progress: 400/3300 candidates (q_caixa_tamboril_en)
+rerank progress: 450/3300 candidates (q_caixa_tamboril_es)
+rerank progress: 500/3300 candidates (q_castanholas_pt)
+rerank progress: 550/3300 candidates (q_castanholas_en)
+rerank progress: 600/3300 candidates (q_castanholas_es)
+rerank progress: 650/3300 candidates (q_cavaquinho_pt)
+rerank progress: 700/3300 candidates (q_cavaquinho_en)
+rerank progress: 750/3300 candidates (q_cavaquinho_es)
+rerank progress: 800/3300 candidates (q_concertina_pt)
+rerank progress: 850/3300 candidates (q_concertina_en)
+rerank progress: 900/3300 candidates (q_concertina_es)
+rerank progress: 950/3300 candidates (q_ferrinhos_triangulo_pt)
+rerank progress: 1000/3300 candidates (q_ferrinhos_triangulo_en)
+rerank progress: 1050/3300 candidates (q_ferrinhos_triangulo_es)
+rerank progress: 1100/3300 candidates (q_flauta_pt)
+rerank progress: 1150/3300 candidates (q_flauta_en)
+rerank progress: 1200/3300 candidates (q_flauta_es)
+rerank progress: 1250/3300 candidates (q_gaita_de_foles_pt)
+rerank progress: 1300/3300 candidates (q_gaita_de_foles_en)
+rerank progress: 1350/3300 candidates (q_gaita_de_foles_es)
+rerank progress: 1400/3300 candidates (q_guitarra_portuguesa_pt)
+rerank progress: 1450/3300 candidates (q_guitarra_portuguesa_en)
+rerank progress: 1500/3300 candidates (q_guitarra_portuguesa_es)
+rerank progress: 1550/3300 candidates (q_matracas_pt)
+rerank progress: 1600/3300 candidates (q_matracas_en)
+rerank progress: 1650/3300 candidates (q_matracas_es)
+rerank progress: 1700/3300 candidates (q_palheta_pt)
+rerank progress: 1750/3300 candidates (q_palheta_en)
+rerank progress: 1800/3300 candidates (q_palheta_es)
+rerank progress: 1850/3300 candidates (q_rabeca_chuleira_pt)
+rerank progress: 1900/3300 candidates (q_rabeca_chuleira_en)
+rerank progress: 1950/3300 candidates (q_rabeca_chuleira_es)
+rerank progress: 2000/3300 candidates (q_reque_reque_pt)
+rerank progress: 2050/3300 candidates (q_reque_reque_en)
+rerank progress: 2100/3300 candidates (q_reque_reque_es)
+rerank progress: 2150/3300 candidates (q_sarronca_pt)
+rerank progress: 2200/3300 candidates (q_sarronca_en)
+rerank progress: 2250/3300 candidates (q_sarronca_es)
+rerank progress: 2300/3300 candidates (q_viola_amarantina_pt)
+rerank progress: 2350/3300 candidates (q_viola_amarantina_en)
+rerank progress: 2400/3300 candidates (q_viola_amarantina_es)
+rerank progress: 2450/3300 candidates (q_viola_beiroa_pt)
+rerank progress: 2500/3300 candidates (q_viola_beiroa_en)
+rerank progress: 2550/3300 candidates (q_viola_beiroa_es)
+rerank progress: 2600/3300 candidates (q_viola_braguesa_pt)
+rerank progress: 2650/3300 candidates (q_viola_braguesa_en)
+rerank progress: 2700/3300 candidates (q_viola_braguesa_es)
+rerank progress: 2750/3300 candidates (q_viola_campanica_pt)
+rerank progress: 2800/3300 candidates (q_viola_campanica_en)
+rerank progress: 2850/3300 candidates (q_viola_campanica_es)
+rerank progress: 2900/3300 candidates (q_viola_de_arame_pt)
+rerank progress: 2950/3300 candidates (q_viola_de_arame_en)
+rerank progress: 3000/3300 candidates (q_viola_de_arame_es)
+rerank progress: 3050/3300 candidates (q_viola_toeira_pt)
+rerank progress: 3100/3300 candidates (q_viola_toeira_en)
+rerank progress: 3150/3300 candidates (q_viola_toeira_es)
+rerank progress: 3200/3300 candidates (q_violao_pt)
+rerank progress: 3250/3300 candidates (q_violao_en)
+rerank progress: 3300/3300 candidates (q_violao_es)
+B4 runfile: outputs/runs/B4_qwen36_zero_shot_test.trec
+  traces: outputs/rerank_traces/B4_qwen36_zero_shot_test.jsonl
+  candidates: outputs/candidates/B4_qwen36_zero_shot_test.parquet
+/opt/conda/lib/python3.10/site-packages/ranx/metrics/recall.py:29: NumbaTypeSafetyWarning: [1m[1m[1munsafe cast from uint64 to int64. Precision may be lost.[0m[0m[0m
+  scores[i] = _recall(qrels[i], run[i], k, rel_lvl)
+métricas -> outputs/metrics/B4_qwen36_zero_shot_test.json
+  recall@10: 0.0358
+  recall@20: 0.0515
+  recall@50: 0.1052
+  recall@100: 0.1052
+  precision@10: 0.3394
+  ndcg@10: 0.3642
+  ndcg@20: 0.3102
+  ndcg@100: 0.1847
+  map: 0.0559
+  mrr: 0.5296
+  (macro por instrumento)
+    macro_recall@10: 0.0358
+    macro_recall@20: 0.0515
+    macro_recall@50: 0.1052
+    macro_recall@100: 0.1052
+    macro_precision@10: 0.3394
+    macro_ndcg@10: 0.3642
+    macro_ndcg@20: 0.3102
+    macro_ndcg@100: 0.1847
+    macro_map: 0.0559
+    macro_mrr: 0.5296
+  candidate_recall@50: +0.1052
+  oracle_recall@50: +0.1052
+  rerank_gain@50: +0.0000
+  delta_ndcg@50: +0.0284
+  delta_map: +0.0075
+-> outputs/metrics/B4_qwen36_zero_shot_test__rerankmetrics.json
+informe: outputs/reports/final_report.md
+  tablas: outputs/reports/tables/  figuras: outputs/reports/figures/
+slides Marp: outputs/slides/slides.md
+Qwen3.6 zero-shot comparison complete: outputs/runs/B4_qwen36_zero_shot_test.trec
