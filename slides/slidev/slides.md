@@ -10,6 +10,8 @@ drawings:
   persist: false
 transition: fade
 mdc: true
+# hash router avoids double-base URLs when served under a GitHub Pages subpath
+routerMode: hash
 ---
 
 # Visual Information Retrieval for Traditional Portuguese Instruments
