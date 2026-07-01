@@ -37,7 +37,7 @@ jobs:
 
       - name: Build slides
         # --base must match the repo name so assets resolve under /<repo>/
-        run: npm run build -- --base /instrumentos-portugueses/ --out dist
+        run: npm run build -- --base /instrumentos-portugueses/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
