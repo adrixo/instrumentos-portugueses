@@ -95,27 +95,17 @@ def style_axes(ax):
 def save_recall_at_k(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(9.6, 5.4), dpi=180)
     ks = [10, 20, 50, 100]
-    ci_per_k = {k: ci_by_system(f"recall@{k}") for k in ks}
     for _, row in df.iterrows():
         label = row["system"]
-        means = [row[f"recall@{k}"] for k in ks]
-        yerr = [
-            [max(0.0, ci_per_k[k][label][0] - ci_per_k[k][label][1]) for k in ks],
-            [max(0.0, ci_per_k[k][label][2] - ci_per_k[k][label][0]) for k in ks],
-        ]
-        ax.errorbar(
+        ax.plot(
             ks,
-            means,
-            yerr=yerr,
+            [row[f"recall@{k}"] for k in ks],
             marker="o",
             linewidth=2.2,
             label=label,
             color=PALETTE[label],
-            capsize=2,
-            elinewidth=0.9,
-            alpha=0.95,
         )
-    ax.set_title("Recall@K por sistema (barras = IC 95%)", fontsize=16, weight="bold", color="#10201f")
+    ax.set_title("Recall@K por sistema", fontsize=16, weight="bold", color="#10201f")
     ax.set_xlabel("K", color="#50615f")
     ax.set_ylabel("Recall", color="#50615f")
     ax.set_ylim(0, 0.22)
@@ -151,8 +141,8 @@ def save_quality_bars(df: pd.DataFrame) -> None:
         for i, value in enumerate(values):
             ax.text(ci[labels[i]][2] + max(values) * 0.02, i, f"{value:.3f}", va="center", fontsize=8)
     fig.suptitle(
-        "Calidad del ranking en test (barras = IC 95%; solapamiento ⇒ no significativo)",
-        fontsize=14,
+        "Calidad del ranking en el split de test",
+        fontsize=16,
         weight="bold",
         color="#10201f",
     )
