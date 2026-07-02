@@ -32,17 +32,13 @@ Adrian Valera Roman · Álvaro Lozano Murciego · María N. Moreno García<br>
 <div class="toc-large">
 
 1. Motivación y formulación como recuperación visual
-2. Corpus anotado y control de fugas de información
+2. Corpus anotado, relevancia y control de información
 3. Sistemas evaluados
 4. Diseño experimental y reproducibilidad
-5. Resultados: recall, calidad y **significancia estadística**
+5. Resultados: recall, calidad y significancia estadística
 6. Análisis por instrumento y coste temporal
 7. Conclusiones y futuras líneas de trabajo
 
-</div>
-
-<div class="review">
-Estructura revisada: se añaden significancia estadística, techo de candidatos, ablaciones, análisis por instrumento y limitaciones.
 </div>
 
 ---
