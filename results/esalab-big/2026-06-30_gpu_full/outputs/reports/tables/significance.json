@@ -1,0 +1,534 @@
+{
+  "seed": 42,
+  "metrics": [
+    "recall@100",
+    "ndcg@10",
+    "ndcg@100",
+    "map",
+    "mrr"
+  ],
+  "systems": {
+    "B1_openclip-vitl14_test": {
+      "label": "OpenCLIP L/14 (dense)",
+      "ci": {
+        "recall@100": {
+          "mean": 0.18084533087499816,
+          "lo": 0.1384248471463182,
+          "hi": 0.2260586100785665
+        },
+        "ndcg@10": {
+          "mean": 0.2501325847915,
+          "lo": 0.17039901441828673,
+          "hi": 0.3349912417357305
+        },
+        "ndcg@100": {
+          "mean": 0.245564238063921,
+          "lo": 0.1848922444148793,
+          "hi": 0.31197568832413813
+        },
+        "map": {
+          "mean": 0.0759700991363188,
+          "lo": 0.0484813136650953,
+          "hi": 0.10712502556017588
+        },
+        "mrr": {
+          "mean": 0.34380442535663774,
+          "lo": 0.24570041056902767,
+          "hi": 0.44760410458245947
+        }
+      }
+    },
+    "B1_jinaclip_test": {
+      "label": "JinaCLIP (dense)",
+      "ci": {
+        "recall@100": {
+          "mean": 0.19381465136849155,
+          "lo": 0.15163975765276422,
+          "hi": 0.23848703648855477
+        },
+        "ndcg@10": {
+          "mean": 0.2517385019864063,
+          "lo": 0.16610999155538486,
+          "hi": 0.343004173852708
+        },
+        "ndcg@100": {
+          "mean": 0.2639893511123219,
+          "lo": 0.19797508698518418,
+          "hi": 0.33450248652692915
+        },
+        "map": {
+          "mean": 0.08423193117987632,
+          "lo": 0.055739663247375615,
+          "hi": 0.11537626327651336
+        },
+        "mrr": {
+          "mean": 0.3281916529148665,
+          "lo": 0.22792611862997586,
+          "hi": 0.43526081511242665
+        }
+      }
+    },
+    "B3_colqwen_test": {
+      "label": "ColQwen (late-interaction)",
+      "ci": {
+        "recall@100": {
+          "mean": 0.16165972634876916,
+          "lo": 0.12400624990289166,
+          "hi": 0.2019258911107503
+        },
+        "ndcg@10": {
+          "mean": 0.197163553945564,
+          "lo": 0.1264163250171062,
+          "hi": 0.274551565934668
+        },
+        "ndcg@100": {
+          "mean": 0.22683950535193687,
+          "lo": 0.16619495486185143,
+          "hi": 0.29300384804326296
+        },
+        "map": {
+          "mean": 0.07046725630197884,
+          "lo": 0.04306446668129488,
+          "hi": 0.10232953359316146
+        },
+        "mrr": {
+          "mean": 0.3043134519890696,
+          "lo": 0.2084286725996038,
+          "hi": 0.40518335525255333
+        }
+      }
+    },
+    "B4_test": {
+      "label": "VLM-rerank (Qwen2.5-VL-3B)",
+      "ci": {
+        "recall@100": {
+          "mean": 0.19040444232779732,
+          "lo": 0.14526706535691955,
+          "hi": 0.23974214162698762
+        },
+        "ndcg@10": {
+          "mean": 0.26003938627183637,
+          "lo": 0.1804281164199884,
+          "hi": 0.34582699121666693
+        },
+        "ndcg@100": {
+          "mean": 0.2552537770532706,
+          "lo": 0.1914446184702578,
+          "hi": 0.32369109243579397
+        },
+        "map": {
+          "mean": 0.07643413490717402,
+          "lo": 0.04868879185244364,
+          "hi": 0.1071881963394469
+        },
+        "mrr": {
+          "mean": 0.37773452724289364,
+          "lo": 0.27785569379673364,
+          "hi": 0.4820946197029192
+        }
+      }
+    },
+    "B5_full_test": {
+      "label": "Agentic",
+      "ci": {
+        "recall@100": {
+          "mean": 0.1926005574312657,
+          "lo": 0.14788625975348726,
+          "hi": 0.2408108004884043
+        },
+        "ndcg@10": {
+          "mean": 0.2620423171869777,
+          "lo": 0.18454285154657463,
+          "hi": 0.34545744044208915
+        },
+        "ndcg@100": {
+          "mean": 0.2638664947224859,
+          "lo": 0.19998368973738898,
+          "hi": 0.33224213818649434
+        },
+        "map": {
+          "mean": 0.07951053188144207,
+          "lo": 0.05169603199472989,
+          "hi": 0.11023178178592041
+        },
+        "mrr": {
+          "mean": 0.42287971591883977,
+          "lo": 0.320688346596809,
+          "hi": 0.5288482434548029
+        }
+      }
+    },
+    "B4_qwen36_zero_shot_top100_test": {
+      "label": "VLM-rerank (Qwen3.6-27B, top-100)",
+      "ci": {
+        "recall@100": {
+          "mean": 0.18084533087499816,
+          "lo": 0.1384248471463182,
+          "hi": 0.2260586100785665
+        },
+        "ndcg@10": {
+          "mean": 0.38851840289259576,
+          "lo": 0.3005349092710838,
+          "hi": 0.4785300538551794
+        },
+        "ndcg@100": {
+          "mean": 0.27168246927456297,
+          "lo": 0.21023591822451534,
+          "hi": 0.33649179436982346
+        },
+        "map": {
+          "mean": 0.08822461223680911,
+          "lo": 0.06051243447221474,
+          "hi": 0.11873599251039156
+        },
+        "mrr": {
+          "mean": 0.49525766025766027,
+          "lo": 0.39245885252135254,
+          "hi": 0.6004284536159535
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "recall@100": [
+      {
+        "better": "B1_jinaclip_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "mejor dense vs dense base",
+        "delta": 0.012969320493493346,
+        "ci_lo": -0.02222391806159311,
+        "ci_hi": 0.048746601718356715,
+        "p_value": 0.4804519548045195,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B3_colqwen_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "late-interaction vs dense",
+        "delta": -0.019185604526229028,
+        "ci_lo": -0.05607835809197601,
+        "ci_hi": 0.01673471962523519,
+        "p_value": 0.31966803319668036,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B4_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM-rerank (3B) vs su dense base",
+        "delta": 0.00955911145279915,
+        "ci_lo": 0.00011319260530673063,
+        "ci_hi": 0.021517153970730216,
+        "p_value": 0.07029297070292971,
+        "p_holm": 0.42175782421757824,
+        "significant": false
+      },
+      {
+        "better": "B5_full_test",
+        "baseline": "B4_test",
+        "note": "agentic vs VLM-rerank pointwise",
+        "delta": 0.0021961151034683647,
+        "ci_lo": -0.0016276433072454689,
+        "ci_hi": 0.005828135432276901,
+        "p_value": 0.26317368263173685,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM grande (27B) vs dense base",
+        "delta": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "p_value": 1.0,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B4_test",
+        "note": "VLM grande (27B, top-100) vs pequeño (3B, top-200) — CONFOUND profundidad",
+        "delta": -0.00955911145279915,
+        "ci_lo": -0.021517153970730226,
+        "ci_hi": -0.00011319260530673254,
+        "p_value": 0.07029297070292971,
+        "p_holm": 0.42175782421757824,
+        "significant": false
+      }
+    ],
+    "ndcg@10": [
+      {
+        "better": "B1_jinaclip_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "mejor dense vs dense base",
+        "delta": 0.001605917194906276,
+        "ci_lo": -0.06250916071470083,
+        "ci_hi": 0.06349089367536483,
+        "p_value": 0.9613038696130387,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B3_colqwen_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "late-interaction vs dense",
+        "delta": -0.05296903084593601,
+        "ci_lo": -0.12357898710618628,
+        "ci_hi": 0.013526647608235378,
+        "p_value": 0.12968703129687031,
+        "p_holm": 0.5187481251874813,
+        "significant": false
+      },
+      {
+        "better": "B4_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM-rerank (3B) vs su dense base",
+        "delta": 0.009906801480336375,
+        "ci_lo": -0.04127937164272543,
+        "ci_hi": 0.06013441484593348,
+        "p_value": 0.7146285371462854,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B5_full_test",
+        "baseline": "B4_test",
+        "note": "agentic vs VLM-rerank pointwise",
+        "delta": 0.0020029309151412197,
+        "ci_lo": -0.03063620824165016,
+        "ci_hi": 0.03446736138618662,
+        "p_value": 0.9072092790720928,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM grande (27B) vs dense base",
+        "delta": 0.13838581810109574,
+        "ci_lo": 0.07569228114222858,
+        "ci_hi": 0.20434556930769016,
+        "p_value": 9.999000099990002e-05,
+        "p_holm": 0.0005999400059994001,
+        "significant": true
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B4_test",
+        "note": "VLM grande (27B, top-100) vs pequeño (3B, top-200) — CONFOUND profundidad",
+        "delta": 0.12847901662075933,
+        "ci_lo": 0.07580373442167623,
+        "ci_hi": 0.18553516962374725,
+        "p_value": 9.999000099990002e-05,
+        "p_holm": 0.0005999400059994001,
+        "significant": true
+      }
+    ],
+    "ndcg@100": [
+      {
+        "better": "B1_jinaclip_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "mejor dense vs dense base",
+        "delta": 0.018425113048400842,
+        "ci_lo": -0.01633584352974667,
+        "ci_hi": 0.0564420495794188,
+        "p_value": 0.32996700329967005,
+        "p_holm": 0.8492150784921508,
+        "significant": false
+      },
+      {
+        "better": "B3_colqwen_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "late-interaction vs dense",
+        "delta": -0.018724732711984125,
+        "ci_lo": -0.060939148609138634,
+        "ci_hi": 0.021262884879784606,
+        "p_value": 0.3902609739026097,
+        "p_holm": 0.8492150784921508,
+        "significant": false
+      },
+      {
+        "better": "B4_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM-rerank (3B) vs su dense base",
+        "delta": 0.009689538989349683,
+        "ci_lo": -0.007175707687089015,
+        "ci_hi": 0.02687065198154804,
+        "p_value": 0.2830716928307169,
+        "p_holm": 0.8492150784921508,
+        "significant": false
+      },
+      {
+        "better": "B5_full_test",
+        "baseline": "B4_test",
+        "note": "agentic vs VLM-rerank pointwise",
+        "delta": 0.008612717669215212,
+        "ci_lo": -0.0003499658893689714,
+        "ci_hi": 0.018263197258342228,
+        "p_value": 0.072992700729927,
+        "p_holm": 0.291970802919708,
+        "significant": false
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM grande (27B) vs dense base",
+        "delta": 0.026118231210641975,
+        "ci_lo": 0.01117156512200279,
+        "ci_hi": 0.040702329992998235,
+        "p_value": 0.000999900009999,
+        "p_holm": 0.0059994000599940004,
+        "significant": true
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B4_test",
+        "note": "VLM grande (27B, top-100) vs pequeño (3B, top-200) — CONFOUND profundidad",
+        "delta": 0.016428692221292288,
+        "ci_lo": 0.00116858923974113,
+        "ci_hi": 0.03171374168267659,
+        "p_value": 0.0418958104189581,
+        "p_holm": 0.2094790520947905,
+        "significant": false
+      }
+    ],
+    "map": [
+      {
+        "better": "B1_jinaclip_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "mejor dense vs dense base",
+        "delta": 0.008261832043557531,
+        "ci_lo": -0.010046260173665444,
+        "ci_hi": 0.029332495800087968,
+        "p_value": 0.4203579642035796,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B3_colqwen_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "late-interaction vs dense",
+        "delta": -0.005502842834339956,
+        "ci_lo": -0.0269975751038611,
+        "ci_hi": 0.015560400128137416,
+        "p_value": 0.6301369863013698,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B4_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM-rerank (3B) vs su dense base",
+        "delta": 0.0004640357708552437,
+        "ci_lo": -0.008673856375129558,
+        "ci_hi": 0.009770475426476036,
+        "p_value": 0.9226077392260774,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B5_full_test",
+        "baseline": "B4_test",
+        "note": "agentic vs VLM-rerank pointwise",
+        "delta": 0.003076396974268016,
+        "ci_lo": -0.000602351378095438,
+        "ci_hi": 0.007150636091824793,
+        "p_value": 0.12938706129387062,
+        "p_holm": 0.5175482451754825,
+        "significant": false
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM grande (27B) vs dense base",
+        "delta": 0.012254513100490309,
+        "ci_lo": 0.003181398105345615,
+        "ci_hi": 0.02108176262455471,
+        "p_value": 0.0091990800919908,
+        "p_holm": 0.045995400459954004,
+        "significant": true
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B4_test",
+        "note": "VLM grande (27B, top-100) vs pequeño (3B, top-200) — CONFOUND profundidad",
+        "delta": 0.011790477329635066,
+        "ci_lo": 0.00425048613187389,
+        "ci_hi": 0.01942824720349599,
+        "p_value": 0.003999600039996,
+        "p_holm": 0.023997600239976002,
+        "significant": true
+      }
+    ],
+    "mrr": [
+      {
+        "better": "B1_jinaclip_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "mejor dense vs dense base",
+        "delta": -0.015612772441771243,
+        "ci_lo": -0.10755925787065479,
+        "ci_hi": 0.07445792822599052,
+        "p_value": 0.7442255774422558,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B3_colqwen_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "late-interaction vs dense",
+        "delta": -0.03949097336756817,
+        "ci_lo": -0.14275734021021722,
+        "ci_hi": 0.061524399513786174,
+        "p_value": 0.44615538446155384,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B4_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM-rerank (3B) vs su dense base",
+        "delta": 0.033930101886255885,
+        "ci_lo": -0.046739532387692,
+        "ci_hi": 0.11339415071003418,
+        "p_value": 0.4263573642635736,
+        "p_holm": 1.0,
+        "significant": false
+      },
+      {
+        "better": "B5_full_test",
+        "baseline": "B4_test",
+        "note": "agentic vs VLM-rerank pointwise",
+        "delta": 0.04514518867594614,
+        "ci_lo": -0.021891666350169713,
+        "ci_hi": 0.11564032371783994,
+        "p_value": 0.21197880211978803,
+        "p_holm": 0.8479152084791521,
+        "significant": false
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B1_openclip-vitl14_test",
+        "note": "VLM grande (27B) vs dense base",
+        "delta": 0.1514532349010225,
+        "ci_lo": 0.049846599375946855,
+        "ci_hi": 0.25606983656380616,
+        "p_value": 0.003999600039996,
+        "p_holm": 0.023997600239976002,
+        "significant": true
+      },
+      {
+        "better": "B4_qwen36_zero_shot_top100_test",
+        "baseline": "B4_test",
+        "note": "VLM grande (27B, top-100) vs pequeño (3B, top-200) — CONFOUND profundidad",
+        "delta": 0.1175231330147666,
+        "ci_lo": 0.03500424927525871,
+        "ci_hi": 0.20451811613793383,
+        "p_value": 0.007799220077992201,
+        "p_holm": 0.03899610038996101,
+        "significant": true
+      }
+    ]
+  }
+}

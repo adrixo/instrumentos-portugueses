@@ -12,6 +12,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from instrument_ir.evaluation.statistical_tests import bootstrap_ci
+
 
 RESULTS = Path("results/esalab-big/2026-06-30_gpu_full/outputs")
 QWEN_RESULTS = Path("results/mida-qwen36-27b/2026-06-30_zero_shot_top100/outputs")
@@ -58,6 +60,28 @@ def load_metrics() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _per_query(root: Path, system: str) -> dict:
+    data = json.loads((root / "metrics" / f"{system}.json").read_text(encoding="utf-8"))
+    return data.get("per_query", {})
+
+
+def ci_by_system(metric: str) -> dict[str, tuple[float, float, float]]:
+    """Bootstrap 95% CI (mean, lo, hi) per plotted system for one metric."""
+    out: dict[str, tuple[float, float, float]] = {}
+    for root, system, label in SYSTEMS:
+        vals = [v[metric] for v in _per_query(root, system).values() if metric in v]
+        ci = bootstrap_ci(vals)
+        out[label] = (ci["mean"], ci["lo"], ci["hi"])
+    return out
+
+
+def _asym_err(ci: dict[str, tuple[float, float, float]], labels: list[str]):
+    """Asymmetric error arrays [lower, upper] for matplotlib from CI dict."""
+    lower = [max(0.0, ci[l][0] - ci[l][1]) for l in labels]
+    upper = [max(0.0, ci[l][2] - ci[l][0]) for l in labels]
+    return [lower, upper]
+
+
 def style_axes(ax):
     ax.grid(axis="y", color="#d6e2df", linewidth=0.8)
     ax.set_axisbelow(True)
@@ -71,17 +95,27 @@ def style_axes(ax):
 def save_recall_at_k(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(9.6, 5.4), dpi=180)
     ks = [10, 20, 50, 100]
+    ci_per_k = {k: ci_by_system(f"recall@{k}") for k in ks}
     for _, row in df.iterrows():
         label = row["system"]
-        ax.plot(
+        means = [row[f"recall@{k}"] for k in ks]
+        yerr = [
+            [max(0.0, ci_per_k[k][label][0] - ci_per_k[k][label][1]) for k in ks],
+            [max(0.0, ci_per_k[k][label][2] - ci_per_k[k][label][0]) for k in ks],
+        ]
+        ax.errorbar(
             ks,
-            [row[f"recall@{k}"] for k in ks],
+            means,
+            yerr=yerr,
             marker="o",
             linewidth=2.2,
             label=label,
             color=PALETTE[label],
+            capsize=2,
+            elinewidth=0.9,
+            alpha=0.95,
         )
-    ax.set_title("Recall@K por sistema", fontsize=16, weight="bold", color="#10201f")
+    ax.set_title("Recall@K por sistema (barras = IC 95%)", fontsize=16, weight="bold", color="#10201f")
     ax.set_xlabel("K", color="#50615f")
     ax.set_ylabel("Recall", color="#50615f")
     ax.set_ylim(0, 0.22)
@@ -100,14 +134,28 @@ def save_quality_bars(df: pd.DataFrame) -> None:
         values = df[metric].tolist()
         labels = df["system"].tolist()
         colors = [PALETTE[label] for label in labels]
-        ax.barh(labels, values, color=colors, height=0.58)
+        ci = ci_by_system(metric)
+        xerr = _asym_err(ci, labels)
+        ax.barh(
+            labels,
+            values,
+            xerr=xerr,
+            color=colors,
+            height=0.58,
+            error_kw={"ecolor": "#111827", "elinewidth": 1.0, "capsize": 3},
+        )
         ax.set_title(title, fontsize=13, weight="bold", color="#10201f")
-        ax.set_xlim(0, max(values) * 1.18)
+        ax.set_xlim(0, max(ci[l][2] for l in labels) * 1.18)
         ax.invert_yaxis()
         style_axes(ax)
         for i, value in enumerate(values):
-            ax.text(value + max(values) * 0.02, i, f"{value:.3f}", va="center", fontsize=8)
-    fig.suptitle("Calidad del ranking en el split de test", fontsize=16, weight="bold", color="#10201f")
+            ax.text(ci[labels[i]][2] + max(values) * 0.02, i, f"{value:.3f}", va="center", fontsize=8)
+    fig.suptitle(
+        "Calidad del ranking en test (barras = IC 95%; solapamiento ⇒ no significativo)",
+        fontsize=14,
+        weight="bold",
+        color="#10201f",
+    )
     fig.tight_layout()
     fig.savefig(ASSETS / "metrics_quality_bars.png", bbox_inches="tight")
     plt.close(fig)
@@ -220,12 +268,66 @@ def trace_latency_rows(label: str, path: Path, top_k: str, skip_reused: bool = F
     return rows
 
 
+def save_candidate_ceiling() -> None:
+    """Funnel: only ~29% of relevants enter the top-200, capping every reranker."""
+    rm = json.loads((RESULTS / "metrics" / "B4_test__rerankmetrics.json").read_text(encoding="utf-8"))
+    cand = rm["candidate_recall@200"]
+    oracle = rm["oracle_recall@100"]
+    df = load_metrics()
+    best_recall = df["recall@100"].max()
+
+    stages = [
+        ("Relevantes\nque existen", 1.0, "#334155"),
+        ("En el top-200\ncandidatos (dense)", cand, "#4f6f8f"),
+        ("Techo tras rerank\n(oracle@100)", oracle, "#0f766e"),
+        ("Mejor recall@100\nalcanzado", best_recall, "#be123c"),
+    ]
+    fig, ax = plt.subplots(figsize=(9.6, 4.8), dpi=180)
+    labels = [s[0] for s in stages]
+    values = [s[1] for s in stages]
+    colors = [s[2] for s in stages]
+    bars = ax.bar(labels, values, color=colors, width=0.6, alpha=0.9)
+    for bar, value in zip(bars, values):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value + 0.02,
+            f"{value*100:.1f}%",
+            ha="center",
+            fontsize=11,
+            weight="bold",
+            color="#10201f",
+        )
+    ax.set_ylim(0, 1.08)
+    ax.set_ylabel("Fracción de relevantes", color="#50615f")
+    ax.set_title(
+        "El cuello de botella es la recuperación de candidatos, no el reranking",
+        fontsize=14,
+        weight="bold",
+        color="#10201f",
+    )
+    style_axes(ax)
+    ax.text(
+        0.5,
+        -0.22,
+        "El reranker no puede recuperar lo que la primera etapa no trajo: el 71% de los relevantes "
+        "queda fuera del top-200.",
+        transform=ax.transAxes,
+        ha="center",
+        fontsize=9,
+        color="#50615f",
+    )
+    fig.tight_layout()
+    fig.savefig(ASSETS / "candidate_ceiling.png", bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     ASSETS.mkdir(parents=True, exist_ok=True)
     df = load_metrics()
     save_recall_at_k(df)
     save_quality_bars(df)
     save_latency_boxplot()
+    save_candidate_ceiling()
 
 
 if __name__ == "__main__":

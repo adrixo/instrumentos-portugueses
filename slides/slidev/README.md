@@ -2,7 +2,9 @@
 
 Presentation:
 
-`Multimodal Visual Information Retrieval of Traditional Portuguese Instruments: A Reproducible Comparison of Dense Retrieval and Agentic Reranking`
+`Multimodal Visual Retrieval of Traditional Portuguese Musical Instruments: Dense, VLM, and Agentic Reranking`
+
+Authors: Adrian Valera Roman, Álvaro Lozano Murciego (adrianvalrom.usal@usal.es, loza@usal.es)
 
 ## Data Source
 
